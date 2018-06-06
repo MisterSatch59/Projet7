@@ -1,4 +1,5 @@
 --Création des tables
+
 CREATE TABLE public.langue (
                 nom VARCHAR(50) NOT NULL,
                 CONSTRAINT langue_pk PRIMARY KEY (nom)
@@ -42,6 +43,10 @@ CREATE TABLE public.utilisateur (
 
 
 ALTER SEQUENCE public.utilisateur_id_seq OWNED BY public.utilisateur.id;
+
+CREATE UNIQUE INDEX utilisateur_idx
+ ON public.utilisateur
+ ( email );
 
 CREATE TABLE public.bibliotheque (
                 nom VARCHAR(50) NOT NULL,
