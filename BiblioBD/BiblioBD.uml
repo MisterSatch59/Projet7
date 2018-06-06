@@ -90,11 +90,14 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r-m_IGiJEeiqG7gMWSW--g" value="1"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="__RxR4GiJEeiqG7gMWSW--g" visibility="private" memberEnd="__RxR42iJEeiqG7gMWSW--g __Rx48GiJEeiqG7gMWSW--g">
+  <packagedElement xmi:type="uml:Association" xmi:id="__RxR4GiJEeiqG7gMWSW--g" visibility="public" memberEnd="__RxR42iJEeiqG7gMWSW--g __Rx48GiJEeiqG7gMWSW--g">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__RxR4WiJEeiqG7gMWSW--g" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__RxR4miJEeiqG7gMWSW--g" key="nature" value="UML_Nature"/>
     </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="__RxR42iJEeiqG7gMWSW--g" name="genre" type="_AZG_UGiIEeiqG7gMWSW--g" association="__RxR4GiJEeiqG7gMWSW--g"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="__RxR42iJEeiqG7gMWSW--g" name="genre" type="_AZG_UGiIEeiqG7gMWSW--g" association="__RxR4GiJEeiqG7gMWSW--g">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EiPiYGlNEeiMncgjcYzgJQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EiTz0GlNEeiMncgjcYzgJQ" value="*"/>
+    </ownedEnd>
     <ownedEnd xmi:type="uml:Property" xmi:id="__Rx48GiJEeiqG7gMWSW--g" name="livre" type="_ys1SAGiGEeiqG7gMWSW--g" association="__RxR4GiJEeiqG7gMWSW--g">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EZMesGiKEeiqG7gMWSW--g"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EZRXMGiKEeiqG7gMWSW--g" value="*"/>
