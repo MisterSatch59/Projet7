@@ -1,23 +1,21 @@
 package org.biblioService.model.exception;
 
-public class IdentificationException extends Exception {
+/**
+ * Exception levé lorsque aucun élément correspondant aux paramètre n'a été trouvé
+ * @author Oltenos
+ *
+ */
+public class NotFoundException extends Exception {
 	private static final long serialVersionUID = 1L;
-
-	// code d'erreur
-	private String codeErreur;
+	
+	public NotFoundException() {
+		super("Element(s) non trouvé(s)");
+	}
 
 	// message d'erreur
 	private String messageErreur;
 
-	// Getters et Setters
-	public String getCodeErreur() {
-		return codeErreur;
-	}
-
-	public void setCodeErreur(String codeErreur) {
-		this.codeErreur = codeErreur;
-	}
-
+	//Getters et Setters
 	public String getMessageErreur() {
 		return messageErreur;
 	}

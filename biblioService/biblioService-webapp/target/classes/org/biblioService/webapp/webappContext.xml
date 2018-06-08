@@ -34,5 +34,3 @@
 	<bean id="utilisateur" class="org.biblioService.webapp.impl.UtilisateurServiceImpl" />
 
 </beans>
-
-

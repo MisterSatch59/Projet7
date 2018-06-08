@@ -1,13 +1,28 @@
 package org.biblioService.business.impl.manager;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.inject.Named;
+import javax.validation.ConstraintViolation;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioService.business.contrat.manager.UtilisateurManager;
+import org.biblioService.business.impl.PasswordUtils;
 import org.biblioService.model.bean.Utilisateur;
-import org.biblioService.model.exception.IdentificationException;
-import org.biblioService.model.exception.UtilisateurNotFoundException;
+import org.biblioService.model.bean.UtilisateurBD;
+import org.biblioService.model.exception.AutreException;
+import org.biblioService.model.exception.ParamsInvalidException;
+import org.biblioService.model.exception.TechnicalException;
+import org.biblioService.model.exception.NotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 /**
  * Implémentation de UtilisateurManager
@@ -16,59 +31,241 @@ import org.biblioService.model.exception.UtilisateurNotFoundException;
  *
  */
 @Named("utilisateurManager")
-public class UtilisateurManagerImpl implements UtilisateurManager{
+public class UtilisateurManagerImpl extends AbstractManagerImpl implements UtilisateurManager {
 	private static final Logger LOGGER = LogManager.getLogger(UtilisateurManagerImpl.class);
 
-	@Override
-	public void createUtilisateur(String pNom, String pPrenom, String pEmail, String pMdp) {
-		LOGGER.traceEntry("nom = " + pNom + " prenom = " + pPrenom + " email = " + pEmail + " mdp = " + pMdp);
+	private final int TAILLE_SEL = 20;
 
-		//TODO
+	@Override
+	public void createUtilisateur(String pNom, String pPrenom, String pEmail, String pMdp) throws ParamsInvalidException, TechnicalException {
+		LOGGER.traceEntry("nom = " + pNom + " prenom = " + pPrenom + " email = " + pEmail + " mdp = " + pMdp);
 		
-		LOGGER.traceExit();		
+		List<String> vLlistErreur = new ArrayList<String>();//Stocke les messages d'erreur
+		
+		//Vérification de la nullité des paramètres
+		if(pNom==null||pNom.isEmpty()) {
+			vLlistErreur.add("Le nom doit être renseigné.");
+		}
+		if(pEmail==null||pEmail.isEmpty()) {
+			vLlistErreur.add("L'email doit être renseigné.");
+		}
+		if(pMdp==null||pMdp.isEmpty()) {
+			vLlistErreur.add("Le mot de passe doit être renseigné.");
+		}
+		
+		// Validation des paramètres (avec JSR 303/349) et compléxité du mdp
+		vLlistErreur.addAll(this.validationParametres(pNom, pPrenom, pEmail, pMdp));
+		
+		//Lance une ParamsInvalidException si au moins un paramètre est invalide
+		if (!vLlistErreur.isEmpty()) {
+			ParamsInvalidException vException = new ParamsInvalidException();
+			vException.setListErreur(vLlistErreur);
+			throw vException;
+		}
+
+		// Création du bean utilisateur à partir des paramètres
+		UtilisateurBD vUtilisateurBD = new UtilisateurBD();
+		vUtilisateurBD.setNom(pNom);
+		vUtilisateurBD.setPrenom(pPrenom);
+		vUtilisateurBD.setEmail(pEmail);
+		
+		// Sécurisation (hachage) du mdp
+		vUtilisateurBD.setSel(PasswordUtils.getSalt(TAILLE_SEL));
+		String vMdp = PasswordUtils.generateSecurePassword(pMdp, vUtilisateurBD.getSel());
+		vUtilisateurBD.setMdp(vMdp);
+
+		// Appel du DAO pour création dans la BD dans une transaction
+		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		try {
+			this.getDaoFactory().getUtilisateurDao().createUtilisateur(vUtilisateurBD);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			this.getPlatformTransactionManager().commit(vTScommit);
+		} catch (DuplicateKeyException e) {//Si l'email existe dejà (index avec condition d'unicité sur la colonne email)
+			this.getPlatformTransactionManager().rollback(vTransactionStatus);
+			vTransactionStatus = null;
+			ParamsInvalidException vException = new ParamsInvalidException();
+			vLlistErreur.add("L'email est déjà utilisé par un autre utilisateur, merci d'entrer un autre email.");
+			vException.setListErreur(vLlistErreur);
+			throw vException;
+		} finally {
+			if (vTransactionStatus != null) {
+				this.getPlatformTransactionManager().rollback(vTransactionStatus);
+				TechnicalException vException = new TechnicalException();
+				vException.setMessageErreur("Erreur technique interne.");
+				throw vException;
+			}
+		}
+
+		LOGGER.traceExit();
 	}
 
 	@Override
-	public int authentifierUtilisateur(String pEmail, String pMdp) throws IdentificationException, UtilisateurNotFoundException {
+	public Utilisateur authentifierUtilisateur(String pEmail, String pMdp) throws AutreException, NotFoundException {
 		LOGGER.traceEntry("email = " + pEmail + " mdp = " + pMdp);
 
-		int result = 50;
-		//TODO
-		
-		LOGGER.traceExit(50);
-		return result;
+		// Récupération de l'utilisateur correspondant à l'email
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pEmail);
+
+		// Vérification du mdp
+		String vSel = vUtilisateurBD.getSel();
+		String vMdpPropose = PasswordUtils.generateSecurePassword(pMdp, vSel);
+		if (!vMdpPropose.equals(vUtilisateurBD.getMdp())) {
+			AutreException vAutreException = new AutreException("Erreur d'authentification.");
+			vAutreException.setMessageErreur("Le mot de passe ne correspond pas.");
+			throw vAutreException;
+		}
+
+		Utilisateur vUtilisateur = new Utilisateur();
+		vUtilisateur.setId(vUtilisateurBD.getId());
+		vUtilisateur.setNom(vUtilisateurBD.getNom());
+		vUtilisateur.setPrenom(vUtilisateurBD.getPrenom());
+		vUtilisateur.setEmail(vUtilisateurBD.getEmail());
+
+		LOGGER.traceExit(vUtilisateur);
+		return vUtilisateur;
 	}
 
 	@Override
-	public Utilisateur getUtilisateur(int pId) throws UtilisateurNotFoundException {
+	public void updateUtilisateur(int pId, String pNouveauNom, String pNouveauPrenom, String pNouveauMail, String pNouveauMdp) throws NotFoundException, ParamsInvalidException, TechnicalException {
+		LOGGER.traceEntry("id = " + pId + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
+
+		List<String> vLlistErreur;//Stocke les messages d'erreur
+		
+		// Validation des paramètres (avec JSR 303/349) et compléxité du mdp
+		vLlistErreur = this.validationParametres(pNouveauNom, pNouveauPrenom, pNouveauMail, pNouveauMdp);
+		
+		//Lance une ParamsInvalidException si au moins un paramètre non null et non vide est invalide
+		if (!vLlistErreur.isEmpty()) {
+			ParamsInvalidException vException = new ParamsInvalidException();
+			vException.setListErreur(vLlistErreur);
+			throw vException;
+		}
+		
+		//Recupération de l'utilisateur
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+
+		// Modification du bean utilisateur à partir des paramètres non null et non vide (cux ci étant ignorés)
+		if(pNouveauNom!=null&&!pNouveauNom.isEmpty())
+			vUtilisateurBD.setNom(pNouveauNom);
+		if(pNouveauPrenom!=null&&!pNouveauPrenom.isEmpty())
+			vUtilisateurBD.setPrenom(pNouveauPrenom);
+		if(pNouveauMail!=null&&!pNouveauMail.isEmpty())
+			vUtilisateurBD.setEmail(pNouveauMail);
+		
+		// Sécurisation (hachage) du nouveauMdp
+		if(pNouveauMdp!=null&&!pNouveauMdp.isEmpty()) {
+			vUtilisateurBD.setSel(PasswordUtils.getSalt(TAILLE_SEL));
+			String vMdp = PasswordUtils.generateSecurePassword(pNouveauMdp, vUtilisateurBD.getSel());
+			vUtilisateurBD.setMdp(vMdp);
+		}
+
+		// Appel du DAO pour modification de l'utilisateur dans la BD dans une transaction
+		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		try {
+			this.getDaoFactory().getUtilisateurDao().updateUtilisateur(vUtilisateurBD);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			this.getPlatformTransactionManager().commit(vTScommit);
+		} catch (DuplicateKeyException e) {// Si l'email existe dejà (index avec condition d'unicité sur la colonne email)
+			this.getPlatformTransactionManager().rollback(vTransactionStatus);
+			vTransactionStatus = null;
+			ParamsInvalidException vException = new ParamsInvalidException();
+			vLlistErreur.add("L'email est déjà utilisé par un autre utilisateur, merci d'entrer un autre email.");
+			vException.setListErreur(vLlistErreur);
+			throw vException;
+		} finally {
+			if (vTransactionStatus != null) {
+				this.getPlatformTransactionManager().rollback(vTransactionStatus);
+				TechnicalException vException = new TechnicalException();
+				vException.setMessageErreur("Erreur technique interne.");
+				throw vException;
+			}
+		}
+		
+		LOGGER.traceExit();
+	}
+
+	@Override
+	public void deleteUtilisateur(int pId) throws TechnicalException, AutreException {
 		LOGGER.traceEntry("id = " + pId);
-		
-		// TODO Auto-generated method stub
-		Utilisateur result = new Utilisateur();
-		
-		LOGGER.traceExit(result);
-		return result;
-	}
 
-	@Override
-	public void updateUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom, String pNouveauMail, String pNouveauMdp) throws IdentificationException, UtilisateurNotFoundException {
-		LOGGER.traceEntry("id = " + pId + "ancienMdp = " + pAncienMdp + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
-		
-		// TODO Auto-generated method stub
-		
+		// Appel du DAO pour suppression de l'utilisateur dans la BD dans une transaction
+		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		try {
+			this.getDaoFactory().getUtilisateurDao().deleteUtilisateur(pId);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			this.getPlatformTransactionManager().commit(vTScommit);
+		}catch (DataIntegrityViolationException e) {// Si un emprunt existe encore pour cet utilisateur
+			this.getPlatformTransactionManager().rollback(vTransactionStatus);
+			vTransactionStatus = null;
+			AutreException vAutreException = new AutreException("Le compte utilisaeur ne peut pas être supprimé.");
+			vAutreException.setMessageErreur("Le compte utilisateur ne peut être supprimé car des prêts sont encore en cours.");
+			throw vAutreException;
+		} finally {
+			if (vTransactionStatus != null) {
+				this.getPlatformTransactionManager().rollback(vTransactionStatus);
+				TechnicalException vException = new TechnicalException();
+				vException.setMessageErreur("Erreur technique interne.");
+				throw vException;
+			}
+		}
+
 		LOGGER.traceExit();
 	}
 
-	@Override
-	public void deleteUtilisateur(int pId, String pMdp) throws IdentificationException, UtilisateurNotFoundException {
-		LOGGER.traceEntry("id = " + pId + " mdp = " + pMdp);
+	/**
+	 * Validation des paramètres (avec JSR 303/349) et compléxité du mdp et retourne la liste des messages erreur (vide si aucune erreur)</br>
+	 * Rq : Ne teste pas la nullité des paramètres
+	 * @param pNom
+	 * @param pPrenom
+	 * @param pEmail
+	 * @param pMdp
+	 * @return List<String>
+	 * @throws ParamsInvalidException
+	 */
+	private List<String> validationParametres(String pNom, String pPrenom, String pEmail, String pMdp) throws ParamsInvalidException {
+
+		List<String> vLlistErreur = new ArrayList<String>();
+		Set<ConstraintViolation<UtilisateurBD>> vViolations;
 		
-		// TODO Auto-generated method stub
+		if(pNom!=null&&!pNom.isEmpty()) {
+			vViolations = this.getValidator().validateValue(UtilisateurBD.class,"nom", pNom);
+			if (!vViolations.isEmpty()) {
+				vLlistErreur.add("Le nom de l'utilisateur est incorrect (entre 1 et 100 caractères).");
+			}
+		}
 		
-		LOGGER.traceExit();
+		if(pPrenom!=null&&!pPrenom.isEmpty()) {
+			vViolations = this.getValidator().validateValue(UtilisateurBD.class, "prenom", pPrenom);
+			if (!vViolations.isEmpty()) {
+				vLlistErreur.add("Le(s) prenom(s) de l'utilisateur est (sont) incorrect(s) (entre 1 et 100 caractères).");
+			}
+		}
+		
+		if(pEmail!=null&&!pEmail.isEmpty()) {
+			vViolations = this.getValidator().validateValue(UtilisateurBD.class, "email", pEmail);
+			if (!vViolations.isEmpty()) {
+				vLlistErreur.add("L'email est incorrect (email correct avec maximum 100 caractères).");
+			}
+		}
+		
+		if(pMdp!=null&&!pMdp.isEmpty()) {
+			// Vérification de la compléxité du mot de passe (8 caractères, 1 lettre, 1
+			// caractère spécial et 1 chiffre minimum)
+			Pattern pattern = Pattern.compile("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*\\W).{8,}$");
+			Matcher matcher = pattern.matcher(pMdp);
+			if (!matcher.lookingAt()) {
+				vLlistErreur.add(
+						"Le mot de passe est incorrect (Le mot de passe doit contenir : Plus de 8 caratères, au moins 1 lettre, au moins 1 chiffre, au moins 1 caractère spécial).");
+			}
+		}
+
+		return vLlistErreur;
 	}
-
-
-
 
 }

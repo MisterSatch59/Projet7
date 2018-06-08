@@ -155,7 +155,7 @@
     <column id="COL39" populated="true" UUID="fee47782-7641-40ea-a908-1fd658d153a2" autoIncrement="false" autoIncrementSequenceName="utilisateur_nom_seq" defaultValue="" name="nom" nullable="0" physicalName="nom" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL40" populated="true" UUID="10d8c9bc-8a70-4586-b734-9148ca87ca97" autoIncrement="false" autoIncrementSequenceName="utilisateur_prenom_seq" defaultValue="" name="prenom" nullable="0" physicalName="prenom" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL40" populated="true" UUID="10d8c9bc-8a70-4586-b734-9148ca87ca97" autoIncrement="false" autoIncrementSequenceName="utilisateur_prenom_seq" defaultValue="" name="prenom" nullable="1" physicalName="prenom" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL41" populated="true" UUID="6c87a84f-6664-4ceb-910c-4aa4de3dc68a" autoIncrement="false" autoIncrementSequenceName="utilisateur_mdp_seq" defaultValue="" name="mdp" nullable="0" physicalName="mdp" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >

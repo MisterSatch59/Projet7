@@ -35,7 +35,7 @@ CREATE TABLE public.utilisateur (
                 id INTEGER NOT NULL DEFAULT nextval('public.utilisateur_id_seq'),
                 email VARCHAR(100) NOT NULL,
                 nom VARCHAR(100) NOT NULL,
-                prenom VARCHAR(50) NOT NULL,
+                prenom VARCHAR(100),
                 mdp VARCHAR(100) NOT NULL,
                 sel VARCHAR(20) NOT NULL,
                 CONSTRAINT utilisateur_pk PRIMARY KEY (id)
