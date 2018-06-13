@@ -9,7 +9,7 @@ public class NotFoundException extends Exception {
 	private static final long serialVersionUID = 1L;
 	
 	public NotFoundException() {
-		super("Element(s) non trouvé(s)");
+		super("Element(s) non trouvé(s).");
 	}
 
 	// message d'erreur

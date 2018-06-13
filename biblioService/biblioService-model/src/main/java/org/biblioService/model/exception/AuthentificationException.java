@@ -1,22 +1,21 @@
 package org.biblioService.model.exception;
 
 /**
- * Exception levé lors d'un problème technique de la base de donnée
+ * Exception levé lorsque l'authentification d'un utilisateur est incorrrecte
  * @author Oltenos
  *
  */
-public class TechnicalException extends Exception {
+public class AuthentificationException extends Exception {
 	private static final long serialVersionUID = 1L;
 	
-	public TechnicalException() {
-		super("Erreur technique.");
+	public AuthentificationException() {
+		super("Erreur d'authentification.");
 	}
 
 	// message d'erreur
 	private String messageErreur;
 
 	// Getters et Setters
-
 	public String getMessageErreur() {
 		return messageErreur;
 	}
@@ -24,4 +23,5 @@ public class TechnicalException extends Exception {
 	public void setMessageErreur(String messageErreur) {
 		this.messageErreur = messageErreur;
 	}
+
 }

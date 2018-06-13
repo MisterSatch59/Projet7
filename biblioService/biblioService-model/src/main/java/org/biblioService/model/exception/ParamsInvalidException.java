@@ -11,7 +11,7 @@ public class ParamsInvalidException extends Exception {
 	private static final long serialVersionUID = 1L;
 	
 	public ParamsInvalidException() {
-		super("Paramètre(s) invalide(s)!");
+		super("Paramètre(s) invalide(s).");
 		
 	}
 

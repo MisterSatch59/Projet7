@@ -15,6 +15,7 @@ import org.biblioService.business.contrat.manager.UtilisateurManager;
 import org.biblioService.business.impl.PasswordUtils;
 import org.biblioService.model.bean.Utilisateur;
 import org.biblioService.model.bean.UtilisateurBD;
+import org.biblioService.model.exception.AuthentificationException;
 import org.biblioService.model.exception.AutreException;
 import org.biblioService.model.exception.ParamsInvalidException;
 import org.biblioService.model.exception.TechnicalException;
@@ -53,7 +54,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 			vLlistErreur.add("Le mot de passe doit être renseigné.");
 		}
 		
-		// Validation des paramètres (avec JSR 303/349) et compléxité du mdp
+		// Validation des paramètres (JSR 303/349) et compléxité du mdp
 		vLlistErreur.addAll(this.validationParametres(pNom, pPrenom, pEmail, pMdp));
 		
 		//Lance une ParamsInvalidException si au moins un paramètre est invalide
@@ -102,20 +103,14 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 	}
 
 	@Override
-	public Utilisateur authentifierUtilisateur(String pEmail, String pMdp) throws AutreException, NotFoundException {
+	public Utilisateur authentifierUtilisateur(String pEmail, String pMdp) throws AuthentificationException, NotFoundException {
 		LOGGER.traceEntry("email = " + pEmail + " mdp = " + pMdp);
 
-		// Récupération de l'utilisateur correspondant à l'email
+		// Récupération de l'utilisateur correspondant à l'email - NotFoundException si n'existe pas dans la base de données
 		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pEmail);
 
-		// Vérification du mdp
-		String vSel = vUtilisateurBD.getSel();
-		String vMdpPropose = PasswordUtils.generateSecurePassword(pMdp, vSel);
-		if (!vMdpPropose.equals(vUtilisateurBD.getMdp())) {
-			AutreException vAutreException = new AutreException("Erreur d'authentification.");
-			vAutreException.setMessageErreur("Le mot de passe ne correspond pas.");
-			throw vAutreException;
-		}
+		// Vérification du mdp - AuthentificationException si le mdp ne correspond pas
+		verifierMdp(pMdp, vUtilisateurBD);
 
 		Utilisateur vUtilisateur = new Utilisateur();
 		vUtilisateur.setId(vUtilisateurBD.getId());
@@ -128,9 +123,15 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 	}
 
 	@Override
-	public void updateUtilisateur(int pId, String pNouveauNom, String pNouveauPrenom, String pNouveauMail, String pNouveauMdp) throws NotFoundException, ParamsInvalidException, TechnicalException {
-		LOGGER.traceEntry("id = " + pId + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
+	public void updateUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom, String pNouveauMail, String pNouveauMdp) throws NotFoundException, AuthentificationException, ParamsInvalidException, TechnicalException {
+		LOGGER.traceEntry("id = " + pId + " ancienMdp = " + pAncienMdp + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
 
+		//Recupération de l'utilisateur - NotFoundException si n'existe pas dans la base de données
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+		
+		//Vérifie l'ancien Mdp - AuthentificationException si le mdp ne correspond pas
+		verifierMdp(pAncienMdp, vUtilisateurBD);
+		
 		List<String> vLlistErreur;//Stocke les messages d'erreur
 		
 		// Validation des paramètres (avec JSR 303/349) et compléxité du mdp
@@ -143,10 +144,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 			throw vException;
 		}
 		
-		//Recupération de l'utilisateur
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
-
-		// Modification du bean utilisateur à partir des paramètres non null et non vide (cux ci étant ignorés)
+		// Modification du bean utilisateur à partir des paramètres non null et non vide (les paramètres null ou vide sont ignorés)
 		if(pNouveauNom!=null&&!pNouveauNom.isEmpty())
 			vUtilisateurBD.setNom(pNouveauNom);
 		if(pNouveauPrenom!=null&&!pNouveauPrenom.isEmpty())
@@ -189,8 +187,14 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 	}
 
 	@Override
-	public void deleteUtilisateur(int pId) throws TechnicalException, AutreException {
+	public void deleteUtilisateur(int pId, String pMdp) throws NotFoundException, AuthentificationException,TechnicalException, AutreException {
 		LOGGER.traceEntry("id = " + pId);
+		
+		// Recupération de l'utilisateur - NotFoundException si n'existe pas dans la base de données
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+
+		// Vérifie le Mdp - AuthentificationException si le mdp ne correspond pas
+		verifierMdp(pMdp, vUtilisateurBD);
 
 		// Appel du DAO pour suppression de l'utilisateur dans la BD dans une transaction
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
@@ -266,6 +270,22 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		}
 
 		return vLlistErreur;
+	}
+	
+	/**
+	 * Vérifie que le mdp proposé correspond au mdp de l'utilisateur, lance une AuthentificationException si ça ne correspond pas
+	 * @param pMdp
+	 * @param pUtilisateurBD
+	 * @throws AuthentificationException lancé si le mdp ne correspond pas au mdp de l'utilisateur
+	 */
+	private void verifierMdp(String pMdp, UtilisateurBD pUtilisateurBD) throws AuthentificationException {
+		String vSel = pUtilisateurBD.getSel();
+		String vMdpPropose = PasswordUtils.generateSecurePassword(pMdp, vSel);
+		if (!vMdpPropose.equals(pUtilisateurBD.getMdp())) {
+			AuthentificationException vAuthentificationException = new AuthentificationException();
+			vAuthentificationException.setMessageErreur("Le mot de passe ne correspond pas.");
+			throw vAuthentificationException;
+		}
 	}
 
 }

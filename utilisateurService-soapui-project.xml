@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ca2032b3-3496-4402-8225-10b625f230fa" activeEnvironment="Default" name="utilisateurService" resourceRoot="" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7f4b64e5-1f36-4ca4-b6d5-31cf5723677e" wsaVersion="NONE" name="UtilisateurServiceServiceSoapBinding" type="wsdl" bindingName="{http://contrat.webapp.biblioService.org/}UtilisateurServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/biblioService/services/utilisateur?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/biblioService/services/utilisateur?wsdl"><con:part><con:url>http://localhost:8080/biblioService/services/utilisateur?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UtilisateurServiceService" targetNamespace="http://contrat.webapp.biblioService.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://contrat.webapp.biblioService.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://contrat.webapp.biblioService.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="authentifierUtilisateur" type="tns:authentifierUtilisateur"/>
+      <xs:element name="authentifierUtilisateurResponse" type="tns:authentifierUtilisateurResponse"/>
+      <xs:element name="creerUtilisateur" type="tns:creerUtilisateur"/>
+      <xs:element name="creerUtilisateurResponse" type="tns:creerUtilisateurResponse"/>
+      <xs:element name="modifierUtilisateur" type="tns:modifierUtilisateur"/>
+      <xs:element name="modifierUtilisateurResponse" type="tns:modifierUtilisateurResponse"/>
+      <xs:element name="supprimerUtilisateur" type="tns:supprimerUtilisateur"/>
+      <xs:element name="supprimerUtilisateurResponse" type="tns:supprimerUtilisateurResponse"/>
+      <xs:complexType name="authentifierUtilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="mdp" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="authentifierUtilisateurResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:utilisateur"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="utilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifierUtilisateur">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="ancienMdp" type="xs:string"/>
+          <xs:element minOccurs="0" name="nouveauNom" type="xs:string"/>
+          <xs:element minOccurs="0" name="nouveauPrenom" type="xs:string"/>
+          <xs:element minOccurs="0" name="nouveauEmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="nouveauMdp" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifierUtilisateurResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="creerUtilisateur">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nom" type="xs:string"/>
+          <xs:element minOccurs="0" name="prenom" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" type="xs:string"/>
+          <xs:element minOccurs="0" name="mdp" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="creerUtilisateurResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="supprimerUtilisateur">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="mdp" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="supprimerUtilisateurResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:element name="NotFoundException" type="tns:NotFoundException"/>
+      <xs:complexType name="NotFoundException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="messageErreur" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AuthentificationException" type="tns:AuthentificationException"/>
+      <xs:complexType name="AuthentificationException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="messageErreur" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ParamsInvalidException" type="tns:ParamsInvalidException"/>
+      <xs:complexType name="ParamsInvalidException">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listErreur" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TechnicalException" type="tns:TechnicalException"/>
+      <xs:complexType name="TechnicalException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="messageErreur" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AutreException" type="tns:AutreException"/>
+      <xs:complexType name="AutreException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="messageErreur" type="xs:string"/>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="NotFoundException">
+    <wsdl:part element="tns:NotFoundException" name="NotFoundException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerUtilisateurResponse">
+    <wsdl:part element="tns:supprimerUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifierUtilisateurResponse">
+    <wsdl:part element="tns:modifierUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerUtilisateur">
+    <wsdl:part element="tns:creerUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authentifierUtilisateurResponse">
+    <wsdl:part element="tns:authentifierUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifierUtilisateur">
+    <wsdl:part element="tns:modifierUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ParamsInvalidException">
+    <wsdl:part element="tns:ParamsInvalidException" name="ParamsInvalidException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="TechnicalException">
+    <wsdl:part element="tns:TechnicalException" name="TechnicalException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerUtilisateur">
+    <wsdl:part element="tns:supprimerUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AutreException">
+    <wsdl:part element="tns:AutreException" name="AutreException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthentificationException">
+    <wsdl:part element="tns:AuthentificationException" name="AuthentificationException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerUtilisateurResponse">
+    <wsdl:part element="tns:creerUtilisateurResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authentifierUtilisateur">
+    <wsdl:part element="tns:authentifierUtilisateur" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="UtilisateurService">
+    <wsdl:operation name="authentifierUtilisateur">
+      <wsdl:input message="tns:authentifierUtilisateur" name="authentifierUtilisateur"></wsdl:input>
+      <wsdl:output message="tns:authentifierUtilisateurResponse" name="authentifierUtilisateurResponse"></wsdl:output>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException"></wsdl:fault>
+      <wsdl:fault message="tns:AuthentificationException" name="AuthentificationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modifierUtilisateur">
+      <wsdl:input message="tns:modifierUtilisateur" name="modifierUtilisateur"></wsdl:input>
+      <wsdl:output message="tns:modifierUtilisateurResponse" name="modifierUtilisateurResponse"></wsdl:output>
+      <wsdl:fault message="tns:ParamsInvalidException" name="ParamsInvalidException"></wsdl:fault>
+      <wsdl:fault message="tns:TechnicalException" name="TechnicalException"></wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException"></wsdl:fault>
+      <wsdl:fault message="tns:AuthentificationException" name="AuthentificationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="creerUtilisateur">
+      <wsdl:input message="tns:creerUtilisateur" name="creerUtilisateur"></wsdl:input>
+      <wsdl:output message="tns:creerUtilisateurResponse" name="creerUtilisateurResponse"></wsdl:output>
+      <wsdl:fault message="tns:ParamsInvalidException" name="ParamsInvalidException"></wsdl:fault>
+      <wsdl:fault message="tns:TechnicalException" name="TechnicalException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerUtilisateur">
+      <wsdl:input message="tns:supprimerUtilisateur" name="supprimerUtilisateur"></wsdl:input>
+      <wsdl:output message="tns:supprimerUtilisateurResponse" name="supprimerUtilisateurResponse"></wsdl:output>
+      <wsdl:fault message="tns:TechnicalException" name="TechnicalException"></wsdl:fault>
+      <wsdl:fault message="tns:AutreException" name="AutreException"></wsdl:fault>
+      <wsdl:fault message="tns:NotFoundException" name="NotFoundException"></wsdl:fault>
+      <wsdl:fault message="tns:AuthentificationException" name="AuthentificationException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UtilisateurServiceServiceSoapBinding" type="tns:UtilisateurService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="authentifierUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="authentifierUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="authentifierUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthentificationException">
+        <soap:fault name="AuthentificationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modifierUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifierUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifierUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ParamsInvalidException">
+        <soap:fault name="ParamsInvalidException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TechnicalException">
+        <soap:fault name="TechnicalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthentificationException">
+        <soap:fault name="AuthentificationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="creerUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="creerUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="creerUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ParamsInvalidException">
+        <soap:fault name="ParamsInvalidException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TechnicalException">
+        <soap:fault name="TechnicalException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerUtilisateur">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="supprimerUtilisateur">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="supprimerUtilisateurResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="TechnicalException">
+        <soap:fault name="TechnicalException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AutreException">
+        <soap:fault name="AutreException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NotFoundException">
+        <soap:fault name="NotFoundException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AuthentificationException">
+        <soap:fault name="AuthentificationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UtilisateurServiceService">
+    <wsdl:port binding="tns:UtilisateurServiceServiceSoapBinding" name="UtilisateurServicePort">
+      <soap:address location="http://localhost:8080/biblioService/services/utilisateur"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint></con:endpoints><con:operation id="7025252f-b658-4ae9-a7c5-357526593219" isOneWay="false" action="" name="authentifierUtilisateur" bindingOperationName="authentifierUtilisateur" type="Request-Response" outputName="authentifierUtilisateurResponse" inputName="authentifierUtilisateur" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c7e99ff6-bd60-49cc-8c51-9ea12c532dfe" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:authentifierUtilisateur>\r
+         <!--Optional:-->\r
+         <email>?</email>\r
+         <!--Optional:-->\r
+         <mdp>?</mdp>\r
+      </con:authentifierUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/authentifierUtilisateur"/></con:call></con:operation><con:operation id="595d942c-a3d3-40cb-9538-54084f153ff5" isOneWay="false" action="" name="creerUtilisateur" bindingOperationName="creerUtilisateur" type="Request-Response" outputName="creerUtilisateurResponse" inputName="creerUtilisateur" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="df23610e-40cb-49d8-a8db-c30cdbfdc3c4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:creerUtilisateur>\r
+         <!--Optional:-->\r
+         <nom>?</nom>\r
+         <!--Optional:-->\r
+         <prenom>?</prenom>\r
+         <!--Optional:-->\r
+         <email>?</email>\r
+         <!--Optional:-->\r
+         <mdp>?</mdp>\r
+      </con:creerUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/creerUtilisateur"/></con:call></con:operation><con:operation id="7ca67d19-1d3b-4d9b-8dd3-d0491dd0066a" isOneWay="false" action="" name="modifierUtilisateur" bindingOperationName="modifierUtilisateur" type="Request-Response" outputName="modifierUtilisateurResponse" inputName="modifierUtilisateur" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="892a5273-e879-41d9-82e6-b2874272c0f5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:modifierUtilisateur>\r
+         <id>?</id>\r
+         <!--Optional:-->\r
+         <ancienMdp>?</ancienMdp>\r
+         <!--Optional:-->\r
+         <nouveauNom>?</nouveauNom>\r
+         <!--Optional:-->\r
+         <nouveauPrenom>?</nouveauPrenom>\r
+         <!--Optional:-->\r
+         <nouveauEmail>?</nouveauEmail>\r
+         <!--Optional:-->\r
+         <nouveauMdp>?</nouveauMdp>\r
+      </con:modifierUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/modifierUtilisateur"/></con:call></con:operation><con:operation id="bbda5a81-1daf-4077-a688-1fa6304c5aa0" isOneWay="false" action="" name="supprimerUtilisateur" bindingOperationName="supprimerUtilisateur" type="Request-Response" outputName="supprimerUtilisateurResponse" inputName="supprimerUtilisateur" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fadcd5cf-6655-4ae5-bcc5-50474e16383e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:supprimerUtilisateur>\r
+         <id>?</id>\r
+         <!--Optional:-->\r
+         <mdp>?</mdp>\r
+      </con:supprimerUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/supprimerUtilisateur"/></con:call></con:operation></con:interface><con:testSuite id="cdb6a9d9-b39f-4d40-806f-17ff633c2962" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="9ea71514-1131-4cb2-841e-525196c99e3c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="009e51e4-d946-40dd-9ded-4bcd60fdb39d"><con:settings/><con:config><script>import org.apache.commons.lang.RandomStringUtils;
+import java.util.concurrent.ThreadLocalRandom;
+
+//nom et prénom aléatoire
+int longueurNom = 1 + (int)(Math.random() * 100);//1 à 100
+int longueurPrenom =  (int)(Math.random() * 101);//0 à 100
+
+String lettre = (('a'..'z') + ('A'..'Z')+ (' ')).join();
+
+String nomAleatoire = RandomStringUtils.random(longueurNom, lettre.toCharArray());
+String prenomAleatoire = RandomStringUtils.random(longueurPrenom, lettre.toCharArray());
+testRunner.testCase.setPropertyValue( "nom", nomAleatoire);
+testRunner.testCase.setPropertyValue( "prenom", prenomAleatoire);
+
+nomAleatoire = RandomStringUtils.random(longueurNom, lettre.toCharArray());
+prenomAleatoire = RandomStringUtils.random(longueurPrenom, lettre.toCharArray());
+testRunner.testCase.setPropertyValue( "nouveauNom", nomAleatoire);
+testRunner.testCase.setPropertyValue( "nouveauPrenom", prenomAleatoire);
+
+//email alèatoire
+String nombre = (('0'..'9')).join();
+String lettreMin = (('a'..'z')).join();
+String caracEmail = lettreMin + nombre;
+
+int longueurEmail = 1 + (int)(Math.random() * 45);//1 à 45
+
+String emailAleatoire = RandomStringUtils.random(longueurEmail, caracEmail.toCharArray())+ "@" + RandomStringUtils.random(longueurEmail, caracEmail.toCharArray()) + "." + RandomStringUtils.random(3, lettreMin.toCharArray());
+testRunner.testCase.setPropertyValue( "email", emailAleatoire);
+emailAleatoire = RandomStringUtils.random(longueurEmail, caracEmail.toCharArray())+ "@" + RandomStringUtils.random(longueurEmail, caracEmail.toCharArray()) + "." + RandomStringUtils.random(3, lettreMin.toCharArray());
+testRunner.testCase.setPropertyValue( "NouveauEmail", emailAleatoire);
+
+//Mdp aléatoire
+String caractereSpeciaux = "+-*/.µ£@^#~²?,;:§!";
+String caracMdp = (lettre + nombre + caractereSpeciaux);
+
+int longueurMdp = 8 + (int)(Math.random() * 90);//8 à 97
+
+String mdpAleatoire = RandomStringUtils.random(longueurMdp, caracMdp.toCharArray()) +"a1*"; //L'ajout a1* permet de toujours avoir au moins 1 caractère spécial, une lettre et un chiffre
+testRunner.testCase.setPropertyValue( "mdp", mdpAleatoire);
+mdpAleatoire = RandomStringUtils.random(longueurMdp, caracMdp.toCharArray())+"a1*"; //L'ajout a1* permet de toujours avoir au moins 1 caractère spécial, une lettre et un chiffre
+testRunner.testCase.setPropertyValue( "NouveauMdp", mdpAleatoire);
+</script></con:config></con:testStep><con:testStep type="request" id="d8e0487d-3555-4e5c-817d-8d1735ffb0d4" name="creerUtilisateur - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UtilisateurServiceServiceSoapBinding</con:interface><con:operation>creerUtilisateur</con:operation><con:request name="creerUtilisateur - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="86c9363a-6ad5-4525-b213-e6a79932ab55"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <con:creerUtilisateur>
+         <!--Optional:-->
+         <nom>${#TestCase#nom}${#Project#nom}</nom>
+         <!--Optional:-->
+         <prenom>${#TestCase#prenom}</prenom>
+         <!--Optional:-->
+         <email>${#TestCase#email}</email>
+         <!--Optional:-->
+         <mdp>${#TestCase#mdp}</mdp>
+      </con:creerUtilisateur>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="96e8fcb6-6c18-41a6-bb77-13f6a8ea50b8" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="2395f9c9-9e69-499d-95a9-d06559a9fbdc" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/creerUtilisateur"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="4b8e5ea1-a462-40af-b55f-9d6959673d12" name="authentifierUtilisateur - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UtilisateurServiceServiceSoapBinding</con:interface><con:operation>authentifierUtilisateur</con:operation><con:request name="authentifierUtilisateur - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="fbc210b6-b583-463d-85d7-674a5a65d103"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <con:authentifierUtilisateur>
+         <!--Optional:-->
+         <email>${#TestCase#email}</email>
+         <!--Optional:-->
+         <mdp>${#TestCase#mdp}</mdp>
+      </con:authentifierUtilisateur>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a894aaf3-4442-4e11-853b-5a007c766e46" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="d77a822d-905e-4528-9ed6-ec75d1cd4d4d" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/authentifierUtilisateur"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer" id="f9e33278-db3f-4606-95a9-c439919b7924"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>transfertId</con:name><con:sourceType>Response</con:sourceType><con:sourceStep>authentifierUtilisateur - Request 1</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://contrat.webapp.biblioService.org/';
+
+/soap:Envelope/soap:Body/ns1:authentifierUtilisateurResponse/return/id/text()</con:sourcePath><con:targetType>id</con:targetType><con:targetStep>#TestCase#</con:targetStep><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" id="2ecddb36-74b1-4da8-9259-2289a760b00f" name="modifierUtilisateur - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UtilisateurServiceServiceSoapBinding</con:interface><con:operation>modifierUtilisateur</con:operation><con:request name="modifierUtilisateur - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="3c18460a-61e6-479e-99d6-0b09ac2509f0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:modifierUtilisateur>\r
+         <id>${#TestCase#id}</id>
+         <!--Optional:-->\r
+         <ancienMdp>${#TestCase#mdp}</ancienMdp>\r
+         <!--Optional:-->\r
+         <nouveauNom>${#TestCase#nouveauNom}</nouveauNom>
+         <!--Optional:-->
+         <nouveauPrenom>${#TestCase#nouveauPrenom}</nouveauPrenom>
+         <!--Optional:-->
+         <nouveauEmail>${#TestCase#nouveauEmail}</nouveauEmail>
+         <!--Optional:-->
+         <nouveauMdp>${#TestCase#nouveauMdp}</nouveauMdp>
+      </con:modifierUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b38083dd-c825-4976-bc54-b025119267e7" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="80cb35bc-7431-4d8e-b3a1-f990cd4a8a3d" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/modifierUtilisateur"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="14237718-028a-4a50-aed4-fabd51d28f3d" name="authentifierUtilisateur - Request 2"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UtilisateurServiceServiceSoapBinding</con:interface><con:operation>authentifierUtilisateur</con:operation><con:request name="authentifierUtilisateur - Request 2" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="0251be8e-22c4-4b0d-8421-e44665d492c9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <con:authentifierUtilisateur>
+         <!--Optional:-->
+         <email>${#TestCase#nouveauEmail}</email>
+         <!--Optional:-->
+         <mdp>${#TestCase#nouveauMdp}</mdp>
+      </con:authentifierUtilisateur>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b53b5968-af8d-40a6-8097-346578903ad6" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="7c642f9c-5f72-4343-a26e-b382b240af17" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/authentifierUtilisateur"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="1d3bd8b2-5a0b-4e25-8f20-87f55b719e5f" name="supprimerUtilisateur - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>UtilisateurServiceServiceSoapBinding</con:interface><con:operation>supprimerUtilisateur</con:operation><con:request name="supprimerUtilisateur - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="64ee2bd8-0693-4077-8b22-165f4d004fa7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://contrat.webapp.biblioService.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:supprimerUtilisateur>\r
+         <id>${#TestCase#id}</id>
+         <!--Optional:-->\r
+         <mdp>${#TestCase#nouveauMdp}</mdp>\r
+      </con:supprimerUtilisateur>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="cb4f04b4-ac27-4b27-9662-6b774f2ab5d7" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="dd938f35-3adc-4037-8ce9-e8947c8cd8e3" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://contrat.webapp.biblioService.org/UtilisateurService/supprimerUtilisateur"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>id</con:name><con:value>619</con:value></con:property><con:property><con:name>nom</con:name><con:value>jLeZSbxyimjESmKiM</con:value></con:property><con:property><con:name>prenom</con:name><con:value>ChzLo</con:value></con:property><con:property><con:name>email</con:name><con:value>23343lx9u7i@9wadkd8ek4l.uxk</con:value></con:property><con:property><con:name>mdp</con:name><con:value>pHv6qµ^^sjM/jp3rbX*v@a1*</con:value></con:property><con:property><con:name>nouveauNom</con:name><con:value>pXcuMrZyhuwGaJVEW</con:value></con:property><con:property><con:name>nouveauPrenom</con:name><con:value>sEppu</con:value></con:property><con:property><con:name>nouveauEmail</con:name><con:value>h5x7bd1lzu6@s2crap0ozxw.jxd</con:value></con:property><con:property><con:name>nouveauMdp</con:name><con:value>#PODHpdEE@NA5usCA:*TFa1*</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

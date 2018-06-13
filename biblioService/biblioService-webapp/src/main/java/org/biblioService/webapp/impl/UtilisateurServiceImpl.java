@@ -1,15 +1,15 @@
 package org.biblioService.webapp.impl;
 
 import javax.inject.Inject;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioService.business.contrat.ManagerFactory;
 import org.biblioService.model.bean.Utilisateur;
+import org.biblioService.model.exception.AuthentificationException;
 import org.biblioService.model.exception.AutreException;
+import org.biblioService.model.exception.NotFoundException;
 import org.biblioService.model.exception.ParamsInvalidException;
 import org.biblioService.model.exception.TechnicalException;
-import org.biblioService.model.exception.NotFoundException;
 import org.biblioService.webapp.contrat.UtilisateurService;
 
 public class UtilisateurServiceImpl implements UtilisateurService {
@@ -29,7 +29,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public Utilisateur authentifierUtilisateur(String pEmail, String pMdp) throws AutreException, NotFoundException {
+	public Utilisateur authentifierUtilisateur(String pEmail, String pMdp) throws AuthentificationException, NotFoundException {
 		LOGGER.traceEntry("email = " + pEmail + " mdp = " + pMdp);
 
 		Utilisateur vUtilisateur = managerFactory.getUtilisateurManager().authentifierUtilisateur(pEmail, pMdp);
@@ -39,20 +39,20 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public void modifierUtilisateur(int pId, String pNouveauNom, String pNouveauPrenom,String pNouveauMail, String pNouveauMdp) throws NotFoundException, ParamsInvalidException, TechnicalException {
-		LOGGER.traceEntry("id = " + pId + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
+	public void modifierUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom,String pNouveauMail, String pNouveauMdp) throws NotFoundException, AuthentificationException, ParamsInvalidException, TechnicalException {
+		LOGGER.traceEntry("id = " + pId + " ancienMdp = " + pAncienMdp + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
 
-		managerFactory.getUtilisateurManager().updateUtilisateur(pId, pNouveauNom, pNouveauPrenom, pNouveauMail, pNouveauMdp);
+		managerFactory.getUtilisateurManager().updateUtilisateur(pId, pAncienMdp, pNouveauNom, pNouveauPrenom, pNouveauMail, pNouveauMdp);
 		
 		LOGGER.traceExit();
 
 	}
 
 	@Override
-	public void supprimerUtilisateur(int pId)  throws TechnicalException, AutreException{
-		LOGGER.traceEntry("id = " + pId);
+	public void supprimerUtilisateur(int pId, String pMdp)  throws NotFoundException, AuthentificationException,TechnicalException, AutreException{
+		LOGGER.traceEntry("id = " + pId + " mdp = " + pMdp);
 		
-		managerFactory.getUtilisateurManager().deleteUtilisateur(pId);
+		managerFactory.getUtilisateurManager().deleteUtilisateur(pId, pMdp);
 		
 		LOGGER.traceExit();
 	}
