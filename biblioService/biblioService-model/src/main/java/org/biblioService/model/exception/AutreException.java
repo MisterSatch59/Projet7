@@ -1,7 +1,7 @@
 package org.biblioService.model.exception;
 
 /**
- * Exception levé lorsque l'authentification d'un utilisateur est incorrrecte
+ * Exception "simple" contenant un deuxième message d'erreur plus détaillé
  * @author Oltenos
  *
  */

@@ -5,23 +5,11 @@ package org.biblioService.model.exception;
  * @author Oltenos
  *
  */
-public class NotFoundException extends Exception {
+public class NotFoundException extends AutreException {
 	private static final long serialVersionUID = 1L;
 	
 	public NotFoundException() {
 		super("Element(s) non trouvé(s).");
-	}
-
-	// message d'erreur
-	private String messageErreur;
-
-	//Getters et Setters
-	public String getMessageErreur() {
-		return messageErreur;
-	}
-
-	public void setMessageErreur(String messageErreur) {
-		this.messageErreur = messageErreur;
 	}
 
 }

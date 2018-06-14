@@ -18,19 +18,31 @@
 	<context:annotation-config />
 
 	<!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
-	<context:component-scan base-package="org.biblioService" />
+	<context:component-scan
+		base-package="org.biblioService" />
 
 	<!-- Création du bean "dataSource" -->
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/DB" />
 	</bean>
 
 	<!-- Déclartion des web services -->
 	<jaxws:server
-		serviceClass="org.biblioService.webapp.contrat.UtilisateurService"
-		address="/utilisateur" serviceBean="#utilisateur">
+		serviceClass="org.biblioService.webapp.utilisateurService.generated.UtilisateurService"
+		address="/utilisateur" serviceBean="#utilisateur"
+		wsdlLocation="wsdl/UtilisateurService.wsdl">
 	</jaxws:server>
-	
-	<bean id="utilisateur" class="org.biblioService.webapp.impl.UtilisateurServiceImpl" />
+
+	<bean id="utilisateur" class="org.biblioService.webapp.utilisateurService.impl.UtilisateurServiceImpl" />
+
+	<jaxws:server
+		serviceClass="org.biblioService.webapp.livreService.generated.LivreService"
+		address="/livre" serviceBean="#livre"
+		wsdlLocation="wsdl/LivreService.wsdl">
+	</jaxws:server>
+
+	<bean id="livre" class="org.biblioService.webapp.livreService.impl.LivreServiceImpl" />
+
 
 </beans>

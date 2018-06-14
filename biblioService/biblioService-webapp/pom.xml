@@ -93,5 +93,41 @@
 		<finalName>biblioService</finalName>
 	</build>
 
-
+		<profiles>
+		<!-- Profil pour générer les sources -->
+		<profile>
+			<id>genererService</id>
+			<build>
+	
+				<plugins>
+					<plugin>
+						<groupId>org.apache.cxf</groupId>
+						<artifactId>cxf-codegen-plugin</artifactId>
+						<version>${cxf.version}</version>
+						<executions>
+							<execution>
+								<id>generate-sources</id>
+								<phase>generate-sources</phase>
+								<configuration>
+									<wsdlRoot>${basedir}/src/main/resources/wsdl</wsdlRoot>
+									<wsdlOptions>
+										<wsdlOption>
+											<wsdl>${basedir}/src/main/resources/wsdl/LivreService.wsdl</wsdl>
+										</wsdlOption>
+										<wsdlOption>
+											<wsdl>${basedir}/src/main/resources/wsdl/UtilisateurService.wsdl</wsdl>
+										</wsdlOption>
+									</wsdlOptions>
+								</configuration>
+								<goals>
+									<goal>wsdl2java</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
 </project>

@@ -108,6 +108,13 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 
 		// Récupération de l'utilisateur correspondant à l'email - NotFoundException si n'existe pas dans la base de données
 		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pEmail);
+		
+		if(vUtilisateurBD==null) {
+			// lance une NotFoundException si la recherche ne retourne aucun resultat
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun utilisateur ne correspond à cet email.");
+			throw vException;
+		}
 
 		// Vérification du mdp - AuthentificationException si le mdp ne correspond pas
 		verifierMdp(pMdp, vUtilisateurBD);
@@ -126,8 +133,15 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 	public void updateUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom, String pNouveauMail, String pNouveauMdp) throws NotFoundException, AuthentificationException, ParamsInvalidException, TechnicalException {
 		LOGGER.traceEntry("id = " + pId + " ancienMdp = " + pAncienMdp + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
 
-		//Recupération de l'utilisateur - NotFoundException si n'existe pas dans la base de données
+		//Recupération de l'utilisateur
 		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+		
+		// lance une NotFoundException si la recherche ne retourne aucun resultat
+		if(vUtilisateurBD==null) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun utilisateur ne correspond à cet identifiant.");
+			throw vException;
+		}
 		
 		//Vérifie l'ancien Mdp - AuthentificationException si le mdp ne correspond pas
 		verifierMdp(pAncienMdp, vUtilisateurBD);
@@ -190,8 +204,15 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 	public void deleteUtilisateur(int pId, String pMdp) throws NotFoundException, AuthentificationException,TechnicalException, AutreException {
 		LOGGER.traceEntry("id = " + pId);
 		
-		// Recupération de l'utilisateur - NotFoundException si n'existe pas dans la base de données
+		// Recupération de l'utilisateur
 		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+		
+		// lance une NotFoundException si la recherche ne retourne aucun resultat
+		if(vUtilisateurBD==null) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun utilisateur ne correspond à cet identifiant.");
+			throw vException;
+		}
 
 		// Vérifie le Mdp - AuthentificationException si le mdp ne correspond pas
 		verifierMdp(pMdp, vUtilisateurBD);

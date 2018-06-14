@@ -1,5 +1,6 @@
 package org.biblioService.business.contrat;
 
+import org.biblioService.business.contrat.manager.LivreManager;
 import org.biblioService.business.contrat.manager.UtilisateurManager;
 
 /**
@@ -16,5 +17,11 @@ public interface ManagerFactory {
 	 * @return UtilisateurManager
 	 */
 	public UtilisateurManager getUtilisateurManager();
+
+	/**
+	 * Retourne le LivreManager
+	 * @return LivreManager
+	 */
+	public LivreManager getLivreManager();
 
 }

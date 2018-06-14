@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.biblioService.consumer.contrat.dao.UtilisateurDao;
 import org.biblioService.consumer.impl.rowmapper.UtilisateurRM;
 import org.biblioService.model.bean.UtilisateurBD;
-import org.biblioService.model.exception.NotFoundException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
@@ -48,7 +47,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 	}
 
 	@Override
-	public UtilisateurBD getUtilisateur(String pEmail) throws NotFoundException {
+	public UtilisateurBD getUtilisateur(String pEmail){
 		LOGGER.traceEntry("email = " + pEmail);
 
 		// Recherche de l'utilisateur dans la base de données
@@ -60,10 +59,8 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
 		List<UtilisateurBD> vListUtilisateurBD = vJdbcTemplate.query(vSQL, vParams, utilisateurRM);
-		if (vListUtilisateurBD.isEmpty()) {// lance une NotFoundException si la recherche ne retourne aucun resultat
-			NotFoundException vException = new NotFoundException();
-			vException.setMessageErreur("Aucun utilisateur ne correspond à cet email.");
-			throw vException;
+		if (vListUtilisateurBD.isEmpty()) {//Retourne null si la recherche ne retourne aucun resultat
+			return null;
 		} else {// Retoune le premier (et unique) élément sinon
 			LOGGER.traceExit(vListUtilisateurBD.get(0));
 			return vListUtilisateurBD.get(0);
@@ -72,7 +69,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 	}
 
 	@Override
-	public UtilisateurBD getUtilisateur(int pId) throws NotFoundException {
+	public UtilisateurBD getUtilisateur(int pId){
 		LOGGER.traceEntry("id = " + pId);
 
 		// Recherche de l'utilisateur dans la base de données
@@ -84,10 +81,8 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
 		List<UtilisateurBD> vListUtilisateurBD = vJdbcTemplate.query(vSQL, vParams, utilisateurRM);
-		if (vListUtilisateurBD.isEmpty()) {// lance une NotFoundException si la recherche ne retourne aucun resultat
-			NotFoundException vException = new NotFoundException();
-			vException.setMessageErreur("Aucun utilisateur ne correspond à cet identifiant.");
-			throw vException;
+		if (vListUtilisateurBD.isEmpty()) {//Retourne null si la recherche ne retourne aucun resultat
+			return null;
 		} else {// Retoune le premier (et unique) élément sinon
 			LOGGER.traceExit(vListUtilisateurBD.get(0));
 			return vListUtilisateurBD.get(0);

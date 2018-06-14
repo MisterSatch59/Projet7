@@ -1,7 +1,6 @@
 package org.biblioService.consumer.contrat.dao;
 
 import org.biblioService.model.bean.UtilisateurBD;
-import org.biblioService.model.exception.NotFoundException;
 
 /**
  * UtilisateurDAO
@@ -21,18 +20,16 @@ public interface UtilisateurDao {
 	 * Retourne l'utilisateur correspondant à l'email
 	 * @param pEmail
 	 * @return Utilisateur
-	 * @throws NotFoundException lancé lorque aucun utilisateur ne correspond à l'email
 	 */
-	UtilisateurBD getUtilisateur(String pEmail) throws NotFoundException;
+	UtilisateurBD getUtilisateur(String pEmail);
 
 	
 	/**
 	 * Retourne l'utilisateur correspondant à l'id
 	 * @param pId
 	 * @return UtilisateurBD
-	 * @throws NotFoundException
 	 */
-	UtilisateurBD getUtilisateur(int pId) throws NotFoundException;
+	UtilisateurBD getUtilisateur(int pId);
 
 	/**
 	 * Modifie utilisateur dans la base de données

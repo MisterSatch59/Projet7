@@ -403,3 +403,4 @@ INSERT INTO public.utilisateur (id,email,nom,prenom,mdp,sel) VALUES (1,'jeremylo
 
 -- Pret
 INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (1,{d '2018-06-06'} ,false , 1, 5);
+
