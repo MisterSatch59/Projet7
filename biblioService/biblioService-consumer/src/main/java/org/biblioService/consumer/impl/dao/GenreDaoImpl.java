@@ -7,6 +7,7 @@ import javax.inject.Named;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioService.consumer.contrat.dao.GenreDao;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
@@ -33,5 +34,20 @@ public class GenreDaoImpl extends AbstractDaoImpl implements GenreDao {
 			LOGGER.traceExit("vListGenre = " + vListGenre);
 			return vListGenre;
 		}
+	}
+
+	@Override
+	public List<String> getGenres() {
+		LOGGER.traceEntry();
+
+		// Recherche dans la base de données
+		String vSQL = "SELECT nom FROM public.genre ";
+
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+
+		List<String> vListGenre = vJdbcTemplate.queryForList(vSQL, String.class);
+
+		LOGGER.traceExit("vListGenre = " + vListGenre);
+		return vListGenre;
 	}
 }

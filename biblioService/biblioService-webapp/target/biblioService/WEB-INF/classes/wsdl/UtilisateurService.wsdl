@@ -9,8 +9,7 @@
 		<xsd:schema
 			targetNamespace="http://www.example.org/UtilisateurService/"
 			xmlns:Q1="http://www.example.org/types">
-			<xsd:import schemaLocation="../beans.xsd"
-				namespace="http://www.example.org/types"></xsd:import>
+			<xsd:import schemaLocation="../beans.xsd" namespace="http://www.example.org/types"></xsd:import>
 			<xsd:element name="creerUtilisateur">
 				<xsd:complexType>
 					<xsd:sequence minOccurs="1" maxOccurs="1">

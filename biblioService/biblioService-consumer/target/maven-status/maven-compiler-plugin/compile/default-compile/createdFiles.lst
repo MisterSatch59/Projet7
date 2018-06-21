@@ -11,6 +11,8 @@ org\biblioService\consumer\contrat\dao\ExemplaireDao.class
 org\biblioService\consumer\impl\dao\EditeurDaoImpl.class
 org\biblioService\consumer\contrat\dao\DaoFactory.class
 org\biblioService\consumer\contrat\dao\ParagrapheDao.class
+org\biblioService\consumer\impl\dao\BibliothequeDaoImpl.class
+org\biblioService\consumer\impl\dao\LangueDaoImpl.class
 org\biblioService\consumer\impl\dao\AbstractDaoImpl.class
 org\biblioService\consumer\impl\dao\LivreDaoImpl.class
 org\biblioService\consumer\contrat\dao\LivreDao.class
@@ -21,8 +23,10 @@ org\biblioService\consumer\impl\rowmapper\PretRM.class
 org\biblioService\consumer\impl\dao\ExemplaireDaoImpl.class
 org\biblioService\consumer\impl\rowmapper\ExemplaireRM.class
 org\biblioService\consumer\contrat\dao\DescriptionDao.class
+org\biblioService\consumer\contrat\dao\LangueDao.class
 org\biblioService\consumer\impl\dao\DaoFactoryImpl.class
 org\biblioService\consumer\contrat\dao\GenreDao.class
 org\biblioService\consumer\contrat\dao\UtilisateurDao.class
 org\biblioService\consumer\impl\dao\GenreDaoImpl.class
+org\biblioService\consumer\contrat\dao\BibliothequeDao.class
 org\biblioService\consumer\impl\dao\PretDaoImpl.class

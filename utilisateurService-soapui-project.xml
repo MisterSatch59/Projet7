@@ -311,7 +311,7 @@
          <mdp>?</mdp>\r
       </util:creerUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/creerUtilisateurRequest"/></con:call></con:operation><con:operation id="29204f23-0103-47bd-92ec-f8a96a99bb7c" isOneWay="false" action="" name="modifierUtilisateur" bindingOperationName="modifierUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e005c11e-3d45-45d2-9b19-a40aafc9755f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/creerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="29204f23-0103-47bd-92ec-f8a96a99bb7c" isOneWay="false" action="" name="modifierUtilisateur" bindingOperationName="modifierUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e005c11e-3d45-45d2-9b19-a40aafc9755f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:modifierUtilisateur>\r
@@ -335,7 +335,400 @@
          <mdp>?</mdp>\r
       </util:supprimerUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="9795e4ac-0288-4cea-8780-5c6d2a9d3f30" name="TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="2ae6bb1b-5e06-482e-bf75-f307acd45f2a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="e7d174a5-fbd8-44d8-ae02-17ce79241b52"><con:settings/><con:config><script>import org.apache.commons.lang.RandomStringUtils;
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="626ba800-8f31-4b8e-b11e-f82869f7551f" wsaVersion="NONE" name="LivreServiceSOAP" type="wsdl" bindingName="{http://www.example.org/LivreService/}LivreServiceSOAP" soapVersion="1_1" anonymous="optional" definition="file:/C:/dev/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/LivreService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/dev/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/LivreService.wsdl"><con:part><con:url>file:/C:/dev/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/LivreService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LivreService" targetNamespace="http://www.example.org/LivreService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/LivreService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/LivreService/" xmlns:Q1="http://www.example.org/types">
+      <xsd:import schemaLocation="../beans.xsd" namespace="http://www.example.org/types"/>
+      <xsd:element name="rechercherLivre">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="1">
+            <xsd:element name="titre" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+            <xsd:element name="auteur" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+            <xsd:element name="genre" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+            <xsd:element name="langue" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rechercherLivreResponse">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="1">
+            <xsd:element name="livre" type="Q1:Livre" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="voirDispo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="isbn" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="voirDispoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="nombreEtBibliotheque" type="Q1:NombreEtBibliotheque" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listerPretEnCours">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="utilisateurId" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listerPretEnCoursResponse">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="1">
+            <xsd:element name="pret" type="Q1:Pret" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="prolongerPret">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="1">
+            <xsd:element name="pretId" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="prolongerPretResponse">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listerPretEnRetard">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listerPretEnRetardResponse">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="1">
+            <xsd:element name="pret" type="Q1:Pret" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="voirDispoFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FaultMessage" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listerPretEnCoursFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FaultMessage" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="prolongerPretFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="FaultMessage" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getLangues">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getLanguesResponse">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="langue" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGenres">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGenresResponse">
+        <xsd:complexType>
+          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+            <xsd:element name="genres" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="rechercherLivreRequest">
+    <wsdl:part element="tns:rechercherLivre" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="rechercherLivreResponse">
+    <wsdl:part element="tns:rechercherLivreResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="voirDispoRequest">
+    <wsdl:part name="parameters" element="tns:voirDispo"/>
+  </wsdl:message>
+  <wsdl:message name="voirDispoResponse">
+    <wsdl:part name="parameters" element="tns:voirDispoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnCoursRequest">
+    <wsdl:part name="parameters" element="tns:listerPretEnCours"/>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnCoursResponse">
+    <wsdl:part name="parameters" element="tns:listerPretEnCoursResponse"/>
+  </wsdl:message>
+  <wsdl:message name="prolongerPretRequest">
+    <wsdl:part name="parameters" element="tns:prolongerPret"/>
+  </wsdl:message>
+  <wsdl:message name="prolongerPretResponse">
+    <wsdl:part name="parameters" element="tns:prolongerPretResponse"/>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnRetardRequest">
+    <wsdl:part name="parameters" element="tns:listerPretEnRetard"/>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnRetardResponse">
+    <wsdl:part name="parameters" element="tns:listerPretEnRetardResponse"/>
+  </wsdl:message>
+  <wsdl:message name="voirDispoFault">
+    <wsdl:part name="parameters" element="tns:voirDispoFault"/>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnCoursFault">
+    <wsdl:part name="parameters" element="tns:listerPretEnCoursFault"/>
+  </wsdl:message>
+  <wsdl:message name="prolongerPretFault">
+    <wsdl:part name="parameters" element="tns:prolongerPretFault"/>
+  </wsdl:message>
+  <wsdl:message name="getLanguesRequest">
+    <wsdl:part name="parameters" element="tns:getLangues"/>
+  </wsdl:message>
+  <wsdl:message name="getLanguesResponse">
+    <wsdl:part name="parameters" element="tns:getLanguesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getGenresRequest">
+    <wsdl:part name="parameters" element="tns:getGenres"/>
+  </wsdl:message>
+  <wsdl:message name="getGenresResponse">
+    <wsdl:part name="parameters" element="tns:getGenresResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="LivreService">
+    <wsdl:operation name="rechercherLivre">
+      <wsdl:input message="tns:rechercherLivreRequest"/>
+      <wsdl:output message="tns:rechercherLivreResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="voirDispo">
+      <wsdl:input message="tns:voirDispoRequest"/>
+      <wsdl:output message="tns:voirDispoResponse"/>
+      <wsdl:fault name="fault" message="tns:voirDispoFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="listerPretEnCours">
+      <wsdl:input message="tns:listerPretEnCoursRequest"/>
+      <wsdl:output message="tns:listerPretEnCoursResponse"/>
+      <wsdl:fault name="fault" message="tns:listerPretEnCoursFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="prolongerPret">
+      <wsdl:input message="tns:prolongerPretRequest"/>
+      <wsdl:output message="tns:prolongerPretResponse"/>
+      <wsdl:fault name="fault" message="tns:prolongerPretFault"/>
+    </wsdl:operation>
+    <wsdl:operation name="listerPretEnRetard">
+      <wsdl:input message="tns:listerPretEnRetardRequest"/>
+      <wsdl:output message="tns:listerPretEnRetardResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getLangues">
+      <wsdl:input message="tns:getLanguesRequest"/>
+      <wsdl:output message="tns:getLanguesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getGenres">
+      <wsdl:input message="tns:getGenresRequest"/>
+      <wsdl:output message="tns:getGenresResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LivreServiceSOAP" type="tns:LivreService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="rechercherLivre">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="voirDispo">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listerPretEnCours">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="prolongerPret">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="fault"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listerPretEnRetard">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLangues">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGenres">
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LivreService">
+    <wsdl:port binding="tns:LivreServiceSOAP" name="LivreServiceSOAP">
+      <soap:address location="http://localhost:8080/biblioService/services/livre"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\dev\eclipse-workspace\Projet4\biblioService\biblioService-webapp\src\main\resources\beans.xsd</con:url><con:content><![CDATA[<schema targetNamespace="http://www.example.org/types" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/types">
+  <complexType name="Livre">
+    <sequence>
+      <element name="isbn" type="string" minOccurs="1"/>
+      <element name="titre" type="string" minOccurs="1"/>
+      <element name="editeur" type="tns:Editeur" minOccurs="1" maxOccurs="1"></element>
+      <element name="datePublication" type="date" minOccurs="1"/>
+      <element name="description" type="tns:Description" minOccurs="1" maxOccurs="1"></element>
+      <element name="langue" type="string" minOccurs="1"/>
+      <element name="auteur" type="tns:Auteur" minOccurs="1" maxOccurs="unbounded"></element>
+      <element name="genre" type="string" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="Editeur">
+    <sequence>
+      <element name="id" type="int" minOccurs="1"/>
+      <element name="nom" type="string" minOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="Description">
+    <sequence>
+      <element name="id" type="int" minOccurs="1"/>
+      <element name="titre" type="string" minOccurs="1"/>
+      <element name="paragraphes" type="string" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+  </complexType>
+  <complexType name="Auteur">
+    <sequence>
+      <element name="id" type="int" minOccurs="1"/>
+      <element name="nom" type="string" minOccurs="1"/>
+      <element name="prenom" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="Exemplaire">
+    <sequence>
+      <element name="id" type="int" minOccurs="1"/>
+      <element name="livre" type="tns:Livre" minOccurs="1"/>
+      <element name="bibliotheque" type="string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="UtilisateurBD">
+    <sequence>
+      <element name="id" type="int" minOccurs="1"/>
+      <element name="email" type="string" minOccurs="1"/>
+      <element name="nom" type="string" minOccurs="1"/>
+      <element name="prenom" type="string" minOccurs="0" maxOccurs="1"></element>
+      <element name="mdp" type="string" minOccurs="1" maxOccurs="1"></element>
+      <element name="sel" type="string" minOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="Utilisateur">
+    <sequence>
+      <element name="id" type="int" minOccurs="1"/>
+      <element name="email" type="string" minOccurs="1"/>
+      <element name="nom" type="string" minOccurs="1"/>
+      <element name="prenom" type="string" minOccurs="0" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="Pret">
+    <sequence>
+      <element name="id" type="int" minOccurs="1"/>
+      <element name="dateDebut" type="date" minOccurs="1"/>
+      <element name="dateFin" type="date" minOccurs="0" maxOccurs="1"/>
+      <element name="renouvele" type="boolean" minOccurs="1"/>
+      <element name="utilisateur" type="tns:Utilisateur" minOccurs="1" maxOccurs="1"/>
+      <element name="exemplaire" type="tns:Exemplaire" minOccurs="1"/>
+    </sequence>
+  </complexType>
+  <complexType name="NombreEtBibliotheque">
+    <sequence>
+      <element name="bibliotheque" type="string" minOccurs="1" maxOccurs="1"/>
+      <element name="nombre" type="int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+  </complexType>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint></con:endpoints><con:operation id="c9a8fdea-cefb-4620-9983-8dcca490e731" isOneWay="false" action="" name="getGenres" bindingOperationName="getGenres" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ea879710-1336-4df4-b87c-a2c7f3eb6b51" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:getGenres/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/getGenresRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3cbf005d-9625-457c-9a28-fcd54cc6b703" isOneWay="false" action="" name="getLangues" bindingOperationName="getLangues" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0d2aab8b-4508-444c-9c19-1bc73f8cd862" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:getLangues/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/getLanguesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="9373ea84-a43e-4fd6-a6c8-4e5690cb30f0" isOneWay="false" action="" name="listerPretEnCours" bindingOperationName="listerPretEnCours" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="90183ad5-300b-4fd9-8511-c5b0ae439cb4" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerPretEnCours>\r
+         <utilisateurId>1</utilisateurId>\r
+      </liv:listerPretEnCours>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/listerPretEnCoursRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d9110645-2bfe-4d77-87a9-24b411198ab8" isOneWay="false" action="" name="listerPretEnRetard" bindingOperationName="listerPretEnRetard" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d68e9233-fab1-4953-9140-d03679456a37" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerPretEnRetard/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/listerPretEnRetardRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="50f76b97-a236-4d6f-a653-44bd04f4b35b" isOneWay="false" action="" name="prolongerPret" bindingOperationName="prolongerPret" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3df838f1-70bd-4523-bba4-a5b1657fa631" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:prolongerPret>\r
+         <pretId>1</pretId>\r
+      </liv:prolongerPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/prolongerPretRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="186c229e-2ea8-445c-a56d-25dc856d5a56" isOneWay="false" action="" name="rechercherLivre" bindingOperationName="rechercherLivre" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5b8481dd-97ec-4ff9-896b-34b3d7968001" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:rechercherLivre>\r
+         <!--Optional:-->\r
+         <titre>feu</titre>\r
+         <!--Optional:-->\r
+         <auteur></auteur>\r
+         <!--Optional:-->\r
+         <genre></genre>\r
+         <!--Optional:-->\r
+         <langue></langue>\r
+      </liv:rechercherLivre>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/rechercherLivreRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="01e9de6d-a714-42a4-9214-4320b4a8a640" isOneWay="false" action="" name="voirDispo" bindingOperationName="voirDispo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b03090db-914b-4f8a-a048-ffc1061efef0" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:voirDispo>\r
+         <isbn>978-2070649693</isbn>\r
+      </liv:voirDispo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/voirDispoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="9795e4ac-0288-4cea-8780-5c6d2a9d3f30" name="TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="2ae6bb1b-5e06-482e-bf75-f307acd45f2a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="e7d174a5-fbd8-44d8-ae02-17ce79241b52"><con:settings/><con:config><script>import org.apache.commons.lang.RandomStringUtils;
 import java.util.concurrent.ThreadLocalRandom;
 
 //nom et prénom aléatoire
@@ -430,4 +823,4 @@ declare namespace ns2='http://www.example.org/types';
          <mdp>${#TestCase#nouveauMdp}</mdp>\r
       </util:supprimerUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2fcbe818-08ca-4e9c-9595-8466ee37ada1" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="67d4df98-1cfb-4e41-b709-f2408c2b7ff4" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>id</con:name><con:value>26</con:value></con:property><con:property><con:name>nom</con:name><con:value>ljJlHqASUVOtHYFIdTptZRLbqfiDHXiadbgpOkjmuOdPAzQKKtRgHqTmhrnguqDoAwFRHQiMhkFLCqLBBIOKoeFXeBuiGadAg</con:value></con:property><con:property><con:name>prenom</con:name><con:value>gvKYT MJpIElhotImcJy</con:value></con:property><con:property><con:name>email</con:name><con:value>9yh6m1zaypdk@gcv4duutie33.ezj</con:value></con:property><con:property><con:name>mdp</con:name><con:value>snrJLWUeuWaz!ZFNpX+mCw2k@d^5BR?x~Jcg4h4-n§:5²eThsu.2.a1*</con:value></con:property><con:property><con:name>nouveauNom</con:name><con:value>cCDNgygnsJPOAIlmeeHZXqlBGHpGLMEFvEpRPzAeySjNkdMBQIGmlqKVEiwdbYifOxlHOteKekvtaqJMuBuKFzIyJrGQhCAPL</con:value></con:property><con:property><con:name>nouveauPrenom</con:name><con:value>rSxMQWkYfcoQOu NIGQN</con:value></con:property><con:property><con:name>nouveauEmail</con:name><con:value>z7ax5uet2mx8@qnnppi5ycd34.skn</con:value></con:property><con:property><con:name>nouveauMdp</con:name><con:value>!:lyzDx!Sw8K§Yq^£FC4dp5rL8FzH@j^BKGuv?uF3wNj-8tva§ mTa1*</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>id</con:name><con:value>0</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2fcbe818-08ca-4e9c-9595-8466ee37ada1" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="67d4df98-1cfb-4e41-b709-f2408c2b7ff4" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>id</con:name><con:value>27</con:value></con:property><con:property><con:name>nom</con:name><con:value>pWREMNQIKwcIsAxxRwBGuhxqEFxydaPJDgdZvhpHsRKqNmXDNm FxmSl QIHMkzMwNuIuxDofqUMUXToOzNkAIyWZtC</con:value></con:property><con:property><con:name>prenom</con:name><con:value>VmKCuVNwWMxHQNkVxIzWKLcQGdeujtZstBrrurJFIngAZAWdeMxlmNMIYxvZWRoWQoIKuJbkAcNxh</con:value></con:property><con:property><con:name>email</con:name><con:value>hn3nflldhc0yoe18scg8cv@42jn33tdhn0mmkz2xkzz8h.pvu</con:value></con:property><con:property><con:name>mdp</con:name><con:value>QzjRRbPS9kSFu6£oY*DJ0F4Zpu5cµC Ac3WcHUh*rCvkv12na1*</con:value></con:property><con:property><con:name>nouveauNom</con:name><con:value>kcwOcIQqktnfxieTyZyvabeASHcmFIOMAjW KYIBv SmAaQsmhWuiTjrmrpKTXvTgdzEBIkbEwJI BJpYhKqBFCUlTd</con:value></con:property><con:property><con:name>nouveauPrenom</con:name><con:value>etkLtOpzHdGqrlfHhb XdNOsYdfAqqzgkJVOGKUePcisrLzAhOBYyLRPqdbAd syFVoKPAxnTLsUe</con:value></con:property><con:property><con:name>nouveauEmail</con:name><con:value>eobqwqapql0wlfobrntb5h@8iv1qrt2nzy2fuhyz0pwbi.yoy</con:value></con:property><con:property><con:name>nouveauMdp</con:name><con:value>16Cix6kZmmCmlnD;C£ Lj-/Bdx§£JroXPs,vs;wqbJwWuz la1*</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>id</con:name><con:value>0</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

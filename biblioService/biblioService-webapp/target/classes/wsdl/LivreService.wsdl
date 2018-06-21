@@ -9,11 +9,11 @@
 		<xsd:schema
 			targetNamespace="http://www.example.org/LivreService/"
 			xmlns:Q1="http://www.example.org/types">
-			<xsd:import schemaLocation="../beans.xsd"
+            <xsd:import schemaLocation="../beans.xsd"
 				namespace="http://www.example.org/types"></xsd:import>
 			<xsd:element name="rechercherLivre">
 				<xsd:complexType>
-					<xsd:sequence minOccurs="1" maxOccurs="1">
+					<xsd:sequence minOccurs="1" maxOccurs="1">
                         <xsd:element name="titre" type="xsd:string" minOccurs="0" maxOccurs="1">
 							</xsd:element>
                         <xsd:element name="auteur" type="xsd:string" minOccurs="0" maxOccurs="1">
@@ -36,28 +36,19 @@
 			</xsd:element>
 			<xsd:element name="voirDispo">
 				<xsd:complexType>
-
 					<xsd:sequence>
-						<xsd:element name="livreId"
-							type="xsd:int" minOccurs="1" maxOccurs="1">
+						<xsd:element name="isbn"
+							type="xsd:string" minOccurs="1" maxOccurs="1">
 						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="voirDispoResponse">
 				<xsd:complexType>
-
-					<xsd:sequence>
-
-						<xsd:sequence minOccurs="1"
-							maxOccurs="unbounded">
-							<xsd:element name="biliotheque"
-								type="xsd:string" minOccurs="1">
-							</xsd:element>
-							<xsd:element name="nombre"
-								type="xsd:int" minOccurs="1" maxOccurs="1">
-							</xsd:element>
-						</xsd:sequence>
+					<xsd:sequence>
+						<xsd:element name="nombreEtBibliotheque"
+							type="Q1:NombreEtBibliotheque" minOccurs="1" maxOccurs="unbounded">
+						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -128,6 +119,32 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
+			<xsd:element name="getLangues">
+				<xsd:complexType>
+
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getLanguesResponse">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+
+						<xsd:element name="langue" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getGenres">
+				<xsd:complexType>
+
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getGenresResponse">
+				<xsd:complexType>
+					<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+
+						<xsd:element name="genres" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="rechercherLivreRequest">
@@ -176,6 +193,18 @@
 		<wsdl:part name="parameters"
 			element="tns:prolongerPretFault"></wsdl:part>
 	</wsdl:message>
+	<wsdl:message name="getLanguesRequest">
+		<wsdl:part name="parameters" element="tns:getLangues"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getLanguesResponse">
+		<wsdl:part name="parameters" element="tns:getLanguesResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getGenresRequest">
+		<wsdl:part name="parameters" element="tns:getGenres"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getGenresResponse">
+		<wsdl:part name="parameters" element="tns:getGenresResponse"></wsdl:part>
+	</wsdl:message>
 	<wsdl:portType name="LivreService">
 		<wsdl:operation name="rechercherLivre">
 			<wsdl:input message="tns:rechercherLivreRequest" />
@@ -200,6 +229,14 @@
 		<wsdl:operation name="listerPretEnRetard">
 			<wsdl:input message="tns:listerPretEnRetardRequest"></wsdl:input>
 			<wsdl:output message="tns:listerPretEnRetardResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getLangues">
+			<wsdl:input message="tns:getLanguesRequest"></wsdl:input>
+			<wsdl:output message="tns:getLanguesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getGenres">
+			<wsdl:input message="tns:getGenresRequest"></wsdl:input>
+			<wsdl:output message="tns:getGenresResponse"></wsdl:output>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="LivreServiceSOAP" type="tns:LivreService">
@@ -247,6 +284,22 @@
 			</wsdl:fault>
 		</wsdl:operation>
 		<wsdl:operation name="listerPretEnRetard">
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getLangues">
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getGenres">
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>

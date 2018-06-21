@@ -1,4 +1,3 @@
-
 package org.biblioService.model.bean;
 
 import javax.xml.bind.annotation.XmlRegistry;

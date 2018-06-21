@@ -87,7 +87,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 			this.getPlatformTransactionManager().rollback(vTransactionStatus);
 			vTransactionStatus = null;
 			ParamsInvalidException vException = new ParamsInvalidException();
-			vLlistErreur.add("L'email est déjà utilisé par un autre utilisateur, merci d'entrer un autre email.");
+			vLlistErreur.add("L'email est déjà utilisé par un autre utilisateur.");
 			vException.setListErreur(vLlistErreur);
 			throw vException;
 		} finally {
@@ -185,7 +185,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 			this.getPlatformTransactionManager().rollback(vTransactionStatus);
 			vTransactionStatus = null;
 			ParamsInvalidException vException = new ParamsInvalidException();
-			vLlistErreur.add("L'email est déjà utilisé par un autre utilisateur, merci d'entrer un autre email.");
+			vLlistErreur.add("L'email est déjà utilisé par un autre utilisateur.");
 			vException.setListErreur(vLlistErreur);
 			throw vException;
 		} finally {

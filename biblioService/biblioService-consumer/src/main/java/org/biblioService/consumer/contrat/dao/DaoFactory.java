@@ -64,4 +64,16 @@ public interface DaoFactory {
 	 */
 	public ParagrapheDao getParagrapheDao();
 
+	/**
+	 * Retourne le BibliothequeDao
+	 * @return BibliothequeDao
+	 */
+	public BibliothequeDao getBibliothequeDao();
+
+	/**
+	 * Retourne le LangueDao
+	 * @return LangueDao
+	 */
+	public LangueDao getLangueDao();
+
 }

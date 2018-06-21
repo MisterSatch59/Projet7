@@ -93,7 +93,7 @@
 		<finalName>biblioService</finalName>
 	</build>
 
-		<profiles>
+	<profiles>
 		<!-- Profil pour générer les sources -->
 		<profile>
 			<id>genererService</id>

@@ -239,7 +239,7 @@ INSERT INTO public.langue (nom) VALUES ('Anglais');
 INSERT INTO public.langue (nom) VALUES ('Allemand');
 
 -- Auteurs
-INSERT INTO public.auteur (id,nom,prenom) VALUES (1,'Rowling' ,'J. K.');
+INSERT INTO public.auteur (id,nom,prenom) VALUES (1,'Rowling' ,'J.K.');
 
 -- Editeurs
 INSERT INTO public.editeur (id,nom) VALUES (1,'Gallimard Jeunesse');
@@ -404,3 +404,4 @@ INSERT INTO public.utilisateur (id,email,nom,prenom,mdp,sel) VALUES (1,'jeremylo
 -- Pret
 INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (1,{d '2018-06-06'} ,false , 1, 5);
 
+INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (2,{d '2018-04-06'} ,true , 1, 5);

@@ -14,4 +14,18 @@ public interface PretDao {
 	 */
 	List<Pret> getPretDebutAvant(Calendar pCalendar);
 
+	/**
+	 * Prolonge le pret dont l'id est en paramètre
+	 * @param pId
+	 */
+	void prolongerPret(int pId);
+
+	/**
+	 * Retourne la liste des prêt en cours de l'utilisateur
+	 * @param pUtilisateurId
+	 * @return List<Pret>
+	 */
+	List<Pret> getPretEnCours(int pUtilisateurId);
+
+
 }

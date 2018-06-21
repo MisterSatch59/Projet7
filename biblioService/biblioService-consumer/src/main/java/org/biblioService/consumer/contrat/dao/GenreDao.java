@@ -11,4 +11,10 @@ public interface GenreDao {
 	 */
 	List<String> getGenres(String vISBN);
 
+	/**
+	 * Retourne la liste des genres
+	 * @return List<String>
+	 */
+	List<String> getGenres();
+
 }

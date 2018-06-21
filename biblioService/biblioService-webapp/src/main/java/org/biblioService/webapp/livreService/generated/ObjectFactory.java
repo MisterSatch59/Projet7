@@ -132,4 +132,36 @@ public class ObjectFactory {
         return new ProlongerPretFault();
     }
 
+    /**
+     * Create an instance of {@link GetLangues }
+     * 
+     */
+    public GetLangues createGetLangues() {
+        return new GetLangues();
+    }
+
+    /**
+     * Create an instance of {@link GetLanguesResponse }
+     * 
+     */
+    public GetLanguesResponse createGetLanguesResponse() {
+        return new GetLanguesResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetGenres }
+     * 
+     */
+    public GetGenres createGetGenres() {
+        return new GetGenres();
+    }
+
+    /**
+     * Create an instance of {@link GetGenresResponse }
+     * 
+     */
+    public GetGenresResponse createGetGenresResponse() {
+        return new GetGenresResponse();
+    }
+
 }

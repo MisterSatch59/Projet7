@@ -42,4 +42,38 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
 		}
 	}
 
+	@Override
+	public void prolongerPret(int pId) {
+		LOGGER.traceEntry("pId = " + pId);
+		
+		String vSQL = "UPDATE public.pret SET renouvele = true WHERE id = :id";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("id", pId);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		vJdbcTemplate.update(vSQL, vParams);
+		
+		LOGGER.traceExit();
+	}
+
+	@Override
+	public List<Pret> getPretEnCours(int pUtilisateurId) {
+		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
+
+		// Recherche dans la base de données
+		String vSQL = "SELECT * FROM public.pret WHERE utilisateur_id = :id AND date_fin IS NULL";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("id", pUtilisateurId);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		List<Pret> vListPret = vJdbcTemplate.query(vSQL, vParams, pretRM);
+		
+		LOGGER.traceExit("vListPret = " + vListPret);
+		return vListPret;
+	}
+
 }

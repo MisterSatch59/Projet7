@@ -86,4 +86,11 @@
     		<element name="exemplaire" type="tns:Exemplaire" minOccurs="1"></element>
     	</sequence>
     </complexType>
+
+    <complexType name="NombreEtBibliotheque">
+    	<sequence>
+    		<element name="bibliotheque" type="string" minOccurs="1" maxOccurs="1"></element>
+    		<element name="nombre" type="int" minOccurs="1" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
 </schema>

@@ -1,30 +1,28 @@
 package org.biblioService.webapp.livreService.generated;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.biblioService.webapp.livreService.generated.types.NombreEtBibliotheque;
+
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * <p>Java-Klasse für anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;sequence maxOccurs="unbounded"&gt;
- *           &lt;element name="biliotheque" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *           &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;/sequence&gt;
+ *         &lt;element name="nombreEtBibliotheque" type="{http://www.example.org/types}NombreEtBibliotheque" maxOccurs="unbounded"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -35,45 +33,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "biliothequeAndNombre"
+    "nombreEtBibliotheque"
 })
 @XmlRootElement(name = "voirDispoResponse")
 public class VoirDispoResponse {
 
-    @XmlElements({
-        @XmlElement(name = "biliotheque", required = true, type = String.class),
-        @XmlElement(name = "nombre", required = true, type = Integer.class)
-    })
-    protected List<Serializable> biliothequeAndNombre;
+    @XmlElement(required = true)
+    protected List<NombreEtBibliotheque> nombreEtBibliotheque;
 
     /**
-     * Gets the value of the biliothequeAndNombre property.
+     * Gets the value of the nombreEtBibliotheque property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the biliothequeAndNombre property.
+     * This is why there is not a <CODE>set</CODE> method for the nombreEtBibliotheque property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getBiliothequeAndNombre().add(newItem);
+     *    getNombreEtBibliotheque().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * {@link Integer }
+     * {@link NombreEtBibliotheque }
      * 
      * 
      */
-    public List<Serializable> getBiliothequeAndNombre() {
-        if (biliothequeAndNombre == null) {
-            biliothequeAndNombre = new ArrayList<Serializable>();
+    public List<NombreEtBibliotheque> getNombreEtBibliotheque() {
+        if (nombreEtBibliotheque == null) {
+            nombreEtBibliotheque = new ArrayList<NombreEtBibliotheque>();
         }
-        return this.biliothequeAndNombre;
+        return this.nombreEtBibliotheque;
     }
 
 }

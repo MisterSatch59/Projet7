@@ -15,9 +15,6 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="utilisateurId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -26,28 +23,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "utilisateurId"
-})
-@XmlRootElement(name = "listerPretEnCours")
-public class ListerPretEnCours {
+@XmlType(name = "")
+@XmlRootElement(name = "getLangues")
+public class GetLangues {
 
-    protected int utilisateurId;
-
-    /**
-     * Ruft den Wert der utilisateurId-Eigenschaft ab.
-     * 
-     */
-    public int getUtilisateurId() {
-        return utilisateurId;
-    }
-
-    /**
-     * Legt den Wert der utilisateurId-Eigenschaft fest.
-     * 
-     */
-    public void setUtilisateurId(int value) {
-        this.utilisateurId = value;
-    }
 
 }

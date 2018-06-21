@@ -2,21 +2,22 @@ package org.biblioService.webapp.livreService.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour anonymous complex type.
+ * <p>Java-Klasse für anonymous complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="livreId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,27 +28,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "livreId"
+    "isbn"
 })
 @XmlRootElement(name = "voirDispo")
 public class VoirDispo {
 
-    protected int livreId;
+    @XmlElement(required = true)
+    protected String isbn;
 
     /**
-     * Obtient la valeur de la propriété livreId.
+     * Ruft den Wert der isbn-Eigenschaft ab.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getLivreId() {
-        return livreId;
+    public String getIsbn() {
+        return isbn;
     }
 
     /**
-     * Définit la valeur de la propriété livreId.
+     * Legt den Wert der isbn-Eigenschaft fest.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setLivreId(int value) {
-        this.livreId = value;
+    public void setIsbn(String value) {
+        this.isbn = value;
     }
 
 }
