@@ -4,19 +4,20 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="biblioService-business-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-business/biblioService-business">
+        <dependent-module archiveName="biblioService-business-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-business/biblioService-business">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="biblioService-consumer-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-consumer/biblioService-consumer">
+        <dependent-module archiveName="biblioService-consumer-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-consumer/biblioService-consumer">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="biblioService-model-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-model/biblioService-model">
+        <dependent-module archiveName="biblioService-model-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-model/biblioService-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="biblioService-technical-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-technical/biblioService-technical">
+        <dependent-module archiveName="biblioService-technical-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/biblioService-technical/biblioService-technical">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/biblioService-webapp/target/classes"/>
         <property name="context-root" value="biblioService"/>
+        <property name="component.exclusion.patterns"/>
     </wb-module>
 </project-modules>

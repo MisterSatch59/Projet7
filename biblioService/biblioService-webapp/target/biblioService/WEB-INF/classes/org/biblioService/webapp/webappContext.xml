@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:beans="http://cxf.apache.org/configuration/beans"
 	xmlns:jaxws="http://cxf.apache.org/jaxws"
 	xmlns:soap="http://cxf.apache.org/bindings/soap"
@@ -9,6 +10,8 @@
     http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
     http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/jee
+	http://www.springframework.org/schema/jee/spring-jee.xsd
     http://www.cxf.apache.org/bindings/soap
     http://www.cxf.apache.org/bindings/schemas/configuration/soap.xsd
     http://cxf.apache.org/jaxws
@@ -18,16 +21,21 @@
 	<context:annotation-config />
 
 	<!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
-	<context:component-scan
-		base-package="org.biblioService" />
+	<context:component-scan base-package="org.biblioService" />
 
 	<!-- Création du bean "dataSource" -->
-	<bean id="dataSource"
-		class="org.springframework.jndi.JndiObjectFactoryBean">
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/DB" />
 	</bean>
 
-	<!-- Déclartion des web services -->
+	<!-- Création du Bean dureePret -->
+	<bean id="donnees" class="org.biblioService.business.Donnees">
+		<property name="DUREE_PRET_EN_JOUR">
+			<jee:jndi-lookup jndi-name="java:comp/env/dureePret" />
+		</property>
+	</bean>
+
+	<!-- Déclaration des web services -->
 	<jaxws:server
 		serviceClass="org.biblioService.webapp.utilisateurService.generated.UtilisateurService"
 		address="/utilisateur" serviceBean="#utilisateur"

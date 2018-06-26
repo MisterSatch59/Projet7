@@ -6,10 +6,12 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.biblioService.business.Donnees;
 import org.biblioService.business.contrat.manager.LivreManager;
 import org.biblioService.model.bean.Livre;
 import org.biblioService.model.bean.Pret;
@@ -23,11 +25,14 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 public class LivreManagerImpl  extends AbstractManagerImpl implements LivreManager {
 	private static final Logger LOGGER = LogManager.getLogger(LivreManagerImpl.class);
 	
-	private static int DUREE_PRET_EN_JOUR = 28;//TODO definir la durée de pret en fichier config ici en dur à 28 jours
+	@Inject
+	private Donnees donnees;
 
 	@Override
 	public List<Pret> getPretEnRetard() {
 		LOGGER.traceEntry();
+		
+		int DUREE_PRET_EN_JOUR = donnees.getDUREE_PRET_EN_JOUR();
 		
 		Calendar vCalendar = Calendar.getInstance();
 		vCalendar.add(Calendar.DATE, -DUREE_PRET_EN_JOUR);
