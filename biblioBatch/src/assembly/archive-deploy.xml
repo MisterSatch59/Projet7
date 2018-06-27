@@ -1,0 +1,37 @@
+<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+	xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+	<!-- Identifiant de l'assemblage -->
+	<id>archive-deploy</id>
+
+	<!-- Les formats d'archive à générer -->
+	<formats>
+		<format>zip</format>
+	</formats>
+	
+	<!-- lib : dépendances -->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+	<files>
+		<!-- Fichier JAR -->
+		<file>
+			<source>target/biblioBatch-1.0.jar</source>
+			<outputDirectory></outputDirectory>
+		</file>
+		<!-- Fichiers de configuration -->
+		<file>
+			<source>src/main/resources/config.properties</source>
+			<outputDirectory>conf</outputDirectory>
+		</file>
+		<file>
+			<source>src/main/resources/application.properties</source>
+			<outputDirectory>conf</outputDirectory>
+		</file>
+	</files>
+</assembly>
