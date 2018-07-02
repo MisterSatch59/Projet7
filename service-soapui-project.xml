@@ -712,7 +712,7 @@
    <soapenv:Body>\r
       <liv:rechercherLivre>\r
          <!--Optional:-->\r
-         <titre>feu</titre>\r
+         <titre></titre>\r
          <!--Optional:-->\r
          <auteur></auteur>\r
          <!--Optional:-->\r

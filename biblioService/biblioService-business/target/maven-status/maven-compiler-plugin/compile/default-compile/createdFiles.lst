@@ -1,9 +1,0 @@
-org\biblioService\business\Donnees.class
-org\biblioService\business\contrat\manager\UtilisateurManager.class
-org\biblioService\business\impl\manager\LivreManagerImpl.class
-org\biblioService\business\impl\ManagerFactoryImpl.class
-org\biblioService\business\contrat\ManagerFactory.class
-org\biblioService\business\impl\manager\UtilisateurManagerImpl.class
-org\biblioService\business\contrat\manager\LivreManager.class
-org\biblioService\business\impl\PasswordUtils.class
-org\biblioService\business\impl\manager\AbstractManagerImpl.class
