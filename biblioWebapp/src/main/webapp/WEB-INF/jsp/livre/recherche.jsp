@@ -11,36 +11,37 @@
 	<%@ include file="/WEB-INF/jsp/_include/header.jsp"%>
 
 	<!-- Titre -->
-	<div class="row aligneCentre">
+	<div class="row">
 		<div class="col-xs-12">
 			<h1>Recherche</h1>
 		</div>
 	</div>
 	
 	<!-- Cadre recherche -->
-	<div class="row marge cadrePerso">
-		<s:form theme="css_xhtml">
-			<div class="formInLinePerso">
-				<s:textfield id = "titre" name="titre" label="Titre" requiredLabel="false" cssClass="form-control"/>
-				<s:textfield id = "auteur" name="auteur" label="Auteur" requiredLabel="false" cssClass="form-control"/>
-				<s:select id = "genre" name="genre" label="Genre" list="genres" emptyOption="true" requiredLabel="false" cssClass="form-control" />
-				<s:select id = "langue" name="langue" label="Langue" list="langues" emptyOption="true" requiredLabel="false" cssClass="form-control" />
+	<div class="row">
+		<div class="jumbotron col-xs-12 marge">
+			<s:form theme="css_xhtml">
+				<div class="formInLinePerso">
+					<s:textfield id = "titre" name="titre" label="Titre" requiredLabel="false" cssClass="form-control"/>
+					<s:textfield id = "auteur" name="auteur" label="Auteur" requiredLabel="false" cssClass="form-control"/>
+					<s:select id = "genre" name="genre" label="Genre" list="genres" emptyOption="true" requiredLabel="false" cssClass="form-control" />
+					<s:select id = "langue" name="langue" label="Langue" list="langues" emptyOption="true" requiredLabel="false" cssClass="form-control" />
+				</div>
+			</s:form>
+			<div class="row marge">
+				<button onclick="recherche()" class="btn btn-primary col-xs-offset-4 col-xs-4">Lancer la recherche</button>
 			</div>
-		</s:form>
-		<div class="row marge">
-			<button onclick="recherche()"  class="btn btn-primary col-xs-offset-4 col-xs-4">Lancer la recherche</button>
 		</div>
 	</div>
 	
 	<!-- Résultats -->
-	<div class="row marge">
-		<div class="col-md-12" id="aucunResultat">
-			<div class="jumbotron">
-				<p>Aucun resultat...</p>
-			</div>
+	<div class="row">
+		<div class="jumbotron col-xs-12 marge" id="aucunResultat">
+				<p>Aucun résultat...</p>
 		</div>
 	
-		<div id="rechercheListe" class="col-xs-12">
+		<div class="jumbotron col-xs-12 marge" id="rechercheListe">
+		
 		</div>
 	</div>
 
@@ -51,6 +52,8 @@
 		$(document).ready(function() {
 			var aucunResult = $("#aucunResultat");
 			aucunResult.hide();
+			var rechercheListe = $("#rechercheListe");
+			rechercheListe.hide();
 		});
 	
 		function recherche() {
@@ -65,56 +68,87 @@
 					langue: jQuery("#langue").val()
 			};
 			
-			//Masque le texte "aucun résultat"
+			//Masque les jumbotron  aucunResultat et rechercheListe
 			var aucunResult = $("#aucunResultat");
 			aucunResult.hide();
-	
+			var rechercheListe = $("#rechercheListe");
+			rechercheListe.hide();
+			
 			// Action AJAX en POST
 			jQuery.post(
 				url,
 				params,
 				function (data) {
-					var $rechercheListe = jQuery("#rechercheListe");
-					$rechercheListe.empty();
-					
-					var detail = '';
-
-					jQuery.each(data, function(key, val) {
-						detail += '<ul id="rechercheListe" class="list-unstyled cadrePerso marge">';
-						detail += '<li>' + 'Titre : ' + val.titre;
-						detail += '<li>' + 'Publié le : ' + val.datePublication.day +'/'+ val.datePublication.month +'/'+ val.datePublication.year;
-						detail += '<li>' + 'Aux éditions ' + val.editeur.nom;
-						detail += '<li>' + 'De : ';
-						$.each(val.auteur, function(i, obj) {
-							detail += obj.prenom + ' ' + obj.nom + ' ';
+					rechercheListe.empty();
+					if(data==null){
+						aucunResult.show();
+					}else{
+						jQuery.each(data, function(key, val) {
+							//Affichage des éléments des livres
+							var detail = '';
+							detail += '<ul id="dispoListe'+ val.isbn +'" class="list-unstyled cadrePerso marge">';
+							detail += '<li>' + 'Titre : ' + val.titre;
+							detail += '<li>' + 'Publié le : ' + val.datePublication.day +'/'+ val.datePublication.month +'/'+ val.datePublication.year;
+							detail += '<li>' + 'Aux éditions ' + val.editeur.nom;
+							detail += '<li>' + 'De : ';
+							$.each(val.auteur, function(i, obj) {
+								detail += obj.prenom + ' ' + obj.nom + ' ';
+							});
+							if(val.description.titre == null){
+								detail += '<li>' + 'Description : ';
+							}else{
+								detail += '<li>' + 'Description : ' + val.description.titre;
+							}
+							$.each(val.description.paragraphes, function(i, obj) {
+								detail += '<li>' + obj;
+							});
+							detail += '<li>' + 'Genres : ';
+							$.each(val.genre, function(i, obj) {
+								detail += obj + ' ';
+							});
+							detail += '<li>' + 'Langue : ' + val.langue;
+							detail += '<li>' + '<button onclick="voirDispo(this)" id="'+ val.isbn +'" class="marge btn btn-primary ">Voir les disponibilités</button>'
+							
+							rechercheListe.append(detail);
+							rechercheListe.show();
 						});
-						if(val.description.titre == null){
-							detail += '<li>' + 'Description : ';
-						}else{
-							detail += '<li>' + 'Description : ' + val.description.titre;
-						}
-						$.each(val.description.paragraphes, function(i, obj) {
-							detail += '<li>' + obj;
-						});
-						detail += '<li>' + 'Genres : ';
-						$.each(val.genre, function(i, obj) {
-							detail += obj + ' ';
-						});
-						detail += '<li>' + 'Langue : ' + val.langue;
-						detail += '</ul>'
-						
-					});
-
-				if (detail == '') {
-					//Affiche le texte "aucun résultat"
-					aucunResult.show();
-				} else {
-					$rechercheListe.append(detail);
-				}
+					}
 			}).fail(function() {
 				alert("Une erreur s'est produite.");
 			});
 		}
+		
+		function voirDispo(that) {
+			// URL de l'action AJAX
+			var url = "<s:url action="voirDispo_ajax"/>";
+
+			var buttonIsbn = that.id;
+
+			// Paramètres de la requête AJAX
+			var params = {
+					isbn : buttonIsbn,
+			};
+
+			// Action AJAX en POST
+			jQuery.post(url, params, function(data) {
+				var nom = "#dispoListe"+buttonIsbn
+				var $dispoListe = jQuery(nom);
+				
+				var detail = '<li><ul class="list-unstyled cadrePerso marge">';
+				detail += '<li>Disponibilités : ';
+				
+				jQuery.each(data, function(key, val) {
+					detail += '<li>  ' + val.bibliotheque + ' : ' + val.nombre;
+				});
+				$dispoListe.append(detail);
+			}).fail(function(data) {
+				alert("Une erreur s'est produite.");
+			});
+			
+			$(that).prop("disabled",true);
+
+		}
+			
 	</script>
 </body>
 

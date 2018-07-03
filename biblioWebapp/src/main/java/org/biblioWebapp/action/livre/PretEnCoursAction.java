@@ -11,6 +11,11 @@ import org.biblioWebapp.services.generated.types.Pret;
 import org.biblioWebapp.services.generated.types.Utilisateur;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Action permettant l'affichage des prets en cours de l'utilisateur
+ * @author Oltenos
+ *
+ */
 public class PretEnCoursAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(PretEnCoursAction.class);

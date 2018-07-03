@@ -8,7 +8,7 @@
 </head>
 
 <body class="container">
-    <h2>Une erreur s''est produite</h2>
+    <h2>Une erreur s'est produite</h2>
 
     <s:actionerror />
 	

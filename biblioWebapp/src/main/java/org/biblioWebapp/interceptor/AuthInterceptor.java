@@ -5,6 +5,8 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
 /**
  * Interceptor permettant de vérifier que l'utilisateur est bien connecté
+ * @author Oltenos
+ *
  */
 public class AuthInterceptor extends AbstractInterceptor {
 

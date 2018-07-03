@@ -14,6 +14,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
+/**
+ * Classe effectuant l'envoie périodique des mails de relance
+ * @author Oltenos
+ *
+ */
 public class EnvoiMessage {
 
 	@Autowired
@@ -22,12 +27,12 @@ public class EnvoiMessage {
 	@Autowired
 	private Config config;
 
-	@Scheduled(cron = "0 0 8 * * MON-FRI", zone = "Europe/Paris")//Envoi du lundi au vendredi à 08h00
+	@Scheduled(cron = "${envoieMail.cron}", zone = "Europe/Paris")//Envoi du lundi au vendredi à 08h00
 	public void execute() {
 		System.out.println("Envoie des messages");
 		
 		JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
-		factory.setAddress("http://localhost:8080/biblioService/services/livre");
+		factory.setAddress(config.getLivreServiceAdresse());
 		factory.setServiceClass(LivreService.class);
 
 		LivreService client = (LivreService) factory.create();

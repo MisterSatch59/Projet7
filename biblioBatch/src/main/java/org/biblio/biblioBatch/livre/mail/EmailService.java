@@ -10,6 +10,11 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
+/**
+ * Class contenant les méthode d'envoie de mail
+ * @author Oltenos
+ *
+ */
 public class EmailService {
 
 	@Autowired

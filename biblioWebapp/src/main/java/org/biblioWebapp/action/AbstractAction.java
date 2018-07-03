@@ -6,13 +6,15 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.biblioWebapp.Config;
 import org.biblioWebapp.services.generated.livreservice.LivreService;
 import org.biblioWebapp.services.generated.utilisateurservice.UtilisateurService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
- * Superclasse de toute les classes contenant la session et l'accés aux services
+ * Superclasse de toutes les classes contenant la session et l'accés aux services
  * @author Oltenos
  *
  */
@@ -20,7 +22,9 @@ public abstract class AbstractAction extends ActionSupport  implements SessionAw
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(AbstractAction.class);
 
-
+	@Autowired
+	private Config config;
+	
 	private LivreService livreService;
 	
 	private UtilisateurService utilisateurService;
@@ -32,7 +36,7 @@ public abstract class AbstractAction extends ActionSupport  implements SessionAw
 
 		if(livreService==null) {
 			JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
-			factory.setAddress("http://localhost:8080/biblioService/services/livre");
+			factory.setAddress(config.getADRESSE_LIVRE_SERVICE());
 			factory.setServiceClass(LivreService.class);
 
 			livreService = (LivreService) factory.create();
@@ -47,7 +51,7 @@ public abstract class AbstractAction extends ActionSupport  implements SessionAw
 
 		if(utilisateurService==null) {
 			JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
-			factory.setAddress("http://localhost:8080/biblioService/services/utilisateur");
+			factory.setAddress(config.getADRESSE_UTILISATEUR_SERVICE());
 			factory.setServiceClass(UtilisateurService.class);
 
 			utilisateurService = (UtilisateurService) factory.create();

@@ -8,6 +8,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
+/**
+ * Class de lancement du Batch
+ * @author Oltenos
+ *
+ */
 public class Application implements ApplicationRunner {
 
 	public static void main(String[] args) throws Exception {

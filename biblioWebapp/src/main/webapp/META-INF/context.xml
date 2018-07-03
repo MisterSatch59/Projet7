@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+	<Environment
+		name="livreServiceAdresse"
+		value="http://localhost:8080/biblioService/services/livre"
+		type="java.lang.String"
+	/>
+	
+	<Environment
+		name="utilisateurServiceAdresse"
+		value="http://localhost:8080/biblioService/services/utilisateur"
+		type="java.lang.String"
+	/>
+	
+</Context>

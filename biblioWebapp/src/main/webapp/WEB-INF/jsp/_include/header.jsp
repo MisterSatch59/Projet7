@@ -13,13 +13,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<s:a action="index"> <img src="img/Logo.png" class="miniLogo" /></s:a>
+			<s:a action="index"><img src="img/Logo.png" class="miniLogo" /></s:a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><s:a action="index">Biblio</s:a></li>
 				<li><s:a action="parcourirBiblio">Parcourir la bibliothèque</s:a></li>
 				<s:if test="#session.utilisateur">
 					<li><s:a action="pretEnCours">Prêt en cours</s:a></li>
@@ -27,7 +26,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<s:if test="#session.utilisateur">
-					<li><s:a action="infoUtilisateur"><s:property value="#session.utilisateur.prenom" /> <s:property value="#session.utilisateur.nom" /> - Informations du comptes</s:a></li>
+					<li><s:a action="infoUtilisateur"><s:property value="#session.utilisateur.prenom" /> <s:property value="#session.utilisateur.nom" /> - Informations</s:a></li>
 					<li><s:a action="logout">Se déconnecter</s:a></li>
 				</s:if>
 				<s:else>

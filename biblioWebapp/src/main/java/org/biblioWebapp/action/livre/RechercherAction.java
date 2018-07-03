@@ -10,6 +10,11 @@ import org.biblioWebapp.services.generated.types.Livre;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Action AJAX de recherche de livre
+ * @author Oltenos
+ *
+ */
 public class RechercherAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(RechercherAction.class);

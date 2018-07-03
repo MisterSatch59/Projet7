@@ -13,7 +13,7 @@
 	<h1>Information du compte utilisateur</h1>
 	
 	<div class="row">
-		<div class="jumbotron col-lg-offset-2 col-lg-8 col-md-12 marge">
+		<div class="jumbotron col-sm-offset-2 col-sm-8 col-xs-12 marge">
 			
 				<h3>Nom : <s:property value="#session.utilisateur.nom" /></h3>
 				<h3>Prenom : <s:property value="#session.utilisateur.prenom" /></h3>

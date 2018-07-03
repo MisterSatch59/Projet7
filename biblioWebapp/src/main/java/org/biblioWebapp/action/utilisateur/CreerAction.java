@@ -12,6 +12,11 @@ import org.biblioWebapp.services.generated.utilisateurservice.UtilisateurService
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Action d'accés au formulaire et de création d'un utilisateur
+ * @author Oltenos
+ *
+ */
 public class CreerAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(CreerAction.class);

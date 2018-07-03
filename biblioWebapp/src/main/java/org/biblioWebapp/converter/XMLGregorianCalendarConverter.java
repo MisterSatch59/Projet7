@@ -12,7 +12,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.util.StrutsTypeConverter;
 
-
+/**
+ * Converter XMLGregorianCalendar to String 
+ * @author Oltenos
+ *
+ */
 public class XMLGregorianCalendarConverter extends StrutsTypeConverter {
 	private static final Logger LOGGER = LogManager.getLogger(XMLGregorianCalendarConverter.class);
 

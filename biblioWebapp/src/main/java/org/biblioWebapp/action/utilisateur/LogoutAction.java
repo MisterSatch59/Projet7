@@ -8,6 +8,11 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.biblioWebapp.action.AbstractAction;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Action de déconnection d'un compte utilisateur
+ * @author Oltenos
+ *
+ */
 public class LogoutAction extends AbstractAction implements ServletRequestAware {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(LogoutAction.class);

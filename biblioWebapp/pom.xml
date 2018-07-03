@@ -10,7 +10,7 @@
 	<groupId>org.biblio</groupId>
 	<artifactId>biblioWebapp</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 
 	<!-- ===== Informations générales ===== -->
 	<name>${projectName}</name>

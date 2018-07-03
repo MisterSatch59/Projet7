@@ -7,7 +7,12 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @Configuration
-@PropertySource("classpath:config.properties")
+@PropertySource("file:${biblioBatch_Home}/conf/config.properties")
+/**
+ * Class de lecture du fichier de configuration
+ * @author Oltenos
+ *
+ */
 public class SpringConfiguration {
 
 	@Autowired
@@ -21,6 +26,8 @@ public class SpringConfiguration {
 		config.setDemande(env.getProperty("message.demande"));
 		config.setFormulePolitesse(env.getProperty("message.formule.politesse"));
 		config.setSignature(env.getProperty("message.signature"));
+		
+		config.setLivreServiceAdresse(env.getProperty("livreService.adresse"));
 
 		return config;
 	}

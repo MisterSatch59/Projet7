@@ -22,15 +22,22 @@ Le dossier Projet4 contient les éléments suivant :
 	a/ Restaurer la base de données à partir du fichier de "Backup" de pgAdmin suivant : livrables/BaseDeDonnees/backup.sql (clic droit > Restore > filename puis chercher le fichier backup.sql)
 	b/ utiliser le script de création des tables et des données de démonstration livrables/BaseDeDonnees/creationBD.sql
 
-## Déploiement du Web Service (sur serveur Tomcat 9 seul)
+## Déploiement du Web Service (sur serveur Tomcat 9)
 
 1/ Configurer les ressources JNDI dans le fichier apache-tomcat-9.X.X/conf/context.xml en ajoutant les ressources suivantes (voir l'exemple Projet4/livrables/WebServices/context.xml à copier/coller entre les balises <Context> puis à modifier) :
 	a/ DataSource pour configurer l'accès à la base de données (url, username, password)
-	b/ Durée maximale d'un prêt (fixée à 28 jours si non reconfiguré)
+	b/ Durée maximale d'un prêt
 
 2/ Déployer sur Tomcat le fichier war suivant : Projet4/livrables/WebServices/biblioService.war
 
 ## Déploiement du batch d'envoi de mail de relance
 
 1/ Décompresser le fichier Projet4\livrables\Batch\biblioBatch-1.0.zip
-2/ Exécuter biblioBatch-1.0.jar
+2/ Créer la varibla d'environnement nommée "biblioBatch_Home" et contenant le chemin d'accés au dossier "biblioBatch-1.0" contenu dans le dossier décompréssé.
+3/ Utiliser le fichier biblioBatch-1.0\conf\config.properties pour configurer le Batch (Message et périodicité des mails de relance, SMTP et adresse du Web Service LivreService).
+4/ Exécuter biblioBatch-1.0.jar
+
+## Déploiement de l'aplication web (sur serveur Tomcat 9)
+
+1/ Configurer la ressources JNDI dans le fichier apache-tomcat-9.X.X/conf/context.xml en ajoutant les ressources suivantes (voir l'exemple Projet4/livrables/WebApp/context.xml à copier/coller entre les balises <Context> puis à modifier) avec l'adresse du Webservice
+2/ Déployer le fichier Projet4\livrables\WebApp\biblioWebapp.war

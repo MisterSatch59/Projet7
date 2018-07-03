@@ -1,5 +1,10 @@
 package org.biblio.biblioBatch.livre.mail;
 
+/**
+ * Bean avec le contenu du mail
+ * @author Oltenos
+ *
+ */
 public class Mail {
 
 	private String to;

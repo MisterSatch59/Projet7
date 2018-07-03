@@ -21,6 +21,12 @@ import org.biblioService.model.exception.TechnicalException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+/**
+ * Implémentation de LivreManager
+ * 
+ * @author Oltenos
+ *
+ */
 @Named("livreManager")
 public class LivreManagerImpl  extends AbstractManagerImpl implements LivreManager {
 	private static final Logger LOGGER = LogManager.getLogger(LivreManagerImpl.class);

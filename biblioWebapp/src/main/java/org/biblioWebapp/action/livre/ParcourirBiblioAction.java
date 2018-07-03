@@ -8,6 +8,11 @@ import org.biblioWebapp.action.AbstractAction;
 import org.biblioWebapp.services.generated.livreservice.LivreService;
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Action permettant l'affichage des prets en cours de l'utilisateur connecté
+ * @author Oltenos
+ *
+ */
 public class ParcourirBiblioAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(ParcourirBiblioAction.class);

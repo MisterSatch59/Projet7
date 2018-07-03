@@ -1,5 +1,10 @@
 package org.biblio.biblioBatch.livre;
 
+/**
+ * Bean contenant les éléments de configuration
+ * @author Oltenos
+ *
+ */
 public class Config {
 
 	private String sujet;
@@ -7,6 +12,8 @@ public class Config {
 	private String demande;
 	private String formulePolitesse;
 	private String signature;
+	
+	private String livreServiceAdresse;
 
 	public String getSujet() {
 		return sujet;
@@ -46,6 +53,14 @@ public class Config {
 
 	public void setSignature(String signature) {
 		this.signature = signature;
+	}
+
+	public String getLivreServiceAdresse() {
+		return livreServiceAdresse;
+	}
+
+	public void setLivreServiceAdresse(String livreServiceAdresse) {
+		this.livreServiceAdresse = livreServiceAdresse;
 	}
 
 }

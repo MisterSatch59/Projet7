@@ -13,6 +13,11 @@ import org.biblioWebapp.services.generated.utilisateurservice.UtilisateurService
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Action d'accés au formulaire et de modification d'un utilisateur
+ * @author Oltenos
+ *
+ */
 public class ModifierAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(ModifierAction.class);

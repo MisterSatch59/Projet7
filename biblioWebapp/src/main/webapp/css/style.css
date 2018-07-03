@@ -2,7 +2,6 @@
 
 body {
 	margin-top: 70px;
-	margin-bottom: 50px;
 	color: black;
 }
 
@@ -16,34 +15,14 @@ legend{
 	max-height: 50px;
 }
 
-.avatar {
-	max-width : 50px;
-	max-height : 50px;
-}
-
-.gdeImage {/* Redimentionnement des images pour ne pas dépasser la page */
-	max-width: 100%;
-	max-height : 100%
-}
-
-.imageCarousel{
-	max-height : 550px;
-	margin : auto
-}
-
 /* Alignement et affichage */
 
 .jumbotron {
 	text-align: justify;
-	border-width: 3px;
 }
 
-.marge{/* Ajout d'une marge en haut pour "decoler" de l'élément au dessus */
+.marge{/* Ajout d'une marge en haut */
 	margin-top: 10px;
-}
-
-.miniMarge{
-	margin-top: 2px;
 }
 
 .cadrePerso{
@@ -53,79 +32,48 @@ legend{
 	padding: 10px;
 }
 
-.aligneCentre{
+/*Formulaires */
+.wwgrp{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	align-content: center;
-	flex-wrap: wrap;
 }
 
-.spot{
-	min-height: 340px;
-}
+.wwctrl{
+	flex: 1;
+} 
 
-.topo{
-	min-height: 200px;
-}
-
-/*Formulaires "clasiques" */
-.formClassiq .wwgrp{
+.wwlbl{
+	flex: 1;
 	display: flex;
+	justify-content :  flex-end;
 
-}
-
-.formClassiq .wwerr, .formClassiq .wwlbl, .formClassiq .wwctrl{
-	margin: 10px;
 }
 
 /* Formulaires en lignes */
 .formInLinePerso{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
-}
-.formInLinePerso .wwgrp{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	align-content: center;
+	justify-content: space-between;
 }
 
+/* Label des formulaires*/
 .label{
 	color: black;
-	font-style: normal;
 	font-weight: bold;
 	font-size: 14px;
-	min-height: 22px;
-	min-width:150px;
 	text-align : right;
+	min-width: 100%;
 }
 
 /* Adaptations de la mise en page pour écrans plus petits */
-@media screen and (max-width: 1200px)
-{
-	body {
-		margin-top: 120px;
-		margin-bottom: 75px;
-
-	}
-}
-
-@media screen and (max-width: 992px)
+@media screen and (max-width: 768px)
 {
 	.formInLinePerso{
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
+		justify-content: space-between;
 	}
+	
 }
-
-@media screen and (max-width: 768px)
-{
-	body {
-		margin-top: 70px;
-
-	}
-}
-

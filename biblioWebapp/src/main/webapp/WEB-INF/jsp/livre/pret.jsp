@@ -10,13 +10,16 @@
 <body class="container">
 	<%@ include file="/WEB-INF/jsp/_include/header.jsp"%>
 
-	<!-- Titre  et bouton création-->
-	<div class="row aligneCentre">
+	<!-- Titre -->
+	<div class="row">
 		<div class="col-xs-12">
 			<h1>Pret en cours</h1>
 		</div>
-		
-		<div>
+	</div>
+	
+	<!-- Cadre pret en cours -->
+	<div class="row">
+		<div class="jumbotron col-xs-12 marge">
 			<ul class="list-unstyled">
 					<s:iterator value="listPret">
 						<li class="cadrePerso marge">Emprunté depuis le : <s:property value="dateDebut" />
@@ -67,6 +70,7 @@
 			}).fail(function(data) {
 				alert("Une erreur s'est produite.");
 			});
+			
 			alert("La prolongation du prêt a été prise en compte.");
 			$(that).prop("disabled",true);
 

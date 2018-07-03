@@ -12,6 +12,11 @@ import org.biblioWebapp.services.generated.utilisateurservice.UtilisateurService
 
 import com.opensymphony.xwork2.ActionSupport;
 
+/**
+ * Action d'accés au formulaire de connexion et de connexion à un compte utilisateur
+ * @author Oltenos
+ *
+ */
 public class LoginAction extends AbstractAction implements ServletRequestAware {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LogManager.getLogger(LoginAction.class);

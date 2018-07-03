@@ -26,11 +26,7 @@
 		</file>
 		<!-- Fichiers de configuration -->
 		<file>
-			<source>src/main/resources/config.properties</source>
-			<outputDirectory>conf</outputDirectory>
-		</file>
-		<file>
-			<source>src/main/resources/application.properties</source>
+			<source>src/data/conf/config.properties</source>
 			<outputDirectory>conf</outputDirectory>
 		</file>
 	</files>

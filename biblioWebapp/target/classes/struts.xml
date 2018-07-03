@@ -33,36 +33,20 @@
 			<result name="error-forbidden" type="httpheader">
 				<param name="error">403</param>
 				<param name="parse">true</param>
-				<param name="errorMessage">${getText("Error.acces")}</param>
+				<param name="errorMessage">Accés interdit!</param>
 			</result>
 			<result name="Exception" type="httpheader">
 				<param name="error">500</param>
 				<param name="parse">true</param>
-				<param name="errorMessage">%{exception}</param>
-			</result>
-			<result name="TechnicalException" type="httpheader">
-				<param name="error">500</param>
-				<param name="parse">true</param>
-				<param name="errorMessage">%{exception.message}</param>
-			</result>
-			<result name="NotFoundException" type="httpheader">
-				<param name="error">404</param>
-				<param name="parse">true</param>
-				<param name="errorMessage">%{exception.message}</param>
+				<param name="errorMessage">Une erreur inconnue s'est produite.</param>
 			</result>
 		</global-results>
-<!--
+
 		<global-exception-mappings>
 			<exception-mapping exception="java.lang.Exception"
 				result="Exception" />
-			<exception-mapping
-				exception="org.escalade.model.exception.TechnicalException"
-				result="TechnicalException" />
-			<exception-mapping
-				exception="org.escalade.model.exception.NotFoundException"
-				result="NotFoundException" />
 		</global-exception-mappings>
--->
+
 	</package>
 
 	<!-- ===== Package pour les actions public ===== -->
@@ -86,7 +70,7 @@
 			</result>
 		</action>
 		
-		<!-- Action de connexion à un compte utilisateur -->
+		<!-- Action d'accés au formulaire de connexion et de connexion à un compte utilisateur -->
 		<action name="login"
 			class="org.biblioWebapp.action.utilisateur.LoginAction"
 			method="action">
@@ -96,7 +80,7 @@
 			</result>
 		</action>
 		
-		<!-- Action permettant l'affichage des pret en cours de l'utilisateur -->
+		<!-- Action permettant l'affichage des prets en cours de l'utilisateur connecté -->
 		<action name="parcourirBiblio"
 			class="org.biblioWebapp.action.livre.ParcourirBiblioAction"
 			method="action">
@@ -133,7 +117,7 @@
 			</result>
 		</action>
 		
-		<!-- Action permettant l'affichage des pret en cours de l'utilisateur -->
+		<!-- Action permettant l'affichage des prets en cours de l'utilisateur -->
 		<action name="pretEnCours"
 			class="org.biblioWebapp.action.livre.PretEnCoursAction"
 			method="action">
@@ -158,6 +142,15 @@
 			method="actionAjax">
 			<result name="success" type="json">
 				<param name="root">listLivre</param>
+			</result>
+		</action>
+		
+		<!-- Action permettant d'obnir la disponibilité d'un livre dans les bibliothèques -->
+		<action name="voirDispo_ajax"
+			class="org.biblioWebapp.action.livre.DispoAction"
+			method="actionAjax">
+			<result name="success" type="json">
+				<param name="root">listDispo</param>
 			</result>
 		</action>
 
