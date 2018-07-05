@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für anonymous complex type.
+ * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -37,7 +37,7 @@ public class ProlongerPretFault {
     protected String faultMessage;
 
     /**
-     * Ruft den Wert der faultMessage-Eigenschaft ab.
+     * Obtient la valeur de la propriété faultMessage.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class ProlongerPretFault {
     }
 
     /**
-     * Legt den Wert der faultMessage-Eigenschaft fest.
+     * Définit la valeur de la propriété faultMessage.
      * 
      * @param value
      *     allowed object is

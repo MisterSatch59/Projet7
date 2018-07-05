@@ -22,7 +22,7 @@
 		<div class="jumbotron col-xs-12 marge">
 			<ul class="list-unstyled">
 					<s:iterator value="listPret">
-						<li class="cadrePerso marge">Emprunté depuis le : <s:property value="dateDebut" />
+						<li class="cadrePerso marge">Emprunté depuis le : <s:property value="dateDebut" /> - Date de retour prévue : <span id="dateRetourPrevue_${id}"><s:property value="dateRetourPrevue" /></span>
 							<ul class="list-unstyled">
 								<li>Titre : <s:property value="exemplaire.livre.titre"/></li>
 								<li>Aux éditions <s:property value="exemplaire.livre.editeur.nom"/></li>
@@ -66,7 +66,17 @@
 
 			// Action AJAX en POST
 			jQuery.post(url, params, function(data) {
+				var newDateRetourPrevue = $("#dateRetourPrevue_"+buttonId);
+				newDateRetourPrevue.empty();
 				
+				var result ='';
+				if(data.day<10) result+= '0';
+				result+= data.day+'/';
+				if(data.month<10) result+= '0';
+				result+= data.month+'/'+ data.year;
+				
+				newDateRetourPrevue.append(result);
+
 			}).fail(function(data) {
 				alert("Une erreur s'est produite.");
 			});
@@ -76,7 +86,6 @@
 
 		}
 	
-		
 	</script>
 </body>
 

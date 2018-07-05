@@ -1,5 +1,7 @@
 package org.biblioWebapp.action.livre;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioWebapp.action.AbstractAction;
@@ -26,7 +28,8 @@ public class ProlongerPretAction extends AbstractAction {
 	// ----- Eléments en entrée et sortie
 
 	// ----- Eléments en sortie
-
+	
+	private XMLGregorianCalendar newDateRetourPrevue;
 
 	// ==================== Getters/Setters ====================
 
@@ -39,6 +42,10 @@ public class ProlongerPretAction extends AbstractAction {
 	// ----- Eléments en entrée et sortie (setters et getters)
 
 	// ----- Eléments en sortie (getters uniquement)
+	
+	public XMLGregorianCalendar getNewDateRetourPrevue() {
+		return newDateRetourPrevue;
+	}
 
 	// ================= Méthodes d'action ====================
 
@@ -48,7 +55,7 @@ public class ProlongerPretAction extends AbstractAction {
 
 		LivreService vLivreService = this.getLivreService();
 		try {
-			vLivreService.prolongerPret(id);
+			newDateRetourPrevue = vLivreService.prolongerPret(id);
 		} catch (ProlongerPretFault_Exception e) {
 			addActionError(e.getFaultInfo().getFaultMessage());
 		}

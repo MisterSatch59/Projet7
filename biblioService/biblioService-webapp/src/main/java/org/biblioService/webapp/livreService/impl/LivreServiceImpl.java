@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -69,19 +70,22 @@ public class LivreServiceImpl implements LivreService {
 	}
 
 	@Override
-	public void prolongerPret(int pISBN) throws ProlongerPretFault_Exception {
+	public XMLGregorianCalendar prolongerPret(int pISBN) throws ProlongerPretFault_Exception {
 		LOGGER.traceEntry("pPretId = " + pISBN);
-		
+
+		XMLGregorianCalendar vNewDateRetourPrevue;
+
 		try {
-			managerFactory.getLivreManager().prolongerPret(pISBN);
-		} catch (TechnicalException e) {
+			vNewDateRetourPrevue = managerFactory.getLivreManager().prolongerPret(pISBN);
+		} catch (TechnicalException | NotFoundException e) {
 			LOGGER.debug(e);
 			ProlongerPretFault vProlongerPretFault = new ProlongerPretFault();
 			vProlongerPretFault.setFaultMessage(e.getMessageErreur());
-			throw new ProlongerPretFault_Exception(e.getMessage(),vProlongerPretFault);
+			throw new ProlongerPretFault_Exception(e.getMessage(), vProlongerPretFault);
 		}
-		
-		LOGGER.traceExit();
+
+		LOGGER.traceExit("vNewDateRetourPrevue = " + vNewDateRetourPrevue);
+		return vNewDateRetourPrevue;
 	}
 
 	@Override

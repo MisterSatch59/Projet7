@@ -27,5 +27,12 @@ public interface PretDao {
 	 */
 	List<Pret> getPretEnCours(int pUtilisateurId);
 
+	/**
+	 * Retorune le prêt corespondant à l'id
+	 * @param pPretId
+	 * @return Pret
+	 */
+	Pret getPret(int pPretId);
+
 
 }

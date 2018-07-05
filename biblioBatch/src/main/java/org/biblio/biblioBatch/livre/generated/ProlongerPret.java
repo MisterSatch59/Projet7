@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für anonymous complex type.
+ * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -35,7 +35,7 @@ public class ProlongerPret {
     protected int pretId;
 
     /**
-     * Ruft den Wert der pretId-Eigenschaft ab.
+     * Obtient la valeur de la propriété pretId.
      * 
      */
     public int getPretId() {
@@ -43,7 +43,7 @@ public class ProlongerPret {
     }
 
     /**
-     * Legt den Wert der pretId-Eigenschaft fest.
+     * Définit la valeur de la propriété pretId.
      * 
      */
     public void setPretId(int value) {

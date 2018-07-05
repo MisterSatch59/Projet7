@@ -24,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="renouvele" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="utilisateur" type="{http://www.example.org/types}Utilisateur"/&gt;
  *         &lt;element name="exemplaire" type="{http://www.example.org/types}Exemplaire"/&gt;
+ *         &lt;element name="dateRetourPrevue" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -39,7 +40,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "dateFin",
     "renouvele",
     "utilisateur",
-    "exemplaire"
+    "exemplaire",
+    "dateRetourPrevue"
 })
 public class Pret {
 
@@ -54,6 +56,9 @@ public class Pret {
     protected Utilisateur utilisateur;
     @XmlElement(required = true)
     protected Exemplaire exemplaire;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar dateRetourPrevue;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -181,6 +186,30 @@ public class Pret {
      */
     public void setExemplaire(Exemplaire value) {
         this.exemplaire = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateRetourPrevue.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateRetourPrevue() {
+        return dateRetourPrevue;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateRetourPrevue.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateRetourPrevue(XMLGregorianCalendar value) {
+        this.dateRetourPrevue = value;
     }
 
 }

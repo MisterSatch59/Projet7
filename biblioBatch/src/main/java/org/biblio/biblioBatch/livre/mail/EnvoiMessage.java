@@ -69,6 +69,11 @@ public class EnvoiMessage {
 			}
 			vMessage += "<br/>";
 			vMessage += "aux éditions " + vLivre.getEditeur().getNom();
+			vMessage += "<br/>";
+			vMessage += "<br/>";
+			vMessage += "Emprunté depuis le : " + pret.getDateDebut().getDay() +"/"+ pret.getDateDebut().getMonth() +"/"+ pret.getDateDebut().getYear();
+			vMessage += ", la date de retour prévue était le : " + pret.getDateRetourPrevue().getDay() +"/"+ pret.getDateRetourPrevue().getMonth() +"/"+ pret.getDateRetourPrevue().getYear();
+			
 
 			vMessage += "<br/>";
 			vMessage += "<br/>";

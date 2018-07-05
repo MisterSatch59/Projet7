@@ -8,6 +8,8 @@ import org.biblioService.model.exception.NotFoundException;
 import org.biblioService.model.exception.TechnicalException;
 import java.util.Map;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 public interface LivreManager {
 
 	/**
@@ -19,9 +21,11 @@ public interface LivreManager {
 	/**
 	 * Prolonge le pret dont l'id est en paramètre
 	 * @param pPretId
+	 * @return 
 	 * @throws TechnicalException 
+	 * @throws NotFoundException 
 	 */
-	void prolongerPret(int pPretId) throws TechnicalException;
+	XMLGregorianCalendar prolongerPret(int pPretId) throws TechnicalException, NotFoundException;
 
 	/**
 	 * Retourne la liste des prêt en cours de l'utilisateur

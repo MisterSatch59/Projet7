@@ -133,7 +133,9 @@
 		<action name="prolongerPret_ajax"
 			class="org.biblioWebapp.action.livre.ProlongerPretAction"
 			method="actionAjax">
-			<result name="success" type="json"></result>
+			<result name="success" type="json">
+				<param name="root">newDateRetourPrevue</param>
+			</result>
 		</action>
 		
 		<!-- Action de recherche de livre -->

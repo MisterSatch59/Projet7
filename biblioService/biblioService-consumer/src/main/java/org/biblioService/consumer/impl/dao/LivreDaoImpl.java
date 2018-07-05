@@ -112,7 +112,7 @@ private static final Logger LOGGER = LogManager.getLogger(AuteurDaoImpl.class);
 		for (String vBibliotheque : vListBibliotheque) {
 			// Recherche dans la base de données
 			String vSQL ="SELECT COUNT(exemplaire.id) FROM public.exemplaire WHERE isbn = :ISBN AND bibliotheque = :biliotheque AND exemplaire.id NOT IN (" + 
-						"SELECT pret.id FROM public.pret WHERE pret.id = exemplaire.id AND pret.date_fin IS NULL" + 
+						"SELECT pret.exemplaire_id FROM public.pret WHERE pret.exemplaire_id = exemplaire.id AND pret.date_fin IS NULL" + 
 						")";
 			
 			MapSqlParameterSource vParams = new MapSqlParameterSource();

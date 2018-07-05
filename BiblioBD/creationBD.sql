@@ -240,9 +240,17 @@ INSERT INTO public.langue (nom) VALUES ('Allemand');
 
 -- Auteurs
 INSERT INTO public.auteur (id,nom,prenom) VALUES (1,'Rowling' ,'J.K.');
+INSERT INTO public.auteur (id,nom,prenom) VALUES (2,'Tolkien' ,'J.R.R.');
+INSERT INTO public.auteur (id,nom,prenom) VALUES (3,'Moyes' ,'Jojo');
+INSERT INTO public.auteur (id,nom,prenom) VALUES (4,'Asimov' ,'Isaac');
 
 -- Editeurs
 INSERT INTO public.editeur (id,nom) VALUES (1,'Gallimard Jeunesse');
+INSERT INTO public.editeur (id,nom) VALUES (2,'Carlsen');
+INSERT INTO public.editeur (id,nom) VALUES (3,'Bloomsbury Childrens Books');
+INSERT INTO public.editeur (id,nom) VALUES (4,'Folio');
+INSERT INTO public.editeur (id,nom) VALUES (5,'Milady');
+INSERT INTO public.editeur (id,nom) VALUES (6,'J''AI LU');
 
 -- Livres
 --Harry Potter I
@@ -301,6 +309,104 @@ INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2070624911','Fantasy');
 INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2070624911','Jeunesse');
 INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-2070624911' ,1);
 
+--Harry Potter I Allemand
+INSERT INTO public.description (id) VALUES (8);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (8,1,'Bis zu seinem elften Geburtstag glaubt Harry, er sei ein ganz normaler Junge. Doch dann erfährt er, dass er sich an der Schule für Hexerei und Zauberei einfinden soll – denn er ist ein Zauberer! In Hogwarts stürzt Harry von einem Abenteuer ins nächste und muss gegen Bestien, Mitschüler und Fabelwesen kämpfen. Da ist es gut, dass er schon Freunde gefunden hat, die ihm im Kampf gegen die dunklen Mächte zur Seite stehen.');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-3551551672', 'Harry Potter und der Stein der Weisen' , 2 ,{d '1998-07-21'} , 8, 'Allemand');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-3551551672','Fantasy');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-3551551672','Jeunesse');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-3551551672' ,1);
+
+--Harry Potter II Allemand
+INSERT INTO public.description (id) VALUES (9);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (9,1,'Endlich wieder Schule! Einen solchen Seufzer kann nur der ausstoßen, dessen Ferien scheußlich waren: Harry Potter. Doch wie im vergangenen Schuljahr stehen nicht nur Zaubertrankunterricht und Verwandlung auf dem Programm. Ein grauenhaftes Etwas treibt sein Unwesen in der Schule. Wird Harry mit Hilfe seiner Freunde Ron und Hermine das Rätsel lösen und Hogwarts von den dunklen Mächten befreien können?');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-3551551689', 'Harry Potter und die Kammer des Schreckens' , 2 ,{d '1999-03-21'} , 9, 'Allemand');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-3551551689','Fantasy');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-3551551689','Jeunesse');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-3551551689' ,1);
+
+--Harry Potter I Anglais
+INSERT INTO public.description (id) VALUES (10);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (10,1,'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry''s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin! These new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry Potter to the next generation of readers. It''s time to PASS THE MAGIC ON.');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-1408855652', 'Harry Potter and the Philosopher''s Stone' , 3 ,{d '2014-08-19'} , 10, 'Anglais');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-1408855652','Fantasy');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-1408855652','Jeunesse');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-1408855652' ,1);
+
+--Harry Potter II Anglais
+INSERT INTO public.description (id) VALUES (11);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (11,1,'Harry Potter''s summer has included the worst birthday ever, doomy warnings from a house-elf called Dobby, and rescue from the Dursleys by his friend Ron Weasley in a magical flying car! Back at Hogwarts School of Witchcraft and Wizardry for his second year, Harry hears strange whispers echo through empty corridors - and then the attacks start. Students are found as though turned to stone . Dobby''s sinister predictions seem to be coming true. These new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry Potter to the next generation of readers. It''s time to PASS THE MAGIC ON.');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-1408855669', 'Harry Potter and the Chamber of Secrets' , 3 ,{d '2014-08-19'} , 11, 'Anglais');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-1408855669','Fantasy');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-1408855669','Jeunesse');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-1408855669' ,1);
+
+--Seigneur des Anneaux I
+INSERT INTO public.description (id) VALUES (12);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (12,1,'Dans les vertes prairies de la Comté, les Hobbits, ou Semi-hommes, vivaient en paix… Jusqu''au jour fatal où l''un d''entre eux, au cours de ses voyages, entra en possession de l''Anneau Unique aux immenses pouvoirs. Pour le reconquérir, Sauron, le seigneur ténébreux, va déchaîner toutes les forces du Mal. Frodon, le Porteur de l''Anneau, Gandalf, le magicien, et leurs intrépides compagnons réussiront-ils à écarter la menace qui pèse sur la Terre du Milieu ?');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-2070612888', 'Le Seigneur des Anneaux (Tome 1-La Communauté de l''Anneau)' , 4 ,{d '2007-08-23'} , 12, 'Français');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2070612888','Fantasy');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-2070612888' ,2);
+
+--Seigneur des Anneaux II
+INSERT INTO public.description (id) VALUES (13);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (13,1,'Dispersée dans les terres de l''Ouest, la Communauté de l''Anneau affronte les périls de la guerre, tandis que Frodon, accompagné du fidèle Samsagace, poursuit une quête presque désespérée : détruire l''Anneau Unique en le jetant dans les crevasses d''Oradruir, la Montagne du destin. Mais aux frontières du royaume de Mordor, une mystérieuse créature les épie… pour les perdre ou pour les sauver ?');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-2070612895', 'Le Seigneur des Anneaux (Tome 2-Les Deux Tours)' , 4 ,{d '2007-08-23'} , 13, 'Français');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2070612895','Fantasy');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-2070612895' ,2);
+
+--Seigneur des Anneaux III
+INSERT INTO public.description (id) VALUES (14);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (14,1,'Le royaume de Gondor s''arme contre Sauron, le seigneur des ténèbres, qui veut asservir tous les peuples libres, hommes et elfes, nains et hobbits. Mais la vaillance des soldats de Minas Tirith ne peut rien désormais contre la puissance maléfique de Mordor. Un fragile espoir, toutefois, demeure : le Porteur de l''Anneau, jour après jour, s''approche de la montagne où brûle le feu du destin, seul capable de détruire l''Anneau Unique et de provoquer la chute de Sauron…');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-2070612901', 'Le Seigneur des Anneaux (Tome 3-Le Retour du Roi)' , 4 ,{d '2007-08-23'} , 14, 'Français');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2070612901','Fantasy');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-2070612901' ,2);
+
+--Avant toi
+INSERT INTO public.description (id) VALUES (15);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (15,1,'Lou est une fille ordinaire qui mène une vie monotone dans un trou paumé de l’Angleterre dont elle n’est jamais sortie. Quand elle se retrouve au chômage, elle accepte un contrat de six mois pour tenir compagnie à un handicapé. Malgré l’accueil glacial qu’il lui réserve, Lou va découvrir en lui un jeune homme exceptionnel, brillant dans les affaires, accro aux sensations fortes et voyageur invétéré. Mais depuis l’accident qui l’a rendu tétraplégique, Will veut mettre fin à ses jours. Lou n’a que quelques mois pour le faire changer d’avis.');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-2811215576', 'Avant toi' , 5 ,{d '2016-06-10'} , 15, 'Français');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2811215576','Romans');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-2811215576' ,3);
+
+--Après toi
+INSERT INTO public.description (id) VALUES (16);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (16,1,'Un an et demi après avoir exaucé le voeu de Will, qui souhaitait bénéficier du suicide assisté, Lou quitte sa ville natale où elle est la cible de critiques. Elle commence une nouvelle vie à Londres, mais elle a du mal à se conformer aux dernières volontés de Will qui lui recommandait de profiter de la vie.');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-2811219673', 'Après toi' , 5 ,{d '2017-05-19'} , 16, 'Français');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2811219673','Romans');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-2811219673' ,3);
+
+--Le cycle des robots, Tome 1 : Les robots I
+INSERT INTO public.description (id) VALUES (17);
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (17,1,'Première Loi : Un robot ne peut porter atteinte à un être humain ni, restant passif, laisser cet être humain exposé au danger.');
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (17,2,'Deuxième Loi : Un robot doit obéir aux ordres donnés par les êtres humains, sauf si de tels ordres entrent en contradiction avec la Première Loi.');
+INSERT INTO public.paragraphe (decription_id,ordre,texte)
+VALUES (17,3,'Troisième Loi : Un robot doit protéger son existence dans la mesure où cette protection n''entre pas en contradiction avec la Première ou la Deuxième Loi.');
+INSERT INTO public.livre (isbn,titre,editeur_id,date_publication,description_id,langue)
+VALUES ('978-2290055953', 'Le cycle des robots, Tome 1 : Les robots' , 6 ,{d '2012-06-23'} , 17, 'Français');
+INSERT INTO public.livre_genre (isbn,nom) VALUES ('978-2290055953','S.F.');
+INSERT INTO public.livre_auteur (isbn,auteur_id) VALUES ('978-2290055953' ,4);
+
 --Bibliothèques de la ville
 INSERT INTO public.bibliotheque (nom) VALUES ('Bibliothèque centrale');
 INSERT INTO public.bibliotheque (nom) VALUES ('Bibliothèque des oies');
@@ -310,9 +416,6 @@ INSERT INTO public.bibliotheque (nom) VALUES ('Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des canards');
@@ -320,9 +423,6 @@ INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibl
 
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibliothèque des canards');
@@ -330,17 +430,10 @@ INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624539','Bibl
 
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624546','Bibliothèque des canards');
 
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624553','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624553','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624553','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624553','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624553','Bibliothèque centrale');
@@ -351,13 +444,9 @@ INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624553','Bibl
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624560','Bibliothèque des canards');
 
@@ -366,43 +455,68 @@ INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibl
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des canards');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des canards');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624904','Bibliothèque des canards');
+
 
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des oies');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des canards');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070624911','Bibliothèque des canards');
 
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-3551551672','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-3551551672','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-3551551672','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-3551551689','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-3551551689','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-3551551689','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-1408855652','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-1408855652','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-1408855652','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-1408855669','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-1408855669','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-1408855669','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612888','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612888','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612888','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612895','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612895','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612895','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612901','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612901','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070612901','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2811215576','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2811215576','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2811215576','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2811219673','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2811219673','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2811219673','Bibliothèque des canards');
+
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2290055953','Bibliothèque centrale');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2290055953','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2290055953','Bibliothèque des canards');
 
 -- Utilisateur
 INSERT INTO public.utilisateur (id,email,nom,prenom,mdp,sel) VALUES (1,'jeremylootens@gmail.com' ,'Lootens' ,'Jérémy' ,'9Gb+Cm0HWmVuF7zuSK4L4Pg+GOvPFNsbAWoU/cM2Ywg=' ,'t0P7IvDKzv36W2npOfR4' );
 
 -- Pret
-INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (1,{d '2018-04-06'} ,true , 1, 5);
-INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (2,{d '2018-06-06'} ,false , 1, 15);
+INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (1,{d '2018-05-07'} ,true , 1, 5);
+INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (2,{d '2018-06-10'} ,false , 1, 11);
+INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (3,{d '2018-07-03'} ,false , 1, 77);
+
 
 

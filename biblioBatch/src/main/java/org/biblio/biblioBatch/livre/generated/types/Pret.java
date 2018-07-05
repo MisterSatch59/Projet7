@@ -9,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java-Klasse für Pret complex type.
+ * <p>Classe Java pour Pret complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="Pret"&gt;
@@ -24,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="renouvele" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="utilisateur" type="{http://www.example.org/types}Utilisateur"/&gt;
  *         &lt;element name="exemplaire" type="{http://www.example.org/types}Exemplaire"/&gt;
+ *         &lt;element name="dateRetourPrevue" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -39,7 +40,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "dateFin",
     "renouvele",
     "utilisateur",
-    "exemplaire"
+    "exemplaire",
+    "dateRetourPrevue"
 })
 public class Pret {
 
@@ -54,9 +56,12 @@ public class Pret {
     protected Utilisateur utilisateur;
     @XmlElement(required = true)
     protected Exemplaire exemplaire;
+    @XmlElement(required = true)
+    @XmlSchemaType(name = "date")
+    protected XMLGregorianCalendar dateRetourPrevue;
 
     /**
-     * Ruft den Wert der id-Eigenschaft ab.
+     * Obtient la valeur de la propriété id.
      * 
      */
     public int getId() {
@@ -64,7 +69,7 @@ public class Pret {
     }
 
     /**
-     * Legt den Wert der id-Eigenschaft fest.
+     * Définit la valeur de la propriété id.
      * 
      */
     public void setId(int value) {
@@ -72,7 +77,7 @@ public class Pret {
     }
 
     /**
-     * Ruft den Wert der dateDebut-Eigenschaft ab.
+     * Obtient la valeur de la propriété dateDebut.
      * 
      * @return
      *     possible object is
@@ -84,7 +89,7 @@ public class Pret {
     }
 
     /**
-     * Legt den Wert der dateDebut-Eigenschaft fest.
+     * Définit la valeur de la propriété dateDebut.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +101,7 @@ public class Pret {
     }
 
     /**
-     * Ruft den Wert der dateFin-Eigenschaft ab.
+     * Obtient la valeur de la propriété dateFin.
      * 
      * @return
      *     possible object is
@@ -108,7 +113,7 @@ public class Pret {
     }
 
     /**
-     * Legt den Wert der dateFin-Eigenschaft fest.
+     * Définit la valeur de la propriété dateFin.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +125,7 @@ public class Pret {
     }
 
     /**
-     * Ruft den Wert der renouvele-Eigenschaft ab.
+     * Obtient la valeur de la propriété renouvele.
      * 
      */
     public boolean isRenouvele() {
@@ -128,7 +133,7 @@ public class Pret {
     }
 
     /**
-     * Legt den Wert der renouvele-Eigenschaft fest.
+     * Définit la valeur de la propriété renouvele.
      * 
      */
     public void setRenouvele(boolean value) {
@@ -136,7 +141,7 @@ public class Pret {
     }
 
     /**
-     * Ruft den Wert der utilisateur-Eigenschaft ab.
+     * Obtient la valeur de la propriété utilisateur.
      * 
      * @return
      *     possible object is
@@ -148,7 +153,7 @@ public class Pret {
     }
 
     /**
-     * Legt den Wert der utilisateur-Eigenschaft fest.
+     * Définit la valeur de la propriété utilisateur.
      * 
      * @param value
      *     allowed object is
@@ -160,7 +165,7 @@ public class Pret {
     }
 
     /**
-     * Ruft den Wert der exemplaire-Eigenschaft ab.
+     * Obtient la valeur de la propriété exemplaire.
      * 
      * @return
      *     possible object is
@@ -172,7 +177,7 @@ public class Pret {
     }
 
     /**
-     * Legt den Wert der exemplaire-Eigenschaft fest.
+     * Définit la valeur de la propriété exemplaire.
      * 
      * @param value
      *     allowed object is
@@ -181,6 +186,30 @@ public class Pret {
      */
     public void setExemplaire(Exemplaire value) {
         this.exemplaire = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété dateRetourPrevue.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDateRetourPrevue() {
+        return dateRetourPrevue;
+    }
+
+    /**
+     * Définit la valeur de la propriété dateRetourPrevue.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDateRetourPrevue(XMLGregorianCalendar value) {
+        this.dateRetourPrevue = value;
     }
 
 }

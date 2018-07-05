@@ -32,12 +32,12 @@ Le dossier Projet4 contient les éléments suivant :
 
 ## Déploiement du batch d'envoi de mail de relance
 
-1/ Décompresser le fichier Projet4\livrables\Batch\biblioBatch-1.0.zip
-2/ Créer la varibla d'environnement nommée "biblioBatch_Home" et contenant le chemin d'accés au dossier "biblioBatch-1.0" contenu dans le dossier décompréssé.
-3/ Utiliser le fichier biblioBatch-1.0\conf\config.properties pour configurer le Batch (Message et périodicité des mails de relance, SMTP et adresse du Web Service LivreService).
-4/ Exécuter biblioBatch-1.0.jar
+1/ Décompresser le fichier Projet4\livrables\Batch\biblioBatch-1.1.zip
+2/ Créer une variable d'environnement nommée "biblioBatch_Home" et contenant le chemin d'accès au dossier "biblioBatch-1.0" contenu dans le dossier décompressé.
+3/ Modofier le fichier biblioBatch-1.1\conf\config.properties pour configurer le Batch (Message et périodicité des mails de relance, SMTP et adresse du Web Service LivreService).
+4/ Exécuter biblioBatch-1.1.jar
 
-## Déploiement de l'aplication web (sur serveur Tomcat 9)
+## Déploiement de l'application  web (sur serveur Tomcat 9)
 
 1/ Configurer la ressources JNDI dans le fichier apache-tomcat-9.X.X/conf/context.xml en ajoutant les ressources suivantes (voir l'exemple Projet4/livrables/WebApp/context.xml à copier/coller entre les balises <Context> puis à modifier) avec l'adresse du Webservice
 2/ Déployer le fichier Projet4\livrables\WebApp\biblioWebapp.war

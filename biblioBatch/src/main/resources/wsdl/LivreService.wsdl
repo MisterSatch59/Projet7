@@ -78,6 +78,11 @@
 			</xsd:element>
 			<xsd:element name="prolongerPretResponse">
 				<xsd:complexType>
+					<xsd:sequence minOccurs="1" maxOccurs="1">
+						<xsd:element name="newDateRetourPrevue"
+							type="xsd:date" minOccurs="1" maxOccurs="1">
+						</xsd:element>
+					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 			<xsd:element name="listerPretEnRetard">

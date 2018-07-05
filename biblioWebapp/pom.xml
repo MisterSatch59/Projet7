@@ -10,7 +10,7 @@
 	<groupId>org.biblio</groupId>
 	<artifactId>biblioWebapp</artifactId>
 	<packaging>war</packaging>
-	<version>1.0</version>
+	<version>1.1</version>
 
 	<!-- ===== Informations générales ===== -->
 	<name>${projectName}</name>
@@ -115,8 +115,9 @@
 	<!-- Build -->
 	<!-- ============================================ -->
 	<build>
-	<finalName>biblioWebapp</finalName>
-</build>
+		<finalName>biblioWebapp</finalName>
+	</build>
+	
 	<!-- ======================== -->
 	<!-- Profiles -->
 	<!-- ======================== -->
