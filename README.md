@@ -1,12 +1,12 @@
-# Projet4
-Projet 4 du parcours "Expert Java EE" d'OpenClassrooms
+# Projet7
+Projet 7 du parcours "Expert Java EE" d'OpenClassrooms (Suite du Projet 4)
 
 Ressources : 
 RealTimeBord : https://realtimeboard.com/app/board/o9J_kzCPMuQ=/
-GitHub : https://github.com/Oltenos/Projet4
+GitHub : https://github.com/Oltenos/Projet7
 
 # Contenu
-Le dossier Projet4 contient les éléments suivant : 
+Le dossier Projet7 contient les éléments suivant : 
  - analyse : éléments de la phase d'analyse du projet (également disponible en présentation sur le RealTimeBord)
  - biblioBatch : sources (projet Eclipse) du batch d'envoi de mail de relance
  - BiblioBD : éléments de la base de données : diagramme UML des données et MPD (également disponible en présentation sur le RealTimeBord) et scripts sql
@@ -24,20 +24,20 @@ Le dossier Projet4 contient les éléments suivant :
 
 ## Déploiement du Web Service (sur serveur Tomcat 9)
 
-1/ Configurer les ressources JNDI dans le fichier apache-tomcat-9.X.X/conf/context.xml en ajoutant les ressources suivantes (voir l'exemple Projet4/livrables/WebServices/context.xml à copier/coller entre les balises <Context> puis à modifier) :
+1/ Configurer les ressources JNDI dans le fichier apache-tomcat-9.X.X/conf/context.xml en ajoutant les ressources suivantes (voir l'exemple Projet7/livrables/WebServices/context.xml à copier/coller entre les balises <Context> puis à modifier) :
 	a/ DataSource pour configurer l'accès à la base de données (url, username, password)
 	b/ Durée maximale d'un prêt
 
-2/ Déployer sur Tomcat le fichier war suivant : Projet4/livrables/WebServices/biblioService.war
+2/ Déployer sur Tomcat le fichier war suivant : Projet7/livrables/WebServices/biblioService.war
 
 ## Déploiement du batch d'envoi de mail de relance
 
-1/ Décompresser le fichier Projet4\livrables\Batch\biblioBatch-1.1.zip
+1/ Décompresser le fichier Projet7\livrables\Batch\biblioBatch-1.1.zip
 2/ Créer une variable d'environnement nommée "biblioBatch_Home" et contenant le chemin d'accès au dossier "biblioBatch-1.0" contenu dans le dossier décompressé.
-3/ Modofier le fichier biblioBatch-1.1\conf\config.properties pour configurer le Batch (Message et périodicité des mails de relance, SMTP et adresse du Web Service LivreService).
+3/ Modifier le fichier biblioBatch-1.1\conf\config.properties pour configurer le Batch (Message et périodicité des mails de relance, SMTP et adresse du Web Service LivreService).
 4/ Exécuter biblioBatch-1.1.jar
 
 ## Déploiement de l'application  web (sur serveur Tomcat 9)
 
-1/ Configurer la ressources JNDI dans le fichier apache-tomcat-9.X.X/conf/context.xml en ajoutant les ressources suivantes (voir l'exemple Projet4/livrables/WebApp/context.xml à copier/coller entre les balises <Context> puis à modifier) avec l'adresse du Webservice
-2/ Déployer le fichier Projet4\livrables\WebApp\biblioWebapp.war
+1/ Configurer la ressources JNDI dans le fichier apache-tomcat-9.X.X/conf/context.xml en ajoutant les ressources suivantes (voir l'exemple Projet7/livrables/WebApp/context.xml à copier/coller entre les balises <Context> puis à modifier) avec l'adresse du Webservice
+2/ Déployer le fichier Projet7\livrables\WebApp\biblioWebapp.war
