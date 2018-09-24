@@ -46,8 +46,8 @@
 			<xsd:element name="voirDispoResponse">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="nombreEtBibliotheque"
-							type="Q1:NombreEtBibliotheque" minOccurs="1" maxOccurs="unbounded">
+						<xsd:element name="dispoParBibliotheque"
+							type="Q1:DispoParBibliotheque" minOccurs="1" maxOccurs="unbounded">
 						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
@@ -150,6 +150,82 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
+			<xsd:element name="creerReservation">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="isbn" type="xsd:string"
+							minOccurs="1" maxOccurs="1">
+						</xsd:element>
+						<xsd:element name="bibliotheque"
+							type="xsd:string" minOccurs="1" maxOccurs="1">
+						</xsd:element>
+						<xsd:element name="utilisateurId"
+							type="xsd:int" minOccurs="1" maxOccurs="1">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="creerReservationResponse">
+				<xsd:complexType>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="creerReservationFault">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="FaultMessage"
+							type="xsd:string" minOccurs="1" maxOccurs="1">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="supprimerReservation">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="isbn" type="xsd:string"
+							minOccurs="1" maxOccurs="1">
+						</xsd:element>
+						<xsd:element name="bibliotheque"
+							type="xsd:string" minOccurs="1" maxOccurs="1">
+						</xsd:element>
+						<xsd:element name="utilisateurId"
+							type="xsd:int" minOccurs="1" maxOccurs="1">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="supprimerReservationResponse">
+				<xsd:complexType>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="supprimerReservationFault">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="FaultMessage"
+							type="xsd:string" minOccurs="1" maxOccurs="1">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="listerReservation">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="utilisateurId" type="xsd:int" minOccurs="1" maxOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="listerReservationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="listReservation" type="Q1:Reservation" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
 		</xsd:schema>
 	</wsdl:types>
 	<wsdl:message name="rechercherLivreRequest">
@@ -210,6 +286,30 @@
 	<wsdl:message name="getGenresResponse">
 		<wsdl:part name="parameters" element="tns:getGenresResponse"></wsdl:part>
 	</wsdl:message>
+	<wsdl:message name="creerReservationRequest">
+		<wsdl:part name="parameters" element="tns:creerReservation"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="creerReservationResponse">
+		<wsdl:part name="parameters" element="tns:creerReservationResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="creerReservationFault">
+		<wsdl:part name="parameters" element="tns:creerReservationFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="supprimerReservationRequest">
+		<wsdl:part name="parameters" element="tns:supprimerReservation"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="supprimerReservationResponse">
+		<wsdl:part name="parameters" element="tns:supprimerReservationResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="supprimerReservationFault">
+		<wsdl:part name="parameters" element="tns:supprimerReservationFault"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="listerReservationRequest">
+		<wsdl:part name="parameters" element="tns:listerReservation"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="listerReservationResponse">
+		<wsdl:part name="parameters" element="tns:listerReservationResponse"></wsdl:part>
+	</wsdl:message>
 	<wsdl:portType name="LivreService">
 		<wsdl:operation name="rechercherLivre">
 			<wsdl:input message="tns:rechercherLivreRequest" />
@@ -242,6 +342,20 @@
 		<wsdl:operation name="getGenres">
 			<wsdl:input message="tns:getGenresRequest"></wsdl:input>
 			<wsdl:output message="tns:getGenresResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="creerReservation">
+			<wsdl:input message="tns:creerReservationRequest"></wsdl:input>
+			<wsdl:output message="tns:creerReservationResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:creerReservationFault"></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="supprimerReservation">
+			<wsdl:input message="tns:supprimerReservationRequest"></wsdl:input>
+			<wsdl:output message="tns:supprimerReservationResponse"></wsdl:output>
+            <wsdl:fault name="fault" message="tns:supprimerReservationFault"></wsdl:fault>
+        </wsdl:operation>
+		<wsdl:operation name="listerReservation">
+			<wsdl:input message="tns:listerReservationRequest"></wsdl:input>
+			<wsdl:output message="tns:listerReservationResponse"></wsdl:output>
 		</wsdl:operation>
 	</wsdl:portType>
 	<wsdl:binding name="LivreServiceSOAP" type="tns:LivreService">

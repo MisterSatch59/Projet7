@@ -17,8 +17,9 @@ public interface PretDao {
 	/**
 	 * Prolonge le pret dont l'id est en paramètre
 	 * @param pId
+	 * @param pDureeSupplementaire durée en jours à ajouter à la date de retour prévue
 	 */
-	void prolongerPret(int pId);
+	void prolongerPret(int pId, int pDureeSupplementaire);
 
 	/**
 	 * Retourne la liste des prêt en cours de l'utilisateur

@@ -43,12 +43,13 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
 	}
 
 	@Override
-	public void prolongerPret(int pId) {
+	public void prolongerPret(int pId, int dureeSupplementaire) {
 		LOGGER.traceEntry("pId = " + pId);
 		
-		String vSQL = "UPDATE public.pret SET renouvele = true WHERE id = :id";
+		String vSQL = "UPDATE public.pret SET renouvele = true, date_retour_prevue = date_retour_prevue + :periode WHERE id = :id";
 
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("periode", dureeSupplementaire);
 		vParams.addValue("id", pId);
 
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());

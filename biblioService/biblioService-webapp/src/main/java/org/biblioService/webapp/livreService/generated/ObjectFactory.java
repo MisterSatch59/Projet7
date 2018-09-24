@@ -164,4 +164,68 @@ public class ObjectFactory {
         return new GetGenresResponse();
     }
 
+    /**
+     * Create an instance of {@link CreerReservation }
+     * 
+     */
+    public CreerReservation createCreerReservation() {
+        return new CreerReservation();
+    }
+
+    /**
+     * Create an instance of {@link CreerReservationResponse }
+     * 
+     */
+    public CreerReservationResponse createCreerReservationResponse() {
+        return new CreerReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreerReservationFault }
+     * 
+     */
+    public CreerReservationFault createCreerReservationFault() {
+        return new CreerReservationFault();
+    }
+
+    /**
+     * Create an instance of {@link SupprimerReservation }
+     * 
+     */
+    public SupprimerReservation createSupprimerReservation() {
+        return new SupprimerReservation();
+    }
+
+    /**
+     * Create an instance of {@link SupprimerReservationResponse }
+     * 
+     */
+    public SupprimerReservationResponse createSupprimerReservationResponse() {
+        return new SupprimerReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link SupprimerReservationFault }
+     * 
+     */
+    public SupprimerReservationFault createSupprimerReservationFault() {
+        return new SupprimerReservationFault();
+    }
+
+    /**
+     * Create an instance of {@link ListerReservation }
+     * 
+     */
+    public ListerReservation createListerReservation() {
+        return new ListerReservation();
+    }
+
+    /**
+     * Create an instance of {@link ListerReservationResponse }
+     * 
+     */
+    public ListerReservationResponse createListerReservationResponse() {
+        return new ListerReservationResponse();
+    }
+
 }

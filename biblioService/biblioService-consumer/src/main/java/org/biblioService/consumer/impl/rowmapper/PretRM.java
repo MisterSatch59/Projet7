@@ -37,6 +37,7 @@ public class PretRM implements RowMapper<Pret> {
 		//Enregistrement du résultats dans des variables
 		int vId = pRS.getInt("id");
 		Date vDateDebut = pRS.getDate("date_debut");
+		Date vDateRetourPrevue = pRS.getDate("date_retour_prevue");
 		Date vDateFin = pRS.getDate("date_fin");
 		boolean vRenouvele = pRS.getBoolean("renouvele");
 		int vUtilisateurId = pRS.getInt("utilisateur_id");
@@ -50,6 +51,13 @@ public class PretRM implements RowMapper<Pret> {
 		c.setTime(vDateDebut);
 		try {
 			vPret.setDateDebut(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
+		} catch (DatatypeConfigurationException e) {
+			LOGGER.debug(e);
+		}
+		
+		c.setTime(vDateRetourPrevue);
+		try {
+			vPret.setDateRetourPrevue(DatatypeFactory.newInstance().newXMLGregorianCalendar(c));
 		} catch (DatatypeConfigurationException e) {
 			LOGGER.debug(e);
 		}
@@ -68,7 +76,7 @@ public class PretRM implements RowMapper<Pret> {
 
 		vPret.setRenouvele(vRenouvele);
 
-		vPret.setUtilisateur(new Utilisateur(daoFactory.getUtilisateurDao().getUtilisateur(vUtilisateurId)));
+		vPret.setUtilisateur(new Utilisateur(daoFactory.getUtilisateurDao().getUtilisateurBD(vUtilisateurId)));
 		
 		vPret.setExemplaire(daoFactory.getExemplaireDao().getExemplaire(vExemplaireId));
 		

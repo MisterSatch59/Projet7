@@ -11,3 +11,4 @@ DROP TABLE public.livre CASCADE;
 DROP TABLE public.paragraphe CASCADE;
 DROP TABLE public.pret CASCADE;
 DROP TABLE public.utilisateur CASCADE;
+DROP TABLE public.reservation CASCADE;

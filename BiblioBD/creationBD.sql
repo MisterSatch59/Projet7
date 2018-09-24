@@ -89,7 +89,6 @@ CREATE TABLE public.livre (
                 CONSTRAINT livre_pk PRIMARY KEY (isbn)
 );
 
-
 CREATE TABLE public.livre_genre (
                 isbn VARCHAR(20) NOT NULL,
                 nom VARCHAR(20) NOT NULL,
@@ -116,9 +115,12 @@ CREATE TABLE public.exemplaire (
 
 ALTER SEQUENCE public.exemplaire_id_seq OWNED BY public.exemplaire.id;
 
+CREATE SEQUENCE public.pret_id_seq;
+
 CREATE TABLE public.pret (
-                id INTEGER NOT NULL,
+                id INTEGER NOT NULL DEFAULT nextval('public.pret_id_seq'),
                 date_debut DATE NOT NULL,
+                date_retour_prevue DATE NOT NULL,
                 date_fin VARCHAR,
                 renouvele BOOLEAN NOT NULL,
                 utilisateur_id INTEGER NOT NULL,
@@ -126,6 +128,8 @@ CREATE TABLE public.pret (
                 CONSTRAINT pret_pk PRIMARY KEY (id)
 );
 
+
+ALTER SEQUENCE public.pret_id_seq OWNED BY public.pret.id;
 
 ALTER TABLE public.livre ADD CONSTRAINT langue_livre_fk
 FOREIGN KEY (langue)
@@ -417,7 +421,7 @@ INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibl
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque centrale');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des oies');
-INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des oies');
+INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des canards');
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2070649693','Bibliothèque des canards');
 
@@ -511,12 +515,12 @@ INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2290055953','Bibl
 INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2290055953','Bibliothèque des canards');
 
 -- Utilisateur
-INSERT INTO public.utilisateur (id,email,nom,prenom,mdp,sel) VALUES (1,'jeremylootens@gmail.com' ,'Lootens' ,'Jérémy' ,'9Gb+Cm0HWmVuF7zuSK4L4Pg+GOvPFNsbAWoU/cM2Ywg=' ,'t0P7IvDKzv36W2npOfR4' );
+INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES ('jeremylootens@gmail.com' ,'Lootens' ,'Jérémy' ,'9Gb+Cm0HWmVuF7zuSK4L4Pg+GOvPFNsbAWoU/cM2Ywg=' ,'t0P7IvDKzv36W2npOfR4' );
 
 -- Pret
-INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (1,{d '2018-08-07'} ,true , 1, 5);
-INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (2,{d '2018-09-10'} ,false , 1, 11);
-INSERT INTO public.pret (id,date_debut,renouvele,utilisateur_id,exemplaire_id) VALUES (3,{d '2018-09-03'} ,false , 1, 77);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-07'},{d '2018-10-02'} ,true , 1, 5);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-10'},{d '2018-10-08'} ,false , 1, 11);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 1, 77);
 
 
 

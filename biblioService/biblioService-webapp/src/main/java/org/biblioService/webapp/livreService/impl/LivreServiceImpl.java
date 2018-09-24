@@ -1,6 +1,5 @@
 package org.biblioService.webapp.livreService.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,19 +9,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioService.business.contrat.ManagerFactory;
 import org.biblioService.model.bean.Livre;
+import org.biblioService.model.bean.DispoParBibliotheque;
 import org.biblioService.model.bean.Pret;
+import org.biblioService.model.bean.Reservation;
+import org.biblioService.model.exception.AutreException;
 import org.biblioService.model.exception.NotFoundException;
 import org.biblioService.model.exception.TechnicalException;
+import org.biblioService.webapp.livreService.generated.CreerReservationFault_Exception;
 import org.biblioService.webapp.livreService.generated.ListerPretEnCoursFault;
 import org.biblioService.webapp.livreService.generated.ListerPretEnCoursFault_Exception;
 import org.biblioService.webapp.livreService.generated.LivreService;
 import org.biblioService.webapp.livreService.generated.ProlongerPretFault;
 import org.biblioService.webapp.livreService.generated.ProlongerPretFault_Exception;
+import org.biblioService.webapp.livreService.generated.SupprimerReservationFault_Exception;
 import org.biblioService.webapp.livreService.generated.VoirDispoFault_Exception;
-import org.biblioService.webapp.livreService.generated.types.NombreEtBibliotheque;
-
-import java.util.Map;
-import java.util.Set;
 
 public class LivreServiceImpl implements LivreService {
 	
@@ -109,20 +109,56 @@ public class LivreServiceImpl implements LivreService {
 	}
 
 	@Override
-	public List<NombreEtBibliotheque> voirDispo(String pISBN) throws VoirDispoFault_Exception {
+	public List<DispoParBibliotheque> voirDispo(String pISBN) throws VoirDispoFault_Exception {
 		LOGGER.traceEntry("pISBN = " + pISBN);
 		
-		Map <String, Integer> vDispo = managerFactory.getLivreManager().getDispo(pISBN);
-		List<NombreEtBibliotheque> rDispo =  new ArrayList<NombreEtBibliotheque>();
-		
-		Set<String> vKeys = vDispo.keySet();
-		for (String vKey : vKeys) {
-			NombreEtBibliotheque vNombreEtBibliotheque = new NombreEtBibliotheque();
-			vNombreEtBibliotheque.setBibliotheque(vKey);
-			vNombreEtBibliotheque.setNombre(vDispo.get(vKey));
-			rDispo.add(vNombreEtBibliotheque);
-		}
-		return rDispo;
+		List<DispoParBibliotheque> vDispo = managerFactory.getLivreManager().getDispo(pISBN);
+
+		LOGGER.traceExit("vDispo = " + vDispo);
+		return vDispo;
 	}
+	
+	@Override
+	public void creerReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws CreerReservationFault_Exception {
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
+		
+		try {
+			managerFactory.getLivreManager().createReservation(pISBN,pBibliotheque,pUtilisateurId);
+		} catch (AutreException e) {
+			LOGGER.debug(e);
+			throw new CreerReservationFault_Exception(e.getMessage());
+		}
+
+		LOGGER.traceExit();
+	}
+
+
+	@Override
+	public List<Reservation> listerReservation(int pUtilisateurId) {
+		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
+
+		List<Reservation> vResult = managerFactory.getLivreManager().listerReservation(pUtilisateurId);
+		
+		LOGGER.traceEntry("vResult = " + vResult);
+		return vResult;
+	}
+	
+
+	@Override
+	public void supprimerReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws SupprimerReservationFault_Exception{
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
+		
+		try {
+			managerFactory.getLivreManager().deleteReservation(pISBN,pBibliotheque,pUtilisateurId);
+		} catch (TechnicalException e) {
+			LOGGER.debug(e);
+			throw new SupprimerReservationFault_Exception(e.getMessage());
+		}
+
+		LOGGER.traceExit();
+		
+	}
+
+
 
 }

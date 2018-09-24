@@ -21,7 +21,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 	private UtilisateurRM utilisateurRM;
 
 	@Override
-	public void createUtilisateur(UtilisateurBD pUtilisateurBD) {
+	public void createUtilisateurBD(UtilisateurBD pUtilisateurBD) {
 		LOGGER.traceEntry("utilisateurBD = " + pUtilisateurBD);
 		
 		if (pUtilisateurBD != null) {// Vérifie que l'utilisateur n'est pas null
@@ -47,7 +47,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 	}
 
 	@Override
-	public UtilisateurBD getUtilisateur(String pEmail){
+	public UtilisateurBD getUtilisateurBD(String pEmail){
 		LOGGER.traceEntry("email = " + pEmail);
 
 		// Recherche de l'utilisateur dans la base de données
@@ -69,7 +69,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 	}
 
 	@Override
-	public UtilisateurBD getUtilisateur(int pId){
+	public UtilisateurBD getUtilisateurBD(int pId){
 		LOGGER.traceEntry("id = " + pId);
 
 		// Recherche de l'utilisateur dans la base de données
@@ -90,7 +90,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 	}
 
 	@Override
-	public void updateUtilisateur(UtilisateurBD pUtilisateurBD) {
+	public void updateUtilisateurBD(UtilisateurBD pUtilisateurBD) {
 		LOGGER.traceEntry("utilisateurBD = " + pUtilisateurBD);
 		if (pUtilisateurBD != null) {// Vérifie que l'utilisateur n'est pas null
 			

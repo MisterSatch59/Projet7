@@ -14,28 +14,27 @@ public interface UtilisateurDao {
 	 * Crée l'utilisateur en paramètre dans la base de données
 	 * @param pUtilisateurBD
 	 */
-	void createUtilisateur(UtilisateurBD pUtilisateurBD);
+	void createUtilisateurBD(UtilisateurBD pUtilisateurBD);
 
 	/**
 	 * Retourne l'utilisateur correspondant à l'email
 	 * @param pEmail
 	 * @return Utilisateur
 	 */
-	UtilisateurBD getUtilisateur(String pEmail);
+	UtilisateurBD getUtilisateurBD(String pEmail);
 
-	
 	/**
 	 * Retourne l'utilisateur correspondant à l'id
 	 * @param pId
 	 * @return UtilisateurBD
 	 */
-	UtilisateurBD getUtilisateur(int pId);
+	UtilisateurBD getUtilisateurBD(int pId);
 
 	/**
 	 * Modifie utilisateur dans la base de données
 	 * @param vUtilisateurBD
 	 */
-	void updateUtilisateur(UtilisateurBD pUtilisateurBD);
+	void updateUtilisateurBD(UtilisateurBD pUtilisateurBD);
 
 	/**
 	 * Supprime l'utilisateur correspondant à l'id de la base de données

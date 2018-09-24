@@ -2,22 +2,24 @@ package org.biblioService.business.impl.manager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioService.business.Donnees;
 import org.biblioService.business.contrat.manager.LivreManager;
+import org.biblioService.model.bean.DispoParBibliotheque;
 import org.biblioService.model.bean.Livre;
 import org.biblioService.model.bean.Pret;
+import org.biblioService.model.bean.Reservation;
 import org.biblioService.model.bean.UtilisateurBD;
+import org.biblioService.model.exception.AutreException;
 import org.biblioService.model.exception.NotFoundException;
 import org.biblioService.model.exception.TechnicalException;
 import org.springframework.transaction.TransactionStatus;
@@ -63,12 +65,6 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 				}
 			}
 		}
-		
-		//calcul des dates de retours prévues
-		for (Pret pret : vListPret2) {
-			pret = calculDateRetourPrevue(pret);
-		}
-		
 
 		LOGGER.traceExit("vListPret = " + vListPret2);
 		return vListPret2;
@@ -80,7 +76,7 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			getDaoFactory().getPretDao().prolongerPret(pPretId);
+			getDaoFactory().getPretDao().prolongerPret(pPretId,donnees.getDUREE_PRET_EN_JOUR());
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -102,7 +98,6 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 			throw vException;
 		}
 		
-		vPret = calculDateRetourPrevue(vPret);
 		vNewDateRetourPrevue = vPret.getDateRetourPrevue();
 
 		LOGGER.traceExit("vNewDateRetourPrevue = " + vNewDateRetourPrevue);
@@ -114,7 +109,7 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
 
 		// Recupération de l'utilisateur
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pUtilisateurId);
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pUtilisateurId);
 
 		// lance une NotFoundException si la recherche ne retourne aucun resultat
 		if (vUtilisateurBD == null) {
@@ -125,11 +120,6 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 
 		// Récupération de la liste des prêts
 		List<Pret> vListPret = getDaoFactory().getPretDao().getPretEnCours(pUtilisateurId);
-		
-		// calcul des dates de retours prévues
-		for (Pret pret : vListPret) {
-			pret = calculDateRetourPrevue(pret);
-		}
 
 		LOGGER.traceExit("vListPret = " + vListPret);
 		return vListPret;
@@ -147,13 +137,30 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 	}
 
 	@Override
-	public Map<String, Integer> getDispo(String pISBN) {
+	public List<DispoParBibliotheque> getDispo(String pISBN) {
 		LOGGER.traceEntry("pISBN = " + pISBN);
 
 		Map<String, Integer> vDispo = getDaoFactory().getLivreDao().getDispo(pISBN);
+		
+		List<DispoParBibliotheque> rDispo =  new ArrayList<DispoParBibliotheque>();
+		
+		Set<String> vKeys = vDispo.keySet();
+		for (String vKey : vKeys) {
+			DispoParBibliotheque vDispoParBibliotheque = new DispoParBibliotheque();
+			vDispoParBibliotheque.setBibliotheque(vKey);
+			vDispoParBibliotheque.setNombre(vDispo.get(vKey));
+			rDispo.add(vDispoParBibliotheque);
+		}
+		
+		for (DispoParBibliotheque dispo : rDispo) {
+			if(dispo.getNombre()==0) {
+				dispo.setProchainRetour(getDaoFactory().getLivreDao().getProchainRetour(dispo.getBibliotheque(),pISBN));
+				dispo.setPersonnesEnAttente(getDaoFactory().getLivreDao().getPersonnesEnAttente(dispo.getBibliotheque(),pISBN));
+			}
+		}
 
 		LOGGER.traceExit("vDispo = " + vDispo);
-		return vDispo;
+		return rDispo;
 	}
 
 	@Override
@@ -176,32 +183,71 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 		return vListLangue;
 	}
 
-	/**
-	 * calcul et ajoute l'attibut "dateRetourPrevue" au Pret 
-	 * 
-	 * @param pPret
-	 * @return Pret
-	 */
-	private Pret calculDateRetourPrevue(Pret pPret) {
-		LOGGER.traceEntry("pPret = " + pPret);
 
-		int DUREE_PRET_EN_JOUR = donnees.getDUREE_PRET_EN_JOUR();
-
-		try {
-			GregorianCalendar vDateDebut = pPret.getDateDebut().toGregorianCalendar();
-			vDateDebut.add(Calendar.DATE, DUREE_PRET_EN_JOUR);
-			if (pPret.isRenouvele()) {
-				vDateDebut.add(Calendar.DATE, DUREE_PRET_EN_JOUR);
+	@Override
+	public void createReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws AutreException {
+		LOGGER.traceEntry("pISBN = " + pISBN, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
+		
+		List<Pret> vPretEnCours = getDaoFactory().getPretDao().getPretEnCours(pUtilisateurId);
+		for (Pret pret : vPretEnCours) {
+			if(pret.getExemplaire().getLivre().getIsbn().equals(pISBN)) {
+				throw new AutreException("Impossible de réserver un livre déjà en cours d'emprunt (y compris dans une autre bibliothèque)");
 			}
-			XMLGregorianCalendar vDateRetourPrevue = DatatypeFactory.newInstance().newXMLGregorianCalendar(vDateDebut);
+		}
+		
+		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		try {
+			getDaoFactory().getReservationDao().createReservation(pISBN,pBibliotheque,pUtilisateurId);
 
-			pPret.setDateRetourPrevue(vDateRetourPrevue);
-		} catch (DatatypeConfigurationException e) {
-			LOGGER.debug(e);
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			this.getPlatformTransactionManager().commit(vTScommit);
+		} finally {
+			if (vTransactionStatus != null) {
+				this.getPlatformTransactionManager().rollback(vTransactionStatus);
+				TechnicalException vException = new TechnicalException();
+				vException.setMessageErreur("Erreur technique interne.");
+				throw vException;
+			}
 		}
 
-		LOGGER.traceExit("pPret = " + pPret);
-		return pPret;
+		LOGGER.traceExit();
 	}
 
+	
+	@Override
+	public List<Reservation> listerReservation(int pUtilisateurId) {
+		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
+		
+		List<Reservation> vResult = getDaoFactory().getReservationDao().getReservation(pUtilisateurId);
+		
+		LOGGER.traceEntry("vResult = " + vResult);
+		return vResult;
+	}
+
+
+	@Override
+	public void deleteReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws TechnicalException {
+		LOGGER.traceEntry("pISBN = " + pISBN, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
+		
+		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		try {
+			getDaoFactory().getReservationDao().deleteReservation(pISBN,pBibliotheque,pUtilisateurId);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			this.getPlatformTransactionManager().commit(vTScommit);
+		} finally {
+			if (vTransactionStatus != null) {
+				this.getPlatformTransactionManager().rollback(vTransactionStatus);
+				TechnicalException vException = new TechnicalException();
+				vException.setMessageErreur("Erreur technique interne.");
+				throw vException;
+			}
+		}
+		
+	}
+
+	
+	
 }

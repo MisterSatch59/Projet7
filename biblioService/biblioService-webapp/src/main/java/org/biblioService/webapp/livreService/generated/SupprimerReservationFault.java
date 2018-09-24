@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "faultMessage"
 })
-@XmlRootElement(name = "voirDispoFault")
-public class VoirDispoFault {
+@XmlRootElement(name = "supprimerReservationFault")
+public class SupprimerReservationFault {
 
     @XmlElement(name = "FaultMessage", required = true)
     protected String faultMessage;

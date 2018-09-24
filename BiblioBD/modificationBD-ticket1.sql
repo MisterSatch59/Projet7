@@ -14,6 +14,10 @@ CREATE INDEX reservation_idx
 
 CLUSTER reservation_idx ON reservation;
 
+CREATE UNIQUE INDEX reservation_idx1
+ ON public.reservation
+ ( isbn, utilisateur_id );
+
 ALTER TABLE public.reservation ADD CONSTRAINT utilisateur_reservation_fk
 FOREIGN KEY (utilisateur_id)
 REFERENCES public.utilisateur (id)
