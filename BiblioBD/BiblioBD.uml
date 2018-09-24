@@ -3,7 +3,6 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_Yw_bEGiGEeiqG7gMWSW--g">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Actor" xmi:id="_eIOlgGiGEeiqG7gMWSW--g" name="Actor2"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_ys1SAGiGEeiqG7gMWSW--g" name="Livre">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_wpMw4GiHEeiqG7gMWSW--g" name="titre">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -193,5 +192,34 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VTdfQGi9EeiVxYitRte3yA" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VThJoGi9EeiVxYitRte3yA" value="*"/>
     </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hd1kwL_NEeiOkO2II6T5AQ" name="Reservation">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_2GBJsL_NEeiOkO2II6T5AQ" name="dateResa">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_5LjXQL_NEeiOkO2II6T5AQ" name="dateMail">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ma24YL_NEeiOkO2II6T5AQ" memberEnd="_mbUycL_NEeiOkO2II6T5AQ _mbXOsL_NEeiOkO2II6T5AQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_mbS9QL_NEeiOkO2II6T5AQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_mbTkUL_NEeiOkO2II6T5AQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_mbUycL_NEeiOkO2II6T5AQ" name="reservation" type="_hd1kwL_NEeiOkO2II6T5AQ" association="_ma24YL_NEeiOkO2II6T5AQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_mbXOsL_NEeiOkO2II6T5AQ" name="bibiliotheque" type="_ISaocGiJEeiqG7gMWSW--g" association="_ma24YL_NEeiOkO2II6T5AQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_s35NQL_NEeiOkO2II6T5AQ" memberEnd="_s36bYL_NEeiOkO2II6T5AQ _s37CcL_NEeiOkO2II6T5AQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_s350UL_NEeiOkO2II6T5AQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_s350Ub_NEeiOkO2II6T5AQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_s36bYL_NEeiOkO2II6T5AQ" name="reservation" type="_hd1kwL_NEeiOkO2II6T5AQ" association="_s35NQL_NEeiOkO2II6T5AQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_s37CcL_NEeiOkO2II6T5AQ" name="utilisateur" type="_zqE9YGiGEeiqG7gMWSW--g" association="_s35NQL_NEeiOkO2II6T5AQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_wFrX4L_NEeiOkO2II6T5AQ" memberEnd="_wFr-8r_NEeiOkO2II6T5AQ _wFsmAL_NEeiOkO2II6T5AQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_wFr-8L_NEeiOkO2II6T5AQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_wFr-8b_NEeiOkO2II6T5AQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wFr-8r_NEeiOkO2II6T5AQ" name="reservation" type="_hd1kwL_NEeiOkO2II6T5AQ" association="_wFrX4L_NEeiOkO2II6T5AQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_wFsmAL_NEeiOkO2II6T5AQ" name="livre" type="_ys1SAGiGEeiqG7gMWSW--g" association="_wFrX4L_NEeiOkO2II6T5AQ"/>
   </packagedElement>
 </uml:Model>

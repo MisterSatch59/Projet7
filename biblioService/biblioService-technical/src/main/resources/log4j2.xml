@@ -27,7 +27,7 @@
 		</Logger>
 		
 		<!-- == Logger pour l'application == -->
-		<Logger name="org.biblioService.consumer" level="all" additivity="false">
+		<Logger name="org.biblioService" level="all" additivity="false">
 			<AppenderRef ref="STDOUT" />
 		</Logger>
 
