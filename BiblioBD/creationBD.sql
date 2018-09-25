@@ -518,7 +518,7 @@ INSERT INTO public.exemplaire (isbn,bibliotheque) VALUES ('978-2290055953','Bibl
 INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES ('jeremylootens@gmail.com' ,'Lootens' ,'Jérémy' ,'9Gb+Cm0HWmVuF7zuSK4L4Pg+GOvPFNsbAWoU/cM2Ywg=' ,'t0P7IvDKzv36W2npOfR4' );
 
 -- Pret
-INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-07'},{d '2018-10-02'} ,true , 1, 5);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-07'},{d '2018-10-02'} ,true , 1, 4);
 INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-10'},{d '2018-10-08'} ,false , 1, 11);
 INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 1, 77);
 

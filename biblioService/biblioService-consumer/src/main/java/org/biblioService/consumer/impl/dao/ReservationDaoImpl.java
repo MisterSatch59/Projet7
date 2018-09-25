@@ -58,7 +58,6 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
 		return vListReservation;
 	}
 
-
 	@Override
 	public void deleteReservation(String pISBN, String pBibliotheque, int pUtilisateurId) {
 		LOGGER.traceEntry("pISBN = " + pISBN, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
@@ -78,6 +77,24 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
 
 		LOGGER.traceExit();
 		
+	}
+
+	@Override
+	public int getNbReservation(String pISBN, String pBibliotheque) {
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + pBibliotheque);
+
+		String vSQL = "SELECT COUNT(*) FROM reservation WHERE bibliotheque = :bibliotheque AND isbn = :isbn";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("bibliotheque", pBibliotheque);
+		vParams.addValue("isbn", pISBN);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		Integer vNbReservation = vJdbcTemplate.queryForObject(vSQL, vParams,Integer.class);
+
+		LOGGER.traceExit("vNbReservation = " + vNbReservation);
+		return vNbReservation;
 	}
 	
 

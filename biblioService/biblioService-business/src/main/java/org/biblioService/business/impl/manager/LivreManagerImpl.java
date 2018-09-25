@@ -183,16 +183,27 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 		return vListLangue;
 	}
 
-
 	@Override
 	public void createReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws AutreException {
 		LOGGER.traceEntry("pISBN = " + pISBN, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
 		
+		//Vérifie que le livre n'est pas disponible
+		Map<String, Integer> vDispo = getDaoFactory().getLivreDao().getDispo(pISBN);
+		if(vDispo.get(pBibliotheque)!=0) {
+			throw new AutreException("Impossible d'effectuer la réservation : au moins un exemplaire est disponible dans cette bibliotheque");
+		}
+		
+		//Vérifie que le livre n'est pas déjà emprunté
 		List<Pret> vPretEnCours = getDaoFactory().getPretDao().getPretEnCours(pUtilisateurId);
 		for (Pret pret : vPretEnCours) {
 			if(pret.getExemplaire().getLivre().getIsbn().equals(pISBN)) {
 				throw new AutreException("Impossible de réserver un livre déjà en cours d'emprunt (y compris dans une autre bibliothèque)");
 			}
+		}
+		
+		//Vérifie que le nombre maximal de reservation n'est pas atteint
+		if(getDaoFactory().getReservationDao().getNbReservation(pISBN,pBibliotheque)>=2*getDaoFactory().getExemplaireDao().getNbExemplaire(pISBN,pBibliotheque)) {
+			throw new AutreException("Impossible d'effectuer la réservation : le nombre maximal de reservation est atteint");
 		}
 		
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
@@ -213,7 +224,6 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 
 		LOGGER.traceExit();
 	}
-
 	
 	@Override
 	public List<Reservation> listerReservation(int pUtilisateurId) {
@@ -224,7 +234,6 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 		LOGGER.traceEntry("vResult = " + vResult);
 		return vResult;
 	}
-
 
 	@Override
 	public void deleteReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws TechnicalException {

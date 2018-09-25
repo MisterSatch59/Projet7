@@ -29,4 +29,10 @@ public interface ReservationDao {
 	 */
 	void deleteReservation(String pISBN, String pBibliotheque, int pUtilisateurId);
 
+	/**
+	 * Retourne le nombre de reservation du livre dans la bibliotheque
+	 * @return
+	 */
+	int getNbReservation(String pISBN, String pBibliotheque);
+
 }
