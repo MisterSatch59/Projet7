@@ -39,6 +39,10 @@ public class ReservationRM implements RowMapper<Reservation> {
 		String vBibliotheque = pRS.getString("bibliotheque");
 		Date vDateResa = pRS.getDate("date_resa");
 		Date vDateMail = pRS.getDate("date_mail");
+		Integer vPretId = pRS.getInt("pret_id");
+		if(pRS.wasNull()) {
+			vPretId=null;
+		}
 
 		Reservation vReservation = new Reservation();
 		vReservation.setLivre(daoFactory.getLivreDao().getLivre(vISBN));
@@ -62,6 +66,10 @@ public class ReservationRM implements RowMapper<Reservation> {
 			}
 		}else {
 			vReservation.setDateMail(null);
+		}
+		
+		if(vPretId!=null) {
+			vReservation.setPret(daoFactory.getPretDao().getPret(vPretId));
 		}
 		
 		

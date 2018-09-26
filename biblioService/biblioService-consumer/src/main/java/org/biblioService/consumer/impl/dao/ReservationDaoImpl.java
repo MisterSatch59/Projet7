@@ -125,16 +125,17 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
 
 
 	@Override
-	public void setAttribue(String pBibliotheque, int pUtilisateurId, String pIsbn, Date pDateAttribution) {
+	public void setAttribue(String pBibliotheque, int pUtilisateurId, String pIsbn, Date pDateAttribution, int pPretId) {
 		LOGGER.traceEntry("pIsbn = " + pIsbn, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId + " - pDateAttribution = " + pDateAttribution);
 		
 		// Enregistrement dans la base de données
-		String vSQL = "UPDATE public.reservation SET date_mail = :date_mail WHERE bibliotheque = :bibliotheque AND isbn = :isbn AND utilisateur_id = :utilisateur_id";
+		String vSQL = "UPDATE public.reservation SET date_mail = :date_mail, pret_id = :pret_id WHERE bibliotheque = :bibliotheque AND isbn = :isbn AND utilisateur_id = :utilisateur_id";
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		vParams.addValue("bibliotheque", pBibliotheque);
 		vParams.addValue("isbn", pIsbn);
 		vParams.addValue("utilisateur_id", pUtilisateurId);
 		vParams.addValue("date_mail", pDateAttribution);
+		vParams.addValue("pret_id", pPretId);
 
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 

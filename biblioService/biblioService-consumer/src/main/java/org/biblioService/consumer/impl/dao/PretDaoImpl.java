@@ -14,6 +14,8 @@ import org.biblioService.consumer.impl.rowmapper.PretRM;
 import org.biblioService.model.bean.Pret;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 @Named("pretDao")
 public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
@@ -104,7 +106,7 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
 	}
 
 	@Override
-	public void createPret(int pUtilisateurId, int pExemplaireId, Date pDateDebut, Date pDateFin) {
+	public int createPret(int pUtilisateurId, int pExemplaireId, Date pDateDebut, Date pDateFin) {
 		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId + " - pExemplaireId = " + pExemplaireId + " - vDateDebut = " + pDateDebut + " - vDateFin = " + pDateFin);
 		
 		String vSQL = "INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES"
@@ -118,9 +120,12 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
 
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
-		vJdbcTemplate.update(vSQL, vParams);
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		vJdbcTemplate.update(vSQL, vParams, keyHolder);
+		int id = (int) keyHolder.getKeys().get("id");
 		
-		LOGGER.traceExit();
+		LOGGER.traceExit("id = " + id);
+		return id;
 		
 	}
 
@@ -158,6 +163,23 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
 		LOGGER.traceExit("isEmprunte = " + (NbPret!=0));
 		return (NbPret!=0);
 
+	}
+
+	@Override
+	public void delete(int pId) {
+		LOGGER.traceEntry("pId = " + pId);
+		
+		String vSQL = "DELETE FROM public.pret WHERE id = :id";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("id", pId);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		vJdbcTemplate.update(vSQL, vParams);
+		
+		LOGGER.traceExit();
+		
 	}
 
 }

@@ -8,6 +8,7 @@ import org.biblioService.model.bean.Pret;
 import org.biblioService.model.bean.Reservation;
 import org.biblioService.model.exception.AutreException;
 import org.biblioService.model.exception.NotFoundException;
+import org.biblioService.model.exception.ParamsInvalidException;
 import org.biblioService.model.exception.TechnicalException;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -52,8 +53,10 @@ public interface LivreManager {
 	 * Si aucun exemplaire n'est dispo, retourne la date du prochain retour et le nombre de personne sur liste d'attente.
 	 * @param pISBN
 	 * @return Map<String, Integer>
+	 * @throws ParamsInvalidException 
+	 * @throws NotFoundException 
 	 */
-	List<DispoParBibliotheque> getDispo(String pISBN);
+	List<DispoParBibliotheque> getDispo(String pISBN) throws NotFoundException;
 
 	/**
 	 * Retourne la liste des genres
@@ -80,8 +83,9 @@ public interface LivreManager {
 	 * Retourne la liste des réservations de l'utilisateur
 	 * @param pUtilisateurId
 	 * @return List<Reservation>
+	 * @throws NotFoundException 
 	 */
-	List<Reservation> listerReservation(int pUtilisateurId);
+	List<Reservation> listerReservation(int pUtilisateurId) throws NotFoundException;
 
 	/**
 	 * Supprime la reservation
@@ -96,8 +100,10 @@ public interface LivreManager {
 	 * Création d'un nouveau prêt à la date du jour
 	 * @param pUtilisateurId
 	 * @param pExemplaireId
+	 * @return 
+	 * @throws AutreException 
 	 */
-	void nouveauPret(int pUtilisateurId, int pExemplaireId) throws TechnicalException;
+	int nouveauPret(int pUtilisateurId, int pExemplaireId) throws AutreException;
 
 	/**
 	 * Retour d'un livre en fin de Pret
@@ -113,7 +119,8 @@ public interface LivreManager {
 	 *  - Supprime les reservations dont un livre à été attribué il y a plus de 48h
 	 *  - Retourne la liste des reservation passé en tête de liste d'attente 
 	 * @return
+	 * @throws AutreException 
 	 */
-	List<Reservation> miseAJourListesReservation() throws TechnicalException;
+	List<Reservation> miseAJourListesReservation() throws AutreException;
 
 }

@@ -300,4 +300,12 @@ public class ObjectFactory {
         return new MiseAJourListesReservationFault();
     }
 
+    /**
+     * Create an instance of {@link ListerReservationFault }
+     * 
+     */
+    public ListerReservationFault createListerReservationFault() {
+        return new ListerReservationFault();
+    }
+
 }

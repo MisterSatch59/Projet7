@@ -4,6 +4,7 @@ CREATE TABLE public.reservation (
                 utilisateur_id INTEGER NOT NULL,
                 date_resa TIMESTAMP NOT NULL,
                 date_mail TIMESTAMP,
+                pret_id INTEGER,
                 CONSTRAINT reservation_pk PRIMARY KEY (bibliotheque, isbn, utilisateur_id)
 );
 
@@ -35,6 +36,13 @@ NOT DEFERRABLE;
 ALTER TABLE public.reservation ADD CONSTRAINT livre_reservation_fk
 FOREIGN KEY (isbn)
 REFERENCES public.livre (isbn)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.reservation ADD CONSTRAINT pret_reservation_fk
+FOREIGN KEY (pret_id)
+REFERENCES public.pret (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;

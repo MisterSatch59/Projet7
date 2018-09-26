@@ -51,8 +51,9 @@ public interface ReservationDao {
 	 * @param pUtilisateurId
 	 * @param pIsbn
 	 * @param pDateAttribution
+	 * @param pPretId 
 	 */
-	void setAttribue(String pBibliotheque, int pUtilisateurId, String pIsbn, Date pDateAttribution);
+	void setAttribue(String pBibliotheque, int pUtilisateurId, String pIsbn, Date pDateAttribution, int pPretId);
 
 	/**
 	 * Retourne la list des reservation dont la date d'attribution est antérieur à la date en paramètre

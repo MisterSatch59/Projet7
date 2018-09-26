@@ -51,7 +51,7 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 
 		List<Pret> vListPret = getDaoFactory().getPretDao().getPretDebutAvant(vCalendar);
 
-		// Retrait des pret prolongés encore valide car renouvele
+		// Retrait des prets prolongés encore valide car renouvele
 		List<Pret> vListPret2 = new ArrayList<Pret>();
 		if (vListPret != null) {
 			for (Pret vPret : vListPret) {
@@ -75,26 +75,20 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 	@Override
 	public XMLGregorianCalendar prolongerPret(int pPretId) throws TechnicalException, NotFoundException, AutreException {
 		LOGGER.traceEntry("pPretId = " + pPretId);
-	
-		Pret vPret = getDaoFactory().getPretDao().getPret(pPretId);
-		
-		//Vérifie que le pret existe
-		if(vPret == null) {
-			NotFoundException vException = new NotFoundException();
-			vException.setMessageErreur("Aucun pret ne correspond à cet identifiant.");
-			throw vException;
-		}
-		
-		//vérifie que le pret n'a pas déjà été prolongé
-		if(vPret.isRenouvele()) {
+
+		// Vérifie que le pret existe et le récupére
+		Pret vPret = verifierPret(pPretId);
+
+		// vérifie que le pret n'a pas déjà été prolongé
+		if (vPret.isRenouvele()) {
 			AutreException vException = new AutreException("La durée de prêt à déjà été prolongé");
-			vException.setMessageErreur("La durée de prêt ne peut être prolongée qu'une suel fois.");
+			vException.setMessageErreur("La durée de prêt ne peut être prolongée qu'une seule fois.");
 			throw vException;
 		}
 
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			getDaoFactory().getPretDao().prolongerPret(pPretId,donnees.getDUREE_PRET_EN_JOUR());
+			getDaoFactory().getPretDao().prolongerPret(pPretId, donnees.getDUREE_PRET_EN_JOUR());
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -107,7 +101,7 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 				throw vException;
 			}
 		}
-		
+
 		XMLGregorianCalendar vNewDateRetourPrevue;
 		vPret = getDaoFactory().getPretDao().getPret(pPretId);
 		vNewDateRetourPrevue = vPret.getDateRetourPrevue();
@@ -120,8 +114,8 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 	public List<Pret> getPretEnCours(int pUtilisateurId) throws NotFoundException {
 		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
 
-		// Recupération de l'utilisateur
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pUtilisateurId);
+		// Vérifie que l'utilisateur existe et le récupére
+		UtilisateurBD vUtilisateurBD = verifierUtilisateur(pUtilisateurId);
 
 		// lance une NotFoundException si la recherche ne retourne aucun resultat
 		if (vUtilisateurBD == null) {
@@ -139,8 +133,7 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 
 	@Override
 	public List<Livre> rechercherLivre(String pTitre, String pAuteur, String pGenre, String pLangue) {
-		LOGGER.traceEntry(
-				"pTitre = " + pTitre + " pAuteur = " + pAuteur + " pGenre = " + pGenre + " pLangue = " + pLangue);
+		LOGGER.traceEntry("pTitre = " + pTitre + " pAuteur = " + pAuteur + " pGenre = " + pGenre + " pLangue = " + pLangue);
 
 		List<Livre> vListLivre = getDaoFactory().getLivreDao().rechercherLivre(pTitre, pAuteur, pGenre, pLangue);
 
@@ -149,13 +142,16 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 	}
 
 	@Override
-	public List<DispoParBibliotheque> getDispo(String pISBN) {
+	public List<DispoParBibliotheque> getDispo(String pISBN) throws NotFoundException {
 		LOGGER.traceEntry("pISBN = " + pISBN);
 
+		// Vérifie l'existance du livre
+		verifierLivre(pISBN);
+
 		Map<String, Integer> vDispo = getDaoFactory().getLivreDao().getDispo(pISBN);
-		
-		List<DispoParBibliotheque> rDispo =  new ArrayList<DispoParBibliotheque>();
-		
+
+		List<DispoParBibliotheque> rDispo = new ArrayList<DispoParBibliotheque>();
+
 		Set<String> vKeys = vDispo.keySet();
 		for (String vKey : vKeys) {
 			DispoParBibliotheque vDispoParBibliotheque = new DispoParBibliotheque();
@@ -163,11 +159,11 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 			vDispoParBibliotheque.setNombre(vDispo.get(vKey));
 			rDispo.add(vDispoParBibliotheque);
 		}
-		
+
 		for (DispoParBibliotheque dispo : rDispo) {
-			if(dispo.getNombre()==0) {
-				dispo.setProchainRetour(getDaoFactory().getLivreDao().getProchainRetour(dispo.getBibliotheque(),pISBN));
-				dispo.setPersonnesEnAttente(getDaoFactory().getLivreDao().getPersonnesEnAttente(dispo.getBibliotheque(),pISBN));
+			if (dispo.getNombre() == 0) {
+				dispo.setProchainRetour(getDaoFactory().getLivreDao().getProchainRetour(dispo.getBibliotheque(), pISBN));
+				dispo.setPersonnesEnAttente(getDaoFactory().getLivreDao().getPersonnesEnAttente(dispo.getBibliotheque(), pISBN));
 			}
 		}
 
@@ -198,29 +194,46 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 	@Override
 	public void createReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws AutreException {
 		LOGGER.traceEntry("pISBN = " + pISBN, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
-		
-		//Vérifie que le livre n'est pas disponible
+
+		// Vérifie l'existance du livre
+		verifierLivre(pISBN);
+
+		// Vérifie l'existance de la bibliotheque
+		verifierBibliotheque(pBibliotheque);
+
+		// Vérifie l'existance de l'utilisateur
+		verifierUtilisateur(pUtilisateurId);
+
+		// Vérifie que le livre n'est pas disponible
 		Map<String, Integer> vDispo = getDaoFactory().getLivreDao().getDispo(pISBN);
-		if(vDispo.get(pBibliotheque)!=0) {
-			throw new AutreException("Impossible d'effectuer la réservation : au moins un exemplaire est disponible dans cette bibliotheque");
+		if (vDispo.get(pBibliotheque) != 0) {
+			AutreException vAutreException = new AutreException("Impossible d'effectuer la réservation");
+			vAutreException.setMessageErreur("Au moins un exemplaire est disponible dans cette bibliotheque");
+			throw vAutreException;
 		}
-		
-		//Vérifie que le livre n'est pas déjà emprunté
+
+		// Vérifie que le livre n'est pas déjà emprunté
 		List<Pret> vPretEnCours = getDaoFactory().getPretDao().getPretEnCours(pUtilisateurId);
 		for (Pret pret : vPretEnCours) {
-			if(pret.getExemplaire().getLivre().getIsbn().equals(pISBN)) {
-				throw new AutreException("Impossible de réserver un livre déjà en cours d'emprunt (y compris dans une autre bibliothèque)");
+			if (pret.getExemplaire().getLivre().getIsbn().equals(pISBN)) {
+				AutreException vAutreException = new AutreException("Impossible d'effectuer la réservation");
+				vAutreException.setMessageErreur("Impossible de réserver un livre déjà en cours d'emprunt (y compris dans une autre bibliothèque)");
+				throw vAutreException;
 			}
 		}
-		
-		//Vérifie que le nombre maximal de reservation n'est pas atteint
-		if(getDaoFactory().getReservationDao().getNbReservation(pISBN,pBibliotheque)>=2*getDaoFactory().getExemplaireDao().getNbExemplaire(pISBN,pBibliotheque)) {
-			throw new AutreException("Impossible d'effectuer la réservation : le nombre maximal de reservation est atteint");
+
+		// Vérifie que le nombre maximal de reservation n'est pas atteint
+		if (getDaoFactory().getReservationDao().getNbReservation(pISBN, pBibliotheque) >= 2 * getDaoFactory().getExemplaireDao().getNbExemplaire(pISBN, pBibliotheque)) {
+
+			AutreException vAutreException = new AutreException("Impossible d'effectuer la réservation");
+			vAutreException.setMessageErreur("Le nombre maximal de reservation est atteint");
+			throw vAutreException;
 		}
-		
+
+		// Création de la réservation
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			getDaoFactory().getReservationDao().createReservation(pISBN,pBibliotheque,pUtilisateurId);
+			getDaoFactory().getReservationDao().createReservation(pISBN, pBibliotheque, pUtilisateurId);
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -236,24 +249,27 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 
 		LOGGER.traceExit();
 	}
-	
+
 	@Override
-	public List<Reservation> listerReservation(int pUtilisateurId) {
+	public List<Reservation> listerReservation(int pUtilisateurId) throws NotFoundException {
 		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
-		
+
+		// Vérifie l'existance de l'utilisateur
+		verifierUtilisateur(pUtilisateurId);
+
 		List<Reservation> vResult = getDaoFactory().getReservationDao().getReservation(pUtilisateurId);
-		
+
 		LOGGER.traceExit("vResult = " + vResult);
 		return vResult;
 	}
 
 	@Override
 	public void deleteReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws TechnicalException {
-		LOGGER.traceEntry("pISBN = " + pISBN +  " - pBibliotheque = " + pBibliotheque + " - pUtilisateurId = " + pUtilisateurId);
-		
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + pBibliotheque + " - pUtilisateurId = " + pUtilisateurId);
+
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			getDaoFactory().getReservationDao().deleteReservation(pISBN,pBibliotheque,pUtilisateurId);
+			getDaoFactory().getReservationDao().deleteReservation(pISBN, pBibliotheque, pUtilisateurId);
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -266,33 +282,40 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 				throw vException;
 			}
 		}
-		
+
 		LOGGER.traceExit();
 	}
-	
+
 	@Override
-	public void nouveauPret(int pUtilisateurId, int pExemplaireId) throws TechnicalException {
+	public int nouveauPret(int pUtilisateurId, int pExemplaireId) throws AutreException {
 		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId + " - pExemplaireId = " + pExemplaireId);
-		
-		//Vérification de la disponibilité de l'exemplaire
-		if(getDaoFactory().getPretDao().isEmprunte(pExemplaireId)) {
-			TechnicalException vException = new TechnicalException();
-			vException.setMessageErreur("Cet exemplaire est déjà emprunté.");
-			throw vException;
+
+		// Vérifie l'existance de l'utilisateur
+		verifierUtilisateur(pUtilisateurId);
+
+		// Vérifie l'existance de l'exemplaire
+		verifierExemplaire(pExemplaireId);
+
+		// Vérification de la disponibilité de l'exemplaire
+		if (getDaoFactory().getPretDao().isEmprunte(pExemplaireId)) {
+			AutreException vAutreException = new AutreException("Impossible d'effectuer le prêt.");
+			vAutreException.setMessageErreur("Cet exemplaire est déjà emprunté.");
+			throw vAutreException;
 		}
-		
-		//Création date de début (date du jour) et de retour prévu
+
+		// Création date de début (date du jour) et de retour prévu
 		Date vDateDebut = new Date(Calendar.getInstance().getTime().getTime());
 
 		Calendar vCalendar = Calendar.getInstance();
 		vCalendar.add(Calendar.DATE, donnees.getDUREE_PRET_EN_JOUR());
 		Date vDateRetourPrevu = new Date(vCalendar.getTime().getTime());
-		
-		//Création du Pret en persistance
+
+		// Création du Pret en persistance
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
-		
+
+		int id;
 		try {
-			getDaoFactory().getPretDao().createPret(pUtilisateurId,pExemplaireId,vDateDebut,vDateRetourPrevu);
+			id = getDaoFactory().getPretDao().createPret(pUtilisateurId, pExemplaireId, vDateDebut, vDateRetourPrevu);
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -306,41 +329,41 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 			}
 		}
 		
-		LOGGER.traceExit();
-		
+		LOGGER.traceExit("id = " + id);
+		return id;
 	}
 
 	@Override
 	public Reservation retourPret(int pId) throws AutreException {
 		LOGGER.traceEntry("pId = " + pId);
-		
-		//Création date de début (date du jour) et de retour prévu
+
+		// Vérifie l'existance du prêt
+		Pret vPret = verifierPret(pId);
+
+		// Création date de début (date du jour) et de retour prévu
 		Date vDateFin = new Date(Calendar.getInstance().getTime().getTime());
-		
-		//Vérifie que l'exemplaire n'a pas déjà été rendu
-		Pret vPret = getDaoFactory().getPretDao().getPret(pId);
-		if (vPret.getDateFin()!=null) {
+
+		// Vérifie que l'exemplaire n'a pas déjà été rendu
+		if (vPret.getDateFin() != null) {
 			AutreException vException = new AutreException("L'exemplaire à déjà été retourné");
 			vException.setMessageErreur("L'exemplaire à déjà été retourné.");
 			throw vException;
 		}
-		
+
 		Reservation premierSurListeAttente = null;
-		
+
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			getDaoFactory().getPretDao().retourPret(pId,vDateFin);
-			
-			//Récupération du premier sur liste d'attente ci celle-ci existe, null sinon
-			premierSurListeAttente = getDaoFactory().getReservationDao().getPremierReservation(vPret.getExemplaire().getBibliotheque(),vPret.getExemplaire().getLivre().getIsbn());
-			
-			//Attribution du livre au premier de la liste si celle-ci exite
-			if(premierSurListeAttente!=null) {
-				this.nouveauPret(premierSurListeAttente.getUtilisateur().getId(), vPret.getExemplaire().getId());
-				Date vDateAttribution = new Date(Calendar.getInstance().getTime().getTime());
-				getDaoFactory().getReservationDao().setAttribue(premierSurListeAttente.getBibliotheque(),premierSurListeAttente.getUtilisateur().getId(),premierSurListeAttente.getLivre().getIsbn(),vDateAttribution);
+			getDaoFactory().getPretDao().retourPret(pId, vDateFin);
+
+			// Récupération du premier sur liste d'attente ci celle-ci existe, null sinon
+			premierSurListeAttente = getDaoFactory().getReservationDao().getPremierReservation(vPret.getExemplaire().getBibliotheque(), vPret.getExemplaire().getLivre().getIsbn());
+
+			// Attribution du livre au premier de la liste si celle-ci exite
+			if (premierSurListeAttente != null) {
+				attribuerAuPremier(premierSurListeAttente,vPret.getExemplaire());
 			}
-			
+
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
 			this.getPlatformTransactionManager().commit(vTScommit);
@@ -352,54 +375,45 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 				throw vException;
 			}
 		}
-		
-		
+
 		LOGGER.traceExit("vReservation = " + premierSurListeAttente);
 		return premierSurListeAttente;
-		
+
 	}
 
 	@Override
-	public List<Reservation> miseAJourListesReservation() throws TechnicalException {
+	public List<Reservation> miseAJourListesReservation() throws AutreException {
 		LOGGER.traceEntry();
-		
-		//Récupération des Reservation dans la date du mail est supérieur à 2 jours
+
+		// Récupération des reservation dont la date d'attribution (date_mail) est supérieur à 2 jours
 		Calendar vCalendar = Calendar.getInstance();
 		vCalendar.add(Calendar.DATE, -2);
 		Date vDate = new Date(vCalendar.getTime().getTime());
-		
+
 		List<Reservation> ListReservationASuppr = getDaoFactory().getReservationDao().getListReservationDateAttributionAvant(vDate);
-		
-		if(ListReservationASuppr.size()==0) {
+
+		if (ListReservationASuppr.size() == 0) {// Si la liste est vide : travail terminé...
 			return null;
-		}else {
+		} else {
 			List<Reservation> vListReservationAJour = new ArrayList<Reservation>();
 			TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 			try {
-				for (Reservation reservation : ListReservationASuppr) {//Pour chaque reservation trouvée
-					//Suppression de la reservation en persistance
+				for (Reservation reservation : ListReservationASuppr) {// Pour chaque reservation trouvée
+					// Suppression de la reservation en persistance et de l'attribution du prêt
 					this.deleteReservation(reservation.getLivre().getIsbn(), reservation.getBibliotheque(), reservation.getUtilisateur().getId());
-					//Récupération du nouveau premier
-					Reservation premierSurListeAttente = getDaoFactory().getReservationDao().getPremierReservation(reservation.getBibliotheque(),reservation.getLivre().getIsbn());
-					if(premierSurListeAttente!=null) {
+					getDaoFactory().getPretDao().delete(reservation.getPret().getId());
+					
+					// Récupération du nouveau premier
+					Reservation premierSurListeAttente = getDaoFactory().getReservationDao().getPremierReservation(reservation.getBibliotheque(), reservation.getLivre().getIsbn());
+					if (premierSurListeAttente != null) {
 						vListReservationAJour.add(premierSurListeAttente);
-						
-						//Attribution du livre au premier de la liste si celle-ci exite
-						if(premierSurListeAttente!=null) {
-							List<Pret> vListPret = getDaoFactory().getPretDao().getPretEnCours(reservation.getUtilisateur().getId());
-							Exemplaire vExemplaire = null;
-							for (Pret pret : vListPret) {
-								if(pret.getExemplaire().getBibliotheque().equals(reservation.getBibliotheque())&&pret.getExemplaire().getLivre().getIsbn().equals(reservation.getLivre().getIsbn())) {
-									vExemplaire = pret.getExemplaire();
-								}
-							}
-							this.nouveauPret(premierSurListeAttente.getUtilisateur().getId(), vExemplaire.getId());
-							Date vDateAttribution = new Date(Calendar.getInstance().getTime().getTime());
-							getDaoFactory().getReservationDao().setAttribue(premierSurListeAttente.getBibliotheque(),premierSurListeAttente.getUtilisateur().getId(),premierSurListeAttente.getLivre().getIsbn(),vDateAttribution);
+
+						// Attribution de l'exemplaire au premier de la liste si celle-ci exite
+						if (premierSurListeAttente != null) {
+							attribuerAuPremier(premierSurListeAttente,reservation.getPret().getExemplaire());
 						}
 					}
 				}
-				
 
 				TransactionStatus vTScommit = vTransactionStatus;
 				vTransactionStatus = null;
@@ -414,9 +428,68 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 			}
 			LOGGER.traceExit("vListReservationAJour = " + vListReservationAJour);
 			return vListReservationAJour;
-			
+
 		}
-		
+
 	}
 
+	private void verifierLivre(String pISBN) throws NotFoundException {
+		if (getDaoFactory().getLivreDao().getLivre(pISBN) == null) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun livre ne correspond à la demande.");
+			throw vException;
+		}
+	}
+
+	private void verifierBibliotheque(String pBibliotheque) throws NotFoundException {
+		boolean exist = false;
+		for (String vBibliotheque : getDaoFactory().getBibliothequeDao().getListBibliotheque()) {
+			if (vBibliotheque.equals(pBibliotheque)) {
+				exist = true;
+				break;
+			}
+		}
+		if (!exist) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("La bibliotheque demandé n'existe pas.");
+			throw vException;
+		}
+	}
+
+	private UtilisateurBD verifierUtilisateur(int pUtilisateurId) throws NotFoundException {
+		UtilisateurBD vUtilisateurBD = getDaoFactory().getUtilisateurDao().getUtilisateurBD(pUtilisateurId);
+		if (vUtilisateurBD == null) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun utilisateur ne correspond à la demande.");
+			throw vException;
+		}
+		return vUtilisateurBD;
+	}
+
+	private void verifierExemplaire(int pExemplaireId) throws NotFoundException {
+		if (getDaoFactory().getExemplaireDao().getExemplaire(pExemplaireId) == null) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun exemplaire ne correspond à la demande.");
+			throw vException;
+		}
+
+	}
+
+	private Pret verifierPret(int pId) throws NotFoundException {
+		Pret vPret = getDaoFactory().getPretDao().getPret(pId);
+		if (vPret == null) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun prêt ne correspond à la demande.");
+			throw vException;
+		}
+		return vPret;
+	}
+
+	private void attribuerAuPremier(Reservation premierSurListeAttente, Exemplaire pExemplaire) throws AutreException {
+		int vPretId = this.nouveauPret(premierSurListeAttente.getUtilisateur().getId(), pExemplaire.getId());
+		Date vDateAttribution = new Date(Calendar.getInstance().getTime().getTime());
+		getDaoFactory().getReservationDao().setAttribue(
+				premierSurListeAttente.getBibliotheque(), premierSurListeAttente.getUtilisateur().getId(), premierSurListeAttente.getLivre().getIsbn(),
+				vDateAttribution, vPretId);
+	}
 }

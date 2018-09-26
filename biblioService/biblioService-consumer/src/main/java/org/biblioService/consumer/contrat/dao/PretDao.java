@@ -48,8 +48,9 @@ public interface PretDao {
 	 * @param pExemplaireId
 	 * @param vDateFin
 	 * @param vDateDebut
+	 * @return id
 	 */
-	void createPret(int pUtilisateurId, int pExemplaireId, Date pDateDebut, Date pDateFin);
+	int createPret(int pUtilisateurId, int pExemplaireId, Date pDateDebut, Date pDateFin);
 
 	/**
 	 * Retour d'un pret
@@ -64,5 +65,11 @@ public interface PretDao {
 	 * @return boolean
 	 */
 	boolean isEmprunte(int pExemplaireId);
+
+	/**
+	 * Supprime le pret
+	 * @param pId
+	 */
+	void delete(int pId);
 
 }

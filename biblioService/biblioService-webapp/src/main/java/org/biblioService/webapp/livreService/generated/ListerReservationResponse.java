@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 import org.biblioService.model.bean.Reservation;
 
 
+
 /**
  * <p>Classe Java pour anonymous complex type.
  * 
