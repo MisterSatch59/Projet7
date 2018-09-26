@@ -2,9 +2,10 @@ package org.biblioService.webapp.livreService.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import org.biblioService.model.bean.Reservation;
 
 
 /**
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="FaultMessage" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="premierSurListeAttente" type="{http://www.example.org/types}Reservation" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -28,36 +29,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "faultMessage"
+    "premierSurListeAttente"
 })
-@XmlRootElement(name = "listerPretEnCoursFault")
-public class ListerPretEnCoursFault {
+@XmlRootElement(name = "retourPretResponse")
+public class RetourPretResponse {
 
-    @XmlElement(name = "FaultMessage", required = true)
-    protected String faultMessage;
+    protected Reservation premierSurListeAttente;
 
     /**
-     * Obtient la valeur de la propriété faultMessage.
+     * Obtient la valeur de la propriété premierSurListeAttente.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Reservation }
      *     
      */
-    public String getFaultMessage() {
-        return faultMessage;
+    public Reservation getPremierSurListeAttente() {
+        return premierSurListeAttente;
     }
 
     /**
-     * Définit la valeur de la propriété faultMessage.
+     * Définit la valeur de la propriété premierSurListeAttente.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Reservation }
      *     
      */
-    public void setFaultMessage(String value) {
-        this.faultMessage = value;
+    public void setPremierSurListeAttente(Reservation value) {
+        this.premierSurListeAttente = value;
     }
 
 }

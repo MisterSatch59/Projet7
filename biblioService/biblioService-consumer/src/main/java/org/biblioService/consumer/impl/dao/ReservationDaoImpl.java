@@ -1,5 +1,6 @@
 package org.biblioService.consumer.impl.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -96,6 +97,68 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
 		LOGGER.traceExit("vNbReservation = " + vNbReservation);
 		return vNbReservation;
 	}
-	
+
+
+	@Override
+	public Reservation getPremierReservation(String pBibliotheque, String pIsbn) {
+		LOGGER.traceEntry("pBibliotheque = " + pBibliotheque + " - pIsbn = " + pIsbn);
+
+		String vSQL = "SELECT * FROM reservation WHERE bibliotheque = :bibliotheque AND isbn = :isbn ORDER BY date_resa ASC";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("isbn", pIsbn);
+		vParams.addValue("bibliotheque", pBibliotheque);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		List<Reservation> vListReservation = vJdbcTemplate.query(vSQL, vParams, reservationRM);
+		
+		if(vListReservation.size()==0) {
+			LOGGER.traceExit("vReservation = " + null);
+			return null;
+		}else {
+			LOGGER.traceExit("vReservation = " + vListReservation.get(0));
+			return vListReservation.get(0);
+		}
+
+	}
+
+
+	@Override
+	public void setAttribue(String pBibliotheque, int pUtilisateurId, String pIsbn, Date pDateAttribution) {
+		LOGGER.traceEntry("pIsbn = " + pIsbn, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId + " - pDateAttribution = " + pDateAttribution);
+		
+		// Enregistrement dans la base de données
+		String vSQL = "UPDATE public.reservation SET date_mail = :date_mail WHERE bibliotheque = :bibliotheque AND isbn = :isbn AND utilisateur_id = :utilisateur_id";
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("bibliotheque", pBibliotheque);
+		vParams.addValue("isbn", pIsbn);
+		vParams.addValue("utilisateur_id", pUtilisateurId);
+		vParams.addValue("date_mail", pDateAttribution);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		vJdbcTemplate.update(vSQL, vParams);
+
+		LOGGER.traceExit();
+		
+	}
+
+	@Override
+	public List<Reservation> getListReservationDateAttributionAvant(Date pDate) {
+		LOGGER.traceEntry("pDate = " + pDate);
+
+		String vSQL = "SELECT * FROM reservation WHERE date_mail < :date_mail";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("date_mail", pDate);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		List<Reservation> vListReservation = vJdbcTemplate.query(vSQL, vParams, reservationRM);
+
+		LOGGER.traceExit("vListReservation = " + vListReservation);
+		return vListReservation;
+	}	
 
 }

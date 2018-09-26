@@ -2,6 +2,7 @@ package org.biblioService.webapp.livreService.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -16,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="utilisateurId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="FaultMessage" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,27 +28,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "utilisateurId"
+    "faultMessage"
 })
-@XmlRootElement(name = "listerPretEnCours")
-public class ListerPretEnCours {
+@XmlRootElement(name = "miseAJourListesReservationFault")
+public class MiseAJourListesReservationFault {
 
-    protected int utilisateurId;
+    @XmlElement(name = "FaultMessage", required = true)
+    protected String faultMessage;
 
     /**
-     * Obtient la valeur de la propriété utilisateurId.
+     * Obtient la valeur de la propriété faultMessage.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getUtilisateurId() {
-        return utilisateurId;
+    public String getFaultMessage() {
+        return faultMessage;
     }
 
     /**
-     * Définit la valeur de la propriété utilisateurId.
+     * Définit la valeur de la propriété faultMessage.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setUtilisateurId(int value) {
-        this.utilisateurId = value;
+    public void setFaultMessage(String value) {
+        this.faultMessage = value;
     }
 
 }

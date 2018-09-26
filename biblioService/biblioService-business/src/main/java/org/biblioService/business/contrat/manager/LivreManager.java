@@ -25,8 +25,9 @@ public interface LivreManager {
 	 * @return 
 	 * @throws TechnicalException 
 	 * @throws NotFoundException 
+	 * @throws AutreException 
 	 */
-	XMLGregorianCalendar prolongerPret(int pPretId) throws TechnicalException, NotFoundException;
+	XMLGregorianCalendar prolongerPret(int pPretId) throws TechnicalException, NotFoundException, AutreException;
 
 	/**
 	 * Retourne la liste des prêt en cours de l'utilisateur
@@ -90,5 +91,29 @@ public interface LivreManager {
 	 * @throws TechnicalException 
 	 */
 	void deleteReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws TechnicalException;
+
+	/**
+	 * Création d'un nouveau prêt à la date du jour
+	 * @param pUtilisateurId
+	 * @param pExemplaireId
+	 */
+	void nouveauPret(int pUtilisateurId, int pExemplaireId) throws TechnicalException;
+
+	/**
+	 * Retour d'un livre en fin de Pret
+	 * @param pId
+	 * @return première reservation sur la liste d'attente, est null si pas de liste d'attente
+	 * @throws TechnicalException
+	 * @throws AutreException 
+	 */
+	Reservation retourPret(int pId) throws TechnicalException, AutreException;
+
+	/**
+	 * Realise la mise à jour des liste de reservation : 
+	 *  - Supprime les reservations dont un livre à été attribué il y a plus de 48h
+	 *  - Retourne la liste des reservation passé en tête de liste d'attente 
+	 * @return
+	 */
+	List<Reservation> miseAJourListesReservation() throws TechnicalException;
 
 }

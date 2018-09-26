@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.biblioService.model.bean.Pret;
+import org.biblioService.model.bean.Reservation;
 
 
 /**
@@ -21,7 +21,7 @@ import org.biblioService.model.bean.Pret;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="pret" type="{http://www.example.org/types}Pret" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="listeNouvellePremiereReservation" type="{http://www.example.org/types}Reservation" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,40 +32,40 @@ import org.biblioService.model.bean.Pret;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pret"
+    "listeNouvellePremiereReservation"
 })
-@XmlRootElement(name = "listerPretEnRetardResponse")
-public class ListerPretEnRetardResponse {
+@XmlRootElement(name = "miseAJourListesReservationResponse")
+public class MiseAJourListesReservationResponse {
 
-    protected List<Pret> pret;
+    protected List<Reservation> listeNouvellePremiereReservation;
 
     /**
-     * Gets the value of the pret property.
+     * Gets the value of the listeNouvellePremiereReservation property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the pret property.
+     * This is why there is not a <CODE>set</CODE> method for the listeNouvellePremiereReservation property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getPret().add(newItem);
+     *    getListeNouvellePremiereReservation().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Pret }
+     * {@link Reservation }
      * 
      * 
      */
-    public List<Pret> getPret() {
-        if (pret == null) {
-            pret = new ArrayList<Pret>();
+    public List<Reservation> getListeNouvellePremiereReservation() {
+        if (listeNouvellePremiereReservation == null) {
+            listeNouvellePremiereReservation = new ArrayList<Reservation>();
         }
-        return this.pret;
+        return this.listeNouvellePremiereReservation;
     }
 
 }

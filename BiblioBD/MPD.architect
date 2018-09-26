@@ -190,7 +190,7 @@
     <column id="COL50" populated="true" UUID="56817e15-95ed-4173-a045-9205331c938d" autoIncrement="false" autoIncrementSequenceName="pret_date_retour_prevue_seq" defaultValue="" name="date_retour_prevue" nullable="0" physicalName="date_retour_prevue" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
      <remarks></remarks>
     </column>
-    <column id="COL51" populated="true" UUID="ad12c100-d37b-4be7-9a7e-f39ca8f588ae" autoIncrement="false" autoIncrementSequenceName="pret_date_fin_seq" defaultValue="" name="date_fin" nullable="1" physicalName="date_fin" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL51" populated="true" UUID="ad12c100-d37b-4be7-9a7e-f39ca8f588ae" autoIncrement="false" autoIncrementSequenceName="pret_date_fin_seq" defaultValue="" name="date_fin" nullable="1" physicalName="date_fin" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
      <remarks></remarks>
     </column>
     <column id="COL52" populated="true" UUID="b751a3ee-6258-40e6-ad91-4cd76fd2e5bd" autoIncrement="false" autoIncrementSequenceName="pret_renouvele_seq" defaultValue="" name="renouvele" nullable="0" physicalName="renouvele" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >

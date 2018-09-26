@@ -1,5 +1,6 @@
 package org.biblioService.business.impl.manager;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.biblioService.business.Donnees;
 import org.biblioService.business.contrat.manager.LivreManager;
 import org.biblioService.model.bean.DispoParBibliotheque;
+import org.biblioService.model.bean.Exemplaire;
 import org.biblioService.model.bean.Livre;
 import org.biblioService.model.bean.Pret;
 import org.biblioService.model.bean.Reservation;
@@ -71,8 +73,24 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 	}
 
 	@Override
-	public XMLGregorianCalendar prolongerPret(int pPretId) throws TechnicalException, NotFoundException {
+	public XMLGregorianCalendar prolongerPret(int pPretId) throws TechnicalException, NotFoundException, AutreException {
 		LOGGER.traceEntry("pPretId = " + pPretId);
+	
+		Pret vPret = getDaoFactory().getPretDao().getPret(pPretId);
+		
+		//Vérifie que le pret existe
+		if(vPret == null) {
+			NotFoundException vException = new NotFoundException();
+			vException.setMessageErreur("Aucun pret ne correspond à cet identifiant.");
+			throw vException;
+		}
+		
+		//vérifie que le pret n'a pas déjà été prolongé
+		if(vPret.isRenouvele()) {
+			AutreException vException = new AutreException("La durée de prêt à déjà été prolongé");
+			vException.setMessageErreur("La durée de prêt ne peut être prolongée qu'une suel fois.");
+			throw vException;
+		}
 
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
@@ -91,13 +109,7 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 		}
 		
 		XMLGregorianCalendar vNewDateRetourPrevue;
-		Pret vPret = getDaoFactory().getPretDao().getPret(pPretId);
-		if(vPret == null) {
-			NotFoundException vException = new NotFoundException();
-			vException.setMessageErreur("Aucun utilisateur ne correspond à cet identifiant.");
-			throw vException;
-		}
-		
+		vPret = getDaoFactory().getPretDao().getPret(pPretId);
 		vNewDateRetourPrevue = vPret.getDateRetourPrevue();
 
 		LOGGER.traceExit("vNewDateRetourPrevue = " + vNewDateRetourPrevue);
@@ -231,13 +243,13 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 		
 		List<Reservation> vResult = getDaoFactory().getReservationDao().getReservation(pUtilisateurId);
 		
-		LOGGER.traceEntry("vResult = " + vResult);
+		LOGGER.traceExit("vResult = " + vResult);
 		return vResult;
 	}
 
 	@Override
 	public void deleteReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws TechnicalException {
-		LOGGER.traceEntry("pISBN = " + pISBN, " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
+		LOGGER.traceEntry("pISBN = " + pISBN +  " - pBibliotheque = " + pBibliotheque + " - pUtilisateurId = " + pUtilisateurId);
 		
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
@@ -255,8 +267,156 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 			}
 		}
 		
+		LOGGER.traceExit();
+	}
+	
+	@Override
+	public void nouveauPret(int pUtilisateurId, int pExemplaireId) throws TechnicalException {
+		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId + " - pExemplaireId = " + pExemplaireId);
+		
+		//Vérification de la disponibilité de l'exemplaire
+		if(getDaoFactory().getPretDao().isEmprunte(pExemplaireId)) {
+			TechnicalException vException = new TechnicalException();
+			vException.setMessageErreur("Cet exemplaire est déjà emprunté.");
+			throw vException;
+		}
+		
+		//Création date de début (date du jour) et de retour prévu
+		Date vDateDebut = new Date(Calendar.getInstance().getTime().getTime());
+
+		Calendar vCalendar = Calendar.getInstance();
+		vCalendar.add(Calendar.DATE, donnees.getDUREE_PRET_EN_JOUR());
+		Date vDateRetourPrevu = new Date(vCalendar.getTime().getTime());
+		
+		//Création du Pret en persistance
+		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		
+		try {
+			getDaoFactory().getPretDao().createPret(pUtilisateurId,pExemplaireId,vDateDebut,vDateRetourPrevu);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			this.getPlatformTransactionManager().commit(vTScommit);
+		} finally {
+			if (vTransactionStatus != null) {
+				this.getPlatformTransactionManager().rollback(vTransactionStatus);
+				TechnicalException vException = new TechnicalException();
+				vException.setMessageErreur("Erreur technique interne.");
+				throw vException;
+			}
+		}
+		
+		LOGGER.traceExit();
+		
 	}
 
-	
-	
+	@Override
+	public Reservation retourPret(int pId) throws AutreException {
+		LOGGER.traceEntry("pId = " + pId);
+		
+		//Création date de début (date du jour) et de retour prévu
+		Date vDateFin = new Date(Calendar.getInstance().getTime().getTime());
+		
+		//Vérifie que l'exemplaire n'a pas déjà été rendu
+		Pret vPret = getDaoFactory().getPretDao().getPret(pId);
+		if (vPret.getDateFin()!=null) {
+			AutreException vException = new AutreException("L'exemplaire à déjà été retourné");
+			vException.setMessageErreur("L'exemplaire à déjà été retourné.");
+			throw vException;
+		}
+		
+		Reservation premierSurListeAttente = null;
+		
+		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+		try {
+			getDaoFactory().getPretDao().retourPret(pId,vDateFin);
+			
+			//Récupération du premier sur liste d'attente ci celle-ci existe, null sinon
+			premierSurListeAttente = getDaoFactory().getReservationDao().getPremierReservation(vPret.getExemplaire().getBibliotheque(),vPret.getExemplaire().getLivre().getIsbn());
+			
+			//Attribution du livre au premier de la liste si celle-ci exite
+			if(premierSurListeAttente!=null) {
+				this.nouveauPret(premierSurListeAttente.getUtilisateur().getId(), vPret.getExemplaire().getId());
+				Date vDateAttribution = new Date(Calendar.getInstance().getTime().getTime());
+				getDaoFactory().getReservationDao().setAttribue(premierSurListeAttente.getBibliotheque(),premierSurListeAttente.getUtilisateur().getId(),premierSurListeAttente.getLivre().getIsbn(),vDateAttribution);
+			}
+			
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			this.getPlatformTransactionManager().commit(vTScommit);
+		} finally {
+			if (vTransactionStatus != null) {
+				this.getPlatformTransactionManager().rollback(vTransactionStatus);
+				TechnicalException vException = new TechnicalException();
+				vException.setMessageErreur("Erreur technique interne.");
+				throw vException;
+			}
+		}
+		
+		
+		LOGGER.traceExit("vReservation = " + premierSurListeAttente);
+		return premierSurListeAttente;
+		
+	}
+
+	@Override
+	public List<Reservation> miseAJourListesReservation() throws TechnicalException {
+		LOGGER.traceEntry();
+		
+		//Récupération des Reservation dans la date du mail est supérieur à 2 jours
+		Calendar vCalendar = Calendar.getInstance();
+		vCalendar.add(Calendar.DATE, -2);
+		Date vDate = new Date(vCalendar.getTime().getTime());
+		
+		List<Reservation> ListReservationASuppr = getDaoFactory().getReservationDao().getListReservationDateAttributionAvant(vDate);
+		
+		if(ListReservationASuppr.size()==0) {
+			return null;
+		}else {
+			List<Reservation> vListReservationAJour = new ArrayList<Reservation>();
+			TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
+			try {
+				for (Reservation reservation : ListReservationASuppr) {//Pour chaque reservation trouvée
+					//Suppression de la reservation en persistance
+					this.deleteReservation(reservation.getLivre().getIsbn(), reservation.getBibliotheque(), reservation.getUtilisateur().getId());
+					//Récupération du nouveau premier
+					Reservation premierSurListeAttente = getDaoFactory().getReservationDao().getPremierReservation(reservation.getBibliotheque(),reservation.getLivre().getIsbn());
+					if(premierSurListeAttente!=null) {
+						vListReservationAJour.add(premierSurListeAttente);
+						
+						//Attribution du livre au premier de la liste si celle-ci exite
+						if(premierSurListeAttente!=null) {
+							List<Pret> vListPret = getDaoFactory().getPretDao().getPretEnCours(reservation.getUtilisateur().getId());
+							Exemplaire vExemplaire = null;
+							for (Pret pret : vListPret) {
+								if(pret.getExemplaire().getBibliotheque().equals(reservation.getBibliotheque())&&pret.getExemplaire().getLivre().getIsbn().equals(reservation.getLivre().getIsbn())) {
+									vExemplaire = pret.getExemplaire();
+								}
+							}
+							this.nouveauPret(premierSurListeAttente.getUtilisateur().getId(), vExemplaire.getId());
+							Date vDateAttribution = new Date(Calendar.getInstance().getTime().getTime());
+							getDaoFactory().getReservationDao().setAttribue(premierSurListeAttente.getBibliotheque(),premierSurListeAttente.getUtilisateur().getId(),premierSurListeAttente.getLivre().getIsbn(),vDateAttribution);
+						}
+					}
+				}
+				
+
+				TransactionStatus vTScommit = vTransactionStatus;
+				vTransactionStatus = null;
+				this.getPlatformTransactionManager().commit(vTScommit);
+			} finally {
+				if (vTransactionStatus != null) {
+					this.getPlatformTransactionManager().rollback(vTransactionStatus);
+					TechnicalException vException = new TechnicalException();
+					vException.setMessageErreur("Erreur technique interne.");
+					throw vException;
+				}
+			}
+			LOGGER.traceExit("vListReservationAJour = " + vListReservationAJour);
+			return vListReservationAJour;
+			
+		}
+		
+	}
+
 }

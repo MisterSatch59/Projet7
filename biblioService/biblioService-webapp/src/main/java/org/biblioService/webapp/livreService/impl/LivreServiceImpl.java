@@ -19,8 +19,11 @@ import org.biblioService.webapp.livreService.generated.CreerReservationFault_Exc
 import org.biblioService.webapp.livreService.generated.ListerPretEnCoursFault;
 import org.biblioService.webapp.livreService.generated.ListerPretEnCoursFault_Exception;
 import org.biblioService.webapp.livreService.generated.LivreService;
+import org.biblioService.webapp.livreService.generated.MiseAJourListesReservationFault_Exception;
+import org.biblioService.webapp.livreService.generated.NouveauPretFault_Exception;
 import org.biblioService.webapp.livreService.generated.ProlongerPretFault;
 import org.biblioService.webapp.livreService.generated.ProlongerPretFault_Exception;
+import org.biblioService.webapp.livreService.generated.RetourPretFault_Exception;
 import org.biblioService.webapp.livreService.generated.SupprimerReservationFault_Exception;
 import org.biblioService.webapp.livreService.generated.VoirDispoFault_Exception;
 
@@ -77,7 +80,7 @@ public class LivreServiceImpl implements LivreService {
 
 		try {
 			vNewDateRetourPrevue = managerFactory.getLivreManager().prolongerPret(pISBN);
-		} catch (TechnicalException | NotFoundException e) {
+		} catch (AutreException e) {
 			LOGGER.debug(e);
 			ProlongerPretFault vProlongerPretFault = new ProlongerPretFault();
 			vProlongerPretFault.setFaultMessage(e.getMessageErreur());
@@ -132,7 +135,6 @@ public class LivreServiceImpl implements LivreService {
 		LOGGER.traceExit();
 	}
 
-
 	@Override
 	public List<Reservation> listerReservation(int pUtilisateurId) {
 		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
@@ -143,10 +145,9 @@ public class LivreServiceImpl implements LivreService {
 		return vResult;
 	}
 	
-
 	@Override
 	public void supprimerReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws SupprimerReservationFault_Exception{
-		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + pBibliotheque + " - pUtilisateurId = " + pUtilisateurId);
 		
 		try {
 			managerFactory.getLivreManager().deleteReservation(pISBN,pBibliotheque,pUtilisateurId);
@@ -158,6 +159,55 @@ public class LivreServiceImpl implements LivreService {
 		LOGGER.traceExit();
 		
 	}
+
+	@Override
+	public void nouveauPret(int pUtilisateurId, int pExemplaireId) throws NouveauPretFault_Exception {
+		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId + " - pExemplaireId = " + pExemplaireId);
+		
+		try {
+			managerFactory.getLivreManager().nouveauPret(pUtilisateurId,pExemplaireId);
+		} catch (TechnicalException e) {
+			LOGGER.debug(e);
+			throw new NouveauPretFault_Exception(e.getMessageErreur());
+		}
+
+		LOGGER.traceExit();
+		
+	}
+
+	@Override
+	public Reservation retourPret(int pId) throws RetourPretFault_Exception {
+		LOGGER.traceEntry("pId = " + pId);
+		
+		Reservation premierSurListeAttente = null;
+		try {
+			premierSurListeAttente = managerFactory.getLivreManager().retourPret(pId);
+		} catch (AutreException e) {
+			LOGGER.debug(e);
+			throw new RetourPretFault_Exception(e.getMessage());
+		}
+
+		LOGGER.traceExit("vReservation = " + premierSurListeAttente);
+		return premierSurListeAttente;
+		
+	}
+
+	@Override
+	public List<Reservation> miseAJourListesReservation() throws MiseAJourListesReservationFault_Exception {
+		LOGGER.traceEntry();
+		
+		List<Reservation> vListReservationAJour = null;
+		try {
+			vListReservationAJour = managerFactory.getLivreManager().miseAJourListesReservation();
+		} catch (TechnicalException e) {
+			LOGGER.debug(e);
+			throw new MiseAJourListesReservationFault_Exception(e.getMessage());
+		}
+
+		LOGGER.traceExit("vListReservationAJour = " + vListReservationAJour);
+		return vListReservationAJour;
+	}
+	
 
 
 
