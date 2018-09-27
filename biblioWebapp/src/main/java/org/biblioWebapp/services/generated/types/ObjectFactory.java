@@ -93,11 +93,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NombreEtBibliotheque }
+     * Create an instance of {@link DispoParBibliotheque }
      * 
      */
-    public NombreEtBibliotheque createNombreEtBibliotheque() {
-        return new NombreEtBibliotheque();
+    public DispoParBibliotheque createDispoParBibliotheque() {
+        return new DispoParBibliotheque();
+    }
+
+    /**
+     * Create an instance of {@link Reservation }
+     * 
+     */
+    public Reservation createReservation() {
+        return new Reservation();
     }
 
 }

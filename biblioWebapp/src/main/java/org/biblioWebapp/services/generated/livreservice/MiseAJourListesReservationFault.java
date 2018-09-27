@@ -30,8 +30,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "faultMessage"
 })
-@XmlRootElement(name = "listerPretEnCoursFault")
-public class ListerPretEnCoursFault {
+@XmlRootElement(name = "miseAJourListesReservationFault")
+public class MiseAJourListesReservationFault {
 
     @XmlElement(name = "FaultMessage", required = true)
     protected String faultMessage;

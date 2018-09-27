@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "getLangues")
-public class GetLangues {
+@XmlRootElement(name = "creerReservationResponse")
+public class CreerReservationResponse {
 
 
 }

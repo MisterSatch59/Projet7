@@ -1,23 +1,25 @@
-package org.biblioWebapp.services.generated.types;
+package org.biblioWebapp.services.generated.livreservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour NombreEtBibliotheque complex type.
+ * <p>Classe Java pour anonymous complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="NombreEtBibliotheque"&gt;
+ * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="bibliotheque" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="utilisateurId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,15 +29,43 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NombreEtBibliotheque", propOrder = {
+@XmlType(name = "", propOrder = {
+    "isbn",
     "bibliotheque",
-    "nombre"
+    "utilisateurId"
 })
-public class NombreEtBibliotheque {
+@XmlRootElement(name = "creerReservation")
+public class CreerReservation {
 
     @XmlElement(required = true)
+    protected String isbn;
+    @XmlElement(required = true)
     protected String bibliotheque;
-    protected int nombre;
+    protected int utilisateurId;
+
+    /**
+     * Obtient la valeur de la propriété isbn.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIsbn() {
+        return isbn;
+    }
+
+    /**
+     * Définit la valeur de la propriété isbn.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIsbn(String value) {
+        this.isbn = value;
+    }
 
     /**
      * Obtient la valeur de la propriété bibliotheque.
@@ -62,19 +92,19 @@ public class NombreEtBibliotheque {
     }
 
     /**
-     * Obtient la valeur de la propriété nombre.
+     * Obtient la valeur de la propriété utilisateurId.
      * 
      */
-    public int getNombre() {
-        return nombre;
+    public int getUtilisateurId() {
+        return utilisateurId;
     }
 
     /**
-     * Définit la valeur de la propriété nombre.
+     * Définit la valeur de la propriété utilisateurId.
      * 
      */
-    public void setNombre(int value) {
-        this.nombre = value;
+    public void setUtilisateurId(int value) {
+        this.utilisateurId = value;
     }
 
 }
