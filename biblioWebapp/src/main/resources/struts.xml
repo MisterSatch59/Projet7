@@ -122,6 +122,16 @@
 			class="org.biblioWebapp.action.livre.PretEnCoursAction"
 			method="action">
 			<result name="success">/WEB-INF/jsp/livre/pret.jsp</result>
+			<result name="input">/WEB-INF/jsp/livre/pret.jsp</result>
+		</action>
+		
+		<!-- Action pour réserver un livre indisponible -->
+		<action name="reserver"
+			class="org.biblioWebapp.action.livre.ReserverAction"
+			method="action">
+			<result name="success" type="redirectAction">
+				<param name="actionName">pretEnCours</param>
+			</result>
 		</action>
 
 	</package>
@@ -147,12 +157,20 @@
 			</result>
 		</action>
 		
-		<!-- Action permettant d'obnir la disponibilité d'un livre dans les bibliothèques -->
+		<!-- Action permettant d'obtenir la disponibilité d'un livre dans les bibliothèques -->
 		<action name="voirDispo_ajax"
 			class="org.biblioWebapp.action.livre.DispoAction"
 			method="actionAjax">
 			<result name="success" type="json">
 				<param name="root">listDispo</param>
+			</result>
+		</action>
+		
+		<!-- Action pour annuler la reservation d'un livre indisponible -->
+		<action name="annulerReservation_ajax"
+			class="org.biblioWebapp.action.livre.ReserverAction"
+			method="actionAjaxAnnuler">
+			<result name="success" type="json">
 			</result>
 		</action>
 

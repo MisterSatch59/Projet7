@@ -221,6 +221,16 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 				throw vAutreException;
 			}
 		}
+		
+		//Vérifie si le livre a déjà été réservé
+		List<Reservation> vListReservation = getDaoFactory().getReservationDao().getReservation(pUtilisateurId);
+		for (Reservation reservation : vListReservation) {
+			if(reservation.getLivre().getIsbn().equals(pISBN)) {
+				AutreException vAutreException = new AutreException("Impossible d'effectuer la réservation");
+				vAutreException.setMessageErreur("Impossible de réserver un livre déjà réservé (y compris dans une autre bibliothèque)");
+				throw vAutreException;
+			}
+		}
 
 		// Vérifie que le nombre maximal de reservation n'est pas atteint
 		if (getDaoFactory().getReservationDao().getNbReservation(pISBN, pBibliotheque) >= 2 * getDaoFactory().getExemplaireDao().getNbExemplaire(pISBN, pBibliotheque)) {

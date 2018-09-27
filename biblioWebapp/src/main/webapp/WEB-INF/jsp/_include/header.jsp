@@ -26,7 +26,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<s:if test="#session.utilisateur">
-					<li><s:a action="infoUtilisateur"><s:property value="#session.utilisateur.prenom" /> <s:property value="#session.utilisateur.nom" /> - Informations</s:a></li>
+					<li><s:a action="infoUtilisateur" id="infoUtilisateur"><s:property value="#session.utilisateur.prenom" /> <s:property value="#session.utilisateur.nom" /> - Informations</s:a></li>
 					<li><s:a action="logout">Se déconnecter</s:a></li>
 				</s:if>
 				<s:else>
@@ -38,6 +38,6 @@
 	</div>
 </nav>
 
-<s:actionerror class="alert alert-danger list-unstyled"/><!-- Bandeau rouge pour les messages d'erreur -->
-<s:actionmessage class="alert alert-info list-unstyled"/><!-- Bandeau bleu pour les message d'action -->
+<s:actionerror class="alert alert-danger list-unstyled"/>
+<s:actionmessage class="alert alert-danger list-unstyled"/>
 

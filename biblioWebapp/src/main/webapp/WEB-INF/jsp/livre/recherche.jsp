@@ -27,6 +27,7 @@
 					<s:select id = "genre" name="genre" label="Genre" list="genres" emptyOption="true" requiredLabel="false" cssClass="form-control" />
 					<s:select id = "langue" name="langue" label="Langue" list="langues" emptyOption="true" requiredLabel="false" cssClass="form-control" />
 				</div>
+				
 			</s:form>
 			<div class="row marge">
 				<button onclick="recherche()" class="btn btn-primary col-xs-offset-4 col-xs-4">Lancer la recherche</button>
@@ -44,6 +45,8 @@
 		
 		</div>
 	</div>
+	
+	
 
 	<%@ include file="/WEB-INF/jsp/_include/footer.jsp"%>
 	
@@ -135,11 +138,22 @@
 				var $dispoListe = jQuery(nom);
 				
 				var detail = '<li><ul class="list-unstyled cadrePerso marge">';
-				detail += '<li>Disponibilités : ';
+				detail += '<li><h4>Disponibilités : </h4>';
 				
 				jQuery.each(data, function(key, val) {
-					detail += '<li>  ' + val.bibliotheque + ' : ' + val.nombre;
-				});
+					if(val.prochainRetour !=null){
+						var detail1 = '<li>' + 'Prochain retour : ' + val.prochainRetour.day + '/' + val.prochainRetour.month + '/' + val.prochainRetour.year + ' - Longueur de la liste d\'attente : ' + val.personnesEnAttente;
+						if($("#infoUtilisateur").text()!="");{
+							detail1 += '<li><a class="btn btn-primary" href="/biblioWebapp/reserver.action?isbn='+buttonIsbn+'&bibliotheque='+val.bibliotheque+'">Réserver</a></li>';
+							//detail1 += '<li><a class="btn btn-primary" href="reserver(this)" id="'+ buttonIsbn + '/' + val.bibliotheque +'">Réserver</button></li>';
+						}
+						
+						detail += '<li class="marge" ><strong>' + val.bibliotheque + '</strong> : ' + val.nombre + '<ul class="list-unstyled marge">' + detail1 + '</ul>';
+					}else{
+						detail += '<li class="marge" ><strong>' + val.bibliotheque + '</strong> : ' + val.nombre;
+					}
+				}); 
+				
 				$dispoListe.append(detail);
 			}).fail(function(data) {
 				alert("Une erreur s'est produite.");
@@ -148,7 +162,33 @@
 			$(that).prop("disabled",true);
 
 		}
+		/*
+		function reserver(that) {
+			// URL de l'action AJAX
+			var url = "<s:url action="reserver_ajax"/>";
+
+			var id = that.id.split('/');
 			
+			var buttonIsbn = id[0];
+			var buttonBiblio = id[1];
+
+			// Paramètres de la requête AJAX
+			var params = {
+					isbn : buttonIsbn,
+					bibliotheque : buttonBiblio
+			};
+
+			// Action AJAX en POST
+			jQuery.post(url, params, function(data) {
+				$(that).prop("disabled",true);
+				alert("La reservation est bien enregistrée.");
+			}).fail(function(data) {
+				jQuery.each(data, function(key, val) {
+					alert(val);
+				})
+			});
+			
+		}*/
 	</script>
 </body>
 
