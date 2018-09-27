@@ -15,6 +15,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="utilisateurId" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -23,9 +26,28 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "getGenres")
-public class GetGenres {
+@XmlType(name = "", propOrder = {
+    "utilisateurId"
+})
+@XmlRootElement(name = "listerReservation")
+public class ListerReservation {
 
+    protected int utilisateurId;
+
+    /**
+     * Obtient la valeur de la propriété utilisateurId.
+     * 
+     */
+    public int getUtilisateurId() {
+        return utilisateurId;
+    }
+
+    /**
+     * Définit la valeur de la propriété utilisateurId.
+     * 
+     */
+    public void setUtilisateurId(int value) {
+        this.utilisateurId = value;
+    }
 
 }

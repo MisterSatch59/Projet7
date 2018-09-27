@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für Utilisateur complex type.
+ * <p>Classe Java pour Utilisateur complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="Utilisateur"&gt;
@@ -45,7 +45,7 @@ public class Utilisateur {
     protected String prenom;
 
     /**
-     * Ruft den Wert der id-Eigenschaft ab.
+     * Obtient la valeur de la propriété id.
      * 
      */
     public int getId() {
@@ -53,7 +53,7 @@ public class Utilisateur {
     }
 
     /**
-     * Legt den Wert der id-Eigenschaft fest.
+     * Définit la valeur de la propriété id.
      * 
      */
     public void setId(int value) {
@@ -61,7 +61,7 @@ public class Utilisateur {
     }
 
     /**
-     * Ruft den Wert der email-Eigenschaft ab.
+     * Obtient la valeur de la propriété email.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class Utilisateur {
     }
 
     /**
-     * Legt den Wert der email-Eigenschaft fest.
+     * Définit la valeur de la propriété email.
      * 
      * @param value
      *     allowed object is
@@ -85,7 +85,7 @@ public class Utilisateur {
     }
 
     /**
-     * Ruft den Wert der nom-Eigenschaft ab.
+     * Obtient la valeur de la propriété nom.
      * 
      * @return
      *     possible object is
@@ -97,7 +97,7 @@ public class Utilisateur {
     }
 
     /**
-     * Legt den Wert der nom-Eigenschaft fest.
+     * Définit la valeur de la propriété nom.
      * 
      * @param value
      *     allowed object is
@@ -109,7 +109,7 @@ public class Utilisateur {
     }
 
     /**
-     * Ruft den Wert der prenom-Eigenschaft ab.
+     * Obtient la valeur de la propriété prenom.
      * 
      * @return
      *     possible object is
@@ -121,7 +121,7 @@ public class Utilisateur {
     }
 
     /**
-     * Legt den Wert der prenom-Eigenschaft fest.
+     * Définit la valeur de la propriété prenom.
      * 
      * @param value
      *     allowed object is

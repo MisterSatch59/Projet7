@@ -306,8 +306,8 @@ INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES ('test4@gmail.c
 INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES ('test5@gmail.com' ,'Test5' ,'Test' ,'9Gb+Cm0HWmVuF7zuSK4L4Pg+GOvPFNsbAWoU/cM2Ywg=' ,'t0P7IvDKzv36W2npOfR4' );
 
 -- Pret
-INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-10'},{d '2018-09-07'} ,false , 2, 11);
-INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 1, 77);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-10'},{d '2018-09-07'} ,false , 1, 11);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 2, 77);
 
 
 

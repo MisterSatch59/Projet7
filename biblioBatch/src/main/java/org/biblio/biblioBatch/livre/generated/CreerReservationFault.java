@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="FaultMessage" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -28,36 +28,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "isbn"
+    "faultMessage"
 })
-@XmlRootElement(name = "voirDispo")
-public class VoirDispo {
+@XmlRootElement(name = "creerReservationFault")
+public class CreerReservationFault {
 
-    @XmlElement(required = true)
-    protected String isbn;
+    @XmlElement(name = "FaultMessage", required = true)
+    protected String faultMessage;
 
     /**
-     * Obtient la valeur de la propriété isbn.
+     * Obtient la valeur de la propriété faultMessage.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIsbn() {
-        return isbn;
+    public String getFaultMessage() {
+        return faultMessage;
     }
 
     /**
-     * Définit la valeur de la propriété isbn.
+     * Définit la valeur de la propriété faultMessage.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIsbn(String value) {
-        this.isbn = value;
+    public void setFaultMessage(String value) {
+        this.faultMessage = value;
     }
 
 }

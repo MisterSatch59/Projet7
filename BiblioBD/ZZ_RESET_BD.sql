@@ -538,8 +538,8 @@ INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES ('test4@gmail.c
 INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES ('test5@gmail.com' ,'Test5' ,'Test' ,'9Gb+Cm0HWmVuF7zuSK4L4Pg+GOvPFNsbAWoU/cM2Ywg=' ,'t0P7IvDKzv36W2npOfR4' );
 
 -- Pret
-INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-10'},{d '2018-09-07'} ,false , 2, 11);
-INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 1, 77);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-10'},{d '2018-09-07'} ,false , 1, 11);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 2, 77);
 
 
 --Modification ticket #1
@@ -594,11 +594,11 @@ NOT DEFERRABLE;
 
 -- Création données de demonstration
 --Prêt
-INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-23'},{d '2018-10-21'} ,false , 2, 79);
+INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-23'},{d '2018-10-21'} ,false , 3, 79);
 INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-23'},{d '2018-10-21'} ,false , 4, 75);
 
 --Reservation
-INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa,date_mail,pret_id) VALUES ('Bibliothèque des canards','978-2290055953',2,{ts '2018-09-01 00:00:00.000'},{ts '2018-09-23 00:00:00.000'},3);
-INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa) VALUES ('Bibliothèque des canards','978-2290055953',3,{ts '2018-09-05 00:00:00.000'});
+INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa,date_mail,pret_id) VALUES ('Bibliothèque des canards','978-2290055953',3,{ts '2018-09-01 00:00:00.000'},{ts '2018-09-23 00:00:00.000'},3);
+INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa) VALUES ('Bibliothèque des canards','978-2290055953',1,{ts '2018-09-05 00:00:00.000'});
 
 INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa,date_mail,pret_id) VALUES ('Bibliothèque des oies','978-2290055953',4,{ts '2018-09-01 00:00:00.000'},{ts '2018-09-23 00:00:00.000'},4);

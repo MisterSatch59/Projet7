@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import org.biblio.biblioBatch.livre.generated.types.Livre;
+import org.biblio.biblioBatch.livre.generated.types.Reservation;
 
 
 /**
@@ -21,7 +21,7 @@ import org.biblio.biblioBatch.livre.generated.types.Livre;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="livre" type="{http://www.example.org/types}Livre" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="listReservation" type="{http://www.example.org/types}Reservation" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,40 +32,40 @@ import org.biblio.biblioBatch.livre.generated.types.Livre;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "livre"
+    "listReservation"
 })
-@XmlRootElement(name = "rechercherLivreResponse")
-public class RechercherLivreResponse {
+@XmlRootElement(name = "listerReservationResponse")
+public class ListerReservationResponse {
 
-    protected List<Livre> livre;
+    protected List<Reservation> listReservation;
 
     /**
-     * Gets the value of the livre property.
+     * Gets the value of the listReservation property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the livre property.
+     * This is why there is not a <CODE>set</CODE> method for the listReservation property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getLivre().add(newItem);
+     *    getListReservation().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Livre }
+     * {@link Reservation }
      * 
      * 
      */
-    public List<Livre> getLivre() {
-        if (livre == null) {
-            livre = new ArrayList<Livre>();
+    public List<Reservation> getListReservation() {
+        if (listReservation == null) {
+            listReservation = new ArrayList<Reservation>();
         }
-        return this.livre;
+        return this.listReservation;
     }
 
 }

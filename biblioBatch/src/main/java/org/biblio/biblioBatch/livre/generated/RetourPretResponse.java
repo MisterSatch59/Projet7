@@ -2,9 +2,10 @@ package org.biblio.biblioBatch.livre.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import org.biblio.biblioBatch.livre.generated.types.Reservation;
 
 
 /**
@@ -17,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="isbn" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="premierSurListeAttente" type="{http://www.example.org/types}Reservation" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -28,36 +29,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "isbn"
+    "premierSurListeAttente"
 })
-@XmlRootElement(name = "voirDispo")
-public class VoirDispo {
+@XmlRootElement(name = "retourPretResponse")
+public class RetourPretResponse {
 
-    @XmlElement(required = true)
-    protected String isbn;
+    protected Reservation premierSurListeAttente;
 
     /**
-     * Obtient la valeur de la propriété isbn.
+     * Obtient la valeur de la propriété premierSurListeAttente.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Reservation }
      *     
      */
-    public String getIsbn() {
-        return isbn;
+    public Reservation getPremierSurListeAttente() {
+        return premierSurListeAttente;
     }
 
     /**
-     * Définit la valeur de la propriété isbn.
+     * Définit la valeur de la propriété premierSurListeAttente.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Reservation }
      *     
      */
-    public void setIsbn(String value) {
-        this.isbn = value;
+    public void setPremierSurListeAttente(Reservation value) {
+        this.premierSurListeAttente = value;
     }
 
 }
