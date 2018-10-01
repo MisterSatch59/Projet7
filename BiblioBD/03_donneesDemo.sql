@@ -7,4 +7,4 @@ INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,
 INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa,date_mail,pret_id) VALUES ('Bibliothèque des canards','978-2290055953',3,{ts '2018-09-01 00:00:00.000'},{ts '2018-09-23 00:00:00.000'},3);
 INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa) VALUES ('Bibliothèque des canards','978-2290055953',1,{ts '2018-09-05 00:00:00.000'});
 
-INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa,date_mail,pret_id) VALUES ('Bibliothèque des oies','978-2290055953',4,{ts '2018-09-01 00:00:00.000'},{ts '2018-09-23 00:00:00.000'},4);
+INSERT INTO public.reservation (bibliotheque,isbn,utilisateur_id,date_resa,date_mail,pret_id) VALUES ('Bibliothèque centrale','978-2290055953',4,{ts '2018-09-01 00:00:00.000'},{ts '2018-09-23 00:00:00.000'},4);

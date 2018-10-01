@@ -145,7 +145,6 @@
 						var detail1 = '<li>' + 'Prochain retour : ' + val.prochainRetour.day + '/' + val.prochainRetour.month + '/' + val.prochainRetour.year + ' - Longueur de la liste d\'attente : ' + val.personnesEnAttente;
 						if($("#infoUtilisateur").text()!="");{
 							detail1 += '<li><a class="btn btn-primary" href="/biblioWebapp/reserver.action?isbn='+buttonIsbn+'&bibliotheque='+val.bibliotheque+'">Réserver</a></li>';
-							//detail1 += '<li><a class="btn btn-primary" href="reserver(this)" id="'+ buttonIsbn + '/' + val.bibliotheque +'">Réserver</button></li>';
 						}
 						
 						detail += '<li class="marge" ><strong>' + val.bibliotheque + '</strong> : ' + val.nombre + '<ul class="list-unstyled marge">' + detail1 + '</ul>';
