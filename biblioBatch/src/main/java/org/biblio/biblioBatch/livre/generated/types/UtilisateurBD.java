@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für UtilisateurBD complex type.
+ * <p>Classe Java pour UtilisateurBD complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="UtilisateurBD"&gt;
@@ -53,7 +53,7 @@ public class UtilisateurBD {
     protected String sel;
 
     /**
-     * Ruft den Wert der id-Eigenschaft ab.
+     * Obtient la valeur de la propriété id.
      * 
      */
     public int getId() {
@@ -61,7 +61,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der id-Eigenschaft fest.
+     * Définit la valeur de la propriété id.
      * 
      */
     public void setId(int value) {
@@ -69,7 +69,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der email-Eigenschaft ab.
+     * Obtient la valeur de la propriété email.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der email-Eigenschaft fest.
+     * Définit la valeur de la propriété email.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der nom-Eigenschaft ab.
+     * Obtient la valeur de la propriété nom.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der nom-Eigenschaft fest.
+     * Définit la valeur de la propriété nom.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +117,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der prenom-Eigenschaft ab.
+     * Obtient la valeur de la propriété prenom.
      * 
      * @return
      *     possible object is
@@ -129,7 +129,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der prenom-Eigenschaft fest.
+     * Définit la valeur de la propriété prenom.
      * 
      * @param value
      *     allowed object is
@@ -141,7 +141,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der mdp-Eigenschaft ab.
+     * Obtient la valeur de la propriété mdp.
      * 
      * @return
      *     possible object is
@@ -153,7 +153,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der mdp-Eigenschaft fest.
+     * Définit la valeur de la propriété mdp.
      * 
      * @param value
      *     allowed object is
@@ -165,7 +165,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der sel-Eigenschaft ab.
+     * Obtient la valeur de la propriété sel.
      * 
      * @return
      *     possible object is
@@ -177,7 +177,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der sel-Eigenschaft fest.
+     * Définit la valeur de la propriété sel.
      * 
      * @param value
      *     allowed object is

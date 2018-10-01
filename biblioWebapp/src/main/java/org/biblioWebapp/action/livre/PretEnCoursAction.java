@@ -13,8 +13,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioWebapp.action.AbstractAction;
 import org.biblioWebapp.services.generated.livreservice.ListerPretEnCoursFault_Exception;
+import org.biblioWebapp.services.generated.livreservice.ListerReservationFault_Exception;
 import org.biblioWebapp.services.generated.livreservice.LivreService;
 import org.biblioWebapp.services.generated.types.Pret;
+import org.biblioWebapp.services.generated.types.Reservation;
 import org.biblioWebapp.services.generated.types.Utilisateur;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -37,6 +39,8 @@ public class PretEnCoursAction extends AbstractAction {
 	// ----- Eléments en sortie
 
 	private Map<Pret,Boolean> mapPret;
+	
+	private List<Reservation> listReservation;
 
 	// ==================== Getters/Setters ====================
 
@@ -49,6 +53,12 @@ public class PretEnCoursAction extends AbstractAction {
 	public Map<Pret, Boolean> getMapPret() {
 		return mapPret;
 	}
+	
+	public List<Reservation> getListReservation() {
+		return listReservation;
+	}
+	
+	
 
 	// ================= Méthodes d'action ====================
 
@@ -60,6 +70,7 @@ public class PretEnCoursAction extends AbstractAction {
 
 		LivreService vLivreService = this.getLivreService();
 		try {
+
 			mapPret= new HashMap<Pret,Boolean>();
 			List<Pret> listPret = vLivreService.listerPretEnCours(vUtilisateur.getId());
 			GregorianCalendar gregorianCalendar = new GregorianCalendar();
@@ -72,7 +83,10 @@ public class PretEnCoursAction extends AbstractAction {
 					mapPret.put(pret,true);
 				}
 			}
+			listReservation = vLivreService.listerReservation(vUtilisateur.getId());
 		} catch (ListerPretEnCoursFault_Exception e) {
+			addActionError(e.getFaultInfo().getFaultMessage());
+		} catch (ListerReservationFault_Exception e) {
 			addActionError(e.getFaultInfo().getFaultMessage());
 		} catch (DatatypeConfigurationException e) {
 			LOGGER.debug(e);

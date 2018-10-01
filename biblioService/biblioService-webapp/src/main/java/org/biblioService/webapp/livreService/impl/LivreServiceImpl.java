@@ -1,6 +1,5 @@
 package org.biblioService.webapp.livreService.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,20 +8,31 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.biblioService.business.contrat.ManagerFactory;
+import org.biblioService.model.bean.DispoParBibliotheque;
 import org.biblioService.model.bean.Livre;
 import org.biblioService.model.bean.Pret;
+import org.biblioService.model.bean.Reservation;
+import org.biblioService.model.exception.AutreException;
 import org.biblioService.model.exception.NotFoundException;
 import org.biblioService.model.exception.TechnicalException;
+import org.biblioService.webapp.livreService.generated.CreerReservationFault;
+import org.biblioService.webapp.livreService.generated.CreerReservationFault_Exception;
 import org.biblioService.webapp.livreService.generated.ListerPretEnCoursFault;
 import org.biblioService.webapp.livreService.generated.ListerPretEnCoursFault_Exception;
+import org.biblioService.webapp.livreService.generated.ListerReservationFault;
+import org.biblioService.webapp.livreService.generated.ListerReservationFault_Exception;
 import org.biblioService.webapp.livreService.generated.LivreService;
+import org.biblioService.webapp.livreService.generated.MiseAJourListesReservationFault_Exception;
+import org.biblioService.webapp.livreService.generated.NouveauPretFault;
+import org.biblioService.webapp.livreService.generated.NouveauPretFault_Exception;
 import org.biblioService.webapp.livreService.generated.ProlongerPretFault;
 import org.biblioService.webapp.livreService.generated.ProlongerPretFault_Exception;
+import org.biblioService.webapp.livreService.generated.RetourPretFault;
+import org.biblioService.webapp.livreService.generated.RetourPretFault_Exception;
+import org.biblioService.webapp.livreService.generated.SupprimerReservationFault;
+import org.biblioService.webapp.livreService.generated.SupprimerReservationFault_Exception;
+import org.biblioService.webapp.livreService.generated.VoirDispoFault;
 import org.biblioService.webapp.livreService.generated.VoirDispoFault_Exception;
-import org.biblioService.webapp.livreService.generated.types.NombreEtBibliotheque;
-
-import java.util.Map;
-import java.util.Set;
 
 public class LivreServiceImpl implements LivreService {
 	
@@ -70,14 +80,14 @@ public class LivreServiceImpl implements LivreService {
 	}
 
 	@Override
-	public XMLGregorianCalendar prolongerPret(int pISBN) throws ProlongerPretFault_Exception {
-		LOGGER.traceEntry("pPretId = " + pISBN);
+	public XMLGregorianCalendar prolongerPret(int pPretId) throws ProlongerPretFault_Exception {
+		LOGGER.traceEntry("pPretId = " + pPretId);
 
 		XMLGregorianCalendar vNewDateRetourPrevue;
 
 		try {
-			vNewDateRetourPrevue = managerFactory.getLivreManager().prolongerPret(pISBN);
-		} catch (TechnicalException | NotFoundException e) {
+			vNewDateRetourPrevue = managerFactory.getLivreManager().prolongerPret(pPretId);
+		} catch (AutreException e) {
 			LOGGER.debug(e);
 			ProlongerPretFault vProlongerPretFault = new ProlongerPretFault();
 			vProlongerPretFault.setFaultMessage(e.getMessageErreur());
@@ -109,20 +119,127 @@ public class LivreServiceImpl implements LivreService {
 	}
 
 	@Override
-	public List<NombreEtBibliotheque> voirDispo(String pISBN) throws VoirDispoFault_Exception {
+	public List<DispoParBibliotheque> voirDispo(String pISBN) throws VoirDispoFault_Exception {
 		LOGGER.traceEntry("pISBN = " + pISBN);
 		
-		Map <String, Integer> vDispo = managerFactory.getLivreManager().getDispo(pISBN);
-		List<NombreEtBibliotheque> rDispo =  new ArrayList<NombreEtBibliotheque>();
-		
-		Set<String> vKeys = vDispo.keySet();
-		for (String vKey : vKeys) {
-			NombreEtBibliotheque vNombreEtBibliotheque = new NombreEtBibliotheque();
-			vNombreEtBibliotheque.setBibliotheque(vKey);
-			vNombreEtBibliotheque.setNombre(vDispo.get(vKey));
-			rDispo.add(vNombreEtBibliotheque);
+		List<DispoParBibliotheque> vDispo;
+		try {
+			vDispo = managerFactory.getLivreManager().getDispo(pISBN);
+		} catch (NotFoundException e) {
+			LOGGER.debug(e);
+			VoirDispoFault vVoirDispoFault = new VoirDispoFault();
+			vVoirDispoFault.setFaultMessage(e.getMessageErreur());
+			throw new VoirDispoFault_Exception(e.getMessage(), vVoirDispoFault);
 		}
-		return rDispo;
+
+		LOGGER.traceExit("vDispo = " + vDispo);
+		return vDispo;
 	}
+	
+	@Override
+	public void creerReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws CreerReservationFault_Exception {
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + " - pUtilisateurId = " + pUtilisateurId);
+		
+		try {
+			managerFactory.getLivreManager().createReservation(pISBN,pBibliotheque,pUtilisateurId);
+		} catch (AutreException e) {
+			LOGGER.debug(e);
+			CreerReservationFault vCreerReservationFault = new CreerReservationFault();
+			vCreerReservationFault.setFaultMessage(e.getMessageErreur());
+			throw new CreerReservationFault_Exception(e.getMessage(), vCreerReservationFault);
+		}
+
+		LOGGER.traceExit();
+	}
+
+	@Override
+	public List<Reservation> listerReservation(int pUtilisateurId) throws ListerReservationFault_Exception {
+		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId);
+
+		List<Reservation> vResult;
+		try {
+			vResult = managerFactory.getLivreManager().listerReservation(pUtilisateurId);
+		} catch (NotFoundException e) {
+			LOGGER.debug(e);
+			ListerReservationFault vListerReservationFault = new ListerReservationFault();
+			vListerReservationFault.setFaultMessage(e.getMessageErreur());
+			throw new ListerReservationFault_Exception(e.getMessage(), vListerReservationFault);
+		}
+		
+		LOGGER.traceEntry("vResult = " + vResult);
+		return vResult;
+	}
+	
+	@Override
+	public void supprimerReservation(String pISBN, String pBibliotheque, int pUtilisateurId) throws SupprimerReservationFault_Exception{
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + pBibliotheque + " - pUtilisateurId = " + pUtilisateurId);
+		
+		try {
+			managerFactory.getLivreManager().deleteReservation(pISBN,pBibliotheque,pUtilisateurId);
+		} catch (TechnicalException e) {
+			LOGGER.debug(e);
+			SupprimerReservationFault vSupprimerReservationFault = new SupprimerReservationFault();
+			vSupprimerReservationFault.setFaultMessage(e.getMessageErreur());
+			throw new SupprimerReservationFault_Exception(e.getMessage(), vSupprimerReservationFault);
+		}
+
+		LOGGER.traceExit();
+		
+	}
+
+	@Override
+	public void nouveauPret(int pUtilisateurId, int pExemplaireId) throws NouveauPretFault_Exception {
+		LOGGER.traceEntry("pUtilisateurId = " + pUtilisateurId + " - pExemplaireId = " + pExemplaireId);
+		
+		try {
+			managerFactory.getLivreManager().nouveauPret(pUtilisateurId,pExemplaireId);
+		} catch (AutreException e) {
+			LOGGER.debug(e);
+			NouveauPretFault vNouveauPretFault = new NouveauPretFault();
+			vNouveauPretFault.setFaultMessage(e.getMessageErreur());
+			throw new NouveauPretFault_Exception(e.getMessage(), vNouveauPretFault);
+		}
+
+		LOGGER.traceExit();
+		
+	}
+
+	@Override
+	public Reservation retourPret(int pId) throws RetourPretFault_Exception {
+		LOGGER.traceEntry("pId = " + pId);
+		
+		Reservation premierSurListeAttente = null;
+		try {
+			premierSurListeAttente = managerFactory.getLivreManager().retourPret(pId);
+		} catch (AutreException e) {
+			LOGGER.debug(e);
+			RetourPretFault vRetourPretFault = new RetourPretFault();
+			vRetourPretFault.setFaultMessage(e.getMessageErreur());
+			throw new RetourPretFault_Exception(e.getMessage(), vRetourPretFault);
+		}
+
+		LOGGER.traceExit("vReservation = " + premierSurListeAttente);
+		return premierSurListeAttente;
+		
+	}
+
+	@Override
+	public List<Reservation> miseAJourListesReservation() throws MiseAJourListesReservationFault_Exception {
+		LOGGER.traceEntry();
+		
+		List<Reservation> vListReservationAJour = null;
+		try {
+			vListReservationAJour = managerFactory.getLivreManager().miseAJourListesReservation();
+		} catch (AutreException e) {
+			LOGGER.debug(e);
+			throw new MiseAJourListesReservationFault_Exception(e.getMessage());
+		}
+
+		LOGGER.traceExit("vListReservationAJour = " + vListReservationAJour);
+		return vListReservationAJour;
+	}
+	
+
+
 
 }

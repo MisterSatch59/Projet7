@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="096fc085-6727-4cc3-9644-f4e1e285ecb9" activeEnvironment="Default" name="UtilisateurService" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="6ca80fa8-3a09-44c7-8f6f-c3a80f72c29f" wsaVersion="NONE" name="UtilisateurServiceSOAP" type="wsdl" bindingName="{http://www.example.org/UtilisateurService/}UtilisateurServiceSOAP" soapVersion="1_1" anonymous="optional" definition="file:/D:/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/UtilisateurService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\eclipse-workspace\Projet4\biblioService\biblioService-webapp\src\main\resources\wsdl\UtilisateurService.wsdl"><con:part><con:url>file:\D:\eclipse-workspace\Projet4\biblioService\biblioService-webapp\src\main\resources\wsdl\UtilisateurService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UtilisateurService" targetNamespace="http://www.example.org/UtilisateurService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/UtilisateurService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<con:soapui-project id="096fc085-6727-4cc3-9644-f4e1e285ecb9" activeEnvironment="Default" name="BiblioService" resourceRoot="" soapui-version="5.4.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="6ca80fa8-3a09-44c7-8f6f-c3a80f72c29f" wsaVersion="NONE" name="UtilisateurServiceSOAP" type="wsdl" bindingName="{http://www.example.org/UtilisateurService/}UtilisateurServiceSOAP" soapVersion="1_1" anonymous="optional" definition="file:/D:/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/UtilisateurService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\D:\eclipse-workspace\Projet4\biblioService\biblioService-webapp\src\main\resources\wsdl\UtilisateurService.wsdl"><con:part><con:url>file:\D:\eclipse-workspace\Projet4\biblioService\biblioService-webapp\src\main\resources\wsdl\UtilisateurService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="UtilisateurService" targetNamespace="http://www.example.org/UtilisateurService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/UtilisateurService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.example.org/UtilisateurService/" xmlns:Q1="http://www.example.org/types">
       <xsd:import schemaLocation="../beans.xsd" namespace="http://www.example.org/types"/>
@@ -301,14 +301,14 @@
          <mdp>azerty123*</mdp>\r
       </util:authentifierUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/authentifierUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="acfaf2cc-f074-4730-9b57-f1e54eebcf1a" isOneWay="false" action="" name="creerUtilisateur" bindingOperationName="creerUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="497bb62d-7ef3-4c36-9886-d4dd74d525ae" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/authentifierUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="acfaf2cc-f074-4730-9b57-f1e54eebcf1a" isOneWay="false" action="" name="creerUtilisateur" bindingOperationName="creerUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="497bb62d-7ef3-4c36-9886-d4dd74d525ae" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <util:creerUtilisateur>\r
-         <nom>?</nom>\r
-         <prenom>?</prenom>\r
-         <email>?</email>\r
-         <mdp>?</mdp>\r
+         <nom>?4</nom>\r
+         <prenom>?4</prenom>\r
+         <email>?4@gmail.com</email>\r
+         <mdp>azertyUIOP123*</mdp>\r
       </util:creerUtilisateur>\r
    </soapenv:Body>\r
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/creerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="29204f23-0103-47bd-92ec-f8a96a99bb7c" isOneWay="false" action="" name="modifierUtilisateur" bindingOperationName="modifierUtilisateur" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e005c11e-3d45-45d2-9b19-a40aafc9755f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/utilisateur</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:util="http://www.example.org/UtilisateurService/">\r
@@ -335,93 +335,97 @@
          <mdp>?</mdp>\r
       </util:supprimerUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="626ba800-8f31-4b8e-b11e-f82869f7551f" wsaVersion="NONE" name="LivreServiceSOAP" type="wsdl" bindingName="{http://www.example.org/LivreService/}LivreServiceSOAP" soapVersion="1_1" anonymous="optional" definition="file:/C:/dev/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/LivreService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/dev/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/LivreService.wsdl"><con:part><con:url>file:/C:/dev/eclipse-workspace/Projet4/biblioService/biblioService-webapp/src/main/resources/wsdl/LivreService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LivreService" targetNamespace="http://www.example.org/LivreService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/LivreService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="626ba800-8f31-4b8e-b11e-f82869f7551f" wsaVersion="NONE" name="LivreServiceSoapBinding" type="wsdl" bindingName="{http://www.example.org/LivreService/}LivreServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/biblioService/services/livre?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/biblioService/services/livre?wsdl"><con:part><con:url>http://localhost:8080/biblioService/services/livre?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="LivreService" targetNamespace="http://www.example.org/LivreService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/LivreService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://www.example.org/LivreService/" xmlns:Q1="http://www.example.org/types">
-      <xsd:import schemaLocation="../beans.xsd" namespace="http://www.example.org/types"/>
+      <xsd:import namespace="http://www.example.org/types" schemaLocation="http://localhost:8080/biblioService/services/livre?xsd=../beans.xsd"/>
       <xsd:element name="rechercherLivre">
         <xsd:complexType>
-          <xsd:sequence minOccurs="1" maxOccurs="1">
-            <xsd:element name="titre" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
-            <xsd:element name="auteur" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
-            <xsd:element name="genre" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
-            <xsd:element name="langue" type="xsd:string" minOccurs="0" maxOccurs="1"></xsd:element>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="0" name="titre" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="auteur" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="genre" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="langue" type="xsd:string"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="rechercherLivreResponse">
         <xsd:complexType>
-          <xsd:sequence minOccurs="1" maxOccurs="1">
-            <xsd:element name="livre" type="Q1:Livre" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="livre" type="Q1:Livre"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="voirDispo">
         <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="isbn" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="isbn" type="xsd:string"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="voirDispoResponse">
         <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="nombreEtBibliotheque" type="Q1:NombreEtBibliotheque" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="dispoParBibliotheque" type="Q1:DispoParBibliotheque"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="listerPretEnCours">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="utilisateurId" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="listerPretEnCoursResponse">
         <xsd:complexType>
-          <xsd:sequence minOccurs="1" maxOccurs="1">
-            <xsd:element name="pret" type="Q1:Pret" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="pret" type="Q1:Pret"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="prolongerPret">
         <xsd:complexType>
-          <xsd:sequence minOccurs="1" maxOccurs="1">
-            <xsd:element name="pretId" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="pretId" type="xsd:int"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="prolongerPretResponse">
-        <xsd:complexType></xsd:complexType>
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="newDateRetourPrevue" type="xsd:date"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
       </xsd:element>
       <xsd:element name="listerPretEnRetard">
         <xsd:complexType></xsd:complexType>
       </xsd:element>
       <xsd:element name="listerPretEnRetardResponse">
         <xsd:complexType>
-          <xsd:sequence minOccurs="1" maxOccurs="1">
-            <xsd:element name="pret" type="Q1:Pret" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="pret" type="Q1:Pret"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="voirDispoFault">
         <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="FaultMessage" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="listerPretEnCoursFault">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element name="FaultMessage" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="prolongerPretFault">
         <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="FaultMessage" type="xsd:string" minOccurs="1" maxOccurs="1"></xsd:element>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -430,8 +434,8 @@
       </xsd:element>
       <xsd:element name="getLanguesResponse">
         <xsd:complexType>
-          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
-            <xsd:element name="langue" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:sequence maxOccurs="unbounded" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="langue" type="xsd:string"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
@@ -440,100 +444,289 @@
       </xsd:element>
       <xsd:element name="getGenresResponse">
         <xsd:complexType>
-          <xsd:sequence minOccurs="1" maxOccurs="unbounded">
-            <xsd:element name="genres" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+          <xsd:sequence maxOccurs="unbounded" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="genres" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="creerReservation">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="isbn" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="bibliotheque" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="creerReservationResponse">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="creerReservationFault">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="supprimerReservation">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="isbn" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="bibliotheque" type="xsd:string"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="supprimerReservationResponse">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="supprimerReservationFault">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listerReservation">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="listerReservationResponse">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="listReservation" type="Q1:Reservation"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="nouveauPret">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="utilisateurId" type="xsd:int"></xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="exemplaireId" type="xsd:int"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="nouveauPretResponse">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="nouveauPretFault">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retourPret">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="id" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retourPretResponse">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="0" name="premierSurListeAttente" type="Q1:Reservation"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="miseAJourListesReservation">
+        <xsd:complexType></xsd:complexType>
+      </xsd:element>
+      <xsd:element name="miseAJourListesReservationResponse">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="listeNouvellePremiereReservation" type="Q1:Reservation"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retourPretFault">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="miseAJourListesReservationFault">
+        <xsd:complexType>
+          <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element maxOccurs="1" minOccurs="1" name="FaultMessage" type="xsd:string"></xsd:element>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="rechercherLivreRequest">
-    <wsdl:part element="tns:rechercherLivre" name="parameters"/>
-  </wsdl:message>
-  <wsdl:message name="rechercherLivreResponse">
-    <wsdl:part element="tns:rechercherLivreResponse" name="parameters"/>
-  </wsdl:message>
-  <wsdl:message name="voirDispoRequest">
-    <wsdl:part name="parameters" element="tns:voirDispo"/>
-  </wsdl:message>
-  <wsdl:message name="voirDispoResponse">
-    <wsdl:part name="parameters" element="tns:voirDispoResponse"/>
-  </wsdl:message>
-  <wsdl:message name="listerPretEnCoursRequest">
-    <wsdl:part name="parameters" element="tns:listerPretEnCours"/>
-  </wsdl:message>
-  <wsdl:message name="listerPretEnCoursResponse">
-    <wsdl:part name="parameters" element="tns:listerPretEnCoursResponse"/>
-  </wsdl:message>
   <wsdl:message name="prolongerPretRequest">
-    <wsdl:part name="parameters" element="tns:prolongerPret"/>
+    <wsdl:part element="tns:prolongerPret" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="prolongerPretResponse">
-    <wsdl:part name="parameters" element="tns:prolongerPretResponse"/>
+    <wsdl:part element="tns:prolongerPretResponse" name="parameters"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="listerPretEnRetardRequest">
-    <wsdl:part name="parameters" element="tns:listerPretEnRetard"/>
+  <wsdl:message name="voirDispoRequest">
+    <wsdl:part element="tns:voirDispo" name="parameters"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="listerPretEnRetardResponse">
-    <wsdl:part name="parameters" element="tns:listerPretEnRetardResponse"/>
+  <wsdl:message name="miseAJourListesReservationRequest">
+    <wsdl:part element="tns:miseAJourListesReservation" name="parameters"></wsdl:part>
   </wsdl:message>
-  <wsdl:message name="voirDispoFault">
-    <wsdl:part name="parameters" element="tns:voirDispoFault"/>
-  </wsdl:message>
-  <wsdl:message name="listerPretEnCoursFault">
-    <wsdl:part name="parameters" element="tns:listerPretEnCoursFault"/>
-  </wsdl:message>
-  <wsdl:message name="prolongerPretFault">
-    <wsdl:part name="parameters" element="tns:prolongerPretFault"/>
-  </wsdl:message>
-  <wsdl:message name="getLanguesRequest">
-    <wsdl:part name="parameters" element="tns:getLangues"/>
-  </wsdl:message>
-  <wsdl:message name="getLanguesResponse">
-    <wsdl:part name="parameters" element="tns:getLanguesResponse"/>
-  </wsdl:message>
-  <wsdl:message name="getGenresRequest">
-    <wsdl:part name="parameters" element="tns:getGenres"/>
+  <wsdl:message name="miseAJourListesReservationFault">
+    <wsdl:part element="tns:miseAJourListesReservationFault" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:message name="getGenresResponse">
-    <wsdl:part name="parameters" element="tns:getGenresResponse"/>
+    <wsdl:part element="tns:getGenresResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listerReservationResponse">
+    <wsdl:part element="tns:listerReservationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnCoursFault">
+    <wsdl:part element="tns:listerPretEnCoursFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listerReservationRequest">
+    <wsdl:part element="tns:listerReservation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nouveauPretRequest">
+    <wsdl:part element="tns:nouveauPret" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerReservationFault">
+    <wsdl:part element="tns:creerReservationFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nouveauPretResponse">
+    <wsdl:part element="tns:nouveauPretResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechercherLivreRequest">
+    <wsdl:part element="tns:rechercherLivre" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retourPretRequest">
+    <wsdl:part element="tns:retourPret" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerReservationRequest">
+    <wsdl:part element="tns:creerReservation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retourPretResponse">
+    <wsdl:part element="tns:retourPretResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retourPretFault">
+    <wsdl:part element="tns:retourPretFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnCoursResponse">
+    <wsdl:part element="tns:listerPretEnCoursResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnCoursRequest">
+    <wsdl:part element="tns:listerPretEnCours" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="miseAJourListesReservationResponse">
+    <wsdl:part element="tns:miseAJourListesReservationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="nouveauPretFault">
+    <wsdl:part element="tns:nouveauPretFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="prolongerPretFault">
+    <wsdl:part element="tns:prolongerPretFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="creerReservationResponse">
+    <wsdl:part element="tns:creerReservationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnRetardResponse">
+    <wsdl:part element="tns:listerPretEnRetardResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGenresRequest">
+    <wsdl:part element="tns:getGenres" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="voirDispoResponse">
+    <wsdl:part element="tns:voirDispoResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerReservationRequest">
+    <wsdl:part element="tns:supprimerReservation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rechercherLivreResponse">
+    <wsdl:part element="tns:rechercherLivreResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="voirDispoFault">
+    <wsdl:part element="tns:voirDispoFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLanguesResponse">
+    <wsdl:part element="tns:getLanguesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerReservationResponse">
+    <wsdl:part element="tns:supprimerReservationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listerPretEnRetardRequest">
+    <wsdl:part element="tns:listerPretEnRetard" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="supprimerReservationFault">
+    <wsdl:part element="tns:supprimerReservationFault" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getLanguesRequest">
+    <wsdl:part element="tns:getLangues" name="parameters"></wsdl:part>
   </wsdl:message>
   <wsdl:portType name="LivreService">
     <wsdl:operation name="rechercherLivre">
-      <wsdl:input message="tns:rechercherLivreRequest"/>
-      <wsdl:output message="tns:rechercherLivreResponse"/>
+      <wsdl:input message="tns:rechercherLivreRequest"></wsdl:input>
+      <wsdl:output message="tns:rechercherLivreResponse"></wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="voirDispo">
-      <wsdl:input message="tns:voirDispoRequest"/>
-      <wsdl:output message="tns:voirDispoResponse"/>
-      <wsdl:fault name="fault" message="tns:voirDispoFault"/>
+      <wsdl:input message="tns:voirDispoRequest"></wsdl:input>
+      <wsdl:output message="tns:voirDispoResponse"></wsdl:output>
+      <wsdl:fault message="tns:voirDispoFault" name="fault"></wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="listerPretEnCours">
-      <wsdl:input message="tns:listerPretEnCoursRequest"/>
-      <wsdl:output message="tns:listerPretEnCoursResponse"/>
-      <wsdl:fault name="fault" message="tns:listerPretEnCoursFault"/>
+      <wsdl:input message="tns:listerPretEnCoursRequest"></wsdl:input>
+      <wsdl:output message="tns:listerPretEnCoursResponse"></wsdl:output>
+      <wsdl:fault message="tns:listerPretEnCoursFault" name="fault"></wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="prolongerPret">
-      <wsdl:input message="tns:prolongerPretRequest"/>
-      <wsdl:output message="tns:prolongerPretResponse"/>
-      <wsdl:fault name="fault" message="tns:prolongerPretFault"/>
+      <wsdl:input message="tns:prolongerPretRequest"></wsdl:input>
+      <wsdl:output message="tns:prolongerPretResponse"></wsdl:output>
+      <wsdl:fault message="tns:prolongerPretFault" name="fault"></wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="listerPretEnRetard">
-      <wsdl:input message="tns:listerPretEnRetardRequest"/>
-      <wsdl:output message="tns:listerPretEnRetardResponse"/>
+      <wsdl:input message="tns:listerPretEnRetardRequest"></wsdl:input>
+      <wsdl:output message="tns:listerPretEnRetardResponse"></wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getLangues">
-      <wsdl:input message="tns:getLanguesRequest"/>
-      <wsdl:output message="tns:getLanguesResponse"/>
+      <wsdl:input message="tns:getLanguesRequest"></wsdl:input>
+      <wsdl:output message="tns:getLanguesResponse"></wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getGenres">
-      <wsdl:input message="tns:getGenresRequest"/>
-      <wsdl:output message="tns:getGenresResponse"/>
+      <wsdl:input message="tns:getGenresRequest"></wsdl:input>
+      <wsdl:output message="tns:getGenresResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creerReservation">
+      <wsdl:input message="tns:creerReservationRequest"></wsdl:input>
+      <wsdl:output message="tns:creerReservationResponse"></wsdl:output>
+      <wsdl:fault message="tns:creerReservationFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerReservation">
+      <wsdl:input message="tns:supprimerReservationRequest"></wsdl:input>
+      <wsdl:output message="tns:supprimerReservationResponse"></wsdl:output>
+      <wsdl:fault message="tns:supprimerReservationFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listerReservation">
+      <wsdl:input message="tns:listerReservationRequest"></wsdl:input>
+      <wsdl:output message="tns:listerReservationResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nouveauPret">
+      <wsdl:input message="tns:nouveauPretRequest"></wsdl:input>
+      <wsdl:output message="tns:nouveauPretResponse"></wsdl:output>
+      <wsdl:fault message="tns:nouveauPretFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retourPret">
+      <wsdl:input message="tns:retourPretRequest"></wsdl:input>
+      <wsdl:output message="tns:retourPretResponse"></wsdl:output>
+      <wsdl:fault message="tns:retourPretFault" name="fault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="miseAJourListesReservation">
+      <wsdl:input message="tns:miseAJourListesReservationRequest"></wsdl:input>
+      <wsdl:output message="tns:miseAJourListesReservationResponse"></wsdl:output>
+      <wsdl:fault message="tns:miseAJourListesReservationFault" name="fault"></wsdl:fault>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="LivreServiceSOAP" type="tns:LivreService">
+  <wsdl:binding name="LivreServiceSoapBinding" type="tns:LivreService">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="rechercherLivre">
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -542,6 +735,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="voirDispo">
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -549,10 +743,11 @@
         <soap:body use="literal"/>
       </wsdl:output>
       <wsdl:fault name="fault">
-        <soap:fault use="literal" name="fault"/>
+        <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="listerPretEnCours">
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -560,10 +755,11 @@
         <soap:body use="literal"/>
       </wsdl:output>
       <wsdl:fault name="fault">
-        <soap:fault use="literal" name="fault"/>
+        <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="prolongerPret">
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -571,10 +767,11 @@
         <soap:body use="literal"/>
       </wsdl:output>
       <wsdl:fault name="fault">
-        <soap:fault use="literal" name="fault"/>
+        <soap:fault name="fault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="listerPretEnRetard">
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -583,6 +780,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getLangues">
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -591,6 +789,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getGenres">
+      <soap:operation soapAction="" style="document"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -598,84 +797,165 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="creerReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="supprimerReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listerReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="nouveauPret">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retourPret">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="miseAJourListesReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="LivreService">
-    <wsdl:port binding="tns:LivreServiceSOAP" name="LivreServiceSOAP">
+  <wsdl:service name="LivreServiceService">
+    <wsdl:port binding="tns:LivreServiceSoapBinding" name="LivreServicePort">
       <soap:address location="http://localhost:8080/biblioService/services/livre"/>
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\dev\eclipse-workspace\Projet4\biblioService\biblioService-webapp\src\main\resources\beans.xsd</con:url><con:content><![CDATA[<schema targetNamespace="http://www.example.org/types" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/types">
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/biblioService/services/livre?xsd=../beans.xsd</con:url><con:content><![CDATA[<schema elementFormDefault="qualified" targetNamespace="http://www.example.org/types" xmlns:tns="http://www.example.org/types" xmlns="http://www.w3.org/2001/XMLSchema">
   <complexType name="Livre">
     <sequence>
-      <element name="isbn" type="string" minOccurs="1"/>
-      <element name="titre" type="string" minOccurs="1"/>
-      <element name="editeur" type="tns:Editeur" minOccurs="1" maxOccurs="1"></element>
-      <element name="datePublication" type="date" minOccurs="1"/>
-      <element name="description" type="tns:Description" minOccurs="1" maxOccurs="1"></element>
-      <element name="langue" type="string" minOccurs="1"/>
-      <element name="auteur" type="tns:Auteur" minOccurs="1" maxOccurs="unbounded"></element>
-      <element name="genre" type="string" minOccurs="1" maxOccurs="unbounded"/>
+      <element minOccurs="1" name="isbn" type="string"/>
+      <element minOccurs="1" name="titre" type="string"/>
+      <element maxOccurs="1" minOccurs="1" name="editeur" type="tns:Editeur"></element>
+      <element minOccurs="1" name="datePublication" type="date"/>
+      <element maxOccurs="1" minOccurs="1" name="description" type="tns:Description"></element>
+      <element minOccurs="1" name="langue" type="string"/>
+      <element maxOccurs="unbounded" minOccurs="1" name="auteur" type="tns:Auteur"></element>
+      <element maxOccurs="unbounded" minOccurs="1" name="genre" type="string"/>
     </sequence>
   </complexType>
   <complexType name="Editeur">
     <sequence>
-      <element name="id" type="int" minOccurs="1"/>
-      <element name="nom" type="string" minOccurs="1"/>
+      <element minOccurs="1" name="id" type="int"/>
+      <element minOccurs="1" name="nom" type="string"/>
     </sequence>
   </complexType>
   <complexType name="Description">
     <sequence>
-      <element name="id" type="int" minOccurs="1"/>
-      <element name="titre" type="string" minOccurs="1"/>
-      <element name="paragraphes" type="string" minOccurs="1" maxOccurs="unbounded"/>
+      <element minOccurs="1" name="id" type="int"/>
+      <element minOccurs="1" name="titre" type="string"/>
+      <element maxOccurs="unbounded" minOccurs="1" name="paragraphes" type="string"/>
     </sequence>
   </complexType>
   <complexType name="Auteur">
     <sequence>
-      <element name="id" type="int" minOccurs="1"/>
-      <element name="nom" type="string" minOccurs="1"/>
-      <element name="prenom" type="string" minOccurs="0" maxOccurs="1"/>
+      <element minOccurs="1" name="id" type="int"/>
+      <element minOccurs="1" name="nom" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="prenom" type="string"/>
     </sequence>
   </complexType>
   <complexType name="Exemplaire">
     <sequence>
-      <element name="id" type="int" minOccurs="1"/>
-      <element name="livre" type="tns:Livre" minOccurs="1"/>
-      <element name="bibliotheque" type="string" minOccurs="1" maxOccurs="1"/>
+      <element minOccurs="1" name="id" type="int"/>
+      <element minOccurs="1" name="livre" type="tns:Livre"/>
+      <element maxOccurs="1" minOccurs="1" name="bibliotheque" type="string"/>
     </sequence>
   </complexType>
   <complexType name="UtilisateurBD">
     <sequence>
-      <element name="id" type="int" minOccurs="1"/>
-      <element name="email" type="string" minOccurs="1"/>
-      <element name="nom" type="string" minOccurs="1"/>
-      <element name="prenom" type="string" minOccurs="0" maxOccurs="1"></element>
-      <element name="mdp" type="string" minOccurs="1" maxOccurs="1"></element>
-      <element name="sel" type="string" minOccurs="1"/>
+      <element minOccurs="1" name="id" type="int"/>
+      <element minOccurs="1" name="email" type="string"/>
+      <element minOccurs="1" name="nom" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="prenom" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="mdp" type="string"></element>
+      <element minOccurs="1" name="sel" type="string"/>
     </sequence>
   </complexType>
   <complexType name="Utilisateur">
     <sequence>
-      <element name="id" type="int" minOccurs="1"/>
-      <element name="email" type="string" minOccurs="1"/>
-      <element name="nom" type="string" minOccurs="1"/>
-      <element name="prenom" type="string" minOccurs="0" maxOccurs="1"/>
+      <element minOccurs="1" name="id" type="int"/>
+      <element minOccurs="1" name="email" type="string"/>
+      <element minOccurs="1" name="nom" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="prenom" type="string"/>
     </sequence>
   </complexType>
   <complexType name="Pret">
     <sequence>
-      <element name="id" type="int" minOccurs="1"/>
-      <element name="dateDebut" type="date" minOccurs="1"/>
-      <element name="dateFin" type="date" minOccurs="0" maxOccurs="1"/>
-      <element name="renouvele" type="boolean" minOccurs="1"/>
-      <element name="utilisateur" type="tns:Utilisateur" minOccurs="1" maxOccurs="1"/>
-      <element name="exemplaire" type="tns:Exemplaire" minOccurs="1"/>
+      <element minOccurs="1" name="id" type="int"/>
+      <element minOccurs="1" name="dateDebut" type="date"/>
+      <element maxOccurs="1" minOccurs="0" name="dateFin" type="date"></element>
+      <element minOccurs="1" name="renouvele" type="boolean"/>
+      <element maxOccurs="1" minOccurs="1" name="utilisateur" type="tns:Utilisateur"></element>
+      <element minOccurs="1" name="exemplaire" type="tns:Exemplaire"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateRetourPrevue" type="date"></element>
     </sequence>
   </complexType>
-  <complexType name="NombreEtBibliotheque">
+  <complexType name="DispoParBibliotheque">
     <sequence>
-      <element name="bibliotheque" type="string" minOccurs="1" maxOccurs="1"/>
-      <element name="nombre" type="int" minOccurs="1" maxOccurs="1"/>
+      <element maxOccurs="1" minOccurs="1" name="bibliotheque" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="nombre" type="int"></element>
+      <element maxOccurs="1" minOccurs="0" name="prochainRetour" type="date"></element>
+      <element maxOccurs="1" minOccurs="0" name="personnesEnAttente" type="int"/>
+    </sequence>
+  </complexType>
+  <complexType name="Reservation">
+    <sequence>
+      <element maxOccurs="1" minOccurs="1" name="livre" type="tns:Livre"></element>
+      <element maxOccurs="1" minOccurs="1" name="bibliotheque" type="string"></element>
+      <element maxOccurs="1" minOccurs="1" name="utilisateur" type="tns:Utilisateur"></element>
+      <element maxOccurs="1" minOccurs="1" name="dateResa" type="date"></element>
+      <element maxOccurs="1" minOccurs="0" name="dateMail" type="date"/>
     </sequence>
   </complexType>
 </schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint></con:endpoints><con:operation id="c9a8fdea-cefb-4620-9983-8dcca490e731" isOneWay="false" action="" name="getGenres" bindingOperationName="getGenres" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ea879710-1336-4df4-b87c-a2c7f3eb6b51" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
@@ -712,7 +992,7 @@
    <soapenv:Body>\r
       <liv:rechercherLivre>\r
          <!--Optional:-->\r
-         <titre></titre>\r
+         <titre>Harry</titre>\r
          <!--Optional:-->\r
          <auteur></auteur>\r
          <!--Optional:-->\r
@@ -725,10 +1005,55 @@
    <soapenv:Header/>\r
    <soapenv:Body>\r
       <liv:voirDispo>\r
-         <isbn>978-2070649693</isbn>\r
+         <isbn>978-2290055953</isbn>\r
       </liv:voirDispo>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/voirDispoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="9795e4ac-0288-4cea-8780-5c6d2a9d3f30" name="TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="2ae6bb1b-5e06-482e-bf75-f307acd45f2a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="e7d174a5-fbd8-44d8-ae02-17ce79241b52"><con:settings/><con:config><script>import org.apache.commons.lang.RandomStringUtils;
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/LivreService/voirDispoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="75f9c1fb-884f-4e96-813e-11cab87a7bc5" isOneWay="false" action="" name="creerReservation" bindingOperationName="creerReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="13dbcf10-f60a-4cf3-b338-4a5e79aa3338" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2811219673</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>1</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/creerReservation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="22968e84-122e-41e6-a0c0-e16da7984a5a" isOneWay="false" action="" name="supprimerReservation" bindingOperationName="supprimerReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="75be87c4-72f1-4633-9b99-6327944f63eb" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:supprimerReservation>\r
+         <isbn>?</isbn>\r
+         <bibliotheque>?</bibliotheque>\r
+         <utilisateurId>?</utilisateurId>\r
+      </liv:supprimerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/supprimerReservation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="bc6475a4-8764-46e8-a4d4-cc72728e280b" isOneWay="false" action="" name="listerReservation" bindingOperationName="listerReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="87c29399-af6e-4573-94b9-476820264319" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerReservation>\r
+         <utilisateurId>?</utilisateurId>\r
+      </liv:listerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/listerReservation"/></con:call></con:operation><con:operation id="0b982c71-367d-4395-9fd1-7f1e3d5dc5a2" isOneWay="false" action="" name="nouveauPret" bindingOperationName="nouveauPret" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fe0cbe5f-69e9-4da5-a65b-56187f8c7823" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>?</utilisateurId>\r
+         <exemplaireId>?</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/nouveauPret"/></con:call></con:operation><con:operation id="cefa418e-ba37-46db-a7a4-e4184992945d" isOneWay="false" action="" name="retourPret" bindingOperationName="retourPret" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0d496e33-23c4-4119-ad86-36d088d776d7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:retourPret>\r
+         <id>?</id>\r
+      </liv:retourPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/retourPret"/></con:call></con:operation><con:operation id="19f2d232-6cfb-489b-9769-170d75682945" isOneWay="false" action="" name="miseAJourListesReservation" bindingOperationName="miseAJourListesReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7efb0e0c-c075-44c7-9f60-2f5d5f964901" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:miseAJourListesReservation/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/LivreService/miseAJourListesReservation"/></con:call></con:operation></con:interface><con:testSuite id="9795e4ac-0288-4cea-8780-5c6d2a9d3f30" name="TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="2ae6bb1b-5e06-482e-bf75-f307acd45f2a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="UtilisateurTestCase" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="e7d174a5-fbd8-44d8-ae02-17ce79241b52"><con:settings/><con:config><script>import org.apache.commons.lang.RandomStringUtils;
 import java.util.concurrent.ThreadLocalRandom;
 
 //nom et prénom aléatoire
@@ -823,4 +1148,319 @@ declare namespace ns2='http://www.example.org/types';
          <mdp>${#TestCase#nouveauMdp}</mdp>\r
       </util:supprimerUtilisateur>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2fcbe818-08ca-4e9c-9595-8466ee37ada1" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="67d4df98-1cfb-4e41-b709-f2408c2b7ff4" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>id</con:name><con:value>3</con:value></con:property><con:property><con:name>nom</con:name><con:value>QextSAAMEQWTOfiGiMcYfjHlhNniEwEkTtKaxfaKnHikXVySETnSXIii vOnEQv</con:value></con:property><con:property><con:name>prenom</con:name><con:value>Zn GcmMksMYOPvaMYLQeeCEVYpiMnZWKzUVCCztzhpIG GgmvcZnJhpdgVcaqpkzYYZltRkFqjFINTjzHTYfevmbPfy</con:value></con:property><con:property><con:name>email</con:name><con:value>9d372mdw79eg2yosbtzu8cn7d@tsvqsj67u9xf4kayryeg4eg7m.kwm</con:value></con:property><con:property><con:name>mdp</con:name><con:value>+bVaPh6U/aL2q3;:lu²7?g:08²§/Q~Pv!w0J~!;nJ§#eH30iPTbPyPKa1*</con:value></con:property><con:property><con:name>nouveauNom</con:name><con:value>kKQGwxvcFeMOCzdFviuidecZfnSBwJIZTXNSEbZqZ sCEnJv VPpWcIEqhtOIKB</con:value></con:property><con:property><con:name>nouveauPrenom</con:name><con:value>VmcaGvGZtoSpqRujrUGTDTQFosnuifVQCLJZwDnLiFlvwmclSNJJs HmbeqChPCNIvaKKfQ  VhheDJbwBFtDmEFM Y</con:value></con:property><con:property><con:name>nouveauEmail</con:name><con:value>s2fjtpeetxltvgqwnmvoutczk@vb6s4mf81mllsxbhl095ssg0j.dxb</con:value></con:property><con:property><con:name>nouveauMdp</con:name><con:value>K94bYI.Zx.S2jKRwtµ@rHOIH§6§R@1£µJIj76p5;bGBTfK!²4§GDUY~a1*</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>id</con:name><con:value>0</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="2fcbe818-08ca-4e9c-9595-8466ee37ada1" name="SOAP Response"/><con:assertion type="SOAP Fault Assertion" id="67d4df98-1cfb-4e41-b709-f2408c2b7ff4" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.example.org/UtilisateurService/UtilisateurService/supprimerUtilisateurRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>id</con:name><con:value>22</con:value></con:property><con:property><con:name>nom</con:name><con:value> kVBSzxbhLEuUNMFnkpBmyHAHlXDirxaYDMHtHVgiFYkVikCxaAkVCuARnSdUqjaMqXsVRtTHTLQUNRUVSTYHwlHcq</con:value></con:property><con:property><con:name>prenom</con:name><con:value>wIYwZAxcGrKKulqsFeMJlgbd nMrJey VxxiEXmXsOrUwUZvUavKtNPYdASuqU</con:value></con:property><con:property><con:name>email</con:name><con:value>9kezuxpicvadu1air7oalq64em@v4uziyzeklltcnpz54mh57osix.dzc</con:value></con:property><con:property><con:name>mdp</con:name><con:value>zYx7+thU?ee +Ii-nXivHf5xn?Aa1*</con:value></con:property><con:property><con:name>nouveauNom</con:name><con:value>YlLmonfCmHLXpUXdopCD fHDSrjrkxHoWLYBXpEvDK nAehgjBaJVoArtOUGioAtdMYpHcjCoXQepTrkaPfwuvhEoL</con:value></con:property><con:property><con:name>nouveauPrenom</con:name><con:value>nnc RUiqqlzgSRzJatGZxUIXukcqvGAN exwqYmpzXa EgtHnQrLeidnwPlPOa</con:value></con:property><con:property><con:name>nouveauEmail</con:name><con:value>9zpitbjs3rq5ujgz7fznt0fhhj@2dmmfducv7hsc27lgo916nz2j2.gwq</con:value></con:property><con:property><con:name>nouveauMdp</con:name><con:value>3WPM#i@§bnKg*BUmeS§mx6²zxXIa1*</con:value></con:property></con:properties></con:testCase><con:testCase id="b5ce5be5-4387-4b7b-8be1-523b775ad939" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="LivreTestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="TEST - getGenres" id="2ae9288a-943d-4fae-881f-4994e4566365"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>getGenres</con:operation><con:request name="TEST - getGenres" id="0a2b0dfd-285d-4cc4-a11f-ec49160fdaa5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:getGenres/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dd11d7f7-3a17-4e2c-a8ab-a36d599367c2"/><con:assertion type="SOAP Fault Assertion" id="87903137-d96f-4148-a1e6-e819c1943978" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - getLangues" id="3775cd8a-a7c9-4a4e-86f6-ec6cf4519c6e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>getGenres</con:operation><con:request name="TEST - getLangues" id="0a2b0dfd-285d-4cc4-a11f-ec49160fdaa5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:getLangues/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dd11d7f7-3a17-4e2c-a8ab-a36d599367c2"/><con:assertion type="SOAP Fault Assertion" id="87903137-d96f-4148-a1e6-e819c1943978" name="Not SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - rechercherLivre" id="9ba00d9b-2129-47fb-9efb-0f7e744d6b25"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>rechercherLivre</con:operation><con:request name="TEST - rechercherLivre" id="dad6b9c0-8ef6-489f-b5b7-9842b79c8f32"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:rechercherLivre>\r
+         <!--Optional:-->\r
+         <titre>Harry</titre>\r
+         <!--Optional:-->\r
+         <auteur></auteur>\r
+         <!--Optional:-->\r
+         <genre></genre>\r
+         <!--Optional:-->\r
+         <langue></langue>\r
+      </liv:rechercherLivre>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="15711d9f-64ab-4c57-8014-598954cc15a2"/><con:assertion type="SOAP Fault Assertion" id="88ef876e-a3b5-42c0-acbb-a992771c5053"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - rechercherLivre - sans résultat" id="d83a6dd5-7208-4b18-8020-7d71caca6a31"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>rechercherLivre</con:operation><con:request name="TEST - rechercherLivre - sans résultat" id="dad6b9c0-8ef6-489f-b5b7-9842b79c8f32"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:rechercherLivre>\r
+         <!--Optional:-->\r
+         <titre>HarryP</titre>\r
+         <!--Optional:-->\r
+         <auteur></auteur>\r
+         <!--Optional:-->\r
+         <genre></genre>\r
+         <!--Optional:-->\r
+         <langue></langue>\r
+      </liv:rechercherLivre>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="15711d9f-64ab-4c57-8014-598954cc15a2"/><con:assertion type="SOAP Fault Assertion" id="88ef876e-a3b5-42c0-acbb-a992771c5053"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - voirDispo - sans liste d'attente" id="8386e558-6c6d-4030-b9ff-62522ba89d0e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>voirDispo</con:operation><con:request name="TEST - voirDispo - sans liste d'attente" id="e93345ad-b469-4a05-866f-9d8ac36e8c53"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:voirDispo>\r
+         <isbn>978-2070649693</isbn>\r
+      </liv:voirDispo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="32c857f0-481f-4dd4-af3a-f1d6041d3a7f"/><con:assertion type="SOAP Fault Assertion" id="407a9c9b-c7cc-4c26-b822-daf2a05e7276"/><con:assertion type="Simple Contains" id="ae7808bf-94f4-4673-a68d-c9e1b6a677b4" name="Contains"><con:configuration><token>Bibliothèque des canards</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="11c7f8f3-5a29-4312-bd40-903cbec8fa47" name="Contains 1"><con:configuration><token>Bibliothèque des oies</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0a6b6125-a4d4-4939-9ac7-fb38d2d10342" name="Contains 2"><con:configuration><token>Bibliothèque centrale</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple NotContains" id="67e6ccf7-0f11-4977-b924-0da173f059c4" name="Not Contains"><con:configuration><token>prochainRetour</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - voirDispo - livre inexistant" id="d90239e2-ce15-4da5-91f2-e624595d9177"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>voirDispo</con:operation><con:request name="TEST - voirDispo - livre inexistant" id="e93345ad-b469-4a05-866f-9d8ac36e8c53"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:voirDispo>\r
+         <isbn>978-1234567890</isbn>\r
+      </liv:voirDispo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="32c857f0-481f-4dd4-af3a-f1d6041d3a7f"/><con:assertion type="Not SOAP Fault Assertion" id="1fac7d05-3f6a-45af-acdd-cd306fa4a7db" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - listerPretEnCours" id="dc595f53-6064-4599-abdd-0dd7109361db"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>listerPretEnCours</con:operation><con:request name="TEST - listerPretEnCours" id="19629f8a-abef-426a-b833-1cfa2e740fdb"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerPretEnCours>\r
+         <utilisateurId>1</utilisateurId>\r
+      </liv:listerPretEnCours>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c4b7741d-a1bd-4820-82d4-b905894d76e1"/><con:assertion type="SOAP Fault Assertion" id="193002d7-05d2-4cee-82d8-b327a8883e0a"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - listerPretEnCours - utilisateur inexistant" id="ab41a28c-fa86-4b02-a9ba-edbd3c0ed8ac"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>listerPretEnCours</con:operation><con:request name="TEST - listerPretEnCours - utilisateur inexistant" id="19629f8a-abef-426a-b833-1cfa2e740fdb"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerPretEnCours>\r
+         <utilisateurId>9999</utilisateurId>\r
+      </liv:listerPretEnCours>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c4b7741d-a1bd-4820-82d4-b905894d76e1"/><con:assertion type="Not SOAP Fault Assertion" id="aba11a4a-c5b8-4a24-bb74-59a0b308cb71" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - listerReservation" id="58d6b04b-58ae-47a5-b33e-9ea5dfa940a8"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>listerReservation</con:operation><con:request name="TEST - listerReservation" id="de1b6826-a3a4-4bef-872d-a474f8ac6863"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerReservation>\r
+         <utilisateurId>1</utilisateurId>\r
+      </liv:listerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8a4bdf8e-e8e8-4dd1-88a2-8e0eff255d8c"/><con:assertion type="SOAP Fault Assertion" id="b31dbad5-6a39-4e27-a8db-fbd20ad9af44"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - listerReservation - utilisateur inexistant" id="dae70d39-5b64-4243-929b-c723e53254d1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>listerReservation</con:operation><con:request name="TEST - listerReservation - utilisateur inexistant" id="de1b6826-a3a4-4bef-872d-a474f8ac6863"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerReservation>\r
+         <utilisateurId>1</utilisateurId>\r
+      </liv:listerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8a4bdf8e-e8e8-4dd1-88a2-8e0eff255d8c"/><con:assertion type="SOAP Fault Assertion" id="b31dbad5-6a39-4e27-a8db-fbd20ad9af44"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - listerPretEnRetard" id="c0e52a22-9e0c-4463-8f53-127fc0717fa7"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>listerPretEnRetard</con:operation><con:request name="TEST - listerPretEnRetard" id="d4566974-a820-41b7-b6aa-f3eec778ad83"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:listerPretEnRetard/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="fca3a163-4719-40c9-b723-a90ad3efae6c"/><con:assertion type="SOAP Fault Assertion" id="6a647cbe-f698-433b-8462-967b02e9cfef"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - nouveauPret - nominal" id="da74b6b5-3e4a-4b6b-a30e-27c69f364c59"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>nouveauPret</con:operation><con:request name="TEST - nouveauPret - nominal" id="2cbb4dcb-92f9-4697-a6a2-5921e42a4f66"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>1</utilisateurId>\r
+         <exemplaireId>4</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="185486d7-11e6-4f8c-ae3a-e811ab39d9f5"/><con:assertion type="SOAP Fault Assertion" id="30d12e23-2b51-41cf-9dff-d80218cf6ea5"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - nouveauPret - exemplaire non dispo" id="ed98fb49-00c9-4707-bf19-970527a6141e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>nouveauPret</con:operation><con:request name="TEST - nouveauPret - exemplaire non dispo" id="2cbb4dcb-92f9-4697-a6a2-5921e42a4f66"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>1</utilisateurId>\r
+         <exemplaireId>11</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="185486d7-11e6-4f8c-ae3a-e811ab39d9f5"/><con:assertion type="Not SOAP Fault Assertion" id="7ce21bb1-05eb-4b40-99df-4dbbb684a410" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - nouveauPret - exemplaire réservé (en attente de récupération)" id="90db4031-6cc2-4774-a770-3001c298228f"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>nouveauPret</con:operation><con:request name="TEST - nouveauPret - exemplaire réservé (en attente de récupération)" id="2cbb4dcb-92f9-4697-a6a2-5921e42a4f66"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>4</utilisateurId>\r
+         <exemplaireId>79</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="185486d7-11e6-4f8c-ae3a-e811ab39d9f5"/><con:assertion type="Not SOAP Fault Assertion" id="7ce21bb1-05eb-4b40-99df-4dbbb684a410" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - nouveauPret - utilisateur inexistant" id="2b490202-548b-427f-bc0e-fe5d3be36a72"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>nouveauPret</con:operation><con:request name="TEST - nouveauPret - utilisateur inexistant" id="2cbb4dcb-92f9-4697-a6a2-5921e42a4f66"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>9999</utilisateurId>\r
+         <exemplaireId>1</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="185486d7-11e6-4f8c-ae3a-e811ab39d9f5"/><con:assertion type="Not SOAP Fault Assertion" id="7ce21bb1-05eb-4b40-99df-4dbbb684a410" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - nouveauPret - exemplaire inexistant" id="45722a22-7401-4b34-8983-238fbc14f759"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>nouveauPret</con:operation><con:request name="TEST - nouveauPret - exemplaire inexistant" id="2cbb4dcb-92f9-4697-a6a2-5921e42a4f66"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>1</utilisateurId>\r
+         <exemplaireId>999999</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="185486d7-11e6-4f8c-ae3a-e811ab39d9f5"/><con:assertion type="Not SOAP Fault Assertion" id="7ce21bb1-05eb-4b40-99df-4dbbb684a410" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - voirDispo - avec liste d'attente" id="402cdcc2-d594-43e1-899a-6ad78e200454"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>voirDispo</con:operation><con:request name="TEST - voirDispo - avec liste d'attente" id="e93345ad-b469-4a05-866f-9d8ac36e8c53"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:voirDispo>\r
+         <isbn>978-2070649693</isbn>\r
+      </liv:voirDispo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="32c857f0-481f-4dd4-af3a-f1d6041d3a7f"/><con:assertion type="SOAP Fault Assertion" id="407a9c9b-c7cc-4c26-b822-daf2a05e7276"/><con:assertion type="Simple Contains" id="ae7808bf-94f4-4673-a68d-c9e1b6a677b4" name="Contains"><con:configuration><token>Bibliothèque des canards</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="11c7f8f3-5a29-4312-bd40-903cbec8fa47" name="Contains 1"><con:configuration><token>Bibliothèque des oies</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="0a6b6125-a4d4-4939-9ac7-fb38d2d10342" name="Contains 2"><con:configuration><token>Bibliothèque centrale</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="3da3efd7-4eac-4567-8cf3-f2941353bc58" name="Contains 3"><con:configuration><token>prochainRetour</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - prolongerPret - nominal" id="9290af1d-4678-429d-ac12-1a2280edee9e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>prolongerPret</con:operation><con:request name="TEST - prolongerPret - nominal" id="6faf47bb-83de-425f-a43d-1bee487eb7ae"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:prolongerPret>\r
+         <pretId>1</pretId>\r
+      </liv:prolongerPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5aa4626b-ecd6-4c02-a1ee-989f76823c72"/><con:assertion type="SOAP Fault Assertion" id="558907eb-1cbd-42eb-bcb3-fb0f264b9454"/><con:assertion type="Simple Contains" id="fe6cdbfc-347e-48f0-9c76-57932425ea28" name="Contains"><con:configuration><token>2018-10-05</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="b994f60a-f3e0-4a0c-9252-7161df34718f"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="96b3bd03-0af9-4afe-b1e3-dfe52822a995"><con:configuration/></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - prolongerPret - déjà prolongé" id="7b67fa24-b7a7-4e40-93b3-9d3e242a9c49"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>prolongerPret</con:operation><con:request name="TEST - prolongerPret - déjà prolongé" id="6faf47bb-83de-425f-a43d-1bee487eb7ae"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:prolongerPret>\r
+         <pretId>1</pretId>\r
+      </liv:prolongerPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5aa4626b-ecd6-4c02-a1ee-989f76823c72"/><con:assertion type="Not SOAP Fault Assertion" id="4739f5f4-b764-47e1-8823-4ebe7fdeb104" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - prolongerPret - pret inexistant" id="eb9d4f4d-b386-448b-900d-995f1dde5164"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>prolongerPret</con:operation><con:request name="TEST - prolongerPret - pret inexistant" id="6faf47bb-83de-425f-a43d-1bee487eb7ae"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:prolongerPret>\r
+         <pretId>99999</pretId>\r
+      </liv:prolongerPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5aa4626b-ecd6-4c02-a1ee-989f76823c72"/><con:assertion type="Not SOAP Fault Assertion" id="4739f5f4-b764-47e1-8823-4ebe7fdeb104" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - nominal" id="12993ab5-45a7-40ba-8751-2fe1b417b946"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - nominal" id="26173b4b-7c51-4610-8e12-aad534e5b033"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>2</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c0de40f5-c646-4cee-a7c7-d9bde5f63477"/><con:assertion type="SOAP Fault Assertion" id="6fac2abd-0d80-4e24-91cc-d7eea07c29a6"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - déjà réservé" id="79edcdd4-22fb-4d2b-9f93-261730662361"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - déjà réservé" id="26173b4b-7c51-4610-8e12-aad534e5b033"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>2</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c0de40f5-c646-4cee-a7c7-d9bde5f63477"/><con:assertion type="Not SOAP Fault Assertion" id="1052fee8-47c0-46af-94e0-d15cb08654c0" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - livre dispo" id="bbb29ea6-f308-430b-826b-57dc21bef453"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - livre dispo" id="5c93bfc4-da67-4c0b-b728-1b30499b0b33"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque centrale</bibliotheque>\r
+         <utilisateurId>3</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="367ce35c-1766-45fc-ba31-c696c2d5973e"/><con:assertion type="Not SOAP Fault Assertion" id="ca260d1a-3dcd-4bd8-8ce0-6d90f89d3ba5" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - livre déjà emprunté" id="a71ae66f-1566-4328-bc9d-2504273ea196"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - livre déjà emprunté" id="5c93bfc4-da67-4c0b-b728-1b30499b0b33"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>1</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="367ce35c-1766-45fc-ba31-c696c2d5973e"/><con:assertion type="Not SOAP Fault Assertion" id="ca260d1a-3dcd-4bd8-8ce0-6d90f89d3ba5" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="ajout de reservation pour atteindre le nombre max" id="200eec29-098a-4250-ae53-f0e96dffd3ca"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="ajout de reservation pour atteindre le nombre max" id="26173b4b-7c51-4610-8e12-aad534e5b033"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>3</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c0de40f5-c646-4cee-a7c7-d9bde5f63477"/><con:assertion type="SOAP Fault Assertion" id="6fac2abd-0d80-4e24-91cc-d7eea07c29a6"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - nb max de reservation atteint" id="c4c3797a-db20-40b9-b0f6-a6c75e14043e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - nb max de reservation atteint" id="26173b4b-7c51-4610-8e12-aad534e5b033"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>4</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c0de40f5-c646-4cee-a7c7-d9bde5f63477"/><con:assertion type="Not SOAP Fault Assertion" id="aaac9287-fb8b-4823-8561-dd15a977a861" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - livre inexistant" id="68974bd4-c9b4-41c5-847b-7df4c030a900"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - livre inexistant" id="26173b4b-7c51-4610-8e12-aad534e5b033"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-1234567890</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>4</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c0de40f5-c646-4cee-a7c7-d9bde5f63477"/><con:assertion type="Not SOAP Fault Assertion" id="aaac9287-fb8b-4823-8561-dd15a977a861" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - bibliotheque inexistante" id="e381847e-2b59-477d-93fb-64bae5339971"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - bibliotheque inexistante" id="26173b4b-7c51-4610-8e12-aad534e5b033"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des</bibliotheque>\r
+         <utilisateurId>4</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c0de40f5-c646-4cee-a7c7-d9bde5f63477"/><con:assertion type="Not SOAP Fault Assertion" id="aaac9287-fb8b-4823-8561-dd15a977a861" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - creerReservation - utilisateur inexistant" id="1de49108-ebe7-4be5-8074-745ce59fa789"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>creerReservation</con:operation><con:request name="TEST - creerReservation - utilisateur inexistant" id="26173b4b-7c51-4610-8e12-aad534e5b033"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:creerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>99999</utilisateurId>\r
+      </liv:creerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c0de40f5-c646-4cee-a7c7-d9bde5f63477"/><con:assertion type="Not SOAP Fault Assertion" id="aaac9287-fb8b-4823-8561-dd15a977a861" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - retourPret - sans liste d'attente" id="450e9a2d-6c98-4a64-8d94-d91303332674"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>retourPret</con:operation><con:request name="TEST - retourPret - sans liste d'attente" id="808469a2-e785-45c9-bd45-563fa803a9df"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:retourPret>\r
+         <id>1</id>\r
+      </liv:retourPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5db65f8b-e6d9-4d87-bf2c-95f6c50f0211"/><con:assertion type="SOAP Fault Assertion" id="3ec9a468-ee82-4799-96cd-f771ea3c1a84"/><con:assertion type="Simple NotContains" id="590c2a7c-65ef-4f5c-8158-1035bb5bfe8e" name="Not Contains"><con:configuration><token>&lt;premierSurListeAttente></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - retourPret - déjà retourné" id="531fff3c-f390-4984-a635-ea30ac40669a"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>retourPret</con:operation><con:request name="TEST - retourPret - déjà retourné" id="808469a2-e785-45c9-bd45-563fa803a9df"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:retourPret>\r
+         <id>1</id>\r
+      </liv:retourPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5db65f8b-e6d9-4d87-bf2c-95f6c50f0211"/><con:assertion type="Not SOAP Fault Assertion" id="b5285680-5e2c-4c93-81a1-abae673f10ab" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - nouveauPret - reemprunt d'un même livre" id="41ee1617-ec0b-4978-aa87-2a102318235b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>nouveauPret</con:operation><con:request name="TEST - nouveauPret - reemprunt d'un même livre" id="2cbb4dcb-92f9-4697-a6a2-5921e42a4f66"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>1</utilisateurId>\r
+         <exemplaireId>11</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="185486d7-11e6-4f8c-ae3a-e811ab39d9f5"/><con:assertion type="SOAP Fault Assertion" id="30d12e23-2b51-41cf-9dff-d80218cf6ea5"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - retourPret - 2e retour" id="06712d64-cc58-4f7e-a0b3-d267d715c3a9"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>retourPret</con:operation><con:request name="TEST - retourPret - 2e retour" id="808469a2-e785-45c9-bd45-563fa803a9df"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:retourPret>\r
+         <id>6</id>\r
+      </liv:retourPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5db65f8b-e6d9-4d87-bf2c-95f6c50f0211"/><con:assertion type="SOAP Fault Assertion" id="3ec9a468-ee82-4799-96cd-f771ea3c1a84"/><con:assertion type="Simple NotContains" id="0a0ded52-9219-46a7-b7d4-f3e3ce487d86" name="Not Contains"><con:configuration><token>&lt;premierSurListeAttente></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - nouveauPret - emprunt du même livre par un autre utilisateur" id="b43042b7-208e-460f-8201-d0c8c7cb1465"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>nouveauPret</con:operation><con:request name="TEST - nouveauPret - emprunt du même livre par un autre utilisateur" id="2cbb4dcb-92f9-4697-a6a2-5921e42a4f66"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:nouveauPret>\r
+         <utilisateurId>2</utilisateurId>\r
+         <exemplaireId>11</exemplaireId>\r
+      </liv:nouveauPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="185486d7-11e6-4f8c-ae3a-e811ab39d9f5"/><con:assertion type="SOAP Fault Assertion" id="30d12e23-2b51-41cf-9dff-d80218cf6ea5"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - retourPret - livre avec liste d'attente" id="42050785-4a82-4908-96a0-68358b79f4e3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>retourPret</con:operation><con:request name="TEST - retourPret - livre avec liste d'attente" id="808469a2-e785-45c9-bd45-563fa803a9df"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:retourPret>\r
+         <id>5</id>\r
+      </liv:retourPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5db65f8b-e6d9-4d87-bf2c-95f6c50f0211"/><con:assertion type="SOAP Fault Assertion" id="3ec9a468-ee82-4799-96cd-f771ea3c1a84"/><con:assertion type="Simple Contains" id="43a79bf7-9278-4a17-a6fc-ea75fb2615c4" name="Contains"><con:configuration><token>&lt;premierSurListeAttente>
+</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8b542b70-23b9-462f-91da-12600d188aa2"><con:configuration/></con:assertion><con:assertion type="Simple Contains" id="a9b8411e-629c-4db4-a122-d3988e85ebce" name="Contains 1"><con:configuration><token>&lt;utilisateur>
+               &lt;id>2&lt;/id>
+</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - retourPret - pret inexistant" id="e9ddf270-4024-4fef-809c-5ad55a495f69"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>retourPret</con:operation><con:request name="TEST - retourPret - pret inexistant" id="808469a2-e785-45c9-bd45-563fa803a9df"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:retourPret>\r
+         <id>99999</id>\r
+      </liv:retourPret>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5db65f8b-e6d9-4d87-bf2c-95f6c50f0211"/><con:assertion type="Not SOAP Fault Assertion" id="a76c1de7-1e8f-4c87-945f-86df576c2f4d" name="SOAP Fault"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - supprimerReservation - nominal" id="142f0783-47d0-4b28-af57-d1f56be9deb7"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>supprimerReservation</con:operation><con:request name="TEST - supprimerReservation - nominal" id="e4d5eb6d-a6a5-4482-b4a2-7dd380ff9ad8"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:supprimerReservation>\r
+         <isbn>978-2070649693</isbn>\r
+         <bibliotheque>Bibliothèque des oies</bibliotheque>\r
+         <utilisateurId>3</utilisateurId>\r
+      </liv:supprimerReservation>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="277bf59d-de8f-40f2-aeeb-1ea3c30fb466"/><con:assertion type="SOAP Fault Assertion" id="97f06a39-4ffa-4f6d-8298-e73e00b32402"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - miseAJourListesReservation - avec 2 liste d'attente à mettre à jour : avec et sans 2e" id="b3e5f97f-d43b-4fd9-997f-a89a6d3a14b3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>miseAJourListesReservation</con:operation><con:request name="TEST - miseAJourListesReservation - avec 2 liste d'attente à mettre à jour : avec et sans 2e" id="fff2ff98-ef3a-4fd2-a05d-d4643906880d"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:miseAJourListesReservation/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3fcc33be-2dd4-476c-b292-f4f24f8f03b5"/><con:assertion type="SOAP Fault Assertion" id="1ce40547-62c5-453a-9704-02bc3a7de51a"/><con:assertion type="Simple Contains" id="9ed6a168-1203-4bbd-b648-5a82a9314b04" name="Contains"><con:configuration><token>&lt;listeNouvellePremiereReservation>
+</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="VERIF - retour dispo quand plus de liste d'attente" id="25af0296-643d-47ee-a9b4-ff7ae8c13e1e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>voirDispo</con:operation><con:request name="VERIF - retour dispo quand plus de liste d'attente" id="8e5b075b-271a-4691-a9cc-6b08d29ff495"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:voirDispo>\r
+         <isbn>978-2811219673</isbn>\r
+      </liv:voirDispo>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ac8e169f-6882-43bf-ba76-19fb31c4cd5a"/><con:assertion type="SOAP Fault Assertion" id="c56a0008-c892-4d04-aa0c-7bf27a19223c"/><con:assertion type="Simple NotContains" id="2c7f35a1-77ab-44a6-958a-0294af3ab1c8" name="Not Contains"><con:configuration><token>&lt;prochainRetour></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="TEST - miseAJourListesReservation - sans mise à jour nécéssaire" id="8b30a1b2-46c2-480d-a6ff-07cfe07f99bc"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>LivreServiceSoapBinding</con:interface><con:operation>miseAJourListesReservation</con:operation><con:request name="TEST - miseAJourListesReservation - sans mise à jour nécéssaire" id="fff2ff98-ef3a-4fd2-a05d-d4643906880d"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/biblioService/services/livre</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:liv="http://www.example.org/LivreService/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <liv:miseAJourListesReservation/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3fcc33be-2dd4-476c-b292-f4f24f8f03b5"/><con:assertion type="SOAP Fault Assertion" id="1ce40547-62c5-453a-9704-02bc3a7de51a"/><con:assertion type="Simple NotContains" id="423c8e24-bde7-4b00-b366-76a00ab91068" name="Not Contains"><con:configuration><token>&lt;listeNouvellePremiereReservation></token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>id</con:name><con:value>0</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

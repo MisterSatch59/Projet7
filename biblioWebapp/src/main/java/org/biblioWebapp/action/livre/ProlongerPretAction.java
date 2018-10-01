@@ -49,16 +49,12 @@ public class ProlongerPretAction extends AbstractAction {
 
 	// ================= Méthodes d'action ====================
 
-	public String actionAjax() {
+	public String actionAjax() throws ProlongerPretFault_Exception {
 		LOGGER.traceEntry();
 		String result = ActionSupport.SUCCESS;
 
 		LivreService vLivreService = this.getLivreService();
-		try {
-			newDateRetourPrevue = vLivreService.prolongerPret(id);
-		} catch (ProlongerPretFault_Exception e) {
-			addActionError(e.getFaultInfo().getFaultMessage());
-		}
+		newDateRetourPrevue = vLivreService.prolongerPret(id);
 
 		LOGGER.traceExit(result);
 		return result;

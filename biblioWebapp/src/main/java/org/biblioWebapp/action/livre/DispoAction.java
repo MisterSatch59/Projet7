@@ -7,8 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.biblioWebapp.action.AbstractAction;
 import org.biblioWebapp.services.generated.livreservice.LivreService;
 import org.biblioWebapp.services.generated.livreservice.VoirDispoFault_Exception;
-import org.biblioWebapp.services.generated.types.NombreEtBibliotheque;
-
+import org.biblioWebapp.services.generated.types.DispoParBibliotheque;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -30,7 +29,7 @@ public class DispoAction extends AbstractAction {
 
 	// ----- Eléments en sortie
 
-	private List<NombreEtBibliotheque> listDispo;
+	private List<DispoParBibliotheque> listDispo;
 
 	// ==================== Getters/Setters ====================
 
@@ -44,22 +43,18 @@ public class DispoAction extends AbstractAction {
 
 	// ----- Eléments en sortie (getters uniquement)
 	
-	public List<NombreEtBibliotheque> getListDispo() {
+	public List<DispoParBibliotheque> getListDispo() {
 		return listDispo;
 	}
 
 	// ================= Méthodes d'action ====================
 
-	public String actionAjax() {
+	public String actionAjax() throws VoirDispoFault_Exception {
 		LOGGER.traceEntry();
 		String result = ActionSupport.SUCCESS;
 
 		LivreService vLivreService = this.getLivreService();
-		try {
-			listDispo = vLivreService.voirDispo(isbn);
-		} catch (VoirDispoFault_Exception e) {
-			addActionError(e.getFaultInfo().getFaultMessage());
-		}
+		listDispo = vLivreService.voirDispo(isbn);
 		
 		LOGGER.traceExit(result);
 		return result;

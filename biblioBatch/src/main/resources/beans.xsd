@@ -80,7 +80,7 @@
     	<sequence>
     		<element name="id" type="int" minOccurs="1"></element>
     		<element name="dateDebut" type="date" minOccurs="1"></element>
-    		<element name="dateFin" type="date" minOccurs="0"
+            <element name="dateFin" type="date" minOccurs="0"
     			maxOccurs="1">
     		</element>
     		<element name="renouvele" type="boolean" minOccurs="1"></element>
@@ -90,14 +90,45 @@
     		<element name="exemplaire" type="tns:Exemplaire"
     			minOccurs="1">
     		</element>
-    		<element name="dateRetourPrevue" type="date" minOccurs="1" maxOccurs="1"></element>
+    		<element name="dateRetourPrevue" type="date" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
     	</sequence>
     </complexType>
 
-    <complexType name="NombreEtBibliotheque">
+    <complexType name="DispoParBibliotheque">
     	<sequence>
-    		<element name="bibliotheque" type="string" minOccurs="1" maxOccurs="1"></element>
-    		<element name="nombre" type="int" minOccurs="1" maxOccurs="1"></element>
+    		<element name="bibliotheque" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="nombre" type="int" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="prochainRetour" type="date" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="personnesEnAttente" type="int" minOccurs="0" maxOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Reservation">
+    	<sequence>
+    		<element name="livre" type="tns:Livre" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="bibliotheque" type="string" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="utilisateur" type="tns:Utilisateur"
+    			minOccurs="1" maxOccurs="1">
+    		</element>
+    		<element name="dateResa" type="date" minOccurs="1"
+    			maxOccurs="1">
+    		</element>
+    		<element name="dateMail" type="date" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="pret" type="tns:Pret" minOccurs="0" maxOccurs="1"></element>
     	</sequence>
     </complexType>
 </schema>

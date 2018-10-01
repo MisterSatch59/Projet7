@@ -11,9 +11,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java-Klasse für Livre complex type.
+ * <p>Classe Java pour Livre complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="Livre"&gt;
@@ -68,7 +68,7 @@ public class Livre {
     protected List<String> genre;
 
     /**
-     * Ruft den Wert der isbn-Eigenschaft ab.
+     * Obtient la valeur de la propriété isbn.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class Livre {
     }
 
     /**
-     * Legt den Wert der isbn-Eigenschaft fest.
+     * Définit la valeur de la propriété isbn.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class Livre {
     }
 
     /**
-     * Ruft den Wert der titre-Eigenschaft ab.
+     * Obtient la valeur de la propriété titre.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class Livre {
     }
 
     /**
-     * Legt den Wert der titre-Eigenschaft fest.
+     * Définit la valeur de la propriété titre.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class Livre {
     }
 
     /**
-     * Ruft den Wert der editeur-Eigenschaft ab.
+     * Obtient la valeur de la propriété editeur.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class Livre {
     }
 
     /**
-     * Legt den Wert der editeur-Eigenschaft fest.
+     * Définit la valeur de la propriété editeur.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class Livre {
     }
 
     /**
-     * Ruft den Wert der datePublication-Eigenschaft ab.
+     * Obtient la valeur de la propriété datePublication.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class Livre {
     }
 
     /**
-     * Legt den Wert der datePublication-Eigenschaft fest.
+     * Définit la valeur de la propriété datePublication.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class Livre {
     }
 
     /**
-     * Ruft den Wert der description-Eigenschaft ab.
+     * Obtient la valeur de la propriété description.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class Livre {
     }
 
     /**
-     * Legt den Wert der description-Eigenschaft fest.
+     * Définit la valeur de la propriété description.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class Livre {
     }
 
     /**
-     * Ruft den Wert der langue-Eigenschaft ab.
+     * Obtient la valeur de la propriété langue.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class Livre {
     }
 
     /**
-     * Legt den Wert der langue-Eigenschaft fest.
+     * Définit la valeur de la propriété langue.
      * 
      * @param value
      *     allowed object is

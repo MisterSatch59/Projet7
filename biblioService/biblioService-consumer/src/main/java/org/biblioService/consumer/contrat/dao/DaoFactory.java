@@ -76,4 +76,10 @@ public interface DaoFactory {
 	 */
 	public LangueDao getLangueDao();
 
+	/**
+	 * Retourne le ReservationDao
+	 * @return ReservationDao
+	 */
+	public ReservationDao getReservationDao();
+
 }

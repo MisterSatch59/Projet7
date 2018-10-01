@@ -16,6 +16,7 @@ import org.biblioService.consumer.contrat.dao.LangueDao;
 import org.biblioService.consumer.contrat.dao.LivreDao;
 import org.biblioService.consumer.contrat.dao.ParagrapheDao;
 import org.biblioService.consumer.contrat.dao.PretDao;
+import org.biblioService.consumer.contrat.dao.ReservationDao;
 import org.biblioService.consumer.contrat.dao.UtilisateurDao;
 
 /**
@@ -116,6 +117,14 @@ public class DaoFactoryImpl implements DaoFactory {
 	@Override
 	public LangueDao getLangueDao() {
 		return langueDao;
+	}
+	
+	@Inject
+	private ReservationDao reservationDao;
+
+	@Override
+	public ReservationDao getReservationDao() {
+		return reservationDao;
 	}
 
 }

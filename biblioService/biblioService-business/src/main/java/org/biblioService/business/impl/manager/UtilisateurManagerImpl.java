@@ -78,7 +78,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		// Appel du DAO pour création dans la BD dans une transaction
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			this.getDaoFactory().getUtilisateurDao().createUtilisateur(vUtilisateurBD);
+			this.getDaoFactory().getUtilisateurDao().createUtilisateurBD(vUtilisateurBD);
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -107,7 +107,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		LOGGER.traceEntry("email = " + pEmail + " mdp = " + pMdp);
 
 		// Récupération de l'utilisateur correspondant à l'email - NotFoundException si n'existe pas dans la base de données
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pEmail);
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pEmail);
 		
 		if(vUtilisateurBD==null) {
 			// lance une NotFoundException si la recherche ne retourne aucun resultat
@@ -134,7 +134,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		LOGGER.traceEntry("id = " + pId + " ancienMdp = " + pAncienMdp + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
 
 		//Recupération de l'utilisateur
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pId);
 		
 		// lance une NotFoundException si la recherche ne retourne aucun resultat
 		if(vUtilisateurBD==null) {
@@ -176,7 +176,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		// Appel du DAO pour modification de l'utilisateur dans la BD dans une transaction
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			this.getDaoFactory().getUtilisateurDao().updateUtilisateur(vUtilisateurBD);
+			this.getDaoFactory().getUtilisateurDao().updateUtilisateurBD(vUtilisateurBD);
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -205,7 +205,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		LOGGER.traceEntry("id = " + pId);
 		
 		// Recupération de l'utilisateur
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pId);
 		
 		// lance une NotFoundException si la recherche ne retourne aucun resultat
 		if(vUtilisateurBD==null) {
