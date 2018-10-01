@@ -143,7 +143,7 @@
 				jQuery.each(data, function(key, val) {
 					if(val.prochainRetour !=null){
 						var detail1 = '<li>' + 'Prochain retour : ' + val.prochainRetour.day + '/' + val.prochainRetour.month + '/' + val.prochainRetour.year + ' - Longueur de la liste d\'attente : ' + val.personnesEnAttente;
-						if($("#infoUtilisateur").text()!="");{
+						if($("#infoUtilisateur").text()!=""){
 							detail1 += '<li><a class="btn btn-primary" href="/biblioWebapp/reserver.action?isbn='+buttonIsbn+'&bibliotheque='+val.bibliotheque+'">Réserver</a></li>';
 						}
 						
@@ -161,33 +161,6 @@
 			$(that).prop("disabled",true);
 
 		}
-		/*
-		function reserver(that) {
-			// URL de l'action AJAX
-			var url = "<s:url action="reserver_ajax"/>";
-
-			var id = that.id.split('/');
-			
-			var buttonIsbn = id[0];
-			var buttonBiblio = id[1];
-
-			// Paramètres de la requête AJAX
-			var params = {
-					isbn : buttonIsbn,
-					bibliotheque : buttonBiblio
-			};
-
-			// Action AJAX en POST
-			jQuery.post(url, params, function(data) {
-				$(that).prop("disabled",true);
-				alert("La reservation est bien enregistrée.");
-			}).fail(function(data) {
-				jQuery.each(data, function(key, val) {
-					alert(val);
-				})
-			});
-			
-		}*/
 	</script>
 </body>
 
