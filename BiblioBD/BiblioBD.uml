@@ -222,4 +222,17 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_wFr-8r_NEeiOkO2II6T5AQ" name="reservation" type="_hd1kwL_NEeiOkO2II6T5AQ" association="_wFrX4L_NEeiOkO2II6T5AQ"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_wFsmAL_NEeiOkO2II6T5AQ" name="livre" type="_ys1SAGiGEeiqG7gMWSW--g" association="_wFrX4L_NEeiOkO2II6T5AQ"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_IsZkAMV2EeiZCtiTqYvp8w" memberEnd="_IstGAsV2EeiZCtiTqYvp8w _Is2P8sV2EeiZCtiTqYvp8w">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IstGAMV2EeiZCtiTqYvp8w" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_IstGAcV2EeiZCtiTqYvp8w" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Is2P8sV2EeiZCtiTqYvp8w" name="pret" type="_OslhcGiHEeiqG7gMWSW--g" association="_IsZkAMV2EeiZCtiTqYvp8w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NiGusMV2EeiZCtiTqYvp8w"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NiGuscV2EeiZCtiTqYvp8w" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_IstGAsV2EeiZCtiTqYvp8w" name="reservation" type="_hd1kwL_NEeiOkO2II6T5AQ" association="_IsZkAMV2EeiZCtiTqYvp8w">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Is2P8MV2EeiZCtiTqYvp8w" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Is2P8cV2EeiZCtiTqYvp8w" value="1"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>

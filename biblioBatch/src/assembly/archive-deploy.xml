@@ -21,7 +21,7 @@
 	<files>
 		<!-- Fichier JAR -->
 		<file>
-			<source>target/biblioBatch-1.1.jar</source>
+			<source>target/biblioBatch-2.0-SNAPSHOT.jar</source>
 			<outputDirectory></outputDirectory>
 		</file>
 		<!-- Fichiers de configuration -->

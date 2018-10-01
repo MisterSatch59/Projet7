@@ -18,9 +18,7 @@ Le dossier Projet7 contient les éléments suivant :
 ## Créer la base de données PostgreSQL (10)
 
 1/ Créer dans PgAdmin la base de données
-2/ Au choix :
-	a/ Restaurer la base de données à partir du fichier de "Backup" de pgAdmin suivant : livrables/BaseDeDonnees/backup.sql (clic droit > Restore > filename puis chercher le fichier backup.sql)
-	b/ utiliser le script de création des tables et des données de démonstration livrables/BaseDeDonnees/creationBD.sql
+2/ Utiliser les scripts de création des tables et des données de démonstration dans livrables/BaseDeDonnees
 
 ## Déploiement du Web Service (sur serveur Tomcat 9)
 
@@ -32,10 +30,10 @@ Le dossier Projet7 contient les éléments suivant :
 
 ## Déploiement du batch d'envoi de mail de relance
 
-1/ Décompresser le fichier Projet7\livrables\Batch\biblioBatch-1.1.zip
-2/ Créer une variable d'environnement nommée "biblioBatch_Home" et contenant le chemin d'accès au dossier "biblioBatch-1.0" contenu dans le dossier décompressé.
+1/ Décompresser le fichier Projet7\livrables\Batch\biblioBatch-2.0.zip
+2/ Créer une variable d'environnement nommée "biblioBatch_Home" et contenant le chemin d'accès au dossier "biblioBatch-2.0" contenu dans le dossier décompressé.
 3/ Modifier le fichier biblioBatch-1.1\conf\config.properties pour configurer le Batch (Message et périodicité des mails de relance, SMTP et adresse du Web Service LivreService).
-4/ Exécuter biblioBatch-1.1.jar
+4/ Exécuter biblioBatch-2.0.jar
 
 ## Déploiement de l'application  web (sur serveur Tomcat 9)
 
