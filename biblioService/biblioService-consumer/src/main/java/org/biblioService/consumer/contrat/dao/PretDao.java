@@ -72,4 +72,11 @@ public interface PretDao {
 	 */
 	void delete(int pId);
 
+	/**
+	 * Retourne la list des prêt dont la date de retour correspond à celle en paramètre
+	 * @param vCalendar
+	 * @return List<Pret>
+	 */
+	List<Pret> getPretRetourPrevuLe(Calendar pCalendar);
+
 }

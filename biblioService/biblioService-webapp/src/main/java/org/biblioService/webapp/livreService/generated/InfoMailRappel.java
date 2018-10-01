@@ -1,4 +1,4 @@
-package org.biblioService.webapp.utilisateurService.generated;
+package org.biblioService.webapp.livreService.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "modifierUtilisateurResponse")
-public class ModifierUtilisateurResponse {
+@XmlRootElement(name = "infoMailRappel")
+public class InfoMailRappel {
 
 
 }

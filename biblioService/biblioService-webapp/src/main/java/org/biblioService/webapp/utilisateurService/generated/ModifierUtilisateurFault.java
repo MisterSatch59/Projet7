@@ -1,4 +1,3 @@
-
 package org.biblioService.webapp.utilisateurService.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;

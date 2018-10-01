@@ -502,4 +502,29 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 				premierSurListeAttente.getBibliotheque(), premierSurListeAttente.getUtilisateur().getId(), premierSurListeAttente.getLivre().getIsbn(),
 				vDateAttribution, vPretId);
 	}
+
+	@Override
+	public List<Pret> infoMailRappel() {
+		LOGGER.traceEntry();
+
+		int DUREE_RAPPEL = 5;
+
+		Calendar vCalendar = Calendar.getInstance();
+		vCalendar.add(Calendar.DATE, DUREE_RAPPEL);
+
+		List<Pret> vListPret = getDaoFactory().getPretDao().getPretRetourPrevuLe(vCalendar);
+
+		// Retrait des prets dont l'utilisateur ne souhaite pas recevoir de mail de rappel
+		List<Pret> vListPret2 = new ArrayList<Pret>();
+		if (vListPret != null) {
+			for (Pret vPret : vListPret) {
+				if (vPret.getUtilisateur().isMailRappel()) {
+					vListPret2.add(vPret);
+				} 
+			}
+		}
+
+		LOGGER.traceExit("vListPret = " + vListPret2);
+		return vListPret2;
+	}
 }

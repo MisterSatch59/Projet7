@@ -26,7 +26,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 		
 		if (pUtilisateurBD != null) {// Vérifie que l'utilisateur n'est pas null
 			// Enregistrement dans la base de données
-			String vSQL = "INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES (:email, :nom, :prenom, :mdp, :sel)";
+			String vSQL = "INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel,mail_rappel) VALUES (:email, :nom, :prenom, :mdp, :sel, :mail_rappel)";
 			MapSqlParameterSource vParams = new MapSqlParameterSource();
 			vParams.addValue("email", pUtilisateurBD.getEmail());
 			vParams.addValue("nom", pUtilisateurBD.getNom());
@@ -37,6 +37,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 			}
 			vParams.addValue("mdp", pUtilisateurBD.getMdp());
 			vParams.addValue("sel", pUtilisateurBD.getSel());
+			vParams.addValue("mail_rappel", pUtilisateurBD.isMailRappel());
 
 			NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
@@ -95,7 +96,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 		if (pUtilisateurBD != null) {// Vérifie que l'utilisateur n'est pas null
 			
 			// Modification dans la base de données
-			String vSQL = "UPDATE public.utilisateur SET nom = :nom, prenom = :prenom, email = :email, mdp = :mdp, sel = :sel WHERE id = :id";
+			String vSQL = "UPDATE public.utilisateur SET nom = :nom, prenom = :prenom, email = :email, mdp = :mdp, sel = :sel, mail_rappel = :mail_rappel WHERE id = :id";
 			MapSqlParameterSource vParams = new MapSqlParameterSource();
 			vParams.addValue("id", pUtilisateurBD.getId());
 			vParams.addValue("email", pUtilisateurBD.getEmail());
@@ -103,6 +104,7 @@ public class UtilisateurDaoImpl extends AbstractDaoImpl implements UtilisateurDa
 			vParams.addValue("prenom", pUtilisateurBD.getPrenom());
 			vParams.addValue("mdp", pUtilisateurBD.getMdp());
 			vParams.addValue("sel", pUtilisateurBD.getSel());
+			vParams.addValue("mail_rappel", pUtilisateurBD.isMailRappel());
 
 			NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 

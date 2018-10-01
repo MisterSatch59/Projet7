@@ -46,12 +46,13 @@ public interface UtilisateurManager {
 	 * @param pNouveauPrenom
 	 * @param pNouveauMail
 	 * @param pNouveauMdp
+	 * @param pNouveauMailRappel 
 	 * @throws NotFoundException lancé lorque aucun utilisateur ne correspond à l'identifiant
 	 * @throws AuthentificationException lancé en cas d'erreur dans l'authentification
 	 * @throws ParamsInvalidException  lancé lorque les paramètres reçus sont incorrectes
 	 * @throws TechnicalException  lancé lors d'un problème technique de la base de donnée
 	 */
-	public void updateUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom,String pNouveauMail, String pNouveauMdp) throws NotFoundException, AuthentificationException, ParamsInvalidException, TechnicalException;
+	public void updateUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom,String pNouveauMail, String pNouveauMdp, Boolean pNouveauMailRappel) throws NotFoundException, AuthentificationException, ParamsInvalidException, TechnicalException;
 	
 	/**
 	 * Supprimer l'utilisateur correspondant à l'id
