@@ -1,6 +1,13 @@
 package org.biblioWebapp.action.livre;
 
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +16,7 @@ import org.biblioWebapp.services.generated.livreservice.ListerPretEnCoursFault_E
 import org.biblioWebapp.services.generated.livreservice.LivreService;
 import org.biblioWebapp.services.generated.types.Pret;
 import org.biblioWebapp.services.generated.types.Utilisateur;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -28,7 +36,7 @@ public class PretEnCoursAction extends AbstractAction {
 
 	// ----- Eléments en sortie
 
-	private List<Pret> listPret;
+	private Map<Pret,Boolean> mapPret;
 
 	// ==================== Getters/Setters ====================
 
@@ -38,8 +46,8 @@ public class PretEnCoursAction extends AbstractAction {
 
 	// ----- Eléments en sortie (getters uniquement)
 
-	public List<Pret> getListPret() {
-		return listPret;
+	public Map<Pret, Boolean> getMapPret() {
+		return mapPret;
 	}
 
 	// ================= Méthodes d'action ====================
@@ -52,9 +60,22 @@ public class PretEnCoursAction extends AbstractAction {
 
 		LivreService vLivreService = this.getLivreService();
 		try {
-			listPret = vLivreService.listerPretEnCours(vUtilisateur.getId());
+			mapPret= new HashMap<Pret,Boolean>();
+			List<Pret> listPret = vLivreService.listerPretEnCours(vUtilisateur.getId());
+			GregorianCalendar gregorianCalendar = new GregorianCalendar();
+	        DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+	        XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
+			for (Pret pret : listPret) {
+				if(pret.isRenouvele()||pret.getDateRetourPrevue().compare(now)<0) {//Renouvelable que si pas déjà renouvelé et si la date de retour prévu est future
+					mapPret.put(pret,false);
+				}else {
+					mapPret.put(pret,true);
+				}
+			}
 		} catch (ListerPretEnCoursFault_Exception e) {
 			addActionError(e.getFaultInfo().getFaultMessage());
+		} catch (DatatypeConfigurationException e) {
+			LOGGER.debug(e);
 		}
 		
 		LOGGER.traceExit(result);
