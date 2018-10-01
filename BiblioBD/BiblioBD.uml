@@ -30,6 +30,9 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_VN_Y8GiHEeiqG7gMWSW--g" name="sel">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SCXewMV_Eeifc7RF1N8YZg" name="mailRappel">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_HeotAGiHEeiqG7gMWSW--g" name="Exemplaire"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_OslhcGiHEeiqG7gMWSW--g" name="Pret">
