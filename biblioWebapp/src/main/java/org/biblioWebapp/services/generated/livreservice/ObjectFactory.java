@@ -308,4 +308,20 @@ public class ObjectFactory {
         return new ListerReservationFault();
     }
 
+    /**
+     * Create an instance of {@link InfoMailRappel }
+     * 
+     */
+    public InfoMailRappel createInfoMailRappel() {
+        return new InfoMailRappel();
+    }
+
+    /**
+     * Create an instance of {@link InfoMailRappelResponse }
+     * 
+     */
+    public InfoMailRappelResponse createInfoMailRappelResponse() {
+        return new InfoMailRappelResponse();
+    }
+
 }
