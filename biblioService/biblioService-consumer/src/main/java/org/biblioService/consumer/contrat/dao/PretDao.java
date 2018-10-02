@@ -9,12 +9,12 @@ import org.biblioService.model.bean.Pret;
 public interface PretDao {
 
 	/**
-	 * Retoune la liste des Pret en cours dont la date de debut est avant la date en paramètre
+	 * Retoune la liste des Pret en cours dont la date de retour prévue est avant la date en paramètre
 	 * 
 	 * @param vCalendar
 	 * @return List<Pret>
 	 */
-	List<Pret> getPretDebutAvant(Calendar pCalendar);
+	List<Pret> getPretDateRetourAvant(Calendar pCalendar);
 
 	/**
 	 * Prolonge le pret dont l'id est en paramètre
