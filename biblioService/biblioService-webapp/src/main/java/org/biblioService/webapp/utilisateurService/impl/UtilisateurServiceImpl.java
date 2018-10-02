@@ -68,11 +68,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
 	@Override
-	public void modifierUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom,String pNouveauMail, String pNouveauMdp) throws ModifierUtilisateurFault1, ModifierUtilisateurFault_Exception {
+	public void modifierUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom,String pNouveauMail, String pNouveauMdp, Boolean pNouveauMailRappel) throws ModifierUtilisateurFault1, ModifierUtilisateurFault_Exception {
 		LOGGER.traceEntry("id = " + pId + " ancienMdp = " + pAncienMdp + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
 
 		try {
-			managerFactory.getUtilisateurManager().updateUtilisateur(pId, pAncienMdp, pNouveauNom, pNouveauPrenom, pNouveauMail, pNouveauMdp);
+			managerFactory.getUtilisateurManager().updateUtilisateur(pId, pAncienMdp, pNouveauNom, pNouveauPrenom, pNouveauMail, pNouveauMdp, pNouveauMailRappel);
 		} catch (AutreException e) {
 			LOGGER.debug(e);
 			ModifierUtilisateurFault vModifierUtilisateurFault =  new ModifierUtilisateurFault();

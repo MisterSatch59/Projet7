@@ -52,17 +52,27 @@
 				<xsd:complexType>
 					<xsd:sequence minOccurs="1" maxOccurs="1">
 
-						<xsd:element name="id" type="xsd:int" minOccurs="1"></xsd:element>
+						<xsd:element name="id" type="xsd:int"
+							minOccurs="1">
+						</xsd:element>
 						<xsd:element name="ancienMdp" type="xsd:string"
-							minOccurs="1"></xsd:element>
+							minOccurs="1">
+						</xsd:element>
 						<xsd:element name="nouveauNom" type="xsd:string"
-							minOccurs="0" maxOccurs="1"></xsd:element>
-						<xsd:element name="nnouveauPrenom" type="xsd:string"
-							minOccurs="0" maxOccurs="1"></xsd:element>
-						<xsd:element name="nouveauEmail" type="xsd:string"
-							minOccurs="0" maxOccurs="1"></xsd:element>
+							minOccurs="0" maxOccurs="1">
+						</xsd:element>
+						<xsd:element name="nnouveauPrenom"
+							type="xsd:string" minOccurs="0" maxOccurs="1">
+						</xsd:element>
+						<xsd:element name="nouveauEmail"
+							type="xsd:string" minOccurs="0" maxOccurs="1">
+						</xsd:element>
 						<xsd:element name="nouveauMdp" type="xsd:string"
-							minOccurs="0" maxOccurs="1"></xsd:element>
+							minOccurs="0" maxOccurs="1">
+						</xsd:element>
+						<xsd:element name="nouveauMailRappel"
+							type="xsd:boolean" minOccurs="0" maxOccurs="1">
+						</xsd:element>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
@@ -233,68 +243,4 @@
 				message="tns:supprimerUtilisateurFault"></wsdl:fault>
 		</wsdl:operation>
 	</wsdl:portType>
-
-	<wsdl:binding name="UtilisateurServiceSOAP"
-		type="tns:UtilisateurService">
-		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-		<wsdl:operation name="creerUtilisateur">
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-			<wsdl:fault name="fault">
-				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>
-			<wsdl:fault name="fault1">
-				<soap:fault use="literal" name="fault1" />
-			</wsdl:fault>
-		</wsdl:operation>
-		<wsdl:operation name="authentifierUtilisateur">
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-			<wsdl:fault name="fault">
-				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>
-		</wsdl:operation>
-		<wsdl:operation name="modifierUtilisateur">
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-			<wsdl:fault name="fault">
-				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>
-			<wsdl:fault name="fault1">
-				<soap:fault use="literal" name="fault1" />
-			</wsdl:fault>
-		</wsdl:operation>
-		<wsdl:operation name="supprimerUtilisateur">
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-			<wsdl:fault name="fault">
-				<soap:fault use="literal" name="fault" />
-			</wsdl:fault>
-		</wsdl:operation>
-	</wsdl:binding>
-
-	<wsdl:service name="UtilisateurService">
-		<wsdl:port binding="tns:UtilisateurServiceSOAP"
-			name="UtilisateurServiceSOAP">
-			<soap:address
-				location="http://localhost:8080/biblioService/services/utilisateur" />
-		</wsdl:port>
-	</wsdl:service>
-
 </wsdl:definitions>

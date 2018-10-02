@@ -1,4 +1,3 @@
-
 package org.biblioService.model.bean;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -21,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="mailRappel" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "email",
     "nom",
-    "prenom"
+    "prenom",
+    "mailRappel"
 })
 public class Utilisateur {
 
@@ -44,19 +45,21 @@ public class Utilisateur {
     @XmlElement(required = true)
     protected String nom;
     protected String prenom;
+    protected boolean mailRappel;
     
-    public Utilisateur(){
-    	
-    }
-    
-    public Utilisateur(UtilisateurBD pUtilisateurBD) {
-    	id = pUtilisateurBD.getId();
-		nom = pUtilisateurBD.getNom();
-		prenom = pUtilisateurBD.getPrenom();
-		email = pUtilisateurBD.getEmail();
-    }
+    public Utilisateur() {
+		super();
+	}
 
-    /**
+	public Utilisateur(UtilisateurBD pUtilisateurBD) {
+		setId(pUtilisateurBD.getId());
+		setNom(pUtilisateurBD.getNom());
+		setPrenom(pUtilisateurBD.getPrenom());
+		setEmail(pUtilisateurBD.getEmail());
+		setMailRappel(pUtilisateurBD.isMailRappel());
+	}
+
+	/**
      * Obtient la valeur de la propriété id.
      * 
      */
@@ -142,6 +145,22 @@ public class Utilisateur {
      */
     public void setPrenom(String value) {
         this.prenom = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété mailRappel.
+     * 
+     */
+    public boolean isMailRappel() {
+        return mailRappel;
+    }
+
+    /**
+     * Définit la valeur de la propriété mailRappel.
+     * 
+     */
+    public void setMailRappel(boolean value) {
+        this.mailRappel = value;
     }
 
 }

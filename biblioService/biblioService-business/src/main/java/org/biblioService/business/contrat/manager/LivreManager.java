@@ -123,4 +123,10 @@ public interface LivreManager {
 	 */
 	List<Reservation> miseAJourListesReservation() throws AutreException;
 
+	/**
+	 * Retourne la liste des prêt dont l'échéance est dans 5 jours
+	 * @return
+	 */
+	List<Pret> infoMailRappel();
+
 }

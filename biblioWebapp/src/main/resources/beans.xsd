@@ -64,6 +64,7 @@
     			maxOccurs="1">
     		</element>
     		<element name="sel" type="string" minOccurs="1"></element>
+    		<element name="mailRappel" type="boolean" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     </complexType>
 
@@ -72,7 +73,10 @@
     		<element name="id" type="int" minOccurs="1"></element>
     		<element name="email" type="string" minOccurs="1"></element>
     		<element name="nom" type="string" minOccurs="1"></element>
-    		<element name="prenom" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="prenom" type="string" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="mailRappel" type="boolean" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     </complexType>
 

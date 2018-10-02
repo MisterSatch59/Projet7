@@ -31,6 +31,7 @@ public class UtilisateurRM implements RowMapper<UtilisateurBD> {
 		String vEmail = pRS.getString("email");
 		String vMdp = pRS.getString("mdp");
 		String vSel = pRS.getString("sel");
+		boolean vMailRappel = pRS.getBoolean("mail_rappel");
 
 		UtilisateurBD vUtilisateurBD = new UtilisateurBD();
 		
@@ -40,6 +41,7 @@ public class UtilisateurRM implements RowMapper<UtilisateurBD> {
 		vUtilisateurBD.setEmail(vEmail);
 		vUtilisateurBD.setMdp(vMdp);
 		vUtilisateurBD.setSel(vSel);
+		vUtilisateurBD.setMailRappel(vMailRappel);
 		
 		LOGGER.traceExit(vUtilisateurBD);
 		return vUtilisateurBD;

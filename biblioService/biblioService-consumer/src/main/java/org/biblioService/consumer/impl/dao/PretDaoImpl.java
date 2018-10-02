@@ -25,11 +25,11 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
 	private PretRM pretRM;
 
 	@Override
-	public List<Pret> getPretDebutAvant(Calendar pCalendar) {
+	public List<Pret> getPretDateRetourAvant(Calendar pCalendar) {
 		LOGGER.traceEntry("pCalendar = " + pCalendar);
 
 		// Recherche dans la base de données
-		String vSQL = "SELECT * FROM public.pret WHERE date_debut < :date AND date_fin IS NULL";
+		String vSQL = "SELECT * FROM public.pret WHERE date_retour_prevue < :date AND date_fin IS NULL";
 
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		vParams.addValue("date", pCalendar.getTime());
@@ -180,6 +180,28 @@ public class PretDaoImpl extends AbstractDaoImpl implements PretDao{
 		
 		LOGGER.traceExit();
 		
+	}
+
+
+	@Override
+	public List<Pret> getPretRetourPrevuLe(Calendar pCalendar) {
+		LOGGER.traceEntry("pCalendar = " + pCalendar);
+
+		// Recherche dans la base de données
+		String vSQL = "SELECT * FROM public.pret WHERE date_retour_prevue = :date AND date_fin IS NULL";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("date", pCalendar.getTime());
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		List<Pret> vListPret = vJdbcTemplate.query(vSQL, vParams, pretRM);
+		if (vListPret.isEmpty()) {//Retourne null si la recherche ne retourne aucun resultat
+			return null;
+		} else {// Retoune le liste
+			LOGGER.traceExit("vListPret = " + vListPret);
+			return vListPret;
+		}
 	}
 
 }

@@ -64,6 +64,10 @@
         <element xmi:type="uml:Property" href="BiblioBD.uml#_VN_Y8GiHEeiqG7gMWSW--g"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_VOERcWiHEeiqG7gMWSW--g"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_SEXC0MV_Eeifc7RF1N8YZg" type="Property_ClassAttributeLabel">
+        <element xmi:type="uml:Property" href="BiblioBD.uml#_SCXewMV_Eeifc7RF1N8YZg"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_SEXC0cV_Eeifc7RF1N8YZg"/>
+      </children>
       <styles xmi:type="notation:TitleStyle" xmi:id="_zqIAsmiGEeiqG7gMWSW--g"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_zqIAs2iGEeiqG7gMWSW--g"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_zqIAtGiGEeiqG7gMWSW--g"/>

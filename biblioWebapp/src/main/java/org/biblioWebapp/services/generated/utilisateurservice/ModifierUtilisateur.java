@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="nnouveauPrenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="nouveauEmail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="nouveauMdp" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="nouveauMailRappel" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -38,7 +39,8 @@ import javax.xml.bind.annotation.XmlType;
     "nouveauNom",
     "nnouveauPrenom",
     "nouveauEmail",
-    "nouveauMdp"
+    "nouveauMdp",
+    "nouveauMailRappel"
 })
 @XmlRootElement(name = "modifierUtilisateur")
 public class ModifierUtilisateur {
@@ -50,6 +52,7 @@ public class ModifierUtilisateur {
     protected String nnouveauPrenom;
     protected String nouveauEmail;
     protected String nouveauMdp;
+    protected Boolean nouveauMailRappel;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -185,6 +188,30 @@ public class ModifierUtilisateur {
      */
     public void setNouveauMdp(String value) {
         this.nouveauMdp = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété nouveauMailRappel.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isNouveauMailRappel() {
+        return nouveauMailRappel;
+    }
+
+    /**
+     * Définit la valeur de la propriété nouveauMailRappel.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setNouveauMailRappel(Boolean value) {
+        this.nouveauMailRappel = value;
     }
 
 }

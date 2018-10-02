@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="mdp" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="sel" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="mailRappel" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,7 +38,8 @@ import javax.xml.bind.annotation.XmlType;
     "nom",
     "prenom",
     "mdp",
-    "sel"
+    "sel",
+    "mailRappel"
 })
 public class UtilisateurBD {
 
@@ -51,6 +53,7 @@ public class UtilisateurBD {
     protected String mdp;
     @XmlElement(required = true)
     protected String sel;
+    protected boolean mailRappel;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -186,6 +189,22 @@ public class UtilisateurBD {
      */
     public void setSel(String value) {
         this.sel = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété mailRappel.
+     * 
+     */
+    public boolean isMailRappel() {
+        return mailRappel;
+    }
+
+    /**
+     * Définit la valeur de la propriété mailRappel.
+     * 
+     */
+    public void setMailRappel(boolean value) {
+        this.mailRappel = value;
     }
 
 }

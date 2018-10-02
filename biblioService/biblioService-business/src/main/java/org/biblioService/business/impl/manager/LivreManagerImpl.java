@@ -44,32 +44,12 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 	public List<Pret> getPretEnRetard() {
 		LOGGER.traceEntry();
 
-		int DUREE_PRET_EN_JOUR = donnees.getDUREE_PRET_EN_JOUR();
-
 		Calendar vCalendar = Calendar.getInstance();
-		vCalendar.add(Calendar.DATE, -DUREE_PRET_EN_JOUR);
 
-		List<Pret> vListPret = getDaoFactory().getPretDao().getPretDebutAvant(vCalendar);
+		List<Pret> vListPret = getDaoFactory().getPretDao().getPretDateRetourAvant(vCalendar);
 
-		// Retrait des prets prolongés encore valide car renouvele
-		List<Pret> vListPret2 = new ArrayList<Pret>();
-		if (vListPret != null) {
-			for (Pret vPret : vListPret) {
-				if (vPret.isRenouvele()) {
-					Calendar vDateLimite = vPret.getDateDebut().toGregorianCalendar();
-					vDateLimite.add(Calendar.DATE, 2 * DUREE_PRET_EN_JOUR);
-
-					if (vDateLimite.compareTo(Calendar.getInstance()) < 0) {// = si la date limite est avant aujourd'hui
-						vListPret2.add(vPret);
-					}
-				} else {
-					vListPret2.add(vPret);
-				}
-			}
-		}
-
-		LOGGER.traceExit("vListPret = " + vListPret2);
-		return vListPret2;
+		LOGGER.traceExit("vListPret = " + vListPret);
+		return vListPret;
 	}
 
 	@Override
@@ -501,5 +481,30 @@ public class LivreManagerImpl extends AbstractManagerImpl implements LivreManage
 		getDaoFactory().getReservationDao().setAttribue(
 				premierSurListeAttente.getBibliotheque(), premierSurListeAttente.getUtilisateur().getId(), premierSurListeAttente.getLivre().getIsbn(),
 				vDateAttribution, vPretId);
+	}
+
+	@Override
+	public List<Pret> infoMailRappel() {
+		LOGGER.traceEntry();
+
+		int DUREE_RAPPEL = 5;
+
+		Calendar vCalendar = Calendar.getInstance();
+		vCalendar.add(Calendar.DATE, DUREE_RAPPEL);
+
+		List<Pret> vListPret = getDaoFactory().getPretDao().getPretRetourPrevuLe(vCalendar);
+
+		// Retrait des prets dont l'utilisateur ne souhaite pas recevoir de mail de rappel
+		List<Pret> vListPret2 = new ArrayList<Pret>();
+		if (vListPret != null) {
+			for (Pret vPret : vListPret) {
+				if (vPret.getUtilisateur().isMailRappel()) {
+					vListPret2.add(vPret);
+				} 
+			}
+		}
+
+		LOGGER.traceExit("vListPret = " + vListPret2);
+		return vListPret2;
 	}
 }

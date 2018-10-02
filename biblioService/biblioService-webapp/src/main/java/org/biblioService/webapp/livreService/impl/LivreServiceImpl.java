@@ -238,8 +238,15 @@ public class LivreServiceImpl implements LivreService {
 		LOGGER.traceExit("vListReservationAJour = " + vListReservationAJour);
 		return vListReservationAJour;
 	}
+
+	@Override
+	public List<Pret> infoMailRappel() {
+		LOGGER.traceEntry();
+		
+		List<Pret> vListPret = managerFactory.getLivreManager().infoMailRappel();
+		
+		LOGGER.traceExit("vListPret = " + vListPret);
+		return vListPret;
+	}
 	
-
-
-
 }

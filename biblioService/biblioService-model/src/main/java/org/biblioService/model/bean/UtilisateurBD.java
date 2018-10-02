@@ -1,9 +1,5 @@
-
 package org.biblioService.model.bean;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="mdp" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="sel" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="mailRappel" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -41,35 +38,22 @@ import javax.xml.bind.annotation.XmlType;
     "nom",
     "prenom",
     "mdp",
-    "sel"
+    "sel",
+    "mailRappel"
 })
 public class UtilisateurBD {
 
     protected int id;
-    
-    @NotNull
-	@Size(max = 100)
-    @XmlElement(required = true)
-    protected String nom;
-    
-    @Size(max = 100)
-    protected String prenom;
-    
-    @NotNull
-	@Size(max = 100)
-	@Email
     @XmlElement(required = true)
     protected String email;
-    
-    @NotNull
-	@Size(max = 100)
+    @XmlElement(required = true)
+    protected String nom;
+    protected String prenom;
     @XmlElement(required = true)
     protected String mdp;
-    
-    @NotNull
-	@Size(max = 20)
     @XmlElement(required = true)
     protected String sel;
+    protected boolean mailRappel;
 
     /**
      * Obtient la valeur de la propriété id.
@@ -205,6 +189,22 @@ public class UtilisateurBD {
      */
     public void setSel(String value) {
         this.sel = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété mailRappel.
+     * 
+     */
+    public boolean isMailRappel() {
+        return mailRappel;
+    }
+
+    /**
+     * Définit la valeur de la propriété mailRappel.
+     * 
+     */
+    public void setMailRappel(boolean value) {
+        this.mailRappel = value;
     }
 
 }
