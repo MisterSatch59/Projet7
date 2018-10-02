@@ -542,7 +542,7 @@ INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,
 INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 2, 77);
 
 
---Modification ticket #1
+--Modification passage version 2.0
 CREATE TABLE public.reservation (
                 bibliotheque VARCHAR(50) NOT NULL,
                 isbn VARCHAR(20) NOT NULL,

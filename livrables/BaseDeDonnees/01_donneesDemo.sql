@@ -1,3 +1,4 @@
+
 -- Création données de demonstration
 
 --Genres
@@ -308,6 +309,3 @@ INSERT INTO public.utilisateur (email,nom,prenom,mdp,sel) VALUES ('test5@gmail.c
 -- Pret
 INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-08-10'},{d '2018-09-07'} ,false , 1, 11);
 INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-03'},{d '2018-10-01'} ,false , 2, 77);
-
-
-

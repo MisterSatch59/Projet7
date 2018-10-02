@@ -1,3 +1,4 @@
+
 -- Création données de demonstration
 --Prêt
 INSERT INTO public.pret (date_debut,date_retour_prevue,renouvele,utilisateur_id,exemplaire_id) VALUES ({d '2018-09-23'},{d '2018-10-21'} ,false , 3, 79);
