@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -72,6 +71,7 @@ public class ReservationRM implements RowMapper<Reservation> {
 			vReservation.setPret(daoFactory.getPretDao().getPret(vPretId));
 		}
 		
+		vReservation.setPosition(daoFactory.getReservationDao().getNbResaAvant(vDateResa, vBibliotheque, vISBN) + 1);
 		
 		LOGGER.traceExit("vReservation = " + vReservation);
 		return vReservation;
