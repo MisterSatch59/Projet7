@@ -24,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="dateResa" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
  *         &lt;element name="dateMail" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/&gt;
  *         &lt;element name="pret" type="{http://www.example.org/types}Pret" minOccurs="0"/&gt;
+ *         &lt;element name="position" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -39,7 +40,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "utilisateur",
     "dateResa",
     "dateMail",
-    "pret"
+    "pret",
+    "position"
 })
 public class Reservation {
 
@@ -55,6 +57,7 @@ public class Reservation {
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar dateMail;
     protected Pret pret;
+    protected int position;
 
     /**
      * Obtient la valeur de la propriété livre.
@@ -198,6 +201,22 @@ public class Reservation {
      */
     public void setPret(Pret value) {
         this.pret = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété position.
+     * 
+     */
+    public int getPosition() {
+        return position;
+    }
+
+    /**
+     * Définit la valeur de la propriété position.
+     * 
+     */
+    public void setPosition(int value) {
+        this.position = value;
     }
 
 }
