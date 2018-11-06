@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für Auteur complex type.
+ * <p>Classe Java pour Auteur complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="Auteur"&gt;
@@ -41,7 +41,7 @@ public class Auteur {
     protected String prenom;
 
     /**
-     * Ruft den Wert der id-Eigenschaft ab.
+     * Obtient la valeur de la propriété id.
      * 
      */
     public int getId() {
@@ -49,7 +49,7 @@ public class Auteur {
     }
 
     /**
-     * Legt den Wert der id-Eigenschaft fest.
+     * Définit la valeur de la propriété id.
      * 
      */
     public void setId(int value) {
@@ -57,7 +57,7 @@ public class Auteur {
     }
 
     /**
-     * Ruft den Wert der nom-Eigenschaft ab.
+     * Obtient la valeur de la propriété nom.
      * 
      * @return
      *     possible object is
@@ -69,7 +69,7 @@ public class Auteur {
     }
 
     /**
-     * Legt den Wert der nom-Eigenschaft fest.
+     * Définit la valeur de la propriété nom.
      * 
      * @param value
      *     allowed object is
@@ -81,7 +81,7 @@ public class Auteur {
     }
 
     /**
-     * Ruft den Wert der prenom-Eigenschaft ab.
+     * Obtient la valeur de la propriété prenom.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class Auteur {
     }
 
     /**
-     * Legt den Wert der prenom-Eigenschaft fest.
+     * Définit la valeur de la propriété prenom.
      * 
      * @param value
      *     allowed object is

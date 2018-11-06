@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für anonymous complex type.
+ * <p>Classe Java pour anonymous complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType&gt;
@@ -44,7 +44,7 @@ public class RechercherLivre {
     protected String langue;
 
     /**
-     * Ruft den Wert der titre-Eigenschaft ab.
+     * Obtient la valeur de la propriété titre.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class RechercherLivre {
     }
 
     /**
-     * Legt den Wert der titre-Eigenschaft fest.
+     * Définit la valeur de la propriété titre.
      * 
      * @param value
      *     allowed object is
@@ -68,7 +68,7 @@ public class RechercherLivre {
     }
 
     /**
-     * Ruft den Wert der auteur-Eigenschaft ab.
+     * Obtient la valeur de la propriété auteur.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class RechercherLivre {
     }
 
     /**
-     * Legt den Wert der auteur-Eigenschaft fest.
+     * Définit la valeur de la propriété auteur.
      * 
      * @param value
      *     allowed object is
@@ -92,7 +92,7 @@ public class RechercherLivre {
     }
 
     /**
-     * Ruft den Wert der genre-Eigenschaft ab.
+     * Obtient la valeur de la propriété genre.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class RechercherLivre {
     }
 
     /**
-     * Legt den Wert der genre-Eigenschaft fest.
+     * Définit la valeur de la propriété genre.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class RechercherLivre {
     }
 
     /**
-     * Ruft den Wert der langue-Eigenschaft ab.
+     * Obtient la valeur de la propriété langue.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class RechercherLivre {
     }
 
     /**
-     * Legt den Wert der langue-Eigenschaft fest.
+     * Définit la valeur de la propriété langue.
      * 
      * @param value
      *     allowed object is

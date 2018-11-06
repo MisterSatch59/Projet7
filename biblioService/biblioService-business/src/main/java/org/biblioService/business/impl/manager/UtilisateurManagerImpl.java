@@ -74,11 +74,14 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		vUtilisateurBD.setSel(PasswordUtils.getSalt(TAILLE_SEL));
 		String vMdp = PasswordUtils.generateSecurePassword(pMdp, vUtilisateurBD.getSel());
 		vUtilisateurBD.setMdp(vMdp);
+		
+		// Initialisation à true pour l'envoie des mail de rappel
+		vUtilisateurBD.setMailRappel(true);
 
 		// Appel du DAO pour création dans la BD dans une transaction
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			this.getDaoFactory().getUtilisateurDao().createUtilisateur(vUtilisateurBD);
+			this.getDaoFactory().getUtilisateurDao().createUtilisateurBD(vUtilisateurBD);
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -107,7 +110,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		LOGGER.traceEntry("email = " + pEmail + " mdp = " + pMdp);
 
 		// Récupération de l'utilisateur correspondant à l'email - NotFoundException si n'existe pas dans la base de données
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pEmail);
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pEmail);
 		
 		if(vUtilisateurBD==null) {
 			// lance une NotFoundException si la recherche ne retourne aucun resultat
@@ -119,22 +122,18 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		// Vérification du mdp - AuthentificationException si le mdp ne correspond pas
 		verifierMdp(pMdp, vUtilisateurBD);
 
-		Utilisateur vUtilisateur = new Utilisateur();
-		vUtilisateur.setId(vUtilisateurBD.getId());
-		vUtilisateur.setNom(vUtilisateurBD.getNom());
-		vUtilisateur.setPrenom(vUtilisateurBD.getPrenom());
-		vUtilisateur.setEmail(vUtilisateurBD.getEmail());
+		Utilisateur vUtilisateur = new Utilisateur(vUtilisateurBD);
 
 		LOGGER.traceExit(vUtilisateur);
 		return vUtilisateur;
 	}
 
 	@Override
-	public void updateUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom, String pNouveauMail, String pNouveauMdp) throws NotFoundException, AuthentificationException, ParamsInvalidException, TechnicalException {
+	public void updateUtilisateur(int pId, String pAncienMdp, String pNouveauNom, String pNouveauPrenom, String pNouveauMail, String pNouveauMdp, Boolean pNouveauMailRappel) throws NotFoundException, AuthentificationException, ParamsInvalidException, TechnicalException {
 		LOGGER.traceEntry("id = " + pId + " ancienMdp = " + pAncienMdp + " nouveauNom = " + pNouveauNom + " nouveauPrenom = " + pNouveauPrenom + " nouveauMail = " + pNouveauMail + " nouveauMdp = " + pNouveauMdp);
 
 		//Recupération de l'utilisateur
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pId);
 		
 		// lance une NotFoundException si la recherche ne retourne aucun resultat
 		if(vUtilisateurBD==null) {
@@ -165,6 +164,8 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 			vUtilisateurBD.setPrenom(pNouveauPrenom);
 		if(pNouveauMail!=null&&!pNouveauMail.isEmpty())
 			vUtilisateurBD.setEmail(pNouveauMail);
+		if(pNouveauMailRappel!=null)
+			vUtilisateurBD.setMailRappel(pNouveauMailRappel);
 		
 		// Sécurisation (hachage) du nouveauMdp
 		if(pNouveauMdp!=null&&!pNouveauMdp.isEmpty()) {
@@ -176,7 +177,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		// Appel du DAO pour modification de l'utilisateur dans la BD dans une transaction
 		TransactionStatus vTransactionStatus = this.getPlatformTransactionManager().getTransaction(new DefaultTransactionDefinition());
 		try {
-			this.getDaoFactory().getUtilisateurDao().updateUtilisateur(vUtilisateurBD);
+			this.getDaoFactory().getUtilisateurDao().updateUtilisateurBD(vUtilisateurBD);
 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
@@ -205,7 +206,7 @@ public class UtilisateurManagerImpl extends AbstractManagerImpl implements Utili
 		LOGGER.traceEntry("id = " + pId);
 		
 		// Recupération de l'utilisateur
-		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateur(pId);
+		UtilisateurBD vUtilisateurBD = this.getDaoFactory().getUtilisateurDao().getUtilisateurBD(pId);
 		
 		// lance une NotFoundException si la recherche ne retourne aucun resultat
 		if(vUtilisateurBD==null) {

@@ -1,11 +1,16 @@
 package org.biblioService.consumer.impl.dao;
 
+import java.sql.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -127,6 +132,50 @@ private static final Logger LOGGER = LogManager.getLogger(AuteurDaoImpl.class);
 		
 		LOGGER.traceExit("vDispo = " + vDispo);
 		return vDispo;
+	}
+
+	@Override
+	public XMLGregorianCalendar getProchainRetour(String pBibliotheque, String pISBN) {
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + pBibliotheque);
+		String vSQL = "SELECT MIN(date_retour_prevue) FROM pret " + 
+				"INNER JOIN exemplaire ON pret.exemplaire_id=exemplaire.id " + 
+				"WHERE bibliotheque = :bibliotheque AND isbn = :isbn";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("isbn", pISBN);
+		vParams.addValue("bibliotheque", pBibliotheque);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		Date vDate = vJdbcTemplate.queryForObject(vSQL, vParams, Date.class);
+		GregorianCalendar c = new GregorianCalendar();
+		c.setTime(vDate);
+		XMLGregorianCalendar vXMLdate = null;
+		try {
+			vXMLdate = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+		} catch (DatatypeConfigurationException e) {
+			LOGGER.debug(e);
+		}
+		LOGGER.traceExit("vXMLdate = " + vXMLdate);
+		return vXMLdate;
+	}
+
+
+	@Override
+	public Integer getPersonnesEnAttente(String pBibliotheque, String pISBN) {
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + pBibliotheque);
+		
+		String vSQL = "SELECT COUNT(utilisateur_id) FROM reservation " + 
+				"WHERE bibliotheque = :bibliotheque AND isbn = :isbn";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("isbn", pISBN);
+		vParams.addValue("bibliotheque", pBibliotheque);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		Integer vNombre = vJdbcTemplate.queryForObject(vSQL, vParams, Integer.class);
+		
+		LOGGER.traceExit("vNombre = " + vNombre);
+		return vNombre;
 	}
 
 }

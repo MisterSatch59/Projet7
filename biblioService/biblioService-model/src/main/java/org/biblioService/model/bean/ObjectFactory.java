@@ -92,4 +92,20 @@ public class ObjectFactory {
         return new Pret();
     }
 
+    /**
+     * Create an instance of {@link DispoParBibliotheque }
+     * 
+     */
+    public DispoParBibliotheque createDispoParBibliotheque() {
+        return new DispoParBibliotheque();
+    }
+
+    /**
+     * Create an instance of {@link Reservation }
+     * 
+     */
+    public Reservation createReservation() {
+        return new Reservation();
+    }
+
 }

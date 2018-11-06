@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für UtilisateurBD complex type.
+ * <p>Classe Java pour UtilisateurBD complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="UtilisateurBD"&gt;
@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="mdp" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="sel" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="mailRappel" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,7 +38,8 @@ import javax.xml.bind.annotation.XmlType;
     "nom",
     "prenom",
     "mdp",
-    "sel"
+    "sel",
+    "mailRappel"
 })
 public class UtilisateurBD {
 
@@ -51,9 +53,10 @@ public class UtilisateurBD {
     protected String mdp;
     @XmlElement(required = true)
     protected String sel;
+    protected boolean mailRappel;
 
     /**
-     * Ruft den Wert der id-Eigenschaft ab.
+     * Obtient la valeur de la propriété id.
      * 
      */
     public int getId() {
@@ -61,7 +64,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der id-Eigenschaft fest.
+     * Définit la valeur de la propriété id.
      * 
      */
     public void setId(int value) {
@@ -69,7 +72,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der email-Eigenschaft ab.
+     * Obtient la valeur de la propriété email.
      * 
      * @return
      *     possible object is
@@ -81,7 +84,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der email-Eigenschaft fest.
+     * Définit la valeur de la propriété email.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +96,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der nom-Eigenschaft ab.
+     * Obtient la valeur de la propriété nom.
      * 
      * @return
      *     possible object is
@@ -105,7 +108,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der nom-Eigenschaft fest.
+     * Définit la valeur de la propriété nom.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +120,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der prenom-Eigenschaft ab.
+     * Obtient la valeur de la propriété prenom.
      * 
      * @return
      *     possible object is
@@ -129,7 +132,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der prenom-Eigenschaft fest.
+     * Définit la valeur de la propriété prenom.
      * 
      * @param value
      *     allowed object is
@@ -141,7 +144,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der mdp-Eigenschaft ab.
+     * Obtient la valeur de la propriété mdp.
      * 
      * @return
      *     possible object is
@@ -153,7 +156,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der mdp-Eigenschaft fest.
+     * Définit la valeur de la propriété mdp.
      * 
      * @param value
      *     allowed object is
@@ -165,7 +168,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Ruft den Wert der sel-Eigenschaft ab.
+     * Obtient la valeur de la propriété sel.
      * 
      * @return
      *     possible object is
@@ -177,7 +180,7 @@ public class UtilisateurBD {
     }
 
     /**
-     * Legt den Wert der sel-Eigenschaft fest.
+     * Définit la valeur de la propriété sel.
      * 
      * @param value
      *     allowed object is
@@ -186,6 +189,22 @@ public class UtilisateurBD {
      */
     public void setSel(String value) {
         this.sel = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété mailRappel.
+     * 
+     */
+    public boolean isMailRappel() {
+        return mailRappel;
+    }
+
+    /**
+     * Définit la valeur de la propriété mailRappel.
+     * 
+     */
+    public void setMailRappel(boolean value) {
+        this.mailRappel = value;
     }
 
 }

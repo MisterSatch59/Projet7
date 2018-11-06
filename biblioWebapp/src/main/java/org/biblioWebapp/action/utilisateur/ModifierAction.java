@@ -31,10 +31,11 @@ public class ModifierAction extends AbstractAction {
 	private String mdp2;
 
 	// ----- Eléments en entrée et sortie
-	private String nom;// Egalement en sortie pour prérenmplir le formulaire avce les données
+	private String nom;// Egalement en sortie pour prérenmplir le formulaire avec les données
 						// précédente en cas d'erreur.
 	private String prenom;
 	private String email;
+	private boolean mailRappel;
 
 	// ----- Eléments en sortie
 
@@ -79,6 +80,14 @@ public class ModifierAction extends AbstractAction {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public boolean isMailRappel() {
+		return mailRappel;
+	}
+
+	public void setMailRappel(boolean mailRappel) {
+		this.mailRappel = mailRappel;
+	}
 
 	// ----- Eléments en sortie (getters uniquement)
 
@@ -94,14 +103,22 @@ public class ModifierAction extends AbstractAction {
 			nom = vUtilisateur.getNom();
 			prenom = vUtilisateur.getPrenom();
 			email = vUtilisateur.getEmail();
+			mailRappel = vUtilisateur.isMailRappel();
 		} else {// Traitement du formulaire
 			UtilisateurService vUtilisateurService = this.getUtilisateurService();
 			try {
 				if (mdp.isEmpty()) {
-					vUtilisateurService.modifierUtilisateur(vUtilisateur.getId(), ancienMdp, nom, prenom, email, ancienMdp);
+					vUtilisateurService.modifierUtilisateur(vUtilisateur.getId(), ancienMdp, nom, prenom, email, ancienMdp,mailRappel);
+					
 				} else {
-					vUtilisateurService.modifierUtilisateur(vUtilisateur.getId(), ancienMdp, nom, prenom, email, mdp);
+					vUtilisateurService.modifierUtilisateur(vUtilisateur.getId(), ancienMdp, nom, prenom, email, mdp,mailRappel);
 				}
+				//Mise à jour de la varible utilisateur en session
+				vUtilisateur.setNom(nom);
+				vUtilisateur.setPrenom(prenom);
+				vUtilisateur.setEmail(email);
+				vUtilisateur.setMailRappel(mailRappel);
+				this.getSession().put("utilisateur", vUtilisateur);
 			} catch (ModifierUtilisateurFault1 e) {
 				List<String> messages = e.getFaultInfo().getFaultMessages();
 				for (String message : messages) {
@@ -113,7 +130,7 @@ public class ModifierAction extends AbstractAction {
 				result = ActionSupport.INPUT;
 			}
 		}
-
+		
 		LOGGER.traceExit(result);
 		return result;
 	}

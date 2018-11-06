@@ -13,11 +13,11 @@
 	<!-- Titre -->
 	<div class="row">
 		<div class="col-xs-12">
-			<h1>Pret en cours</h1>
+			<h1>Prets en cours</h1>
 		</div>
 	</div>
 	
-	<!-- Cadre pret en cours -->
+	<!-- Cadre prets en cours -->
 	<div class="row">
 		<div class="jumbotron col-xs-12 marge">
 			<ul class="list-unstyled">
@@ -42,6 +42,42 @@
 								<s:else>
 									<button onclick="prolongerPret(this)" id="${id}" class="marge btn btn-primary ">Prolonger le prêt</button>
 								</s:else>
+							</li>
+						</ul>
+					</li>
+				</s:iterator>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Titre -->
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Réservations en cours</h1>
+		</div>
+	</div>
+	
+	<!-- Cadre réservations en cours -->
+	<div class="row">
+		<div class="jumbotron col-xs-12 marge">
+			<ul class="list-unstyled">
+				<s:iterator value="listReservation">
+					<li class="cadrePerso marge" id="${livre.isbn}">Réservé le : <s:property value="dateResa" /> à la bibliothèque : <s:property value="bibliotheque" /><br/>
+					Position sur la liste d'attente : <s:property value="position" />
+						<ul class="list-unstyled">
+							<li>Titre : <s:property value="livre.titre"/></li>
+							<li>Aux éditions <s:property value="livre.editeur.nom"/></li>
+							<li>De : 
+								<s:iterator value="livre.auteur">
+									<s:property value="nom"/> <s:property value="prenom"/>
+								</s:iterator>
+							</li>
+							<li>Description : <s:property value="livre.description.titre"/></li>
+							<s:iterator value="livre.description.paragraphes">
+								<li><s:property/></li>
+							</s:iterator>
+							<li>
+								<button onclick="annulerReservation(this)" id="${livre.isbn}/${bibliotheque}" class="marge btn btn-primary ">Supprimer la reservation</button>
 							</li>
 						</ul>
 					</li>
@@ -84,6 +120,29 @@
 			alert("La prolongation du prêt a été prise en compte.");
 			$(that).prop("disabled",true);
 
+		}
+		
+		function annulerReservation(that) {
+			// URL de l'action AJAX
+			var url = "<s:url action="annulerReservation_ajax"/>";
+
+			var id = that.id.split('/');
+			
+			var buttonIsbn = id[0];
+			var buttonBiblio = id[1];
+
+			// Paramètres de la requête AJAX
+			var params = {
+					isbn : buttonIsbn,
+					bibliotheque : buttonBiblio
+			};
+
+			// Action AJAX en POST
+			jQuery.post(url, params, function(data) {
+				$("#" + buttonIsbn).hide();
+			}).fail(function(data) {
+				alert("Une erreur s'est produite.");
+			});
 		}
 	
 	</script>

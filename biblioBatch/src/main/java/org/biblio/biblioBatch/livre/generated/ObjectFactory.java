@@ -164,4 +164,164 @@ public class ObjectFactory {
         return new GetGenresResponse();
     }
 
+    /**
+     * Create an instance of {@link CreerReservation }
+     * 
+     */
+    public CreerReservation createCreerReservation() {
+        return new CreerReservation();
+    }
+
+    /**
+     * Create an instance of {@link CreerReservationResponse }
+     * 
+     */
+    public CreerReservationResponse createCreerReservationResponse() {
+        return new CreerReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link CreerReservationFault }
+     * 
+     */
+    public CreerReservationFault createCreerReservationFault() {
+        return new CreerReservationFault();
+    }
+
+    /**
+     * Create an instance of {@link SupprimerReservation }
+     * 
+     */
+    public SupprimerReservation createSupprimerReservation() {
+        return new SupprimerReservation();
+    }
+
+    /**
+     * Create an instance of {@link SupprimerReservationResponse }
+     * 
+     */
+    public SupprimerReservationResponse createSupprimerReservationResponse() {
+        return new SupprimerReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link SupprimerReservationFault }
+     * 
+     */
+    public SupprimerReservationFault createSupprimerReservationFault() {
+        return new SupprimerReservationFault();
+    }
+
+    /**
+     * Create an instance of {@link ListerReservation }
+     * 
+     */
+    public ListerReservation createListerReservation() {
+        return new ListerReservation();
+    }
+
+    /**
+     * Create an instance of {@link ListerReservationResponse }
+     * 
+     */
+    public ListerReservationResponse createListerReservationResponse() {
+        return new ListerReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link NouveauPret }
+     * 
+     */
+    public NouveauPret createNouveauPret() {
+        return new NouveauPret();
+    }
+
+    /**
+     * Create an instance of {@link NouveauPretResponse }
+     * 
+     */
+    public NouveauPretResponse createNouveauPretResponse() {
+        return new NouveauPretResponse();
+    }
+
+    /**
+     * Create an instance of {@link NouveauPretFault }
+     * 
+     */
+    public NouveauPretFault createNouveauPretFault() {
+        return new NouveauPretFault();
+    }
+
+    /**
+     * Create an instance of {@link RetourPret }
+     * 
+     */
+    public RetourPret createRetourPret() {
+        return new RetourPret();
+    }
+
+    /**
+     * Create an instance of {@link RetourPretResponse }
+     * 
+     */
+    public RetourPretResponse createRetourPretResponse() {
+        return new RetourPretResponse();
+    }
+
+    /**
+     * Create an instance of {@link MiseAJourListesReservation }
+     * 
+     */
+    public MiseAJourListesReservation createMiseAJourListesReservation() {
+        return new MiseAJourListesReservation();
+    }
+
+    /**
+     * Create an instance of {@link MiseAJourListesReservationResponse }
+     * 
+     */
+    public MiseAJourListesReservationResponse createMiseAJourListesReservationResponse() {
+        return new MiseAJourListesReservationResponse();
+    }
+
+    /**
+     * Create an instance of {@link RetourPretFault }
+     * 
+     */
+    public RetourPretFault createRetourPretFault() {
+        return new RetourPretFault();
+    }
+
+    /**
+     * Create an instance of {@link MiseAJourListesReservationFault }
+     * 
+     */
+    public MiseAJourListesReservationFault createMiseAJourListesReservationFault() {
+        return new MiseAJourListesReservationFault();
+    }
+
+    /**
+     * Create an instance of {@link ListerReservationFault }
+     * 
+     */
+    public ListerReservationFault createListerReservationFault() {
+        return new ListerReservationFault();
+    }
+
+    /**
+     * Create an instance of {@link InfoMailRappel }
+     * 
+     */
+    public InfoMailRappel createInfoMailRappel() {
+        return new InfoMailRappel();
+    }
+
+    /**
+     * Create an instance of {@link InfoMailRappelResponse }
+     * 
+     */
+    public InfoMailRappelResponse createInfoMailRappelResponse() {
+        return new InfoMailRappelResponse();
+    }
+
 }

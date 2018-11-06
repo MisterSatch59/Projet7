@@ -21,6 +21,7 @@
 				<s:password id = "ancienMdp" name="ancienMdp" label="Ancien mot de passe" requiredLabel="true" class="form-control"/>
 				<s:password id = "mdp" name="mdp" label="Nouveau mot de passe" requiredLabel="true" class="form-control"/>
 				<s:password id = "mdp2" name="mdp2" label="Confirmation" requiredLabel="true" class="form-control"/>
+				<s:checkbox label="Recevoir un mail de rappel 5 jours avant l’échéance de retour d’un ouvrage?" name="mailRappel" value="mailRappel" fieldValue="mailRappel" class="form-control"/>
 				
 				<s:submit class="col-sm-offset-3 col-sm-6 col-xs-12 marge btn btn-primary" value="Valider" name=""/>
 			</s:form>

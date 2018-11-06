@@ -41,4 +41,22 @@ private static final Logger LOGGER = LogManager.getLogger(ExemplaireDaoImpl.clas
 		}
 	}
 
+	@Override
+	public int getNbExemplaire(String pISBN, String pBibliotheque) {
+		LOGGER.traceEntry("pISBN = " + pISBN + " - pBibliotheque = " + pBibliotheque);
+
+		String vSQL = "SELECT COUNT(*) FROM exemplaire WHERE bibliotheque = :bibliotheque AND isbn = :isbn";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("bibliotheque", pBibliotheque);
+		vParams.addValue("isbn", pISBN);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		Integer vNbExemplaire = vJdbcTemplate.queryForObject(vSQL, vParams,Integer.class);
+
+		LOGGER.traceExit("vNbExemplaire = " + vNbExemplaire);
+		return vNbExemplaire;
+	}
+
 }

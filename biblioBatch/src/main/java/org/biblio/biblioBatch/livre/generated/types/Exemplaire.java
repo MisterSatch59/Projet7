@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für Exemplaire complex type.
+ * <p>Classe Java pour Exemplaire complex type.
  * 
- * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
+ * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="Exemplaire"&gt;
@@ -42,7 +42,7 @@ public class Exemplaire {
     protected String bibliotheque;
 
     /**
-     * Ruft den Wert der id-Eigenschaft ab.
+     * Obtient la valeur de la propriété id.
      * 
      */
     public int getId() {
@@ -50,7 +50,7 @@ public class Exemplaire {
     }
 
     /**
-     * Legt den Wert der id-Eigenschaft fest.
+     * Définit la valeur de la propriété id.
      * 
      */
     public void setId(int value) {
@@ -58,7 +58,7 @@ public class Exemplaire {
     }
 
     /**
-     * Ruft den Wert der livre-Eigenschaft ab.
+     * Obtient la valeur de la propriété livre.
      * 
      * @return
      *     possible object is
@@ -70,7 +70,7 @@ public class Exemplaire {
     }
 
     /**
-     * Legt den Wert der livre-Eigenschaft fest.
+     * Définit la valeur de la propriété livre.
      * 
      * @param value
      *     allowed object is
@@ -82,7 +82,7 @@ public class Exemplaire {
     }
 
     /**
-     * Ruft den Wert der bibliotheque-Eigenschaft ab.
+     * Obtient la valeur de la propriété bibliotheque.
      * 
      * @return
      *     possible object is
@@ -94,7 +94,7 @@ public class Exemplaire {
     }
 
     /**
-     * Legt den Wert der bibliotheque-Eigenschaft fest.
+     * Définit la valeur de la propriété bibliotheque.
      * 
      * @param value
      *     allowed object is

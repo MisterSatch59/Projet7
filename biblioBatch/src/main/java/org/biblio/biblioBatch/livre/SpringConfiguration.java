@@ -28,6 +28,16 @@ public class SpringConfiguration {
 		config.setSignature(env.getProperty("message.signature"));
 		
 		config.setLivreServiceAdresse(env.getProperty("livreService.adresse"));
+		
+		
+		config.setReservationSujet(env.getProperty("message.reservation.sujet"));
+		config.setReservationPresentation(env.getProperty("message.reservation.presentation"));
+		config.setReservationDetail(env.getProperty("message.reservation.detail"));
+
+		config.setRappelSujet(env.getProperty("message.rappel.sujet"));
+		config.setRappelPresentationUnLivre(env.getProperty("message.rappel.presentation.un.livre"));
+		config.setRappelPresentationPlusieursLivre(env.getProperty("message.rappel.presentation.plusieurs.livres"));
+		config.setRappelDemande(env.getProperty("message.rappel.demande"));
 
 		return config;
 	}
