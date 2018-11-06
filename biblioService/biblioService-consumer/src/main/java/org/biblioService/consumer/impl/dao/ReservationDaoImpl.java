@@ -162,4 +162,17 @@ public class ReservationDaoImpl extends AbstractDaoImpl implements ReservationDa
 		return vListReservation;
 	}	
 
+	@Override
+	public int getNbResaAvant(Date pDateResa,String pBibliotheque, String pISBN) {
+		String vSQL = "SELECT COUNT(*) FROM reservation WHERE date_resa < :date_resa AND bibliotheque = :bibliotheque AND isbn = :isbn";
+
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("date_resa", pDateResa);
+		vParams.addValue("bibliotheque", pBibliotheque);
+		vParams.addValue("isbn", pISBN);
+
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+		return vJdbcTemplate.queryForObject(vSQL, vParams, Integer.class);
+	}
 }

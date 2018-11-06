@@ -132,7 +132,10 @@
     		<element name="dateMail" type="date" minOccurs="0"
     			maxOccurs="1">
     		</element>
-    		<element name="pret" type="tns:Pret" minOccurs="0" maxOccurs="1"></element>
+    		<element name="pret" type="tns:Pret" minOccurs="0"
+    			maxOccurs="1">
+    		</element>
+    		<element name="position" type="int" minOccurs="1" maxOccurs="1"></element>
     	</sequence>
     </complexType>
 </schema>

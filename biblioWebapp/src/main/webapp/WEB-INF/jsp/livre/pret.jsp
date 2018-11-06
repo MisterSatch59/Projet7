@@ -62,7 +62,8 @@
 		<div class="jumbotron col-xs-12 marge">
 			<ul class="list-unstyled">
 				<s:iterator value="listReservation">
-					<li class="cadrePerso marge" id="${livre.isbn}">Réservé le : <s:property value="dateResa" /> à la bibliothèque : <s:property value="bibliotheque" />
+					<li class="cadrePerso marge" id="${livre.isbn}">Réservé le : <s:property value="dateResa" /> à la bibliothèque : <s:property value="bibliotheque" /><br/>
+					Position sur la liste d'attente : <s:property value="position" />
 						<ul class="list-unstyled">
 							<li>Titre : <s:property value="livre.titre"/></li>
 							<li>Aux éditions <s:property value="livre.editeur.nom"/></li>

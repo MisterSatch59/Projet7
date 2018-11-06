@@ -62,4 +62,13 @@ public interface ReservationDao {
 	 */
 	List<Reservation> getListReservationDateAttributionAvant(Date pDate);
 
+	/**
+	 * Retourne le nombre de reservation avant la date indiqué pour le livre concerné dans la bibliothéque concernée.
+	 * @param pDateResa
+	 * @param pBibliotheque
+	 * @param pISBN
+	 * @return int
+	 */
+	int getNbResaAvant(Date pDateResa, String pBibliotheque, String pISBN);
+
 }
